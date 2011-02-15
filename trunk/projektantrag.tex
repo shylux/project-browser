@@ -1,0 +1,98 @@
+\documentclass[10pt,paper=a4,final]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}	%used for the tables
+\usepackage{geometry}	%allows us to specify the 'seitenrand'
+\usepackage[table]{xcolor}	%allows us to make colored fields in the tables
+\usepackage{graphicx}	%package used to include graphics
+\usepackage{pdflscape}	%allows landscape mode
+
+%These two lines will allow us to specify our own headers/footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%The next three lines set the default font to Arial
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault}
+
+
+\geometry{a4paper, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\title{Projektantrag ProjektExplorer}
+\author{Bash Vi, Shylux, Kaleb Tschabolt}
+\date{\today}
+
+%defining header and footer
+\fancyhf{}	%delete default values
+\setlength{\headwidth}{\textwidth}	%header and footer width equal the text width
+\fancyhead[LE,LO]{\includegraphics{header.png}}
+\fancyhead[RE,RO]{ProjectExplorer}
+\fancyfoot[CE,CO]{Speicherdatum: \today{}}
+\fancyfoot[RE,RO]{\thepage}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{tabularx}{\textwidth}{ r X }	%X fields are stretched over the whole space
+\textcolor{white}{{\bf Status}}\cellcolor{blue!80!} & {\bf In Arbeit}/In Pruefung/Abgeschlossen\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektname}}\cellcolor{blue!80!} & Projektexplorer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektleiter}}\cellcolor{blue!80!} & Niklaus Hofer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Auftraggeber}}\cellcolor{blue!80!} & M. Frieden, GIBB\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Autoren}}\cellcolor{blue!80!} & Niklaus Hofer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Verteiler}}\cellcolor{blue!80!} & Lukas Knoepfel, Kaleb Tschabolt, Niklaus Hofer\cellcolor{blue!20!}
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Aenderungskontrolle, Pruefung, Genehmigung}
+\newline
+
+\begin{tabularx}{\textwidth}{l l X X}
+\textcolor{white}{Version}\cellcolor{blue!80!} & \textcolor{white}{Datum}\cellcolor{blue!80!} & \textcolor{white}{Beschreibung, Bemerkung}\cellcolor{blue!80!} & \textcolor{white}{Name oder Rolle}\cellcolor{blue!80!} \\
+\cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} & \cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Definitionen und Abkuerzungen}
+\newline
+
+\begin{tabularx}{\textwidth}{l X}
+\textcolor{white}{Begriff/ Abkuerzung}\cellcolor{blue!80!} & \textcolor{white}{Bedeutung}\cellcolor{blue!80!} \\
+\cellcolor{blue!20!} & \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} & \cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Referenzen}
+\newline
+
+\begin{tabularx}{\textwidth}{l X}
+\textcolor{white}{Referenz}\cellcolor{blue!80!} & \textcolor{white}{Titel, Quelle}\cellcolor{blue!80!} \\
+\cellcolor{blue!20!}[1] & \cellcolor{blue!20!} \\
+\cellcolor{blue!20!}[2] & \cellcolor{blue!20!} \\
+\cellcolor{blue!20!}[3] & \cellcolor{blue!20!} \\
+\end{tabularx}
+\newpage
+\begin{landscape}
+\begin{tabularx}{\textwidth}{ |p{4.5cm}|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l| }
+\cline{1-24}	%need to use cline, cuz hline did not stretch over the whole width...
+Aktivitaet & PL Soll & PL Ist & KW 05 & 06 & 07 & 08 & 09 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25 \\
+\cline{1-24}
+Initialisierung Projektantrag Projektplan (grob) & & & & \cellcolor[gray]{0.7}& & & & & & & & & & & & & & & & & & & \\
+\cline{1-24}
+Projektstart & & & &\cellcolor[gray]{0.7} & & & & & & & & & & & & & & & & & & & \\
+\cline{1-24}
+& & & & & & & & & & & & & & & & & & & & & & & \\
+\cline{1-24}
+& & & & & & & & & & & & & & & & & & & & & & & \\
+\cline{1-24}
+& & & & & & & & & & & & & & & & & & & & & & & \\
+\cline{1-24}
+\end{tabularx}
+\end{landscape}
+
+\end{document}
