@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Zweck des Dokuments}{}
+\BOOKMARK [1][-]{section.2}{Ist-Aufnahme und Ist-Analyse}{}
+\BOOKMARK [2][-]{subsection.2.1}{Beschreibung des Ist-Zustands \(Ist-Analyse\)}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Schwachstellenanalyse}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Sicherheit}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Zuk\374nftige Entwicklung}{section.2}
+\BOOKMARK [1][-]{section.3}{Systemziele}{}
+\BOOKMARK [1][-]{section.4}{Fachlicher Soll-Zustand}{}
+\BOOKMARK [2][-]{subsection.4.1}{Hauptaufgaben der neuen L\366sung}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{\334bersicht \374ber die erforderlichen Informationen / Daten}{section.4}
+\BOOKMARK [2][-]{subsection.4.3}{Anforderungen bez\374glich Informationssicherheit und Datenschutz}{section.4}
+\BOOKMARK [1][-]{section.5}{L\366sungsvarianten}{}
+\BOOKMARK [2][-]{subsection.5.1}{Zu verwendende Programmiersprache}{section.5}
+\BOOKMARK [3][-]{subsubsection.5.1.1}{L\366sungsvariante 1: Java}{subsection.5.1}
+\BOOKMARK [3][-]{subsubsection.5.1.2}{L\366sungsvariante 2: Python}{subsection.5.1}
+\BOOKMARK [2][-]{subsection.5.2}{Zu verwendende Ablage f\374r die Metadaten}{section.5}
