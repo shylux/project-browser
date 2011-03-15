@@ -8,8 +8,8 @@ deep = 0
 def additem(path):
     print "",
     for i in range(deep/2):
-        print "│", "",
-    print "├─" + path
+        print "|", "",
+    print "+-" + path
 
 def listfolder(path):
     global deep
