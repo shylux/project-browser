@@ -1,0 +1,45 @@
+\begin{thebibliography}{1}
+
+\bibitem{gnome3}
+New module decisions for 3.0.
+\newblock \url{http://permalink.gmane.org/gmane.comp.gnome.devel.announce/101},
+  Jun 2010.
+
+\bibitem{activity_journal}
+Gnome foundation.
+\newblock Gnome activity journal.
+\newblock
+  \url{http://live.gnome.org/action/show/GnomeActivityJournal?action=show&redi%
+rect=GnomeZeitgeist}, 2011.
+
+\bibitem{sqlite}
+Wikimedia Foundation.
+\newblock Sqlite features.
+\newblock
+  \url{http://en.wikipedia.org/w/index.php?title=SQLite&oldid=415319458#Featur%
+es}, 2011.
+
+\bibitem{timemachine}
+Apple Inc.
+\newblock Time machine.
+\newblock \url{http://www.apple.com/macosx/what-is-macosx/time-machine.html},
+  2011.
+
+\bibitem{google_desktop}
+Google Inc.
+\newblock Google desktop.
+\newblock \url{http://desktop.google.com/linux/}, 2011.
+
+\bibitem{json}
+json.org.
+\newblock Xml definition.
+\newblock \url{http://www.json.org/xml.html}, 2011.
+
+\bibitem{pyjava}
+orelly.
+\newblock Compiling python into java.
+\newblock
+  \url{http://docstore.mik.ua/orelly/other/python/0596001886_pythonian-chp-25-%
+sect-3.html}, 2011.
+
+\end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.17)  27 FEB 2011 21:32
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.3.1)  1 MAR 2011 16:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -434,7 +434,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )
-(/etc/texmf/tex/latex/config/hyperref.cfg
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 (/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
@@ -527,48 +527,48 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/home/niklaus/texmf/tex/latex/ua1/uarial.sty
+(/home/bash/texmf/tex/latex/ua1/uarial.sty
 Package: uarial 2006/03/21 1.0 (WaS)
 )
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 36.
+less on input line 41.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 37.
+less on input line 42.
 
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 38.
+less on input line 43.
 
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 39.
+less on input line 44.
 
 (./voranalyse.aux)
 \openout1 = `voranalyse.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Try loading font information for T1+ua1 on input line 41.
- (/home/niklaus/texmf/tex/latex/ua1/t1ua1.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Try loading font information for T1+ua1 on input line 46.
+ (/home/bash/texmf/tex/latex/ua1/t1ua1.fd
 File: t1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for T1/ua1.
 )
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 41.
+(Font)              scaled to size 9.49997pt on input line 46.
 
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -624,7 +624,7 @@ driver: pdftex
 \MPnumerator=\count104
 \everyMPtoPDFconversion=\toks23
 )
-Package hyperref Info: Link coloring ON on input line 41.
+Package hyperref Info: Link coloring ON on input line 46.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
@@ -633,8 +633,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count105
 )
-LaTeX Info: Redefining \ref on input line 41.
-LaTeX Info: Redefining \pageref on input line 41.
+LaTeX Info: Redefining \ref on input line 46.
+LaTeX Info: Redefining \pageref on input line 46.
  (./voranalyse.out)
 (./voranalyse.out)
 \@outlinefile=\write3
@@ -642,88 +642,102 @@ LaTeX Info: Redefining \pageref on input line 41.
 
 \AtBeginShipoutBox=\box28
 LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <10> not available
-(Font)              Font shape `T1/ua1/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 43.
+(Font)              scaled to size 9.49997pt on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ua1/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
-(Font)              scaled to size 19.70294pt on input line 43.
+(Font)              scaled to size 19.70294pt on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 43.
+(Font)              scaled to size 13.67995pt on input line 48.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 43.
+(Font)              <14.4> on input line 48.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 43.
+(Font)              <7> on input line 48.
  [1
 
 
-{/home/niklaus/.texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 51--57
+{/home/bash/.texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 56--62
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--57
+Underfull \hbox (badness 10000) in paragraph at lines 56--62
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--57
+Underfull \hbox (badness 10000) in paragraph at lines 56--62
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--57
+Underfull \hbox (badness 10000) in paragraph at lines 56--62
 
  []
 
 
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 64--70
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 66--72
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--70
+Underfull \hbox (badness 10000) in paragraph at lines 66--72
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--70
+Underfull \hbox (badness 10000) in paragraph at lines 66--72
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--70
+Underfull \hbox (badness 10000) in paragraph at lines 66--72
 
  []
 
-
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 75--81
+(./voranalyse.bbl
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 76--1
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--81
+Underfull \hbox (badness 10000) in paragraph at lines 76--1
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--81
+Underfull \hbox (badness 10000) in paragraph at lines 76--1
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--81
+Underfull \hbox (badness 10000) in paragraph at lines 76--1
 
  []
 
-
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 87--88
-[][] 
+LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
+(Font)              scaled to size 13.67995pt on input line 1.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 5.
+(/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 9--14
+[]\T1/ua1/m/n/10 Gnome foun-da-tion.  Gnome ac-tiv-ity jour-nal.  [][]$\T1/cmtt
+/m/n/10 http : / / live . gnome . org / action / show /
  []
 
-<header.png, id=74, 191.21437pt x 27.01pt>
+
+Underfull \hbox (badness 2134) in paragraph at lines 39--44
+[]\T1/ua1/m/n/10 orelly.  Com-pil-ing python into java.  [][]$\T1/cmtt/m/n/10 h
+ttp : / / docstore . mik . ua / orelly / other / python / 0596001886 _
+ []
+
+) <header.png, id=293, 191.21437pt x 27.01pt>
 File: header.png Graphic file (type png)
  <use header.png>
 
@@ -732,12 +746,7 @@ Package Fancyhdr Warning: \headheight is too small (15.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[2 <./header.png (PNG copy)>]
-LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ua1/b/n' tried instead on input line 89.
-LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
-(Font)              scaled to size 13.67995pt on input line 89.
- (./voranalyse.toc
+[2 <./header.png (PNG copy)>] (./voranalyse.toc
 Class scrartcl Info: You've told me to use the font selection of the element
 (scrartcl)           `sectioning' that is an alias of element `disposition'
 (scrartcl)            on input line 1.
@@ -753,196 +762,236 @@ Class scrartcl Info: You've told me to use the font selection of the element
 Class scrartcl Info: You've told me to use the font selection of the element
 (scrartcl)           `sectioning' that is an alias of element `disposition'
 (scrartcl)            on input line 12.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 45.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 48.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 53.
+File: header.png Graphic file (type png)
+ <use header.png> [3]
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 58.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 59.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 67.
 )
 \tf@toc=\write4
 \openout4 = `voranalyse.toc'.
 
 File: header.png Graphic file (type png)
- <use header.png> [3]
+
+<use header.png> [4]
 LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <12> not available
-(Font)              Font shape `T1/ua1/b/n' tried instead on input line 95.
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 90.
 LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
-(Font)              scaled to size 11.39996pt on input line 95.
-LaTeX Font Info:    Try loading font information for OMS+ua1 on input line 97.
-LaTeX Font Info:    No file OMSua1.fd. on input line 97.
+(Font)              scaled to size 11.39996pt on input line 90.
+LaTeX Font Info:    Try loading font information for OMS+ua1 on input line 92.
+LaTeX Font Info:    No file OMSua1.fd. on input line 92.
 
 
 LaTeX Font Warning: Font shape `OMS/ua1/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 97.
-
-File: header.png Graphic file (type png)
-<use header.png> [4]
-Overfull \hbox (6.28925pt too wide) in paragraph at lines 145--146
-[]\T1/ua1/m/n/10 Auch aufwendige Doku-menten-ver-wal-tungssys-teme kön-nten in 
-Zukunft öfters zum Ein-satz kom-men, beson-
- []
+(Font)              for symbol `textbullet' on input line 92.
 
 File: header.png Graphic file (type png)
 <use header.png> [5]
-Underfull \hbox (badness 5847) in paragraph at lines 162--162
+File: header.png Graphic file (type png)
+ <use header.png> [6]
+Underfull \hbox (badness 5847) in paragraph at lines 157--157
 []|\T1/ua1/m/n/10 Läuft das pro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 \T1/ua1/m/n/10 Sys-te-men mit-geliefer-ten
  []
 
 
-Underfull \hbox (badness 3690) in paragraph at lines 164--164
+Underfull \hbox (badness 3690) in paragraph at lines 159--159
 []|\T1/ua1/m/n/10 Kann das Pro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--164
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
 \T1/ua1/m/n/10 gramm ein-fach
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--164
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
 \T1/ua1/m/n/10 er-weit-ert wer-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--166
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
 []|\T1/ua1/m/n/10 Das Pro-gramm ist ob-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--166
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
 \T1/ua1/m/n/10 jek-to-ri-en-tiert aufge-baut.
  []
 
 
-Underfull \hbox (badness 1622) in paragraph at lines 164--166
+Underfull \hbox (badness 1622) in paragraph at lines 159--161
 \T1/ua1/m/n/10 Die Be-nen-nung von Ob-
  []
 
 
-Underfull \hbox (badness 3590) in paragraph at lines 164--166
+Underfull \hbox (badness 3590) in paragraph at lines 159--161
 \T1/ua1/m/n/10 jek-ten und Vari-ablen ist
  []
 
 
-Underfull \hbox (badness 2961) in paragraph at lines 164--166
+Underfull \hbox (badness 2961) in paragraph at lines 159--161
 \T1/ua1/m/n/10 ist klar und ver-ständlich
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 []|\T1/ua1/m/n/10 Das Pro-gramm
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 \T1/ua1/m/n/10 reist keine
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 \T1/ua1/m/n/10 Sicher-heit-
  []
 
 
-Underfull \hbox (badness 8113) in paragraph at lines 167--167
+Underfull \hbox (badness 8113) in paragraph at lines 162--162
 \T1/ua1/m/n/10 slücken in die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 \T1/ua1/m/n/10 Mech-a-nis-men
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 \T1/ua1/m/n/10 der jew-eili-gen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 \T1/ua1/m/n/10 Be-trieb-ssys-
  []
 
 
-Underfull \hbox (badness 3407) in paragraph at lines 167--167
+Underfull \hbox (badness 3407) in paragraph at lines 162--162
 []|\T1/ua1/m/n/10 Firewalls und Rechtev-er-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--167
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 \T1/ua1/m/n/10 wal-tungssys-teme wer-den
  []
 
 
-Underfull \hbox (badness 4479) in paragraph at lines 168--168
+Underfull \hbox (badness 4479) in paragraph at lines 163--163
 []|\T1/ua1/m/n/10 Läuft das Pro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--168
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
 \T1/ua1/m/n/10 wichti-gen Be-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--169
+Underfull \hbox (badness 10000) in paragraph at lines 164--164
 []|\T1/ua1/m/n/10 Die Meta-daten
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--169
+Underfull \hbox (badness 10000) in paragraph at lines 164--164
 \T1/ua1/m/n/10 wer-den ohne
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--169
-\T1/ua1/m/n/10 ue-ber-flues-sige
+Underfull \hbox (badness 10000) in paragraph at lines 164--164
+\T1/ua1/m/n/10 über-flüs-sige
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 169--169
+Underfull \hbox (badness 3439) in paragraph at lines 164--164
 \T1/ua1/m/n/10 hin-dert vom De-sign her
  []
 
 
-Overfull \hbox (25.26741pt too wide) in paragraph at lines 159--171
-[] 
+Overfull \hbox (25.26741pt too wide) in paragraph at lines 154--166
+[]  
  []
 
+<datenfluss.pdf, id=402, 705.63625pt x 524.96124pt>
+File: datenfluss.pdf Graphic file (type pdf)
+ <use datenfluss.pdf>
 File: header.png Graphic file (type png)
-<use header.png> [6]
-Underfull \hbox (badness 10000) in paragraph at lines 220--223
 
- []
-
-File: header.png Graphic file (type png)
 <use header.png> [7]
-Underfull \hbox (badness 10000) in paragraph at lines 239--242
-
- []
-
 File: header.png Graphic file (type png)
-<use header.png> [8]
+ <use header.png> [8 <./datenfluss.pdf>]
 File: header.png Graphic file (type png)
- <use header.png> [9] (./voranalyse.aux)
+ <use header.png>
+[9]
+File: header.png Graphic file (type png)
+ <use header.png> [10]
+<datenfluss_db.pdf, id=433, 458.71375pt x 173.64874pt>
+File: datenfluss_db.pdf Graphic file (type pdf)
+ <use datenfluss_db.pdf>
+File: header.png Graphic file (type png)
+
+<use header.png> [11 <./datenfluss_db.pdf>]
+<datenfluss_xml.pdf, id=449, 431.6125pt x 180.675pt>
+File: datenfluss_xml.pdf Graphic file (type pdf)
+ <use datenfluss_xml.pdf>
+File: header.png Graphic file (type png)
+
+<use header.png> [12 <./datenfluss_xml.pdf>]
+<datenfluss_meta.pdf, id=466, 489.83pt x 430.60875pt>
+File: datenfluss_meta.pdf Graphic file (type pdf)
+
+<use datenfluss_meta.pdf>
+File: header.png Graphic file (type png)
+ <use header.png> [13 <./datenfluss_meta.pdf>]
+File: header.png Graphic file (type png)
+
+<use header.png> [14]
+File: header.png Graphic file (type png)
+ <use header.png> [15]
+File: header.png Graphic file (type png)
+ <use header.png> [16]
+(./voranalyse.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6660 strings out of 495061
- 94546 string characters out of 1182621
- 199715 words of memory out of 3000000
- 9698 multiletter control sequences out of 15000+50000
- 42028 words of font info for 30 fonts, out of 3000000 for 9000
+ 6834 strings out of 495061
+ 97639 string characters out of 1182622
+ 213945 words of memory out of 3000000
+ 9799 multiletter control sequences out of 15000+50000
+ 42341 words of font info for 31 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 43i,16n,43p,734b,422s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/niklaus/texmf/fonts/type1/u
-rw/arial/ua1b8a.pfb></home/niklaus/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
-Output written on voranalyse.pdf (9 pages, 70480 bytes).
+ 43i,17n,44p,732b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/bash/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk>{/usr/shar
+e/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></home/bash/texmf/fonts/type1/urw/arial/ua1b8a
+.pfb></home/bash/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
+Output written on voranalyse.pdf (16 pages, 204015 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 581 PDF objects out of 1000 (max. 8388607)
+ 99 named destinations out of 1000 (max. 500000)
+ 578 words of extra memory for PDF output out of 10000 (max. 10000000)
 
