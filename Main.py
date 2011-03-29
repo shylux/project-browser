@@ -4,9 +4,9 @@
 #Description:		Diese Datei ist die Start Datei für unser Projekt. Hier werden alle wichtigen Referenzen auf unsere Klassen erstellt.
 #Author:		Kaleb Tschabold
 #Creation Date:		29.3.2011
-#Last Mondified:	29.3.2011
-#History: 	--Version--	--Date--	--Activities--
-#		0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
+#
+#History: 		--Version--	--Date--	--Activities--
+#			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 
 from CLI import *
 from DB import *
