@@ -10,6 +10,13 @@
 
 from CLI import *
 from DB import *
+from File import *
+from FileManger import *
+from FileSystemManger import *
+from GUI import *
+from TagManger import *
+from Utility import *
+
 
 class Main():
 	def __init__(self):
