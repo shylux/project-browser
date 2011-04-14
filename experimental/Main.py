@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #File:			Main.py
-#Description:		Diese Datei ist die Start Datei für unser Projekt. Hier werden alle wichtigen Referenzen auf unsere Klassen erstellt.
+#Description:		Diese Datei ist die Start Datei fuer unser Projekt. Hier werden alle wichtigen Referenzen auf unsere Klassen erstellt.
 #Author:		Kaleb Tschabold
 #Creation Date:		29.3.2011
 #
@@ -10,12 +10,12 @@
 
 from CLI import *
 from DB import *
-from File import *
-from FileManger import *
-from FileSystemManger import *
+from FileManager import *
+from TagManager import *
+from FileSystemListener import *
 from GUI import *
-from TagManger import *
 from Utility import *
+from File import *
 
 
 class Main():

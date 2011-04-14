@@ -8,6 +8,8 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 
+from View import *
+
 class TagView(View):
 	def __init__(self):
 		pass
