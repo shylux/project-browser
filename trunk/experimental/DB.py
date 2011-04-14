@@ -8,7 +8,7 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 
-class DB()
+class DB():
 	def __init__(self):
 		pass
 	

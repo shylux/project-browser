@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #File:			CLI.py
-#Description:		Mit dieser Klasse kann man über die Kommandozeille mit dem Programm interagieren
+#Description:		Mit dieser Klasse kann man ueber die Kommandozeille mit dem Programm interagieren
 #Author:		Kaleb Tschabold
 #Creation Date:		29.3.2011
 #
