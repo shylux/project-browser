@@ -13,6 +13,7 @@
 #Modul um diese Klasse als Seperaten-Prozess zu starten
 import threading
 import time
+import sys
 
 class CLI(threading.Thread):
 	def __init__(self,sys):
@@ -20,16 +21,17 @@ class CLI(threading.Thread):
 		self.sys = sys
 	
 	def run(self):
-		print('---')
-		print('0 => Ende')
-		print('---')
-		cli = True
-
-		while cli:
-                        time.sleep(self.sys.c.sleep)
-			cmd = raw_input('Befehl: ')
-			if cmd == '0':
-				#CLI wird beendet
-				cli = False
-			else:
-				print('echo: '+cmd)
+			print('---')
+			print('0 => Ende')
+			print('---')
+			cli = True
+			while cli:
+			        time.sleep(self.sys.c.sleep)
+				#cmd = raw_input('Befehl: ')
+				cmd = sys.stdin.readline()
+				if cmd == '0\n':
+					#CLI wird beendet
+					cli = False
+					#sys.exit()
+				else:
+					print('echo: '+cmd)
