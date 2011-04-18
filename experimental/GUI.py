@@ -8,6 +8,8 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 #			0.2		18.4.2011	Testen mit pygtk Elementen
+#Link:
+#http://zignar.net/page/pygtk-mit-glade			 mit xml(aus glade) Programm Grafische Oberflaeche erstellen
 
 from HirarchicalView import *
 from TagView import *
@@ -15,7 +17,11 @@ from TagView import *
 
 #Modul um diese Klasse als Seperaten-Prozess zu starten
 import threading
+import pygtk
 import gtk
+import gtk.glade
+import gobject
+import sys
 
 gtk.gdk.threads_init()
 
@@ -28,67 +34,40 @@ class GUI(threading.Thread):
 		self.hview = HirarchicalView()
 		self.tview = TagView()
 
-		#Bottom-Container
-		#self.bottomC = gtk.VBox()
-		#self.bottomC.show()
-		#self.content.pack_start(self.bottomC,True,True,0)
-
-		#Left-Side
-		#self.leftC = gtk.VBox()
-		#self.leftC.show()
-		#self.bottom.pack_start(self.leftC,True,True,0)
-
-		#Right-Side
-		#self.rightC = HirarchicalView()
-		#self.rightC.show()
-		#self.bottom.pack_start(self.rightC,True,True,0)
-
-		#self.rightC.put(self.button3,3,3)
-
-	# Destroy method causes appliaction to exit
-	# when main window closed
-
 	def run(self):
 		print('run: GUI')
+
 		#Init-Fenster
-		self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-		self.window.connect("destroy", gtk.main_quit)
-
-		#Window-Properties
-		self.window.set_size_request(700, 350)
-		self.window.set_position(gtk.WIN_POS_CENTER)
-		self.window.set_title('Project-Browser')
+		self.xml = gtk.glade.XML("gui.glade")
+		self.window = self.xml.get_widget("winMain")
 		self.window.show()
+		#self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+		self.window.connect("destroy", self.stopploop)
 
-		#Main-Container
-		self.content = gtk.VBox()
-		self.content.show()
-		self.window.add(self.content)
-		
-		#Menu-Container
-		self.menu = gtk.Label("Menu")
-		self.menu.show()
-		self.menuC = gtk.Fixed()
-		self.menuC.show()
-		self.menuC.put(self.menu,100,100)
-		self.content.pack_start(self.menuC,False,False,0)
+		self.button = self.xml.get_widget('btnHirarchical')
+		self.button.connect('clicked', self.on_button1_clicked)
 
-		self.inputC = gtk.Entry()
-		self.inputC.show()
-		self.content.pack_start(self.inputC,False,False,0)
+		self.button = self.xml.get_widget('btnTag')
+		self.button.connect('clicked', self.on_button2_clicked)
 
-		self.button3 = gtk.Button("Hello World")
-		self.button3.connect('clicked',self.hello)
-		self.button3.show()
-		self.content.pack_start(self.button3,False,False,0)
-		
-		#Wird nicht gebraucht, weil das CLI automatisch eine Schleife macht
+		self.startloop()
+
+	def terminate(self):
+		# must raise the SystemExit type, instead of a SystemExit() instance
+		# due to a bug in PyThreadState_SetAsyncExc
+		self.raise_exc(SystemExit)
+		pass
+
+	def startloop(self):
 		gtk.main()
 
+	def stopploop(self,event=''):
+		print('quite')
+		gtk.main_quit()
+		self.sys.stoppall()
 
-	def hello(self,widget,data=None):
-		widget.set_label('geklickt')
-		print('event: '+str(widget)+', '+str(data))
+	def on_button1_clicked(self,event):
+		print('hirarchicalview')
 
-	def count_in_thread(self, maximum):
-		Thread(target=self.count_up, args=(maximum,)).start()
+	def on_button2_clicked(self,event):
+		print('tagview')

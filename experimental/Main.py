@@ -9,6 +9,7 @@
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 #			0.1		18.3.2011	Wichtigste Prozesse starten
 
+#Unserer Klassen
 from CLI import *
 from DB import *
 from FileManager import *
@@ -19,43 +20,70 @@ from Utility import *
 from File import *
 from Constante import *
 
+#Andere Klassen
+import sys
+
 class Main():
 	def __init__(self):
 		pass
 
-	def start(self):
+	def start(self,modus):
 		#NO() => Neues Objekt(Klasse)
-		self.sys = NO()
-		globals()['sys'] = self.sys
-		self.sys.db = DB()
-		self.sys.filemanager = FileManager()
-		self.sys.tagmanager = TagManager()
-		self.sys.u = Utility()
-		self.sys.c = Constante()
+		self.mod = modus
+		self.db = DB()
+		self.filemanager = FileManager()
+		self.tagmanager = TagManager()
+		self.u = Utility()
+		self.c = Constante()
 
 		#Array mit allen Thread. Wird gebraucht, dass diese beim beenden des Programmes alle richtig beendet werden
-		self.sys.t = []
+		self.t = []
 
-		#CLI in einem eigenen Thread
-		self.sys.cli = CLI(self.sys)
-		self.sys.t.append(self.sys.cli)
-		#self.sys.cli.start()
-
-		#GUI in einem eigenen Thread
-		self.sys.gui = GUI(self.sys)
-		self.sys.t.append(self.sys.gui)
-		self.sys.gui.start()
+		if modus == 'cli':
+			#CLI in einem eigenen Thread
+			self.cli = CLI(self)
+			self.cli.daemon = True
+			self.t.append(self.cli)
+			self.cli.start()
+		else:
+			#GUI in einem eigenen Thread
+			self.gui = GUI(self)
+			self.gui.daemon = True
+			self.t.append(self.gui)
+			self.gui.start()
 
 		#FileSystemListener in einem eigenen Thread
-		self.sys.fslistener = FileSystemListener()
-		self.sys.t.append(self.sys.fslistener)
-		self.sys.fslistener.start()
+		self.fslistener = FileSystemListener()
+		self.t.append(self.fslistener)
+		self.fslistener.start()
+
+	def stoppall(self):
+		#GUI beenden
+		#self.gui.stopploop()
+		#Thread beenden
+		print('stoppall')
+		for t in self.t:
+			print('close: '+str(t))
+			try:
+				t.join()
+			except:
+				pass
+		sys.exit()
+		
 
 if __name__ == "__main__":
+	main = Main()
 	try:
-		main = Main()
-		main.start()
-	except KeyboardInterrupt:
-		for t in s.sys.t:
-			t.join()
+		try:
+			cmd = sys.argv[1].lower()
+			if cmd == 'cli':
+				main.start('cli')
+			elif cmd == 'gui':
+				main.start('gui')
+			else:
+				main.start('gui')
+		except:
+				main.start('gui')
+	except (KeyboardInterrupt,SystemExit):
 		print('Programm geschlossen')
+		main.stoppall()
