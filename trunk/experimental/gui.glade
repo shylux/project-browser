@@ -168,26 +168,24 @@
                 <property name="visible">True</property>
                 <property name="border_width">4</property>
                 <child>
-                  <widget class="GtkButton" id="btnHirarchical">
+                  <widget class="GtkToggleButton" id="btnHirarchical">
                     <property name="label" translatable="yes">Hirarchisch</property>
                     <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="border_width">2</property>
                   </widget>
                   <packing>
                     <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkButton" id="btnTag">
+                  <widget class="GtkToggleButton" id="btnTag">
                     <property name="label" translatable="yes">Tag</property>
                     <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="border_width">2</property>
                   </widget>
                   <packing>
                     <property name="position">1</property>
