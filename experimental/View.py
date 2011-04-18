@@ -7,7 +7,15 @@
 #
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		14.4.2011	Grundfunktionalitaeten werden erstellt
+#			0.2		18.4.2011	Erbt von gtk.Layout
 
-class View:
+import gtk
+import gobject
+
+class View(gtk.Layout):
 	def __init__(self):
+		gtk.Layout.__init__(self)
 		pass
+
+#Registriert diese Klasse als pygtk-widget
+gobject.type_register(View)
