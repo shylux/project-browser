@@ -7,8 +7,29 @@
 #
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
+#			0.2		18.4.2011	Thread und Endlos Loop
 
-class CLI():
-	def __init__(self):
-		passe
 
+#Modul um diese Klasse als Seperaten-Prozess zu starten
+import threading
+import time
+
+class CLI(threading.Thread):
+	def __init__(self,sys):
+		threading.Thread.__init__(self)
+		self.sys = sys
+	
+	def run(self):
+		print('---')
+		print('0 => Ende')
+		print('---')
+		cli = True
+
+		while cli:
+                        time.sleep(self.sys.c.sleep)
+			cmd = raw_input('Befehl: ')
+			if cmd == '0':
+				#CLI wird beendet
+				cli = False
+			else:
+				print('echo: '+cmd)
