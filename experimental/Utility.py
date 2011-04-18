@@ -7,7 +7,12 @@
 #
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		14.4.2011	Grundfunktionalitaeten werden erstellt
+import sys
 
 class Utility:
 	def __init__(self):
 		pass
+	def checkOS(self):
+		platform = sys.platform
+		if platform.startswith("linux"):
+			 return "linux"
