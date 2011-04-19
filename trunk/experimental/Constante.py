@@ -12,3 +12,5 @@ class Constante():
 	def __init__(self):
 		#time to sleep in a endlos loop
 		self.sleep = 0.1
+		self.prgname = "Project Browser"
+		self.version = 0.1

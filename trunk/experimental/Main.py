@@ -8,6 +8,11 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 #			0.1		18.3.2011	Wichtigste Prozesse starten
+#			0.1		19.3.2011	GUI starten in eine seperate Function gepackt, damit das CLI auch das GUI starten kann.
+#Link:
+#PyInstaller:
+#	http://www.marcogabriel.com/blog/archives/343-Python-Scripte-mit-PyInstaller-als-.exe-verteilen.html
+
 
 #Unserer Klassen
 from CLI import *
@@ -39,47 +44,52 @@ class Main():
 		#Array mit allen Thread. Wird gebraucht, dass diese beim beenden des Programmes alle richtig beendet werden
 		self.t = []
 
+		#FileSystemListener in einem eigenen Thread
+		#self.fslistener = FileSystemListener()
+		#self.fslistener.daemon = True
+		#self.t.append(self.fslistener)
+		#self.fslistener.start()
+
 		if modus == 'cli':
 			#CLI in einem eigenen Thread
 			self.cli = CLI(self)
-			self.cli.daemon = True
+			#dieser Thread ist dem Main unterordnet. So kann man mit einem KeyInterrupt den Thread beenden
+			#self.cli.daemon = True
 			self.t.append(self.cli)
 			self.cli.start()
 		else:
-			#GUI in einem eigenen Thread
-			self.gui = GUI(self)
-			self.gui.daemon = True
-			self.t.append(self.gui)
-			self.gui.start()
+			self.start_gui()
 
-		#FileSystemListener in einem eigenen Thread
-		self.fslistener = FileSystemListener()
-		self.t.append(self.fslistener)
-		self.fslistener.start()
+	def start_gui(self):
+		#GUI in einem eigenen Thread
+		self.gui = GUI(self)
+		#self.gui.daemon = True
+		self.t.append(self.gui)
+		self.gui.start()
+		
 
 	def stoppall(self):
-		#GUI beenden
-		#self.gui.stopploop()
-		#Thread beenden
+		#Threads beenden
 		print('stoppall')
 		for t in self.t:
 			print('close: '+str(t))
 			try:
 				t.join()
-			except:
+			except RuntimeError:
 				pass
-		sys.exit()
-		
 
+	#Wird gebraucht, dass diese Klasse wie ein Objekt aufgerufen werden kann
+	def __call__(self,a,b,c):
+		pass
+
+#PROGRAMM START
 if __name__ == "__main__":
 	main = Main()
 	try:
 		try:
-			cmd = sys.argv[1].lower()
-			if cmd == 'cli':
+			cmd = len(sys.argv[1])
+			if cmd > 0:
 				main.start('cli')
-			elif cmd == 'gui':
-				main.start('gui')
 			else:
 				main.start('gui')
 		except:
