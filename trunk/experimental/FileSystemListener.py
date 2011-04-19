@@ -6,7 +6,8 @@
 #Creation Date:		14.4.2011
 #
 #History: 		--Version--	--Date--	--Activities--
-#			0.1		14.4.2011	Grundfunktionalitaeten werden erstellt
+#			0.1		14.4.2011	Grundgerüst erstellt
+#			0.2		19.4.2011	Grundfunktionalität erstellt
 
 from FileSystemListener_Linux import *
 from FileSystemListener_Mac import *
@@ -21,6 +22,9 @@ class FileSystemListener:
 		if stros == "linux":
 			print("it's a linux!")
 			self.listener = FileSystemListener_Linux(self)
+		if stros == "win":
+			print("it's a windows!")
+			self.listener = FileSystemListener_Windows(self)
 
 	def add_watch(self, path, rec):
 		self.listener.add_watch(path, rec)

@@ -10,7 +10,11 @@
 
 from FileSystemListener import *
 from Utility import *
+import os
 
+path = ".";
+abspath = os.path.abspath(path)
+print abspath
 listener = FileSystemListener()
-listener.add_watch('/home/shylux/project-browser', True)
+listener.add_watch(abspath, True)
 listener.start()
