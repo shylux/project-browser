@@ -21,6 +21,8 @@ class Utility:
 		platform = sys.platform
 		if platform.startswith("linux"):
 			 return "linux"
+		elif platform.startswith("win"):
+			 return "windows"
 
 #Dynamisches Objekt, dass fuer normale Objekte gebraucht werden kann
 class NO():
