@@ -6,7 +6,7 @@
 #Creation Date:		14.4.2011
 #
 #History: 		--Version--	--Date--	--Activities--
-#			0.1		14.4.2011	Grundgerüst erstellt
+#			0.1		14.4.2011	Grundgeruest erstellt
 #			0.2		18.4.2011	Events werden korrekt abgefangen. TODO: add_watch implementieren und blockierendes .loop() in thread
 
 import pyinotify

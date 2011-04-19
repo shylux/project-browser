@@ -44,11 +44,11 @@ class GUI(threading.Thread):
 		#self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		self.window.connect("destroy", self.stopploop)
 
-		self.button = self.xml.get_widget('btnHirarchical')
-		self.button.connect('clicked', self.on_button1_clicked)
+		self.btnHirarchical = self.xml.get_widget('btnHirarchical')
+		self.btnHirarchical.connect('clicked', self.on_button1_clicked)
 
-		self.button = self.xml.get_widget('btnTag')
-		self.button.connect('clicked', self.on_button2_clicked)
+		self.btnTag = self.xml.get_widget('btnTag')
+		self.btnTag.connect('clicked', self.on_button2_clicked)
 
 		self.startloop()
 

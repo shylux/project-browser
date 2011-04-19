@@ -6,8 +6,8 @@
 #Creation Date:		14.4.2011
 #
 #History: 		--Version--	--Date--	--Activities--
-#			0.1		14.4.2011	Grundgerüst erstellt
-#			0.2		19.4.2011	Grundfunktionalität erstellt
+#			0.1		14.4.2011	Grundgeruest erstellt
+#			0.2		19.4.2011	Grundfunktionalitaet erstellt
 
 try:
 	import win32file
