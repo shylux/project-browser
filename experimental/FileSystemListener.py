@@ -6,19 +6,22 @@
 #Creation Date:		14.4.2011
 #
 #History: 		--Version--	--Date--	--Activities--
-#			0.1		14.4.2011	Grundgerüst erstellt
-#			0.2		19.4.2011	Grundfunktionalität erstellt
+#			0.1		14.4.2011	Grundgeruest erstellt
+#			0.2		19.4.2011	Grundfunktionalitaet erstellt
 
 from FileSystemListener_Linux import *
 from FileSystemListener_Mac import *
 from FileSystemListener_Windows import *
-from Utility import *
+import threading
 
-class FileSystemListener:
+class FileSystemListener(threading.Thread):
 	listener = None 
-	def __init__(self):
-		util = Utility()
-		stros = util.checkOS()
+	def __init__(self,sys):
+		threading.Thread.__init__(self)
+		self.sys = sys
+
+	def run(self):
+		stros = self.sys.u.checkOS()
 		if stros == "linux":
 			print("it's a linux!")
 			self.listener = FileSystemListener_Linux(self)
@@ -29,7 +32,7 @@ class FileSystemListener:
 	def add_watch(self, path, rec):
 		self.listener.add_watch(path, rec)
 
-	def start(self):
+	def startlistener(self):
 		self.listener.start()
 
 	# Event kommt als String mit dem Dateipfad an. 

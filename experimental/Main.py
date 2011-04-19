@@ -45,10 +45,10 @@ class Main():
 		self.t = []
 
 		#FileSystemListener in einem eigenen Thread
-		#self.fslistener = FileSystemListener()
+		self.fslistener = FileSystemListener(self)
 		#self.fslistener.daemon = True
-		#self.t.append(self.fslistener)
-		#self.fslistener.start()
+		self.t.append(self.fslistener)
+		self.fslistener.start()
 
 		if modus == 'cli':
 			#CLI in einem eigenen Thread
