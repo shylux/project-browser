@@ -29,7 +29,6 @@ gtk.gdk.threads_init()
 class GUI(threading.Thread):
 	def __init__(self,sys):
 		threading.Thread.__init__(self)
-		print('init')
 		self.sys = sys
 		self.mod = sys.c.startview
 		self.hview = HirarchicalView(self.sys)
@@ -80,18 +79,21 @@ class GUI(threading.Thread):
 		self.Status.push(1,'init')
 
 		#Init-View
-		self.view = self.xml.get_widget('hbxView')
+		self.view = self.xml.get_widget('View')
 		if self.mod == 'hirarchical':
 			self.actview = self.hview
 			self.actview.set_actTxtInput(self.sys.c.initStrHirarchical)
+			self.txtEntry.set_text(self.sys.c.initStrHirarchical)
 			self.showHirarchical('init')
 		elif self.mod == 'tag':
 			self.actview = self.tview
 			self.actview.set_actTxtInput(self.sys.c.initStrTag)
+			self.txtEntry.set_text(self.sys.c.initStrTag)
 			self.showTag('init')
 		else:
 			self.actview = self.hview
 			self.actview.set_actTxtInput(self.sys.c.initStrHirarchical)
+			self.txtEntry.set_text(self.sys.c.initStrHirarchical)
 			self.showHirarchical('init')
 		
 
@@ -152,7 +154,7 @@ class GUI(threading.Thread):
 		self.view.remove(self.actview)
 
 		#Fuegt die neue View an
-		self.view.pack_start(newview,True,True,0)
+		self.view.add(newview)
 
 		#Aender Aktuel View		
 		self.mod = newview.mod

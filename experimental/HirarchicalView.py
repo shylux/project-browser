@@ -17,10 +17,24 @@ class HirarchicalView(View):
 	mod = 'hirarchical'
 	def __init__(self,sys):
 		View.__init__(self,sys)
-		b = gtk.Label('hview')
-		self.put(b,100,100)
+		self.model = gtk.TreeStore(str)
+		self.cl1 = gtk.TreeViewColumn('Datei')
+		self.append_column(self.cl1)
+		self.cell1 = gtk.CellRendererText()
+		self.cl1.pack_start(self.cell1,True)
+		self.cl1.add_attribute(self.cell1,'text',0)
+		self.set_search_column(0)
+		self.cl1.set_sort_column_id(0)
+		#self.set_reorderable(True)
 
 	def update(self):
-		print('Suche ordner/datei: '+self.get_actTxtInput())
+		files = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
+		if files != 'error':
+			self.model = gtk.TreeStore(str)
+			for i in range(len(files)):
+				self.model.append(None,[files[i].getFileName()])
+			self.set_model(self.model)
+			self.show_all()
+		#print('Suche ordner/datei: '+self.get_actTxtInput())
 	
 

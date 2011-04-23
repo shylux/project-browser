@@ -13,9 +13,9 @@ import gtk
 import gobject
 import os
 
-class View(gtk.Layout):
+class View(gtk.TreeView):
 	def __init__(self,sys):
-		gtk.Layout.__init__(self)
+		gtk.TreeView.__init__(self,None)
 		self.sys = sys
 		self.acttxtinput = ''
 		pass
