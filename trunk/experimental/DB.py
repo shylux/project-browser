@@ -10,6 +10,7 @@
 #			0.2		21.04.2011	Added a few methods to read some data from the DB
 
 import sqlite3
+import os.path
 import File
 
 class DB:
@@ -24,7 +25,13 @@ class DB:
 	  	self.connection	= sqlite3.connect(self.dbpath)
 		self.cursor	= self.connection.cursor()
 		print "connection established"
-	
+		 
+		#Check wether the tables in the DB exist. If they don't, we'll create 'em
+		self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='files'")
+		if len(self.cursor.fetchall()) != 1:
+			print "DB's empty. Creating tables"
+			self.createDB()
+
 	def getFilesFromTag(self,tag):
 		pass
 
@@ -89,13 +96,21 @@ class DB:
 		li = self.cursor.fetchall()
 		return self.changeList(li)
 
+	def createDB(self):
+	  	self.cursor.execute("CREATE TABLE files(fid PRIMARY KEY, filename TEXT, path TEXT, backup BOOLEAN)")
+		self.cursor.execute("CREATE TABLE tagnames(tagid PRIMARY KEY, tagname TEXT UNIQUE , backup BOOLEAN)")
+		self.cursor.execute("CREATE TABLE file_tag_relations(relid PRIMARY KEY, fk_fid INTEGER, fk_tagid INTEGER)")
+		self.connection.commit()
+
 
 if __name__ == "__main__":
    	print "TEST"
-	db = DB("/home/niklaus/.project-browser/db")
-	db.test(File.File())
+	#db = DB("/home/niklaus/.project-browser/db")
+	db = DB("./db")
+	#db.test(File.File())
 	#db.test(1)
-	out = db.executeQuerry("SELECT * FROM files")
+	print os.path.expanduser("~/.project-browser/db")
+	"""out = db.executeQuerry("SELECT * FROM files")
 	print out
 	f = File.File(fileName="test.txt", path="/home/niklaus/")
 	print db.getTagsToFile(f)
@@ -115,4 +130,4 @@ if __name__ == "__main__":
 		print row.getBackup()
 		print row.getTags()
 	print '='*10
-	print db.getAllTags()
+	print db.getAllTags()"""

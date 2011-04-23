@@ -27,14 +27,19 @@ from Constante import *
 
 #Andere Klassen
 import sys
+import os.path
 
 class Main():
+  	db	= None
+	dbPath	= None
 	def __init__(self):
 		pass
 
 	def start(self,modus):
 		#NO() => Neues Objekt(Klasse)
 		self.mod = modus
+		self.dbPath	= os.path.expanduser("~/.project-browser/db")
+		self.db		= DB(self.dbPath)
 		#self.db = DB()
 		self.filemanager = FileManager()
 		self.tagmanager = TagManager()
