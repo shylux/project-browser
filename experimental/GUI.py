@@ -37,20 +37,79 @@ class GUI(threading.Thread):
 	def run(self):
 		print('run: GUI')
 
-		#Init-Fenster
+		#Init-Window
 		self.xml = gtk.glade.XML("gui.glade")
 		self.window = self.xml.get_widget("winMain")
 		self.window.show()
 		#self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		self.window.connect("destroy", self.stopploop)
 
+		#Connect Toogle-Buttons
 		self.btnHirarchical = self.xml.get_widget('btnHirarchical')
-		self.btnHirarchical.connect('clicked', self.on_button1_clicked)
-
+		self.btnHirarchical.connect('toggled', self.showHirarchical)
 		self.btnTag = self.xml.get_widget('btnTag')
-		self.btnTag.connect('clicked', self.on_button2_clicked)
+		self.btnTag.connect('toggled', self.showTag)
+
+		#Connect TextInput Field
+		self.txtEntry = self.xml.get_widget('txtEntry')
+		self.txtEntry.connect('key_press_event',self.search)
+		#self.txtEntry.connect('activate',self.search)
+		#self.txtEntry.connect('backspace',self.search)
+
+		self.view = self.xml.get_widget('hbxView')
+
+		#Add Menu-Item by 'Ansicht'
+		ansichtmenu = gtk.Menu()
+		ansicht = self.xml.get_widget('mnuAnsicht')
+		ansicht.set_submenu(ansichtmenu)
+		self.mnuHirarchical = gtk.RadioMenuItem(None,'Hirarchisch')
+		self.mnuHirarchical.connect('toggled',self.showHirarchical)
+		ansichtmenu.append(self.mnuHirarchical)
+		self.mnuTag = gtk.RadioMenuItem(self.mnuHirarchical,'Tag')
+		self.mnuTag.connect('toggled',self.showTag)
+		self.mnuTag.set_active(True)
+		ansichtmenu.append(self.mnuTag)
+
+		#Zeigt alles an
+		self.window.show_all()
 
 		self.startloop()
+		
+
+
+	#GUI Functionen
+	def showHirarchical(self,event):
+		if isinstance(event,gtk.RadioMenuItem):
+			if self.mnuHirarchical.get_active():
+				self.btnHirarchical.set_active(True)
+			else:
+				self.btnHirarchical.set_active(False)
+		else:
+			if self.btnHirarchical.get_active():
+				self.mnuHirarchical.set_active(True)
+			else:
+				self.mnuHirarchical.set_active(False)
+		print('hirarchicalview')
+
+	def showTag(self,event):
+		if isinstance(event,gtk.RadioMenuItem):
+			if self.mnuTag.get_active():
+				self.btnTag.set_active(True)
+			else:
+				self.btnTag.set_active(False)
+		else:
+			if self.btnTag.get_active():
+				self.mnuTag.set_active(True)
+			else:
+				self.mnuTag.set_active(False)
+		print('tagview')
+
+	
+	def search(self,widget,event):
+		print('serach')
+		pass
+	###
+
 
 	def terminate(self):
 		# must raise the SystemExit type, instead of a SystemExit() instance
@@ -65,9 +124,3 @@ class GUI(threading.Thread):
 		print('quite')
 		gtk.main_quit()
 		self.sys.stoppall()
-
-	def on_button1_clicked(self,event):
-		print('hirarchicalview')
-
-	def on_button2_clicked(self,event):
-		print('tagview')
