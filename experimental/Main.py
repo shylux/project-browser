@@ -41,7 +41,7 @@ class Main():
 		self.filemanager = FileManager()
 		self.tagmanager = TagManager()
 		self.u = Utility()
-		self.c = Constant()
+		self.c = Constant(self)
 		print "path = "+ self.c.dbPath
 		if not os.path.exists(self.c.dbPath):
 			print "creating path"

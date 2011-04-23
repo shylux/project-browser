@@ -32,8 +32,9 @@ class GUI(threading.Thread):
 		print('init')
 		self.sys = sys
 		self.mod = sys.c.startview
-		self.hview = HirarchicalView()
-		self.tview = TagView()
+		self.hview = HirarchicalView(self.sys)
+		self.tview = TagView(self.sys)
+		self.actview = None
 
 	def run(self):
 		print('run: GUI')
@@ -74,26 +75,34 @@ class GUI(threading.Thread):
 		self.mnuNeu = self.xml.get_widget('mnuNeu')
 		self.mnuNeu.hide()
 
-		#Connect Status
+		#Init Status Bar
 		self.Status = self.xml.get_widget('stsStatusBar')
-		self.Status.push(1,'initialisieren')
+		self.Status.push(1,'init')
 
 		#Init-View
 		self.view = self.xml.get_widget('hbxView')
 		if self.mod == 'hirarchical':
+			self.actview = self.hview
+			self.actview.set_actTxtInput(self.sys.c.initStrHirarchical)
 			self.showHirarchical('init')
 		elif self.mod == 'tag':
+			self.actview = self.tview
+			self.actview.set_actTxtInput(self.sys.c.initStrTag)
 			self.showTag('init')
 		else:
+			self.actview = self.hview
+			self.actview.set_actTxtInput(self.sys.c.initStrHirarchical)
 			self.showHirarchical('init')
 		
 
 		#Zeigt alles an
-		self.window.show_all()
+		self.showall()
 
+		#Loop damit das Fenster nicht wieder geschlossen wird
 		self.startloop()
 
 		
+
 
 
 	#GUI Functionen
@@ -113,6 +122,9 @@ class GUI(threading.Thread):
 			self.btnHirarchical.set_active(True)
 			self.mnuHirarchical.set_active(True)
 
+		#Init-View	
+		self.changeView(self.hview)
+
 	def showTag(self,event):
 		#Toggle Function
 		if isinstance(event,gtk.RadioMenuItem):
@@ -129,12 +141,51 @@ class GUI(threading.Thread):
 			self.btnTag.set_active(True)
 			self.mnuTag.set_active(True)
 
+		#Init-View
+		self.changeView(self.tview)
 	
+	def changeView(self,newview):
+		#Speichert Text Input String in der zuschliessenden View
+		self.actview.set_actTxtInput(self.txtEntry.get_text())
+
+		#Schliesst die alte View
+		self.view.remove(self.actview)
+
+		#Fuegt die neue View an
+		self.view.pack_start(newview,True,True,0)
+
+		#Aender Aktuel View		
+		self.mod = newview.mod
+		self.actview = newview
+
+		#Text Input aktualisieren
+		self.txtEntry.set_text(self.actview.get_actTxtInput())
+
+		#Fokus auf Text Input
+		self.set_focus(self.txtEntry)
+
+		#Update Statusbar
+		self.Status.pop(1)
+		self.Status.push(1,'Ansicht: '+str(self.mod))
+		self.showall()
+
+		#Update-View
+		self.actview.update()
+
 	def search(self,widget,event):
-		print('serach')
-		pass
+		self.actview.set_actTxtInput(self.txtEntry.get_text())
+		self.actview.update()
 	###
 
+
+
+
+
+	def set_focus(self,widget):
+		self.window.set_focus(widget)
+
+	def showall(self):
+		self.window.show_all()
 
 	def terminate(self):
 		# must raise the SystemExit type, instead of a SystemExit() instance
