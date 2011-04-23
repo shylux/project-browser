@@ -22,6 +22,7 @@ class DB:
 		self.establishConnection()
 
 	def establishConnection(self):
+	  	print self.dbpath
 	  	self.connection	= sqlite3.connect(self.dbpath)
 		self.cursor	= self.connection.cursor()
 		print "connection established"

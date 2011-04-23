@@ -38,13 +38,16 @@ class Main():
 	def start(self,modus):
 		#NO() => Neues Objekt(Klasse)
 		self.mod = modus
-		self.dbPath	= os.path.expanduser("~/.project-browser/db")
-		self.db		= DB(self.dbPath)
 		#self.db = DB()
 		self.filemanager = FileManager()
 		self.tagmanager = TagManager()
 		self.u = Utility()
 		self.c = Constante()
+		print "path = "+ self.c.dbPath
+		if not os.path.exists(self.c.dbPath):
+			print "creating path"
+			os.makedirs(self.c.dbPath)
+		self.db		= DB(self.c.dbPath+"db")
 
 		#Array mit allen Thread. Wird gebraucht, dass diese beim beenden des Programmes alle richtig beendet werden
 		self.t = []
