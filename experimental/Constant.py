@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-#File:			Constante.py
+#File:			Constant.py
 #Description:		Hier sind alle Wichtigen Konstanten fuers Programm an einer zentrallen Stelle gespeichert.
 #Author:		Kaleb Tschabold
 #Creation Date:		16.4.2011
@@ -9,7 +9,7 @@
 #			0.1		16.4.2011	Grundfunktionalitaeten werden erstellt
 import os.path
 
-class Constante():
+class Constant():
   	sleep	= None
 	prgname	= None
 	version	= None
@@ -20,3 +20,4 @@ class Constante():
 		self.prgname	= "Project Browser"
 		self.version	= 0.1
 		self.dbPath	= os.path.expanduser("~/.project-browser/")
+		self.startview = 'hirarchical'

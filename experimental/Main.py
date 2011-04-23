@@ -23,7 +23,7 @@ from FileSystemListener import *
 from GUI import *
 from Utility import *
 from File import *
-from Constante import *
+from Constant import *
 
 #Andere Klassen
 import sys
@@ -36,13 +36,12 @@ class Main():
 		pass
 
 	def start(self,modus):
-		#NO() => Neues Objekt(Klasse)
 		self.mod = modus
 		#self.db = DB()
 		self.filemanager = FileManager()
 		self.tagmanager = TagManager()
 		self.u = Utility()
-		self.c = Constante()
+		self.c = Constant()
 		print "path = "+ self.c.dbPath
 		if not os.path.exists(self.c.dbPath):
 			print "creating path"

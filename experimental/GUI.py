@@ -8,6 +8,7 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 #			0.2		18.4.2011	Testen mit pygtk Elementen
+#			0.3		23.4.2011	Erstellte Event's auf die verschiedenen Elemente
 #Link:
 #http://zignar.net/page/pygtk-mit-glade			 mit xml(aus glade) Programm Grafische Oberflaeche erstellen
 
@@ -30,7 +31,7 @@ class GUI(threading.Thread):
 		threading.Thread.__init__(self)
 		print('init')
 		self.sys = sys
-		self.mod = 'hirarchical'
+		self.mod = sys.c.startview
 		self.hview = HirarchicalView()
 		self.tview = TagView()
 
@@ -40,7 +41,7 @@ class GUI(threading.Thread):
 		#Init-Window
 		self.xml = gtk.glade.XML("gui.glade")
 		self.window = self.xml.get_widget("winMain")
-		self.window.show()
+		self.window.set_title(self.sys.c.prgname + ' - Version '  + str(self.sys.c.version))
 		#self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		self.window.connect("destroy", self.stopploop)
 
@@ -56,8 +57,6 @@ class GUI(threading.Thread):
 		#self.txtEntry.connect('activate',self.search)
 		#self.txtEntry.connect('backspace',self.search)
 
-		self.view = self.xml.get_widget('hbxView')
-
 		#Add Menu-Item by 'Ansicht'
 		ansichtmenu = gtk.Menu()
 		ansicht = self.xml.get_widget('mnuAnsicht')
@@ -67,18 +66,39 @@ class GUI(threading.Thread):
 		ansichtmenu.append(self.mnuHirarchical)
 		self.mnuTag = gtk.RadioMenuItem(self.mnuHirarchical,'Tag')
 		self.mnuTag.connect('toggled',self.showTag)
-		self.mnuTag.set_active(True)
 		ansichtmenu.append(self.mnuTag)
+
+		#Modify other MenuItems
+		self.mnuBeenden = self.xml.get_widget('mnuBeenden')
+		self.mnuBeenden.connect('activate',self.stopploop)
+		self.mnuNeu = self.xml.get_widget('mnuNeu')
+		self.mnuNeu.hide()
+
+		#Connect Status
+		self.Status = self.xml.get_widget('stsStatusBar')
+		self.Status.push(1,'initialisieren')
+
+		#Init-View
+		self.view = self.xml.get_widget('hbxView')
+		if self.mod == 'hirarchical':
+			self.showHirarchical('init')
+		elif self.mod == 'tag':
+			self.showTag('init')
+		else:
+			self.showHirarchical('init')
+		
 
 		#Zeigt alles an
 		self.window.show_all()
 
 		self.startloop()
+
 		
 
 
 	#GUI Functionen
 	def showHirarchical(self,event):
+		#Toggle Function
 		if isinstance(event,gtk.RadioMenuItem):
 			if self.mnuHirarchical.get_active():
 				self.btnHirarchical.set_active(True)
@@ -89,9 +109,12 @@ class GUI(threading.Thread):
 				self.mnuHirarchical.set_active(True)
 			else:
 				self.mnuHirarchical.set_active(False)
-		print('hirarchicalview')
+		if event == 'init':
+			self.btnHirarchical.set_active(True)
+			self.mnuHirarchical.set_active(True)
 
 	def showTag(self,event):
+		#Toggle Function
 		if isinstance(event,gtk.RadioMenuItem):
 			if self.mnuTag.get_active():
 				self.btnTag.set_active(True)
@@ -102,7 +125,9 @@ class GUI(threading.Thread):
 				self.mnuTag.set_active(True)
 			else:
 				self.mnuTag.set_active(False)
-		print('tagview')
+		if event == 'init':
+			self.btnTag.set_active(True)
+			self.mnuTag.set_active(True)
 
 	
 	def search(self,widget,event):
