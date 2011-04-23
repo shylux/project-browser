@@ -8,6 +8,7 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.03.2011	Grundfunktionalitaeten werden erstellt
 #			0.2		21.04.2011	Added a few methods to read some data from the DB
+#			0.3		23.04.2011	Will now autocreate tables if nonexistance
 
 import sqlite3
 import os.path
@@ -26,7 +27,6 @@ class DB:
 	  	self.connection	= sqlite3.connect(self.dbpath)
 		self.cursor	= self.connection.cursor()
 		print "connection established"
-		 
 		#Check wether the tables in the DB exist. If they don't, we'll create 'em
 		self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='files'")
 		if len(self.cursor.fetchall()) != 1:
@@ -98,19 +98,42 @@ class DB:
 		return self.changeList(li)
 
 	def createDB(self):
-	  	self.cursor.execute("CREATE TABLE files(fid PRIMARY KEY, filename TEXT, path TEXT, backup BOOLEAN)")
-		self.cursor.execute("CREATE TABLE tagnames(tagid PRIMARY KEY, tagname TEXT UNIQUE , backup BOOLEAN)")
-		self.cursor.execute("CREATE TABLE file_tag_relations(relid PRIMARY KEY, fk_fid INTEGER, fk_tagid INTEGER)")
+	  	self.cursor.execute("CREATE TABLE files(fid INTEGER PRIMARY KEY, filename TEXT, path TEXT, backup BOOLEAN)")
+		self.cursor.execute("CREATE TABLE tagnames(tagid INTEGER PRIMARY KEY, tagname TEXT UNIQUE , backup BOOLEAN)")
+		self.cursor.execute("CREATE TABLE file_tag_relations(relid INTEGER PRIMARY KEY, fk_fid INTEGER, fk_tagid INTEGER)")
 		self.connection.commit()
+
+	def addFile(self, fi):
+		#IMPORTANT: For this to work, the field tagnames.tagname has to be marked as UNIQUE!
+		#Otherwise, attempts to insert tags might cause trouble!
+		query = "INSERT INTO FILES (filename, path, backup) VALUES ('%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup())
+		self.cursor.execute(query)
+		fid	= self.cursor.lastrowid
+
+		for row in fi.getTags():
+			tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'false')" % (row, )
+			self.cursor.execute(tagQuery)
+
+			idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
+			self.cursor.execute(idQuery)
+			res = self.cursor.fetchall()
+
+			relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
+			self.cursor.execute(relQuery)
+
+		self.connection.commit()
+
 
 
 if __name__ == "__main__":
    	print "TEST"
 	#db = DB("/home/niklaus/.project-browser/db")
-	db = DB("./db")
+	path = os.path.expanduser("~/.project-browser/db")
+	db = DB(path)
 	#db.test(File.File())
 	#db.test(1)
-	print os.path.expanduser("~/.project-browser/db")
+	fi	= File.File(fileName="name", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagX'], )
+	db.addFile(fi)
 	"""out = db.executeQuerry("SELECT * FROM files")
 	print out
 	f = File.File(fileName="test.txt", path="/home/niklaus/")
