@@ -15,8 +15,8 @@ class TagView(View):
 	mod = 'tag'
 	def __init__(self,sys):
 		View.__init__(self,sys)
-		b = gtk.Label('tview')
-		self.put(b,100,100)
+		#b = gtk.Label('tview')
+		#self.put(b,100,100)
 
 	def update(self):
 		print('Suche Tag: '+self.get_actTxtInput())
