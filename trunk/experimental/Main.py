@@ -35,7 +35,7 @@ class Main():
 	def start(self,modus):
 		#NO() => Neues Objekt(Klasse)
 		self.mod = modus
-		self.db = DB()
+		#self.db = DB()
 		self.filemanager = FileManager()
 		self.tagmanager = TagManager()
 		self.u = Utility()
