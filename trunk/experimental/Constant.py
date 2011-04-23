@@ -14,10 +14,13 @@ class Constant():
 	prgname	= None
 	version	= None
 	dbPath	= None
-	def __init__(self):
+	def __init__(self,sys):
 		#time to sleep in a endlos loop
 		self.sleep	= 0.1
 		self.prgname	= "Project Browser"
 		self.version	= 0.1
 		self.dbPath	= os.path.expanduser("~/.project-browser/")
 		self.startview = 'hirarchical'
+		self.os = sys.u.checkOS()
+		self.initStrHirarchical = '/'
+		self.initStrTag = ''

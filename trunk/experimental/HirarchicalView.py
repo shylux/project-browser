@@ -11,8 +11,16 @@
 
 from View import *
 import gtk
+import os
 
 class HirarchicalView(View):
-	def __init__(self):
-		View.__init__(self)
-		pass
+	mod = 'hirarchical'
+	def __init__(self,sys):
+		View.__init__(self,sys)
+		b = gtk.Label('hview')
+		self.put(b,100,100)
+
+	def update(self):
+		print('Suche ordner/datei: '+self.get_actTxtInput())
+	
+
