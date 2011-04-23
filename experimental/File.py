@@ -16,7 +16,7 @@ class File:
 	path		= None
 	tags		= None
 	backup		= None
-	def __init__(self, fileName=None, path=None, tags=None, backup=None):
+	def __init__(self, fileName=None, path=None, tags=[], backup='false'):
 	  	"""Constructor
 		@param	fileName, string	, optional 
 		@param	path	, string	, optional
