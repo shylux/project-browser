@@ -1,0 +1,189 @@
+\documentclass[10pt,paper=a4,final]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}		%used for the tables
+\usepackage{geometry}		%allows us to specify the 'seitenrand'
+\usepackage[table]{xcolor}	%allows us to make colored fields in the tables
+\usepackage{graphicx}		%package used to include graphics
+\usepackage{hyperref}   	%used to make klickable links
+
+%\hypersetup{linktocpage}	%make the tableofcontent klickable
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\setcounter{tocdepth}{4}	%include paragraph in tableofcontents
+\setcounter{secnumdepth}{5}	%also number the paragraphs
+
+%These two lines will allow us to specify our own headers/footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+ \setlength{\parskip}{0pt}
+ \setlength{\baselineskip}{0pt}
+
+%The next three lines set the default font to Arial
+%use 'getnonfreefonts arial-urw' to install uarial on Linux systems
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault}
+
+\geometry{a4paper, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\title{Projektantrag}
+\author{Niklaus Hofer, Lukas Kn\"opfel, Kaleb Tschabold}
+\date{\today}
+
+%defining header and footer
+\fancyhf{}	%delete default values
+\setlength{\headwidth}{\textwidth}	%header and footer width equal the text width
+\fancyhead[LE,LO]{\includegraphics[scale=0.6]{header.png}}
+\fancyhead[RE,RO]{ProjectExplorer}
+\fancyfoot[CE,CO]{Speicherdatum: \today{}}
+\fancyfoot[RE,RO]{\thepage}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{tabularx}{\textwidth}{ r X }	%X fields are stretched over the whole space
+\textcolor{white}{{\bf Status}}\cellcolor{blue!80!} & In Arbeit/In Prüfung/{\bf Abgeschlossen}\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektname}}\cellcolor{blue!80!} & Projektexplorer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektleiter}}\cellcolor{blue!80!} & Niklaus Hofer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Auftraggeber}}\cellcolor{blue!80!} & M. Frieden, GIBB\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Autoren}}\cellcolor{blue!80!} & Niklaus Hofer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Verteiler}}\cellcolor{blue!80!} & Lukas Knöpfel, Kaleb Tschabolt, Niklaus Hofer\cellcolor{blue!20!}
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Änderungskontrolle, Prüfung, Genehmigung}
+\newline
+
+\begin{tabularx}{\textwidth}{l l X X}
+\textcolor{white}{Version}\cellcolor{blue!80!} & \textcolor{white}{Datum}\cellcolor{blue!80!} & \textcolor{white}{Beschreibung, Bemerkung}\cellcolor{blue!80!} & \textcolor{white}{Name oder Rolle}\cellcolor{blue!80!} \\
+\cellcolor{blue!20!} 0.1& \cellcolor{blue!20!} 08.02.2011 & Gesammelten Text einfügen \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 0.9& \cellcolor{blue!20!} 08.02.2011 & Abgabebereit \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 0.99& \cellcolor{blue!20!} \today{} & Transfer nach \LaTeX \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 1.0& \cellcolor{blue!20!} \today{} & Korrekturen \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Definitionen und Abkürzungen}
+\newline
+
+\begin{tabularx}{\textwidth}{l X}
+\textcolor{white}{Begriff/ Abkürzung}\cellcolor{blue!80!} & \textcolor{white}{Bedeutung}\cellcolor{blue!80!} \\
+CLI \cellcolor{blue!20!} & Command Line Interface\cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+\bibliographystyle{plain}
+\bibliography{projektantrag}{}
+\flushleft
+\newpage
+\tableofcontents
+\newpage
+\section{Zweck des Dokuments}
+Projektfreigabe und die erforderlichen Mittel (personell, materiell, finanziell) zu erhalten.
+\section{Ausgangslage}
+\subsection{Problemstellung}
+Die heutigen M\"glichkeiten Dateien, die organisatorisch eine Einheit bilden, aus strukturellen Gr\"unden aber \"uber verschiedene Ordner auf dem Dateisystem verteilt sind, zu verwalten sind, sehr begrenzt. \\
+Vor Problem wird man auch durch heutige Systeme zur Versionierung von Dokumenten gestellt.
+\subsection{Anlass und Begründung des Projekts}
+Wir wollen eine einfache Möglichkeit bieten mehrere Dateien zu gruppieren (z.B. zu einem Projekt) und zu versionieren.
+\subsection{Rahmenbedingungen}
+Das Projekt muss bis Ende Mai abgeschlossen sein. W\"ahrend des Berufsschulunterrichts an der GIBB haben wir jede Woche 4 Lektionen Zeit an dem Projekt zu arbeiten.
+\subsection{Situationsanalyse}
+Angesichts der Tatache, dass die Programmiersprache f\"ur 2/3 der Beteiligten Neuland darstellt und das Projekt doch recht aufw\"andig ist, mu\"uste man von eher unguten Bedingungen ausgehen. \\
+Das Team ist aber hochmotiviert und bereit einiges an Zeit zu investieren.
+\subsection{Erbrachte Vorleistunge}
+Keine.
+\section{Ziele und L\"osungen}
+\subsection{Zielvorstellungen (kurz- und langfristig)}
+Ziel des Projektes ist es, eine alternative zu herk\"ommlichen Dateimanagern zu erstellen, die neue Funktionen zur Verwaltung von Daten (insbesondere im Zusammenhang mit Projekten) bietet.
+
+Folgende Funktionalit\"at soll die L\"osung bieten:
+\begin{itemize}
+  \item Das Programm bietet drei Masken die den wichtigsten Aufgaben entsprechen:
+  \begin{itemize}
+    \item Dateien k\"onnen mit Tags versehen werden.
+    \item Dateien lassen sich nach Tags geordnet werden.
+    \item Im Programm k\"onnen Projekte definiert werden. Ein Projekt kann mehrere Dateien enthalten, die aber nicht zwingend alle in demselben Ordner liegen m\"ussen.
+    \item Mit dem Programm k\"onnen Dateien auch auf herk\"ommliche Weise in der gewohnten Baumstruktur verwaltet werden.
+  \end{itemize}
+  \item Das Programm kann auf Wunsch alte Versionen einer Datei beibehalten. Dabei legt es im betreffenden Ordner ein neues Unterverzeichnis (z.B. \_version) an, in dem es alte Versionen ablegt. (Von der Bedienung her vergleichbar mit Apple’s Timemachine)
+\end{itemize}
+\subsection{Mögliche Lösungen}
+Das Programm soll primär als GUI verfügbar sein. Eine Bedienung über die Kommandozeile sollte aber zwecks Automatisierbarkeit nicht fehlen.\\ 
+Das Speichern der Daten kann über eine Datei in jedem Ordner oder eine Datenbank realisiert werden. Wir tendieren stark zur Datenbank.\\
+Sowohl Mac OS X als auch moderne Linux Systeme bieten die M\"oglichkeit, bei Dateisystem-Operationen ein Event an Programme zu senden. Das k\"onnte insbesondere beim erkennen von Dateiverschiebungen die nicht mit dem Programm geschehen hilfreich sein.\\
+Als Datenbank wird SQLite zum Einsatz kommen. Die Datenbank wird als einzelne Datei gespeichert und wird auch von sehr populaeren Projekten (z.B. Firefox) verwendet.\\
+Als Programmiersprache wird Python zum Einsatz kommen.
+\subsection{Bewertung der Sicherheits- und Datenschutzaspekte}
+Da das Programm lediglich lokal l\"auft und f\"ur die abgelegten Dateien weiterhin die lokalen Rechte des Dateisystems gelten ist das Programm Datenschutztechnisch kein Problem.\\
+F\"ur die Konsistenz der Dateien w\"are es vorteilhaft, wenn das Programm nicht unerwartet alle Files l\"oschen w\"urde.
+\section{Mittelbedarf}
+\subsection{Sachmittel}
+Sachmittel werden, neben den zur Verf\"ugung stehenden Computern, keine benötigt.
+\subsection{Personal}
+Mindestens zwei der Programmierer m\"uessen sich Kenntnisse und F\"ahigkeiten im Umgang mit Python im Selbststudium aneignen.\\
+Zudem muss der Umgang mit SQLite erlernt werden.
+\subsection{Dienstleistungen}
+Zur Zusammenarbeit und Recherche muss bei jedem Entwickler eine funktionierende Internetverbindung vorhanden sein.\\
+Zudem werden zur Kommunikation und Zusammenarbeit die Officedienste und das Codeverwaltungstool von Google in Anspruch genommen.\\
+\section{Planung und Organisation}
+\subsection{Projektorganisation}
+s Team besteht aus zwei Programmierern und einem Projektmanager (PM).\\
+Die Aufgabe des PMs wird im Verlaufe des Projektes weitergegeben.\\
+Sollte der PM mit seiner T\"atigkeit nicht ausgelastet sein, so wird er die Programmierer unterst\"utzen.\\
+Wahrscheinlich werden sich auch einige Spezialisierungen herausbilden. Es ist zum Beispiel denkbar, dass eine Person f\"ur das Datenbankdesign zust\"andig sein wird. Auch die Anpassung/Optimierung an die verschiedenen Betriebssysteme wird wohl jeweils einer einzelnen Person zufallen.
+\subsection{Anwenderorganisation}
+Die Anwender sind Einzelpersonen, die an einem lokalen Rechner arbeiten. Mehrere Personen könnten über freigegebene Ordner auf die Dateien zugreifen.
+\subsection{termine}
+Die Termine sind von der Lehrkraft vorgegeben und im Terminplan \cite{terminliste} eingetragen.\\
+Zudem haben wir den genauen Zeitplan im projektplan \cite{projektplan} festgehalten.
+\subsection{Prioritäten}
+Priorit\"at haen die Schaffung einer GUI Version, die Dokumentation so wie die Überschaubarkeit des Codes.
+\section{Wirtschaftlichkeit}
+Zur Zeit gibt es keine Pl\"ane, das Programm kommerziell zu vertreiben. Mindestens ein Beteiligter des Teams spricht sich dagegen aus.\\
+Das Projekt wird unter der Apache 2.0 Lizenz entwickelt und ist somit open source und kann von jedem frei verwendet werden.\\
+Nat\"urlich steht es aber einzelnen Beteiligten aus dem Projekt, oder gar Drittanbietern frei, kommerziellen Support f\"ur das Programm anzubieten.
+
+Es kann davon ausgegangen werden, dass das Endprodukt bei der Verwendung einige Vorteile gegen\"uber herk\"ommlichen Dateimanagern bieten wird, wodurch Zeit eingespart werden kann.\\
+In welchem Umfang das geschieht und damit verbunden die zu erwartenden Einsparungen sind stark vom Einsatzzweck abh\"angig und k\"onnen daher nicht vorhergesagt werden.
+
+Für uns bietet diese Projekt einen hohen Lernwert. Da wir selbst zu der Zielgruppe des Projekts geh\"oren und es auch an unsere Bed\"urfnisse anpassen k\"onnen, k\"onnen wir das Program gut einsetzen.
+
+\section{Konsequenzen}
+\subsection{Auswirkungen (organisatorisch, personell, baulich, Vorschriften/Weisungen)}
+Es stehen neue Wege zum Organisieren und Finden von Dateien zur Verf\"gung.\\
+Das Organisieren von Projekten die sich \"uber mehrere Ordner verteilen wird einfacher.\\
+Die Beteiligten sammeln Erfahrungen mit den im Projekt eingesetzten Technologien.
+\subsection{Bei Nichtrealisierung}
+\begin{itemize}
+  \item Die versprochenen Funktionen stehen nicht zur Verf\"ugung.\\
+  \item Es gibt verschiedene L\"osungen die jeweils teile dessen erf\"ullen was von unserem Program zu erwarten ist, jedoch keine, die alle Funktionen implementiert. Zudem sind die L\"osungen zumeist an eine einzelne Platform gebunden.
+  \item Schlechte Note
+\end{itemize}
+\subsection{Bei versp\"ateter Realisierung (gegen\"uber Wunschtermin)}
+Da das Program nicht unmitelbar ben\"otigt wird, h\"atte eine Versp\"atete Fertigstellung h\"ochstens eine schlechte Note zur Folge.
+\subsection{Auf Schnittstellen zu anderen Systemen}
+Da das Rrogram unter anderen ein CLI zur Verf\"ugung stellen soll, kann es auf einfache Weise in scripts oder gar andere Programme integriert werden.
+\subsection{Qualitätsverbesserungen}
+Einfacherer Umgang mit Dateien. Mehr M\"oglichkeiten zur Verwaltung von Dateien auf dem lokalen System.
+\subsection{Risikobeurteilung}
+Da das Team viel neues lernen muss und das Projekt recht viele einzelne Teile beinhaltet ist das Risiko, dass es nicht g\"anzlich fertiggestellt werden kann als beachtlich einzustufen.\\
+Wenn das Programm keine Vorteile gegenüber anderen Dateiverwaltungstools beinhaltet, gerät das Programm in Vergessenheit.
+\subsection{Ausweichm\"oglichkeiten}
+Herkoemmliche Dateimanager (explorer,bridge von adobe,ls,cp,rsync
+,mv,rm,find,locate).
+\section{Antrag}
+\subsection{Bisherige Entscheide}
+Als Programmiersprache wurde Python gew\"ahlt.
+\subsection{Formulierung des Projektantrags}
+Nach unserer Erkenntnis könnten wir mit der Voranalyse beginnen. Wir bitten Sie den Antrag für die neue Phase zu genehmigen.
+
+\end{document}
