@@ -21,51 +21,57 @@ class FileManager:
 		pass
 	
 	def getFilesFromDir(self,path):
-		#try:
-			fl = self.createFileList(path)
-			return fl
-		#except:
-		#	return 'error'
-	
-	def createFileList(self,path):
 		a = []
 		if not os.path.exists(path):
-			print('path existier nicht' + path)
-			path = path.split('/')
-			print('len '+str(len(path)))
-			path.remove(path[len(path)-1])
-			path = '/'.join(path)+'/'
-			if path == '':
-				path = '/'
-			print('new path: '+path)
+			print('if')
+			matched = self.searchMatchDir(path)
+			print('matched: '+str(matched))
+			if len(matched) >= 1:
+				array = matched
+			else:
+				return a
+			for i in range(len(array)):
+				print('basename: '+self.getDirName(array[i]))
+				a.append(File(self.getDirName(array[i]),array[i]))
+				a[i].setDir(self.isDir(array[i]))
 		else:
+			print('else')
+			if path == '':
+				path = path + '/'
 			if path[-1:] != '/':
 				path = path + '/'
-		array =  os.listdir(path)
-		for i in range(len(array)):
-			fullpath = path +array[i]
-			print(fullpath)
-			a.append(File(self.getFileName(array[i]),fullpath))
-			a[i].setDir(self.isDir(fullpath))
+			array =  os.listdir(path)
+			for i in range(len(array)):
+				print('dirpath: '+path+', file: '+array[i])
+				fullpath = path + array[i]
+				print(fullpath)
+				a.append(File(array[i],fullpath))
+				a[i].setDir(self.isDir(fullpath))
 		return a
-		
 
 	def getFileName(self,path):
 		return os.path.basename(path)
+
+	def getDirName(self,path):
+		s = path.split('/')
+		return s[len(s)-2]
 
 	def isDir(self,path):
 		return os.path.isdir(path)
 
 	def searchMatchDir(self,path):
 		match = []
-		ddf = self.divideDirAndFile(path)
-		l = os.listdir(ddf[0])
-		for i in range(len(l)):
-			if (l[i].find(ddf[1]) >= 0 and os.path.isdir(ddf[0] + '/' + l[i])) or (ddf[1] == '' and os.path.isdir(ddf[0] + '/' + l[i])):
-				if ddf[0] == '/':
-					match.append(ddf[0] + l[i] + '/')
-				else:
-					match.append(ddf[0] + '/' + l[i] + '/')
+		try:
+			ddf = self.divideDirAndFile(path)
+			l = os.listdir(ddf[0])
+			for i in range(len(l)):
+				if (l[i].find(ddf[1]) >= 0 and os.path.isdir(ddf[0] + '/' + l[i])) or (ddf[1] == '' and os.path.isdir(ddf[0] + '/' + l[i])):
+					if ddf[0] == '/':
+						match.append(ddf[0] + l[i] + '/')
+					else:
+						match.append(ddf[0] + '/' + l[i] + '/')
+		except:
+			pass
 		return match
 
 	def divideDirAndFile(self,dirandfile):

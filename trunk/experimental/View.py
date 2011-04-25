@@ -18,8 +18,9 @@ class View(gtk.TreeView):
 		gtk.TreeView.__init__(self,None)
 		self.sys = sys
 		self.acttxtinput = ''
-
+	
 		self.createTree()
+		self.connect('row-activated',self.test)
 		pass
 
 	def createTree(self):
@@ -65,6 +66,12 @@ class View(gtk.TreeView):
 
 	def get_actTxtInput(self):
 		return self.acttxtinput
+	
+	def test(self,iter, path, user_data):
+		o = self.get_cursor()[0]
+		for i in range(len(self.get_cursor()[0])):
+			print(self.get_cursor()[0][i])
+		#print('test'+str(iter)+' '+str(path)+' '+str(user_data))
 
 #Registriert diese Klasse als pygtk-widget
 gobject.type_register(View)
