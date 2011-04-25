@@ -8,7 +8,9 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		14.4.2011	Grundfunktionalitaeten werden erstellt
 #			0.2		18.4.2011	Erbt von gtk.Layout
-
+#
+#Link:
+#http://www.pygtk.org/pygtk2tutorial/sec-TreeViewDragAndDrop.html 	Bearbeitet selected
 import gtk
 import gobject
 import os
@@ -20,8 +22,6 @@ class View(gtk.TreeView):
 		self.acttxtinput = ''
 	
 		self.createTree()
-		self.connect('row-activated',self.test)
-		pass
 
 	def createTree(self):
 		#Objekt fuer den Baum
@@ -43,7 +43,7 @@ class View(gtk.TreeView):
 
 		#Allgemeine Definitionen fuer den Baum
 		self.set_search_column(1)
-		self.cl1.set_sort_column_id(1)
+		#self.cl1.set_sort_column_id(1)
 
 		self.update()
 
@@ -66,12 +66,6 @@ class View(gtk.TreeView):
 
 	def get_actTxtInput(self):
 		return self.acttxtinput
-	
-	def test(self,iter, path, user_data):
-		o = self.get_cursor()[0]
-		for i in range(len(self.get_cursor()[0])):
-			print(self.get_cursor()[0][i])
-		#print('test'+str(iter)+' '+str(path)+' '+str(user_data))
 
 #Registriert diese Klasse als pygtk-widget
 gobject.type_register(View)

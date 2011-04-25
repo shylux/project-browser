@@ -17,16 +17,17 @@ class HirarchicalView(View):
 	def __init__(self,sys):
 		View.__init__(self,sys)
 		self.set_actTxtInput(sys.c.initStrHirarchical)
+		self.connect('row-activated',self.rowActivate)
 
 	def update(self):
-		files = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
-		if files != 'error':
+		self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
+		if self.items != 'error':
 			self.model.clear()
-			for i in range(len(files)):
-				if files[i].isDir:
-					self.model.append(None,[self.getFolderIcon(),files[i].getFileName()])
+			for i in range(len(self.items)):
+				if self.items[i].isDir:
+					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName()])
 				else:
-					self.model.append(None,[self.getFileIcon(),files[i].getFileName()])
+					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName()])
 			self.set_model(self.model)
 		self.completion()
 
@@ -43,3 +44,12 @@ class HirarchicalView(View):
 				self.sys.gui.listcompl.append([matched[i]])
 		except:
 			pass
+
+	def rowActivate(self,iter, path, user_data):
+		ix = path[0]
+		f = self.items[ix]
+		print(f.isDir)
+		if not f.isDir:
+			self.sys.filemanager.openFile(f.getPath())
+		else:
+			self.sys.filemanager.openDir(f.getPath())

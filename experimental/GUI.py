@@ -53,16 +53,19 @@ class GUI(threading.Thread):
 
 		#Connect TextInput Field
 		self.txtEntry = self.xml.get_widget('txtEntry')
-		self.txtEntry.connect('key_release_event',self.search)
+		#self.txtEntry.connect('key_release_event',self.searchKey)
+		self.txtEntry.connect('changed',self.searchKey)
 		com = gtk.EntryCompletion()
+		#com.set_inline_selection(True)
+		#com.connect('match-selected',self.searchCompletion)
 		self.txtEntry.set_completion(com)
 		self.listcompl = gtk.ListStore(gobject.TYPE_STRING)
 		com.set_model(self.listcompl)
 		com.set_text_column(0)
 		com.set_popup_set_width(True)
 		
-		#self.txtEntry.connect('activate',self.search)
-		#self.txtEntry.connect('backspace',self.search)
+		#self.txtEntry.connect('activate',self.searchKey)
+		#self.txtEntry.connect('backspace',self.searchKey)
 
 		#Add Menu-Item by 'Ansicht'
 		ansichtmenu = gtk.Menu()
@@ -168,6 +171,7 @@ class GUI(threading.Thread):
 		self.actview = newview
 
 		#Text Input aktualisieren
+		self.listcompl.clear()
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
 
 		#Fokus auf Text Input
@@ -181,10 +185,17 @@ class GUI(threading.Thread):
 		#Update-View
 		self.actview.update()
 
-	def search(self,widget,event):
-		if event.keyval != gtk.gdk.keyval_from_name("Down") and event.keyval != gtk.gdk.keyval_from_name("Up"):
-			self.actview.set_actTxtInput(self.txtEntry.get_text())
-			self.actview.update()
+	#def searchKey(self,widget,event):
+	def searchKey(self,a):
+		#if event.keyval != gtk.gdk.keyval_from_name("Down") and event.keyval != gtk.gdk.keyval_from_name("Up"):
+		self.updateView()
+	
+	def searchCompletion(self,completion, prefix, user_param1):
+		self.updateView()
+
+	def updateView(self):
+		self.actview.set_actTxtInput(self.txtEntry.get_text())
+		self.actview.update()
 	###
 
 
