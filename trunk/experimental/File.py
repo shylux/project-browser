@@ -14,6 +14,7 @@ class File:
 	"""
   	fileName	= None
 	path		= None
+	isDir		= None
 	tags		= None
 	backup		= None
 	def __init__(self, fileName=None, path=None, tags=[], backup='false'):
@@ -36,6 +37,10 @@ class File:
 	  	"""@param	path	, string"""
 	  	self.path	= path
 
+	def setDir(self,b):
+		"""@param	b	, boolean """
+		self.isDir = b
+
 	def setTags(self, tags):
 	  	"""@param	tags	, list"""
 	  	self.tags	= tags
@@ -51,6 +56,10 @@ class File:
 	def getPath(self):
 	  	"""@return path, string"""
 	  	return self.path
+
+	def isDir(self):
+		"""@return isDir, boolean """
+		return self.isDir
 
 	def getTags(self):
 	  	"""@return tags, list"""

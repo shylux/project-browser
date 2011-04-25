@@ -37,7 +37,6 @@ class Main():
 
 	def start(self,modus):
 		self.mod = modus
-		#self.db = DB()
 		self.filemanager = FileManager(self)
 		self.tagmanager = TagManager()
 		self.u = Utility()
