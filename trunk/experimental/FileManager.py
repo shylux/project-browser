@@ -100,4 +100,8 @@ class FileManager:
 		else:
 			#Da muss noch eine Loesung sein, wenn die Datei nicht gestartet werden kann
 			pass
+
+	def openDir(self,path):
+		self.sys.gui.txtEntry.set_text(path)
+		self.sys.gui.updateView()
 		
