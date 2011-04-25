@@ -17,23 +17,22 @@ class HirarchicalView(View):
 	def __init__(self,sys):
 		View.__init__(self,sys)
 		self.set_actTxtInput(sys.c.initStrHirarchical)
-		print('get text: '+self.get_actTxtInput())
 
 	def update(self):
-		print('ubdate')
 		files = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
 		if files != 'error':
 			self.model.clear()
 			for i in range(len(files)):
-				self.model.append(None,[files[i].getFileName()])
+				if files[i].isDir:
+					self.model.append(None,[self.getFolderIcon(),files[i].getFileName()])
+				else:
+					self.model.append(None,[self.getFileIcon(),files[i].getFileName()])
 			self.set_model(self.model)
 		self.completion()
 
 	
 	def completion(self):
 		matched = self.sys.filemanager.searchMatchDir(self.get_actTxtInput())
-		print('self.sys: '+str(self.sys.filemanager))
-		print('mached' + str(matched) + 'act: '+self.get_actTxtInput())
 		try:
 			if self.sys.gui.listcompl != None:
 				try:
@@ -43,5 +42,4 @@ class HirarchicalView(View):
 			for i in range(len(matched)):
 				self.sys.gui.listcompl.append([matched[i]])
 		except:
-			print('error: '+str('a'))
-		#	pass
+			pass

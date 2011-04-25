@@ -151,7 +151,6 @@ class GUI(threading.Thread):
 		self.changeView(self.tview)
 	
 	def changeView(self,newview):
-		print('change view'+str(newview)+'get text: '+self.txtEntry.get_text())
 		#Speichert Text Input String in der zuschliessenden View
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
 
@@ -162,7 +161,6 @@ class GUI(threading.Thread):
 
 		#Fuegt die neue View an
 		#self.view.add(newview)
-		print('newview: '+str(newview))
 		self.view.add(newview)
 
 		#Aender Aktuel View		
@@ -184,7 +182,6 @@ class GUI(threading.Thread):
 		self.actview.update()
 
 	def search(self,widget,event):
-		print('evetn val: '+str(event.keyval))
 		if event.keyval != gtk.gdk.keyval_from_name("Down") and event.keyval != gtk.gdk.keyval_from_name("Up"):
 			self.actview.set_actTxtInput(self.txtEntry.get_text())
 			self.actview.update()

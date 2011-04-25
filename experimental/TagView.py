@@ -18,10 +18,4 @@ class TagView(View):
 		self.set_actTxtInput(sys.c.initStrTag)
 
 	def update(self):
-		files = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
-		if files != 'error':
-			self.model.clear()
-			for i in range(len(files)):
-				self.model.append(None,[files[i].getFileName()])
-			self.set_model(self.model)
-			self.show_all()
+		pass
