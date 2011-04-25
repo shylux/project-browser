@@ -17,7 +17,7 @@ class File:
 	isDir		= None
 	tags		= None
 	backup		= None
-	def __init__(self, fileName=None, path=None, tags=[], backup='false'):
+	def __init__(self, fileName=None, path=None, tags=[], backup='false', isDir='false'):
 	  	"""Constructor
 		@param	fileName, string	, optional 
 		@param	path	, string	, optional
@@ -28,6 +28,7 @@ class File:
 		self.path	= path
 		self.tags	= tags
 		self.backup	= backup
+		self.isDir	= isDir
 	
 	def setFileName(self, fileName):
 	  	"""@param	filename	, string"""
