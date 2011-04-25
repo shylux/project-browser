@@ -95,8 +95,8 @@ class FileManager:
 		if self.sys.c.os == 'linux':
 			#Funktioniert nur bei Ubuntu
 			os.system('/usr/bin/xdg-open '+path)
-		elif self.sys.c.os == 'win':
-			os.filestart(path)
+		elif self.sys.c.os == 'windows':
+			os.system(path)
 		else:
 			#Da muss noch eine Loesung sein, wenn die Datei nicht gestartet werden kann
 			pass
