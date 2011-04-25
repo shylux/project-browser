@@ -24,22 +24,38 @@ class View(gtk.TreeView):
 
 	def createTree(self):
 		#Objekt fuer den Baum
-		self.model = gtk.TreeStore(str)
+		self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING)
 		
 		#1. Spalte
 		self.cl1 = gtk.TreeViewColumn('Datei')
 		self.append_column(self.cl1)
 
-		#Definition der 1. Spalte
-		self.cell1 = gtk.CellRendererText()
-		self.cl1.pack_start(self.cell1,True)
-		self.cl1.add_attribute(self.cell1,'text',0)
+		#Definition des Icons der 1. Spalte
+		render1 = gtk.CellRendererPixbuf()
+       		self.cl1.pack_start(render1, expand=False)
+        	self.cl1.add_attribute(render1, 'pixbuf', 0)
+
+		#Definition der Text der 1. Spalte
+		render2 = gtk.CellRendererText()
+		self.cl1.pack_start(render2,True)
+		self.cl1.add_attribute(render2,'text',1)
 
 		#Allgemeine Definitionen fuer den Baum
-		self.set_search_column(0)
-		self.cl1.set_sort_column_id(0)
+		self.set_search_column(1)
+		self.cl1.set_sort_column_id(1)
 
 		self.update()
+
+	def get_icon_pixbuf(self, stock):
+		return self.render_icon(stock_id=getattr(gtk, stock),
+			                size=gtk.ICON_SIZE_MENU,
+			                detail=None)
+	def getFolderIcon(self):
+		return self.get_icon_pixbuf('STOCK_DIRECTORY')
+
+	def getFileIcon(self):
+		return self.get_icon_pixbuf('STOCK_FILE')
+
 
 	def update(self):
 		self.show_all()
@@ -48,7 +64,6 @@ class View(gtk.TreeView):
 		self.acttxtinput = text
 
 	def get_actTxtInput(self):
-		print('gettext: '+self.acttxtinput)
 		return self.acttxtinput
 
 #Registriert diese Klasse als pygtk-widget

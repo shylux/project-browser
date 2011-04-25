@@ -21,19 +21,32 @@ class FileManager:
 		pass
 	
 	def getFilesFromDir(self,path):
-		try:
-			l = os.listdir(path)
-			fl = self.createFileList(l)
+		#try:
+			fl = self.createFileList(path)
 			return fl
-		except:
-			return 'error'
+		#except:
+		#	return 'error'
 	
-	def createFileList(self,array):
+	def createFileList(self,path):
 		a = []
+		if not os.path.exists(path):
+			print('path existier nicht' + path)
+			path = path.split('/')
+			print('len '+str(len(path)))
+			path.remove(path[len(path)-1])
+			path = '/'.join(path)+'/'
+			if path == '':
+				path = '/'
+			print('new path: '+path)
+		else:
+			if path[-1:] != '/':
+				path = path + '/'
+		array =  os.listdir(path)
 		for i in range(len(array)):
-			print(array[i])
-			a.append(File(self.getFileName(array[i]),array[i]))
-			a[i].setDir(self.isDir(array[i]))
+			fullpath = path +array[i]
+			print(fullpath)
+			a.append(File(self.getFileName(array[i]),fullpath))
+			a[i].setDir(self.isDir(fullpath))
 		return a
 		
 
