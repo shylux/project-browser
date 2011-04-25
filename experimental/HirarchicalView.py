@@ -11,30 +11,37 @@
 
 from View import *
 import gtk
-import os
 
 class HirarchicalView(View):
 	mod = 'hirarchical'
 	def __init__(self,sys):
 		View.__init__(self,sys)
-		self.model = gtk.TreeStore(str)
-		self.cl1 = gtk.TreeViewColumn('Datei')
-		self.append_column(self.cl1)
-		self.cell1 = gtk.CellRendererText()
-		self.cl1.pack_start(self.cell1,True)
-		self.cl1.add_attribute(self.cell1,'text',0)
-		self.set_search_column(0)
-		self.cl1.set_sort_column_id(0)
-		#self.set_reorderable(True)
+		self.set_actTxtInput(sys.c.initStrHirarchical)
+		print('get text: '+self.get_actTxtInput())
 
 	def update(self):
+		print('ubdate')
 		files = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
 		if files != 'error':
-			self.model = gtk.TreeStore(str)
+			self.model.clear()
 			for i in range(len(files)):
 				self.model.append(None,[files[i].getFileName()])
 			self.set_model(self.model)
-			self.show_all()
-		#print('Suche ordner/datei: '+self.get_actTxtInput())
-	
+		self.completion()
 
+	
+	def completion(self):
+		matched = self.sys.filemanager.searchMatchDir(self.get_actTxtInput())
+		print('self.sys: '+str(self.sys.filemanager))
+		print('mached' + str(matched) + 'act: '+self.get_actTxtInput())
+		try:
+			if self.sys.gui.listcompl != None:
+				try:
+					self.sys.gui.listcompl.clear()
+				except:
+					pass
+			for i in range(len(matched)):
+				self.sys.gui.listcompl.append([matched[i]])
+		except:
+			print('error: '+str('a'))
+		#	pass

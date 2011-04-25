@@ -18,17 +18,28 @@ class View(gtk.TreeView):
 		gtk.TreeView.__init__(self,None)
 		self.sys = sys
 		self.acttxtinput = ''
+
+		self.createTree()
 		pass
 
-	def openFile(self,path):
-		if self.sys.c.os == 'linux':
-			#Funktioniert nur bei Ubuntu
-			os.system('/usr/bin/xdg-open '+path)
-		elif self.sys.c.os == 'win':
-			os.filestart(path)
-		else:
-			#Da muss noch eine Loesung sein, wenn die Datei nicht gestartet werden kann
-			pass
+	def createTree(self):
+		#Objekt fuer den Baum
+		self.model = gtk.TreeStore(str)
+		
+		#1. Spalte
+		self.cl1 = gtk.TreeViewColumn('Datei')
+		self.append_column(self.cl1)
+
+		#Definition der 1. Spalte
+		self.cell1 = gtk.CellRendererText()
+		self.cl1.pack_start(self.cell1,True)
+		self.cl1.add_attribute(self.cell1,'text',0)
+
+		#Allgemeine Definitionen fuer den Baum
+		self.set_search_column(0)
+		self.cl1.set_sort_column_id(0)
+
+		self.update()
 
 	def update(self):
 		self.show_all()
@@ -37,6 +48,7 @@ class View(gtk.TreeView):
 		self.acttxtinput = text
 
 	def get_actTxtInput(self):
+		print('gettext: '+self.acttxtinput)
 		return self.acttxtinput
 
 #Registriert diese Klasse als pygtk-widget

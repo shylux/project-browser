@@ -20,6 +20,7 @@ class Constant():
 		self.prgname	= "Project Browser"
 		self.version	= 0.1
 		self.dbPath	= os.path.expanduser("~/.project-browser/")
+		#self.startview = 'tag'
 		self.startview = 'hirarchical'
 		self.os = sys.u.checkOS()
 		self.initStrHirarchical = '/'

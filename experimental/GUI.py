@@ -53,7 +53,14 @@ class GUI(threading.Thread):
 
 		#Connect TextInput Field
 		self.txtEntry = self.xml.get_widget('txtEntry')
-		self.txtEntry.connect('key_press_event',self.search)
+		self.txtEntry.connect('key_release_event',self.search)
+		com = gtk.EntryCompletion()
+		self.txtEntry.set_completion(com)
+		self.listcompl = gtk.ListStore(gobject.TYPE_STRING)
+		com.set_model(self.listcompl)
+		com.set_text_column(0)
+		com.set_popup_set_width(True)
+		
 		#self.txtEntry.connect('activate',self.search)
 		#self.txtEntry.connect('backspace',self.search)
 
@@ -82,18 +89,15 @@ class GUI(threading.Thread):
 		self.view = self.xml.get_widget('View')
 		if self.mod == 'hirarchical':
 			self.actview = self.hview
-			self.actview.set_actTxtInput(self.sys.c.initStrHirarchical)
-			self.txtEntry.set_text(self.sys.c.initStrHirarchical)
+			self.txtEntry.set_text(self.actview.get_actTxtInput())
 			self.showHirarchical('init')
 		elif self.mod == 'tag':
 			self.actview = self.tview
-			self.actview.set_actTxtInput(self.sys.c.initStrTag)
-			self.txtEntry.set_text(self.sys.c.initStrTag)
+			self.txtEntry.set_text(self.actview.get_actTxtInput())
 			self.showTag('init')
 		else:
 			self.actview = self.hview
-			self.actview.set_actTxtInput(self.sys.c.initStrHirarchical)
-			self.txtEntry.set_text(self.sys.c.initStrHirarchical)
+			self.txtEntry.set_text(self.actview.get_actTxtInput())
 			self.showHirarchical('init')
 		
 
@@ -147,13 +151,18 @@ class GUI(threading.Thread):
 		self.changeView(self.tview)
 	
 	def changeView(self,newview):
+		print('change view'+str(newview)+'get text: '+self.txtEntry.get_text())
 		#Speichert Text Input String in der zuschliessenden View
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
 
 		#Schliesst die alte View
-		self.view.remove(self.actview)
+		#self.view.remove(self.actview)
+		if self.actview.get_parent() != None:
+			self.view.remove(self.actview)
 
 		#Fuegt die neue View an
+		#self.view.add(newview)
+		print('newview: '+str(newview))
 		self.view.add(newview)
 
 		#Aender Aktuel View		
@@ -175,8 +184,10 @@ class GUI(threading.Thread):
 		self.actview.update()
 
 	def search(self,widget,event):
-		self.actview.set_actTxtInput(self.txtEntry.get_text())
-		self.actview.update()
+		print('evetn val: '+str(event.keyval))
+		if event.keyval != gtk.gdk.keyval_from_name("Down") and event.keyval != gtk.gdk.keyval_from_name("Up"):
+			self.actview.set_actTxtInput(self.txtEntry.get_text())
+			self.actview.update()
 	###
 
 

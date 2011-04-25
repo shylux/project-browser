@@ -15,8 +15,13 @@ class TagView(View):
 	mod = 'tag'
 	def __init__(self,sys):
 		View.__init__(self,sys)
-		#b = gtk.Label('tview')
-		#self.put(b,100,100)
+		self.set_actTxtInput(sys.c.initStrTag)
 
 	def update(self):
-		print('Suche Tag: '+self.get_actTxtInput())
+		files = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
+		if files != 'error':
+			self.model.clear()
+			for i in range(len(files)):
+				self.model.append(None,[files[i].getFileName()])
+			self.set_model(self.model)
+			self.show_all()
