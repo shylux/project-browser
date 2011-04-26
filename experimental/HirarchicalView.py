@@ -10,6 +10,8 @@
 #			0.1		18.3.2011	Erben von View und init Funktion aufrufen
 
 from View import *
+import pygtk
+pygtk.require('2.0')
 import gtk
 
 class HirarchicalView(View):
@@ -18,6 +20,7 @@ class HirarchicalView(View):
 		View.__init__(self,sys)
 		self.set_actTxtInput(sys.c.initStrHirarchical)
 		self.connect('row-activated',self.rowActivate)
+		self.connect('button_release_event',self.showContext)
 
 	def update(self):
 		self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
@@ -53,3 +56,27 @@ class HirarchicalView(View):
 			self.sys.filemanager.openFile(f.getPath())
 		else:
 			self.sys.filemanager.openDir(f.getPath())
+
+	def showContext(self, treeview, event):
+		if event.button == 3:
+			selection = treeview.get_selection()
+			selection.set_mode(gtk.SELECTION_SINGLE)
+			tree_model, tree_iter = selection.get_selected()	
+			m = gtk.Menu()
+			m1 = gtk.MenuItem ('Add Tag')
+			m.append(m1)
+			m2 = gtk.MenuItem('Properties')
+			m.append(m2)
+			m1.connect('button_press_event',self.context_AddTag,'test')
+			m2.connect('button_press_event',self.context_Properties,'test')
+			m.show_all()
+			m.popup( None, None, None, event.button, event.time)
+			return True
+		return False
+
+	def context_AddTag(self,widget,event,mydata):
+		print('set tag')
+		print('test: '+mydata)
+
+	def context_Properties(self,widget,event,mydata):
+		print('properties')
