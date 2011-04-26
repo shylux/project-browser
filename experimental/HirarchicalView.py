@@ -28,9 +28,9 @@ class HirarchicalView(View):
 			self.model.clear()
 			for i in range(len(self.items)):
 				if self.items[i].getIsDir():
-					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName()])
+					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i]])
 				else:
-					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName()])
+					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i]])
 			self.set_model(self.model)
 		self.completion()
 
@@ -48,10 +48,8 @@ class HirarchicalView(View):
 		except:
 			pass
 
-	def rowActivate(self,iter, path, user_data):
-		ix = path[0]
-		f = self.items[ix]
-		print(f.getIsDir())
+	def rowActivate(self,treeview, path, user_data):
+		f = self.getFObjFromSelectedRow()
 		if not f.getIsDir():
 			self.sys.filemanager.openFile(f.getPath())
 		else:
@@ -59,24 +57,22 @@ class HirarchicalView(View):
 
 	def showContext(self, treeview, event):
 		if event.button == 3:
-			selection = treeview.get_selection()
-			selection.set_mode(gtk.SELECTION_SINGLE)
-			tree_model, tree_iter = selection.get_selected()	
+			f = self.getFObjFromSelectedRow()
 			m = gtk.Menu()
 			m1 = gtk.MenuItem ('Add Tag')
 			m.append(m1)
 			m2 = gtk.MenuItem('Properties')
 			m.append(m2)
-			m1.connect('button_press_event',self.context_AddTag,'test')
-			m2.connect('button_press_event',self.context_Properties,'test')
+			m1.connect('button_press_event',self.context_AddTag,f)
+			m2.connect('button_press_event',self.context_Properties,f)
 			m.show_all()
 			m.popup( None, None, None, event.button, event.time)
 			return True
 		return False
 
-	def context_AddTag(self,widget,event,mydata):
+	def context_AddTag(self,widget,event,fobj):
 		print('set tag')
-		print('test: '+mydata)
+		print('test: '+str(fobj))
 
-	def context_Properties(self,widget,event,mydata):
+	def context_Properties(self,widget,event,fobj):
 		print('properties')

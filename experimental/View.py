@@ -25,7 +25,7 @@ class View(gtk.TreeView):
 
 	def createTree(self):
 		#Objekt fuer den Baum
-		self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING)
+		self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
 		
 		#1. Spalte
 		self.cl1 = gtk.TreeViewColumn('Datei')
@@ -57,7 +57,6 @@ class View(gtk.TreeView):
 	def getFileIcon(self):
 		return self.get_icon_pixbuf('STOCK_FILE')
 
-
 	def update(self):
 		self.show_all()
 
@@ -66,6 +65,13 @@ class View(gtk.TreeView):
 
 	def get_actTxtInput(self):
 		return self.acttxtinput
+
+	def getFObjFromSelectedRow(self):
+		treeview = self
+		selection = treeview.get_selection()
+		selection.set_mode(gtk.SELECTION_SINGLE)
+		tree_model, tree_iter = selection.get_selected()
+		return tree_model.get_value(tree_iter,2)
 
 #Registriert diese Klasse als pygtk-widget
 gobject.type_register(View)
