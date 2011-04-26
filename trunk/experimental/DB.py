@@ -126,7 +126,13 @@ class DB:
 
 		self.connection.commit()
 
+	def removeFile(self, fi):
+		query = "DELETE FROM files WHERE files.name = '%s' AND files.path = '%s' AND isdir ='%s'" % (fi.getFileName(), fi.getPath(), fi.getIsDir())
+		self.cursor.execute(query)
+		self.connection.commit()
 
+	def moveFile(self, fi)
+		pass
 
 if __name__ == "__main__":
    	print "TEST"
@@ -136,7 +142,10 @@ if __name__ == "__main__":
 	#db.test(File.File())
 	#db.test(1)
 	fi	= File.File(fileName="name", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagX'], isDir=False)
-	db.addFile(fi)
+	#db.addFile(fi)
+	li = db.getFilesFromTag("tagX")
+	print li[3].getFileName()
+	db.removeFile(fi)
 	"""out = db.executeQuerry("SELECT * FROM files")
 	print out
 	f = File.File(fileName="test.txt", path="/home/niklaus/")
