@@ -24,7 +24,7 @@ class HirarchicalView(View):
 		if self.items != 'error':
 			self.model.clear()
 			for i in range(len(self.items)):
-				if self.items[i].isDir:
+				if self.items[i].getIsDir():
 					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName()])
 				else:
 					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName()])
@@ -48,8 +48,8 @@ class HirarchicalView(View):
 	def rowActivate(self,iter, path, user_data):
 		ix = path[0]
 		f = self.items[ix]
-		print(f.isDir)
-		if not f.isDir:
+		print(f.getIsDir())
+		if not f.getIsDir():
 			self.sys.filemanager.openFile(f.getPath())
 		else:
 			self.sys.filemanager.openDir(f.getPath())
