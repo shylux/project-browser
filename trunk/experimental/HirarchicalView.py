@@ -19,8 +19,6 @@ class HirarchicalView(View):
 	def __init__(self,sys):
 		View.__init__(self,sys)
 		self.set_actTxtInput(sys.c.initStrHirarchical)
-		self.connect('row-activated',self.rowActivate)
-		self.connect('button_release_event',self.showContext)
 
 	def update(self):
 		self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
@@ -47,32 +45,3 @@ class HirarchicalView(View):
 				self.sys.gui.listcompl.append([matched[i]])
 		except:
 			pass
-
-	def rowActivate(self,treeview, path, user_data):
-		f = self.getFObjFromSelectedRow()
-		if not f.getIsDir():
-			self.sys.filemanager.openFile(f.getPath())
-		else:
-			self.sys.filemanager.openDir(f.getPath())
-
-	def showContext(self, treeview, event):
-		if event.button == 3:
-			f = self.getFObjFromSelectedRow()
-			m = gtk.Menu()
-			m1 = gtk.MenuItem ('Add Tag')
-			m.append(m1)
-			m2 = gtk.MenuItem('Properties')
-			m.append(m2)
-			m1.connect('button_press_event',self.context_AddTag,f)
-			m2.connect('button_press_event',self.context_Properties,f)
-			m.show_all()
-			m.popup( None, None, None, event.button, event.time)
-			return True
-		return False
-
-	def context_AddTag(self,widget,event,fobj):
-		print('set tag')
-		print('test: '+str(fobj))
-
-	def context_Properties(self,widget,event,fobj):
-		print('properties')

@@ -18,4 +18,11 @@ class TagView(View):
 		self.set_actTxtInput(sys.c.initStrTag)
 
 	def update(self):
-		pass
+		self.items = self.sys.db.getFilesFromTag(self.get_actTxtInput())
+		self.model.clear()
+		for i in range(len(self.items)):
+			if self.items[i].getIsDir():
+				self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i]])
+			else:
+				self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i]])
+		self.set_model(self.model)

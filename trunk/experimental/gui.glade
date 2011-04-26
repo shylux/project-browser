@@ -209,11 +209,25 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkScrolledWindow" id="View">
+              <widget class="GtkHPaned" id="hspView">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
+                <property name="position">215</property>
+                <child>
+                  <widget class="GtkScrolledWindow" id="View">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="vscrollbar_policy">automatic</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="resize">False</property>
+                    <property name="shrink">True</property>
+                  </packing>
+                </child>
                 <child>
                   <placeholder/>
                 </child>
