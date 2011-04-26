@@ -30,7 +30,7 @@ class FileManager:
 				return a
 			for i in range(len(array)):
 				a.append(File(self.getDirName(array[i]),array[i]))
-				a[i].setDir(self.isDir(array[i]))
+				a[i].setIsDir(self.isDir(array[i]))
 		else:
 			if path == '':
 				path = path + '/'
@@ -44,7 +44,7 @@ class FileManager:
 				print('fullpath from getFilesFromDir: '+fullpath)
 				print(fullpath)
 				a.append(File(array[i],fullpath))
-				a[i].setDir(self.isDir(fullpath))
+				a[i].setIsDir(self.isDir(fullpath))
 		return a
 
 	def getFileName(self,path):
