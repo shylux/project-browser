@@ -14,6 +14,7 @@
 
 from HirarchicalView import *
 from TagView import *
+from AddTag import *
 
 
 #Modul um diese Klasse als Seperaten-Prozess zu starten
@@ -102,7 +103,9 @@ class GUI(threading.Thread):
 			self.actview = self.hview
 			self.txtEntry.set_text(self.actview.get_actTxtInput())
 			self.showHirarchical('init')
-		
+		self.hspView = self.xml.get_widget('hspView')
+		self.addTagContent = AddTag(self.sys)
+		self.hspView.add(self.addTagContent.getWidget())
 
 		#Zeigt alles an
 		self.showall()

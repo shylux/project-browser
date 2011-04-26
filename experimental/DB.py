@@ -24,7 +24,7 @@ class DB:
 
 	def establishConnection(self):
 	  	print self.dbpath
-	  	self.connection	= sqlite3.connect(self.dbpath)
+	  	self.connection	= sqlite3.connect(self.dbpath,check_same_thread = False)
 		self.cursor	= self.connection.cursor()
 		print "connection established"
 		#Check wether the tables in the DB exist. If they don't, we'll create 'em
@@ -131,7 +131,7 @@ class DB:
 		self.cursor.execute(query)
 		self.connection.commit()
 
-	def moveFile(self, fi)
+	def moveFile(self, fi):
 		pass
 
 if __name__ == "__main__":
