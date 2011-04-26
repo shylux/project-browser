@@ -23,27 +23,25 @@ class FileManager:
 	def getFilesFromDir(self,path):
 		a = []
 		if not os.path.exists(path):
-			print('if')
 			matched = self.searchMatchDir(path)
-			print('matched: '+str(matched))
 			if len(matched) >= 1:
 				array = matched
 			else:
 				return a
 			for i in range(len(array)):
-				print('basename: '+self.getDirName(array[i]))
 				a.append(File(self.getDirName(array[i]),array[i]))
 				a[i].setDir(self.isDir(array[i]))
 		else:
-			print('else')
 			if path == '':
 				path = path + '/'
 			if path[-1:] != '/':
 				path = path + '/'
 			array =  os.listdir(path)
 			for i in range(len(array)):
-				print('dirpath: '+path+', file: '+array[i])
 				fullpath = path + array[i]
+				if self.isDir(fullpath):
+					fullpath = fullpath + '/'
+				print('fullpath from getFilesFromDir: '+fullpath)
 				print(fullpath)
 				a.append(File(array[i],fullpath))
 				a[i].setDir(self.isDir(fullpath))
@@ -92,6 +90,7 @@ class FileManager:
 
 
 	def openFile(self,path):
+		print('fullpath: '+path)
 		if self.sys.c.os == 'linux':
 			#Funktioniert nur bei Ubuntu
 			os.system('/usr/bin/xdg-open '+path)
@@ -102,6 +101,7 @@ class FileManager:
 			pass
 
 	def openDir(self,path):
+		print('fullpath: '+path)
 		self.sys.gui.txtEntry.set_text(path)
 		self.sys.gui.updateView()
 		
