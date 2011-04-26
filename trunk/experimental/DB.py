@@ -53,6 +53,9 @@ class DB:
 		return ret_value
 
 	def generateFilesArray(self, li):
+	  	"""Takes the result from SELECT * FROM files... statement.
+		Then gets for each of the files the corresponding tags, and puts it all together
+		into a File.py object"""
 	  	ret_value	= []
 		for row in li:
 			tagQuery	= "SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE files.fid = '%d'" % (row[0], )
@@ -60,7 +63,7 @@ class DB:
 			tagLi		= self.cursor.fetchall()
 			tagList		= self.changeList(tagLi)
 
-			fi	= File.File(fileName=row[1], path=row[2], backup=row[3], tags=tagList)
+			fi	= File.File(fileName=row[1], path=row[2], backup=row[3], isDir=row[4], tags=tagList)
 			ret_value.append(fi)
 		return ret_value
 
@@ -98,7 +101,7 @@ class DB:
 		return self.changeList(li)
 
 	def createDB(self):
-	  	self.cursor.execute("CREATE TABLE files(fid INTEGER PRIMARY KEY, filename TEXT, path TEXT, backup BOOLEAN)")
+	  	self.cursor.execute("CREATE TABLE files(fid INTEGER PRIMARY KEY, filename TEXT, path TEXT, backup BOOLEAN, isdir BOOLEAN)")
 		self.cursor.execute("CREATE TABLE tagnames(tagid INTEGER PRIMARY KEY, tagname TEXT UNIQUE , backup BOOLEAN)")
 		self.cursor.execute("CREATE TABLE file_tag_relations(relid INTEGER PRIMARY KEY, fk_fid INTEGER, fk_tagid INTEGER)")
 		self.connection.commit()
@@ -106,7 +109,7 @@ class DB:
 	def addFile(self, fi):
 		#IMPORTANT: For this to work, the field tagnames.tagname has to be marked as UNIQUE!
 		#Otherwise, attempts to insert tags might cause trouble!
-		query = "INSERT INTO FILES (filename, path, backup) VALUES ('%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup())
+		query = "INSERT INTO FILES (filename, path, backup, isdir) VALUES ('%s', '%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir())
 		self.cursor.execute(query)
 		fid	= self.cursor.lastrowid
 
@@ -132,7 +135,7 @@ if __name__ == "__main__":
 	db = DB(path)
 	#db.test(File.File())
 	#db.test(1)
-	fi	= File.File(fileName="name", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagX'], )
+	fi	= File.File(fileName="name", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagX'], isDir=False)
 	db.addFile(fi)
 	"""out = db.executeQuerry("SELECT * FROM files")
 	print out

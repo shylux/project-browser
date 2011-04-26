@@ -10,8 +10,7 @@
 #			0.9		21.04.2011	Created methods and functionality. Added __doc__s. added test (bottom)
 
 class File:
-  	"""represents a file on the filesysem
-	"""
+  	"""represents a file on the filesysem"""
   	fileName	= None
 	path		= None
 	isDir		= None
@@ -38,7 +37,7 @@ class File:
 	  	"""@param	path	, string"""
 	  	self.path	= path
 
-	def setDir(self,b):
+	def setIsDir(self,b):
 		"""@param	b	, boolean """
 		self.isDir = b
 
@@ -58,7 +57,7 @@ class File:
 	  	"""@return path, string"""
 	  	return self.path
 
-	def isDir(self):
+	def getIsDir(self):
 		"""@return isDir, boolean """
 		return self.isDir
 
@@ -112,5 +111,11 @@ if __name__ == "__main__":
 		print "Test #5: Succeed"
 	else:
 	  	print "Test #5: FAIL"
+	
+	x.setIsDir(True)
+	if x.getIsDir():
+		print "Test #6: Succeed"
+	else:
+	  	print "Test #6: FAIL"
 
 	print File.__init__.__doc__
