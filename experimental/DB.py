@@ -110,22 +110,25 @@ class DB:
 	def addFile(self, fi):
 		#IMPORTANT: For this to work, the field tagnames.tagname has to be marked as UNIQUE!
 		#Otherwise, attempts to insert tags might cause trouble!
-		query = "INSERT INTO FILES (filename, path, backup, isdir) VALUES ('%s', '%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir())
-		self.cursor.execute(query)
-		fid	= self.cursor.lastrowid
+		if not self.fileInDB(fi):
+			query = "INSERT INTO FILES (filename, path, backup, isdir) VALUES ('%s', '%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir())
+			self.cursor.execute(query)
+			fid	= self.cursor.lastrowid
 
-		for row in fi.getTags():
-			tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
-			self.cursor.execute(tagQuery)
+			for row in fi.getTags():
+				tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
+				self.cursor.execute(tagQuery)
 
-			idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
-			self.cursor.execute(idQuery)
-			res = self.cursor.fetchall()
+				idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
+				self.cursor.execute(idQuery)
+				res = self.cursor.fetchall()
 
-			relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
-			self.cursor.execute(relQuery)
+				relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
+				self.cursor.execute(relQuery)
 
-		self.connection.commit()
+			self.connection.commit()
+		else:
+			print "File already in DB, won't add it again!"
 
 	def removeFile(self, fi):
 		query = "DELETE FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath(),)
@@ -194,5 +197,5 @@ if __name__ == "__main__":
 	print db.getAllTags()"""
 	#print '='*10
 	#db.fileInDB(File.File(fileName="name", path="/home/niklaus/"))
-	#db.addFile(File.File(fileName="addTagTestFile.test", path="/home/niklaus/text/", tags=['testTag1', 'testTag2'], isDir=False, backup=False))
+	db.addFile(File.File(fileName="addTagTestFile2.test", path="/home/niklaus/text/", tags=['testTag1', 'testTag2'], isDir=False, backup=False))
 	#db.addTagToFile(File.File(fileName="addTagTestFile.test", path="/home/niklaus/text/"), 'testTag3')
