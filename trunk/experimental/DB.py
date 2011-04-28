@@ -34,6 +34,7 @@ class DB:
 			self.createDB()
 
 	def fileInDB(self, fi):
+	  	"""Checks wether a files is in the db or not"""
 		checkQuery = "SELECT files.filename FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath(), )
 		self.cursor.execute(checkQuery)
 		value = self.cursor.fetchall()
@@ -47,13 +48,29 @@ class DB:
 		self.cursor.execute(querry)
 		return self.cursor.fetchall()
 
-	def changeList(self, li):
+	def __changeList(self, li):
 		ret_value	= []
 		for row in li:
 			ret_value.append(row[0])
 		return ret_value
 
-	def generateFilesArray(self, li):
+	def __connectTagsToFile(self, tags, fid):
+			for row in tags:
+				tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
+				print tagQuery
+				self.cursor.execute(tagQuery)
+
+				idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
+				self.cursor.execute(idQuery)
+				res = self.cursor.fetchall()
+
+				relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
+				self.cursor.execute(relQuery)
+
+			self.connection.commit()
+	
+
+	def __generateFilesArray(self, li):
 	  	"""Takes the result from SELECT * FROM files... statement.
 		Then gets for each of the files the corresponding tags, and puts it all together
 		into a File.py object"""
@@ -62,20 +79,39 @@ class DB:
 			tagQuery	= "SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE files.fid = '%d'" % (row[0], )
 			self.cursor.execute(tagQuery)
 			tagLi		= self.cursor.fetchall()
-			tagList		= self.changeList(tagLi)
+			tagList		= self.__changeList(tagLi)
 
 			fi	= File.File(fileName=row[1], path=row[2], backup=row[3], isDir=row[4], tags=tagList)
 			ret_value.append(fi)
 		return ret_value
 
+	def updateFile(self, fi):
+	  	new_tags = []
+		old_tags = []
+		if self.fileInDB(fi):
+			old_tags = self.getTagsToFile(fi)
+			print old_tags
+			new_tags = fi.getTags()
+			print new_tags
+			for row in old_tags:
+				try:
+					new_tags.remove(row)
+				except:
+					print "Error while removing element from old_tags"
+			print new_tags
+			if len(new_tags) > 0:
+				fidQuery = "SELECT files.fid FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath())
+				self.cursor.execute(fidQuery)
+				fid = self.cursor.fetchall()[0][0]
+				print fid
+				self.__connectTagsToFile(new_tags, fid)
 	     	
 	def getTagsToFile(self, _file):
 		li		= None
-
 	  	query	= "SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE path = '%s' AND filename = '%s'" % (_file.getPath(), _file.getFileName())
 		self.cursor.execute(query)
 		li	= self.cursor.fetchall()
-		return self.changeList(li)
+		return self.__changeList(li)
 
 	def getFilesFromPath(self, path):
 		ret_value	= []
@@ -84,7 +120,7 @@ class DB:
 		query	= "SELECT * FROM files WHERE path = '%s'" % (path, )
 		self.cursor.execute(query)
 		li	= self.cursor.fetchall()
-		return self.generateFilesArray(li)
+		return self.__generateFilesArray(li)
 
 	def getFilesFromTag(self, tag):
 		ret_value	= []
@@ -94,12 +130,12 @@ class DB:
 		query	= "SELECT files.* FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE tagnames.tagname = '%s'" % (tag, )
 		self.cursor.execute(query)
 		li	= self.cursor.fetchall()
-		return self.generateFilesArray(li)
+		return self.__generateFilesArray(li)
 
 	def getAllTags(self):
 		self.cursor.execute("SELECT tagname FROM tagnames")
 		li = self.cursor.fetchall()
-		return self.changeList(li)
+		return self.__changeList(li)
 
 	def createDB(self):
 	  	self.cursor.execute("CREATE TABLE files(fid INTEGER PRIMARY KEY, filename TEXT, path TEXT, backup BOOLEAN, isdir BOOLEAN)")
@@ -114,19 +150,8 @@ class DB:
 			query = "INSERT INTO FILES (filename, path, backup, isdir) VALUES ('%s', '%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir())
 			self.cursor.execute(query)
 			fid	= self.cursor.lastrowid
-
-			for row in fi.getTags():
-				tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
-				self.cursor.execute(tagQuery)
-
-				idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
-				self.cursor.execute(idQuery)
-				res = self.cursor.fetchall()
-
-				relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
-				self.cursor.execute(relQuery)
-
-			self.connection.commit()
+			self.connection.commit();
+			self.__connectTagsToFile(fi.getTags(), fid)
 		else:
 			print "File already in DB, won't add it again!"
 
@@ -143,19 +168,7 @@ class DB:
 			idQuery = "SELECT files.fid FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath())
 			self.cursor.execute(idQuery)
 			fid = self.cursor.fetchall()[0][0]
-
-			tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (tag, )
-			self.cursor.execute(tagQuery)
-
-			idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (tag, )
-			self.cursor.execute(idQuery)
-			res = self.cursor.fetchall()
-
-			relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
-			self.cursor.execute(relQuery)
-
-			self.connection.commit()
-		#checkQuery = "SELECT 
+			self.__connectTagsToFile([tag, ], fid)
 
 	def addTag(self, tag):
 		query = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (tag, )
@@ -169,8 +182,11 @@ if __name__ == "__main__":
 	db = DB(path)
 	#db.test(File.File())
 	#db.test(1)
-	#fi	= File.File(fileName="name", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagX'], isDir=False)
+	#fi	= File.File(fileName="name1", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagy', 'tag77'], isDir=False)
+	fi	= File.File(fileName="name2", path="/home/niklaus/", tags=['tag1', 'tagy'], isDir=False)
 	#db.addFile(fi)
+	db.addTagToFile(fi, "testTag07")
+	#db.updateFile(fi)
 	#li = db.getFilesFromTag("tagX")
 	#print li[1].getFileName()
 	#db.removeFile(fi)
@@ -197,5 +213,5 @@ if __name__ == "__main__":
 	print db.getAllTags()"""
 	#print '='*10
 	#db.fileInDB(File.File(fileName="name", path="/home/niklaus/"))
-	db.addFile(File.File(fileName="addTagTestFile2.test", path="/home/niklaus/text/", tags=['testTag1', 'testTag2'], isDir=False, backup=False))
+	#db.addFile(File.File(fileName="addTagTestFile2.test", path="/home/niklaus/text/", tags=['testTag1', 'testTag2'], isDir=False, backup=False))
 	#db.addTagToFile(File.File(fileName="addTagTestFile.test", path="/home/niklaus/text/"), 'testTag3')
