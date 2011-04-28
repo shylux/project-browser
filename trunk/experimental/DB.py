@@ -105,6 +105,12 @@ class DB:
 				fid = self.cursor.fetchall()[0][0]
 				print fid
 				self.__connectTagsToFile(new_tags, fid)
+			else:
+				print "No new tags, won't do anything"
+		else:
+			print "File not yet in DB, will run addFile instead"
+			self.addFile(fi)
+				
 	     	
 	def getTagsToFile(self, _file):
 		li		= None
@@ -153,7 +159,8 @@ class DB:
 			self.connection.commit();
 			self.__connectTagsToFile(fi.getTags(), fid)
 		else:
-			print "File already in DB, won't add it again!"
+			print "File already in DB, won't add it again, will run updateFile instead!"
+			self.updateFile(fi)
 
 	def removeFile(self, fi):
 		query = "DELETE FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath(),)
@@ -183,9 +190,9 @@ if __name__ == "__main__":
 	#db.test(File.File())
 	#db.test(1)
 	#fi	= File.File(fileName="name1", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagy', 'tag77'], isDir=False)
-	fi	= File.File(fileName="name2", path="/home/niklaus/", tags=['tag1', 'tagy'], isDir=False)
-	#db.addFile(fi)
-	db.addTagToFile(fi, "testTag07")
+	fi	= File.File(fileName="name2", path="/home/niklaus/", tags=['tag1', 'tagy', 'tagZZ'], isDir=False)
+	##db.addFile(fi)
+	#db.addTagToFile(fi, "testTag07")
 	#db.updateFile(fi)
 	#li = db.getFilesFromTag("tagX")
 	#print li[1].getFileName()
