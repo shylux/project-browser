@@ -95,7 +95,7 @@ class DB:
 			print new_tags
 			for row in old_tags:
 				try:
-					new_tags.remove(row)
+					new_tags = filter (lambda a: a != row, new_tags)
 				except:
 					print "Error while removing element from old_tags"
 			print new_tags
