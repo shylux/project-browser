@@ -55,6 +55,7 @@ class DB:
 		return ret_value
 
 	def __connectTagsToFile(self, tags, fid):
+			tags = list(set(tags))
 			for row in tags:
 				tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
 				print tagQuery
