@@ -27,9 +27,8 @@ class View(gtk.TreeView):
 		self.acttxtinput = ''
 	
 		self.createTree()
-		self.connect('row-activated',self.rowActivate)
 		self.connect('button_release_event',self.showContext)
-		self.connect('cursor-changed',self.test)
+		self.connect('cursor-changed',self.updateTagProperties)
 
 	def createTree(self):
 		#Objekt fuer den Baum
@@ -51,7 +50,7 @@ class View(gtk.TreeView):
 
 		#Allgemeine Definitionen fuer den Baum
 		self.set_search_column(1)
-		#self.cl1.set_sort_column_id(1)
+		self.cl1.set_sort_column_id(1)
 
 		self.update()
 
@@ -81,22 +80,15 @@ class View(gtk.TreeView):
 		tree_model, tree_iter = selection.get_selected()
 		return tree_model.get_value(tree_iter,2)
 
-	def rowActivate(self,treeview, path, user_data):
-		f = self.getFObjFromSelectedRow()
-		if not f.getIsDir():
-			self.sys.filemanager.openFile(f.getPath())
-		else:
-			self.sys.filemanager.openDir(f.getPath())
-
 	def showContext(self, treeview, event):
 		if event.button == 3:
 			f = self.getFObjFromSelectedRow()
 			m = gtk.Menu()
-			m1 = gtk.MenuItem ('Add Tag')
-			m.append(m1)
+			#m1 = gtk.MenuItem ('Add Tag')
+			#m.append(m1)
 			m2 = gtk.MenuItem('Properties')
 			m.append(m2)
-			m1.connect('button_press_event',self.context_AddTag,f)
+			#m1.connect('button_press_event',self.context_AddTag,f)
 			m2.connect('button_press_event',self.context_Properties,f)
 			m.show_all()
 			m.popup( None, None, None, event.button, event.time)
@@ -106,7 +98,8 @@ class View(gtk.TreeView):
 	def context_Properties(self,widget,event,fobj):
 		print('properties')
 
-	def test(self,event):
+	def updateTagProperties(self,event):
+		print('name: '+self.getFObjFromSelectedRow().getFileName())
 		self.sys.gui.addTagContent.update(self.getFObjFromSelectedRow())
 
 #Registriert diese Klasse als pygtk-widget
