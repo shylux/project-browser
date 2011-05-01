@@ -24,6 +24,13 @@ class Utility:
 		elif platform.startswith("win"):
 			 return "windows"
 
+	
+	def strBooleanToBoolean(self,s):
+		if s == 'False':
+			return False
+		if s == 'True':
+			return True
+
 #Dynamisches Objekt, dass fuer normale Objekte gebraucht werden kann
 class NO():
 	pass

@@ -90,6 +90,9 @@ class GUI(threading.Thread):
 		self.Status.push(1,'init')
 
 		#Init-View
+		self.hspView = self.xml.get_widget('hspView')
+		self.addTagContent = AddTag(self.sys)
+		self.hspView.add(self.addTagContent.getWidget())
 		self.view = self.xml.get_widget('View')
 		if self.mod == 'hirarchical':
 			self.actview = self.hview
@@ -103,9 +106,6 @@ class GUI(threading.Thread):
 			self.actview = self.hview
 			self.txtEntry.set_text(self.actview.get_actTxtInput())
 			self.showHirarchical('init')
-		self.hspView = self.xml.get_widget('hspView')
-		self.addTagContent = AddTag(self.sys)
-		self.hspView.add(self.addTagContent.getWidget())
 
 		#Zeigt alles an
 		self.showall()
@@ -159,6 +159,7 @@ class GUI(threading.Thread):
 	def changeView(self,newview):
 		#Speichert Text Input String in der zuschliessenden View
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
+		self.addTagContent.clearAll()
 
 		#Schliesst die alte View
 		#self.view.remove(self.actview)
@@ -199,6 +200,13 @@ class GUI(threading.Thread):
 	def updateView(self):
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
 		self.actview.update()
+
+	
+	def openDirInHirarchical(self,path):
+		self.showHirarchical('init')
+		self.actview.set_actTxtInput(path)
+		self.listcompl.clear()
+		self.txtEntry.set_text(self.actview.get_actTxtInput())
 	###
 
 

@@ -18,7 +18,9 @@ class HirarchicalView(View):
 	mod = 'hirarchical'
 	def __init__(self,sys):
 		View.__init__(self,sys)
+
 		self.set_actTxtInput(sys.c.initStrHirarchical)
+		self.connect('row-activated',self.rowActivate)
 
 	def update(self):
 		self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
@@ -45,3 +47,11 @@ class HirarchicalView(View):
 				self.sys.gui.listcompl.append([matched[i]])
 		except:
 			pass
+
+
+	def rowActivate(self,treeview, path, user_data):
+		f = self.getFObjFromSelectedRow()
+		if not f.getIsDir():
+			self.sys.filemanager.openFile(f.getPath())
+		else:
+			self.sys.filemanager.openDir(f.getPath())

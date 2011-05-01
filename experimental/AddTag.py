@@ -5,7 +5,7 @@ class AddTag():
 		self.sys = sys
 		self.fobj = None
 		self.xml = gtk.glade.XML("addTag.glade")
-		self.popup = self.xml .get_widget("vbxMain")
+		self.main = self.xml .get_widget("vbxMain")
 		self.txtFiles = self.xml.get_widget("txtFileNames")
 		self.txtTags = self.xml.get_widget("txtTags")
 		self.btnSave = self.xml.get_widget("btnSave")
@@ -28,30 +28,39 @@ class AddTag():
 		render = gtk.CellRendererText()
 		self.cl1.pack_start(render)
 		self.cl1.add_attribute(render,'text',0)
+
+		self.tree.set_search_column(1)
+		self.cl1.set_sort_column_id(1)
 		
 		self.updateModel()
-		self.popup.show_all()
+		self.main.show_all()
 
 	def update(self,fobj):
 		self.clearAll()
+		self.fobj = None
 		self.fobj = fobj
-		self.txtTags.set_text(', '.join(fobj.getTags()))
-		self.txtFiles.set_text(fobj.getFileName())
+		self.txtTags.set_text(', '.join(self.fobj.getTags()))
+		print('gesetzte tags'+str(self.fobj.getTags()))
+		self.txtFiles.set_text(self.fobj.getFileName())
 		self.updateModel()
 
 	def updateModel(self):
+		self.model.clear()
 		for tag in self.sys.db.getAllTags():
+			print('for')
 			self.model.append(None,[tag])
 		pass
 
 	def clearAll(self):
+		print('clear all')
 		self.fobj = None
 		self.model.clear()
 		self.txtFiles.set_text('')
 		self.txtTags.set_text('')
+		print('txttags'+self.txtTags.get_text())
 		
 	def getWidget(self):
-		return self.popup
+		return self.main
 		
 	def addClickedTag(self,treeview, path, user_data):
 		selection = treeview.get_selection()
@@ -69,7 +78,8 @@ class AddTag():
 		tags = self.txtTags.get_text().split(',')
 		for i in range(len(tags)):
 			tags[i] = tags[i].strip()
+		tags = list(set(tags))
 		if len(tags) != 0:
 			self.fobj.addTags(tags)
-			self.sys.db.addFile(self.fobj)
-		self.update(self.fobj)
+			self.sys.db.updateFile(self.fobj)
+		self.updateModel()
