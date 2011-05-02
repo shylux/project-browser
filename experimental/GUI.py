@@ -60,14 +60,14 @@ class GUI():
 		self.txtEntry = self.xml.get_widget('txtEntry')
 		#self.txtEntry.connect('key_release_event',self.searchKey)
 		self.txtEntry.connect('changed',self.searchKey)
-		com = gtk.EntryCompletion()
+		self.com = gtk.EntryCompletion()
 		#com.set_inline_selection(True)
 		#com.connect('match-selected',self.searchCompletion)
-		self.txtEntry.set_completion(com)
+		self.txtEntry.set_completion(self.com)
 		self.listcompl = gtk.ListStore(gobject.TYPE_STRING)
-		com.set_model(self.listcompl)
-		com.set_text_column(0)
-		com.set_popup_set_width(True)
+		self.com.set_model(self.listcompl)
+		self.com.set_text_column(0)
+		self.com.set_popup_set_width(True)
 		
 		#self.txtEntry.connect('activate',self.searchKey)
 		#self.txtEntry.connect('backspace',self.searchKey)
@@ -179,7 +179,7 @@ class GUI():
 		self.actview = newview
 
 		#Text Input aktualisieren
-		self.listcompl.clear()
+		#self.listcompl.clear()
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
 
 		#Fokus auf Text Input

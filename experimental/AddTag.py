@@ -29,8 +29,9 @@ class AddTag():
 		self.cl1.pack_start(render)
 		self.cl1.add_attribute(render,'text',0)
 
-		self.tree.set_search_column(1)
-		self.cl1.set_sort_column_id(1)
+		#Allgemeine Tree Definitionen
+		self.tree.set_search_column(0)
+		self.cl1.set_sort_column_id(0)
 		
 		self.updateModel()
 		self.main.show_all()
@@ -58,6 +59,7 @@ class AddTag():
 		self.txtFiles.set_text('')
 		self.txtTags.set_text('')
 		print('txttags'+self.txtTags.get_text())
+		self.updateModel()
 		
 	def getWidget(self):
 		return self.main
@@ -83,3 +85,4 @@ class AddTag():
 			self.fobj.addTags(tags)
 			self.sys.db.updateFile(self.fobj)
 		self.updateModel()
+		self.sys.gui.actview.update()

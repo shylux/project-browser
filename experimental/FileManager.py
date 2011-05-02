@@ -98,6 +98,8 @@ class FileManager:
 			os.system('/usr/bin/xdg-open '+path.replace(chr(32),'\ '))
 		elif self.sys.c.os == 'windows':
 			os.system(path)
+		elif self.sys.c.os == 'mac':
+			os.system('open '+path.replace(chr(32),'\ '))
 		else:
 			#Da muss noch eine Loesung sein, wenn die Datei nicht gestartet werden kann
 			pass

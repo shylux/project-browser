@@ -18,7 +18,8 @@ class HirarchicalView(View):
 	mod = 'hirarchical'
 	def __init__(self,sys):
 		View.__init__(self,sys)
-
+		
+		self.sys = sys
 		self.set_actTxtInput(sys.c.initStrHirarchical)
 		self.connect('row-activated',self.rowActivate)
 
@@ -28,9 +29,9 @@ class HirarchicalView(View):
 			self.model.clear()
 			for i in range(len(self.items)):
 				if self.items[i].getIsDir():
-					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i]])
+					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 				else:
-					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i]])
+					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 			self.set_model(self.model)
 		self.completion()
 
