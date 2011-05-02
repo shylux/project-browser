@@ -38,7 +38,7 @@ class Main():
 	def start(self,modus):
 		self.mod = modus
 		self.filemanager = FileManager(self)
-		self.tagmanager = TagManager()
+		self.tagmanager = TagManager(self)
 		self.u = Utility()
 		self.c = Constant(self)
 		print "path = "+ self.c.dbPath

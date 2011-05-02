@@ -34,7 +34,7 @@ class View(gtk.TreeView):
 
 	def createTree(self):
 		#Objekt fuer den Baum
-		self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
+		self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING, gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
 		
 		#1. Spalte
 		self.cl1 = gtk.TreeViewColumn('Datei')
@@ -49,10 +49,20 @@ class View(gtk.TreeView):
 		render2 = gtk.CellRendererText()
 		self.cl1.pack_start(render2,True)
 		self.cl1.add_attribute(render2,'text',1)
+		
+		#2. Spalte
+		self.cl2 = gtk.TreeViewColumn("Tag's")
+		self.append_column(self.cl2)
+		
+		#Definition des Textes fuer die 2. Spalte
+		render3 = gtk.CellRendererText()
+		self.cl2.pack_start(render3,True)
+		self.cl2.add_attribute(render3,'text',3)
 
 		#Allgemeine Definitionen fuer den Baum
 		self.set_search_column(1)
-		self.cl1.set_sort_column_id(1)
+		self.cl1.set_sort_column_id(0)
+		self.cl2.set_sort_column_id(1)
 
 		self.update()
 
@@ -101,8 +111,11 @@ class View(gtk.TreeView):
 		print('properties')
 
 	def updateTagProperties(self,event):
-		print('name: '+self.getFObjFromSelectedRow().getFileName())
-		self.sys.gui.addTagContent.update(self.getFObjFromSelectedRow())
+		try:
+			print('name: '+self.getFObjFromSelectedRow().getFileName())
+			self.sys.gui.addTagContent.update(self.getFObjFromSelectedRow())
+		except:
+			pass
 
 #Registriert diese Klasse als pygtk-widget
 gobject.type_register(View)

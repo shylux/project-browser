@@ -20,9 +20,11 @@ class Utility:
 	def checkOS(self):
 		platform = sys.platform
 		if platform.startswith("linux"):
-			 return "linux"
+			return "linux"
 		elif platform.startswith("win"):
-			 return "windows"
+			return "windows"
+		elif platform.startswith("darwin"):
+			return "mac"
 
 	
 	def strBooleanToBoolean(self,s):

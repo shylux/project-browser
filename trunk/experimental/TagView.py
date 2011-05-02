@@ -19,20 +19,50 @@ class TagView(View):
 		self.connect('row-activated',self.rowActivate)
 
 	def update(self):
-		self.items = self.sys.db.getFilesFromTag(self.get_actTxtInput())
 		self.model.clear()
-		for i in range(len(self.items)):
-			self.items[i].setIsDir(self.sys.u.strBooleanToBoolean(self.items[i].getIsDir()))
-			if self.items[i].getIsDir():
-				self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i]])
-			else:
-				self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i]])
+		if self.get_actTxtInput() == '':
+			t = self.sys.db.getAllTags()
+			for i in range(len(t)):
+				self.model.append(None,[self.getFolderIcon(),'*',[t[i]],t[i]])
+			self.set_model(self.model)
+			return 0
+		itemarray = self.get_actTxtInput().split(',')
+		for j in range(len(itemarray)):
+			oneitem = itemarray[j].strip()
+			self.items = self.sys.db.getFilesFromTag(oneitem)
+			for i in range(len(self.items)):
+				self.items[i].setIsDir(self.sys.u.strBooleanToBoolean(self.items[i].getIsDir()))
+				if self.items[i].getIsDir():
+					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
+				else:
+					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 		self.set_model(self.model)
+		self.completion()
 
+	def completion(self):
+			print('search matched: '+self.get_actTxtInput())
+			matched = self.sys.tagmanager.searchMatchTags(self.get_actTxtInput())
+			print('matched :'+str(matched))
+		#try:
+			if self.sys.gui.listcompl != None:
+				#try:
+					self.sys.gui.listcompl.clear()
+				#except:
+				#	pass
+			for i in range(len(matched)):
+				print('for '+str(i)+'matched word: '+str(matched[i]))
+				self.sys.gui.listcompl.append([matched[i]])
+		#except:
+		#	pass
 
 	def rowActivate(self,treeview, path, user_data):
 		f = self.getFObjFromSelectedRow()
-		if not f.getIsDir():
-			self.sys.filemanager.openFile(f.getPath())
+		if isinstance(f,list):
+			print('f: '+str(f[0]))
+			self.sys.gui.txtEntry.set_text(f[0])
+			self.sys.gui.updateView()
 		else:
-			self.sys.gui.openDirInHirarchical(f.getPath())
+			if not f.getIsDir():
+				self.sys.filemanager.openFile(f.getPath())
+			else:
+				self.sys.gui.openDirInHirarchical(f.getPath())
