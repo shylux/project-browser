@@ -128,8 +128,10 @@ class View(gtk.TreeView):
 			print('delete item: '+str(rem))
 			for i in range(rem):
 				print('entfernen')
-				print('entfernt: '+str(self.history[len(self.history)-i]))
+				print('entfernt------------------------------: '+str(self.history[len(self.history)-i]))
+				print('-------------------')
 				self.history.remove(self.history[len(self.history)-i])
+			self.historyCursor = self.historyCursor - rem
 		else:
 			pass
 		self.historyCursor = self.historyCursor + 1
