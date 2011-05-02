@@ -31,6 +31,9 @@ class View(gtk.TreeView):
 		self.createTree()
 		self.connect('button_release_event',self.showContext)
 		self.connect('cursor-changed',self.updateTagProperties)
+		
+		self.__history = []
+		self.__history_cursor = 0
 
 	def createTree(self):
 		#Objekt fuer den Baum
