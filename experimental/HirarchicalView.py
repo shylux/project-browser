@@ -33,6 +33,13 @@ class HirarchicalView(View):
 				else:
 					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 			self.set_model(self.model)
+			if (len(self.getHistory()) == 0 and self.get_actTxtInput() != ''):
+					self.historyAddItem()
+			try:
+				if (self.get_actTxtInput() != self.getHistory()[self.historyCursor] and self.get_actTxtInput() != ''):
+					self.historyAddItem()
+			except:
+				pass
 		self.completion()
 
 	

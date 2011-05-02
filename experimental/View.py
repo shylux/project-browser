@@ -27,14 +27,14 @@ class View(gtk.TreeView):
 		gtk.TreeView.__init__(self,None)
 		self.sys = sys
 		self.acttxtinput = ''
-	
+		
+		self.history = []
+		self.historyCursor = -1
+		
 		self.createTree()
 		self.connect('button_release_event',self.showContext)
 		self.connect('cursor-changed',self.updateTagProperties)
 		
-		self.__history = []
-		self.__history_cursor = 0
-
 	def createTree(self):
 		#Objekt fuer den Baum
 		self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING, gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
@@ -119,6 +119,47 @@ class View(gtk.TreeView):
 			self.sys.gui.addTagContent.update(self.getFObjFromSelectedRow())
 		except:
 			pass
+	
+	def historyAddItem(self):
+		print('add item' + 'cursor: '+str(self.historyCursor)+', len history: '+str(len(self.history)))
+		#Wenn wieder vorwaertz gesprungen wird, werden alle Element nach der aktuelen Position geloescht
+		if self.historyCursor < len(self.history)-1:
+			rem = (len(self.history)-1) - self.historyCursor
+			print('delete item: '+str(rem))
+			for i in range(rem):
+				print('entfernen')
+				print('entfernt: '+str(self.history[len(self.history)-i]))
+				self.history.remove(self.history[len(self.history)-i])
+		else:
+			pass
+		self.historyCursor = self.historyCursor + 1
+		self.history.append(self.get_actTxtInput())
+		self.historyManagement()
+		
+	def historyManagement(self):
+			print('history: '+str(self.history))
+			print('history cursor: '+str(self.historyCursor))
+			if len(self.history) != self.historyCursor or len(self.history) != 0:
+				self.sys.gui.btnBack.set_sensitive(True)
+				self.sys.gui.btnFor.set_sensitive(True)
+			if len(self.history) >= self.historyCursor or len(self.history) != 0:
+				self.sys.gui.btnBack.set_sensitive(True)
+				self.sys.gui.btnFor.set_sensitive(False)
+			if self.historyCursor == 0 or len(self.history) < 1:
+				self.sys.gui.btnBack.set_sensitive(False)
+				self.sys.gui.btnFor.set_sensitive(False)
+		
+	
+	def getHistory(self):
+		return self.history
+		
+	def getHistoryCursor(self):
+		return self.historyCursor
+		
+	def setHistoryCursor(self,i):
+		self.historyCursor = i
+	
+	
 
 #Registriert diese Klasse als pygtk-widget
 gobject.type_register(View)
