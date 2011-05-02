@@ -51,10 +51,10 @@ class Main():
 		self.t = []
 
 		#FileSystemListener in einem eigenen Thread
-		self.fslistener = FileSystemListener(self)
+		#self.fslistener = FileSystemListener(self)
 		#self.fslistener.daemon = True
-		self.t.append(self.fslistener)
-		self.fslistener.start()
+		#self.t.append(self.fslistener)
+		#self.fslistener.start()
 
 		if modus == 'cli':
 			#CLI in einem eigenen Thread
@@ -70,9 +70,8 @@ class Main():
 		#GUI in einem eigenen Thread
 		self.gui = GUI(self)
 		#self.gui.daemon = True
-		self.t.append(self.gui)
+		#self.t.append(self.gui)
 		self.gui.start()
-		
 
 	def stoppall(self):
 		#Threads beenden

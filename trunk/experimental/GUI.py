@@ -16,27 +16,31 @@ from HirarchicalView import *
 from TagView import *
 from AddTag import *
 
+import gobject
+gobject.threads_init()
 
 #Modul um diese Klasse als Seperaten-Prozess zu starten
 import threading
 import pygtk
+pygtk.require('2.0')
 import gtk
 import gtk.glade
-import gobject
 import sys
 
-gtk.gdk.threads_init()
 
-class GUI(threading.Thread):
+#class GUI(threading.Thread):
+class GUI():
 	def __init__(self,sys):
-		threading.Thread.__init__(self)
+		#threading.Thread.__init__(self)
+		gobject.threads_init()
 		self.sys = sys
 		self.mod = sys.c.startview
 		self.hview = HirarchicalView(self.sys)
 		self.tview = TagView(self.sys)
 		self.actview = None
 
-	def run(self):
+	#def run(self):
+	def start(self):
 		print('run: GUI')
 
 		#Init-Window
