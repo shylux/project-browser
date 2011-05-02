@@ -35,11 +35,17 @@ class HirarchicalView(View):
 			self.set_model(self.model)
 			if (len(self.getHistory()) == 0 and self.get_actTxtInput() != ''):
 					self.historyAddItem()
-			try:
-				if (self.get_actTxtInput() != self.getHistory()[self.historyCursor] and self.get_actTxtInput() != ''):
-					self.historyAddItem()
-			except:
+			#try:
+			print(self.historyCursor)
+			print(len(self.getHistory()))
+			if self.historyCursor <= len(self.getHistory()) and self.historyCursor != 0:
 				pass
+			else:
+				print('else')
+				if (self.get_actTxtInput() != self.getHistory()[len(self.getHistory())-1] and self.get_actTxtInput() != ''):
+					self.historyAddItem()
+			#except:
+			#	pass
 		self.completion()
 
 	
