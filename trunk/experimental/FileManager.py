@@ -42,8 +42,6 @@ class FileManager:
 				fullpath = path + array[i]
 				if self.isDir(fullpath):
 					fullpath = fullpath + '/'
-				print('fullpath from getFilesFromDir: '+fullpath)
-				print(fullpath)
 				a.append(File(array[i],fullpath))
 				a[i].setTags(self.sys.db.getTagsToFile(a[i]))
 				a[i].setIsDir(self.isDir(fullpath))

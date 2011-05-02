@@ -92,7 +92,18 @@ class GUI():
 		#Init Status Bar
 		self.Status = self.xml.get_widget('stsStatusBar')
 		self.Status.push(1,'init')
-
+		
+		#Init Navigation Buttons
+		self.btnBack = self.xml.get_widget('btnBackward')
+		self.btnBack.connect('button_press_event',self.historyBack)
+		self.btnBack.set_sensitive(False)
+		self.btnFor = self.xml.get_widget('btnForward')
+		self.btnFor.connect('button_press_event',self.historyFor)
+		self.btnFor.set_sensitive(False)
+		self.btnUp = self.xml.get_widget('btnUp')
+		self.btnUp.connect('button_press_event',self.getParentFolder)
+		self.btnUp.set_sensitive(False)
+		
 		#Init-View
 		self.hspView = self.xml.get_widget('hspView')
 		self.addTagContent = AddTag(self.sys)
@@ -110,7 +121,7 @@ class GUI():
 			self.actview = self.hview
 			self.txtEntry.set_text(self.actview.get_actTxtInput())
 			self.showHirarchical('init')
-
+			
 		#Zeigt alles an
 		self.showall()
 
@@ -204,13 +215,29 @@ class GUI():
 	def updateView(self):
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
 		self.actview.update()
-
 	
 	def openDirInHirarchical(self,path):
 		self.showHirarchical('init')
 		self.actview.set_actTxtInput(path)
 		self.listcompl.clear()
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
+		
+	def historyBack(self,widget,event):
+		h = self.actview.getHistory()
+		c = self.actview.getHistoryCursor()
+		#Ein Eintrag zurueck + der neue Eintrag der gesetze wird wird auch ubersprungen
+		self.actview.setHistoryCursor(c - 1)
+		print('cursor: '+str(self.actview.getHistoryCursor()))
+		self.actview.set_actTxtInput(h[self.actview.getHistoryCursor()])
+		self.listcompl.clear()
+		self.txtEntry.set_text(self.actview.get_actTxtInput())
+		self.actview.historyManagement()
+		
+	def historyFor(self,widget,event):
+		pass
+		
+	def getParentFolder(self,widget,event):
+		pass
 	###
 
 
