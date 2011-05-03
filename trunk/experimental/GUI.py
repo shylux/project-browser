@@ -96,13 +96,13 @@ class GUI():
 		#Init Navigation Buttons
 		self.btnBack = self.xml.get_widget('btnBackward')
 		self.btnBack.connect('button_press_event',self.historyBack)
-		self.btnBack.set_sensitive(False)
+		#self.btnBack.set_sensitive(False)
 		self.btnFor = self.xml.get_widget('btnForward')
 		self.btnFor.connect('button_press_event',self.historyFor)
-		self.btnFor.set_sensitive(False)
+		#self.btnFor.set_sensitive(False)
 		self.btnUp = self.xml.get_widget('btnUp')
 		self.btnUp.connect('button_press_event',self.getParentFolder)
-		self.btnUp.set_sensitive(False)
+		#self.btnUp.set_sensitive(False)
 		
 		#Init-View
 		self.hspView = self.xml.get_widget('hspView')
@@ -121,6 +121,7 @@ class GUI():
 			self.actview = self.hview
 			self.txtEntry.set_text(self.actview.get_actTxtInput())
 			self.showHirarchical('init')
+		#self.actview.historyUpdate('user')
 			
 		#Zeigt alles an
 		self.showall()
@@ -207,14 +208,17 @@ class GUI():
 	#def searchKey(self,widget,event):
 	def searchKey(self,a):
 		#if event.keyval != gtk.gdk.keyval_from_name("Down") and event.keyval != gtk.gdk.keyval_from_name("Up"):
-		self.updateView()
+		if self.actview.triggeredByNavigation:
+			self.updateView()
+		else:
+			self.updateView('user')
 	
 	def searchCompletion(self,completion, prefix, user_param1):
 		self.updateView()
 
-	def updateView(self):
+	def updateView(self,actor='fn'):
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
-		self.actview.update()
+		self.actview.update(actor)
 	
 	def openDirInHirarchical(self,path):
 		self.showHirarchical('init')
@@ -223,18 +227,20 @@ class GUI():
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
 		
 	def historyBack(self,widget,event):
-		h = self.actview.getHistory()
-		c = self.actview.getHistoryCursor()
-		#Ein Eintrag zurueck + der neue Eintrag der gesetze wird wird auch ubersprungen
-		self.actview.setHistoryCursor(c - 1)
-		print('cursor: '+str(self.actview.getHistoryCursor()))
-		self.actview.set_actTxtInput(h[self.actview.getHistoryCursor()])
-		self.listcompl.clear()
-		self.txtEntry.set_text(self.actview.get_actTxtInput())
-		self.actview.historyManagement()
+		self.actview.triggeredByNavigation = True
+		self.actview.historyCursor = self.actview.historyCursor-1
+		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
+		self.actview.sys.gui.txtEntry.set_text(self.actview.get_actTxtInput())
+		self.actview.historySymboleManagement()
+		self.actview.triggeredByNavigation = False
 		
 	def historyFor(self,widget,event):
-		pass
+		self.actview.triggeredByNavigation = True
+		self.actview.historyCursor = self.actview.historyCursor+1
+		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
+		self.actview.sys.gui.txtEntry.set_text(self.actview.get_actTxtInput())
+		self.actview.historySymboleManagement()
+		self.actview.triggeredByNavigation = False
 		
 	def getParentFolder(self,widget,event):
 		pass

@@ -23,9 +23,10 @@ class HirarchicalView(View):
 		self.set_actTxtInput(sys.c.initStrHirarchical)
 		self.connect('row-activated',self.rowActivate)
 
-	def update(self):
+	def update(self, actor = 'fn'):
 		self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
 		if self.items != 'error':
+			#Ordner konnte geoffnet werden
 			self.model.clear()
 			for i in range(len(self.items)):
 				if self.items[i].getIsDir():
@@ -33,22 +34,11 @@ class HirarchicalView(View):
 				else:
 					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 			self.set_model(self.model)
-			if (len(self.getHistory()) == 0 and self.get_actTxtInput() != ''):
-					self.historyAddItem()
-			#try:
-			print(self.historyCursor)
-			print(len(self.getHistory()))
-			if self.historyCursor <= len(self.getHistory()) and self.historyCursor != 0:
-				pass
-			else:
-				print('else')
-				if (self.get_actTxtInput() != self.getHistory()[len(self.getHistory())-1] and self.get_actTxtInput() != ''):
-					self.historyAddItem()
-			#except:
-			#	pass
+			if len(self.get_actTxtInput()) > 0:
+				if self.get_actTxtInput()[-1] == '/':
+					self.historyUpdate(actor)
 		self.completion()
 
-	
 	def completion(self):
 		matched = self.sys.filemanager.searchMatchDir(self.get_actTxtInput())
 		try:
@@ -69,3 +59,4 @@ class HirarchicalView(View):
 			self.sys.filemanager.openFile(f.getPath())
 		else:
 			self.sys.filemanager.openDir(f.getPath())
+		
