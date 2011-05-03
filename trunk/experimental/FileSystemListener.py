@@ -9,9 +9,18 @@
 #			0.1		14.4.2011	Grundgeruest erstellt
 #			0.2		19.4.2011	Grundfunktionalitaet erstellt
 
-from FileSystemListener_Linux import *
-from FileSystemListener_Mac import *
-from FileSystemListener_Windows import *
+try:
+	from FileSystemListener_Linux import *
+except:
+	pass
+try:
+	from FileSystemListener_Mac import *
+except:
+	pass
+try:
+	from FileSystemListener_Windows import *
+except:
+	pass
 import threading
 
 class FileSystemListener(threading.Thread):
