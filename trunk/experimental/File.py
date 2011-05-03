@@ -9,6 +9,8 @@
 #			0.1		14.04.2011	Grundfunktionalitaeten werden erstellt
 #			0.9		21.04.2011	Created methods and functionality. Added __doc__s. added test (bottom)
 
+import re
+
 class File:
   	"""represents a file on the filesysem"""
   	fileName	= None
@@ -16,7 +18,8 @@ class File:
 	isDir		= None
 	tags		= None
 	backup		= None
-	def __init__(self, fileName=None, path=None, tags=[], backup=False, isDir=False):
+	fullPath	= None
+	def __init__(self, fileName=None, path=None, tags=[], backup=False, isDir=False, fullPath=None):
 	  	"""Constructor
 		@param	fileName, string	, optional 
 		@param	path	, string	, optional
@@ -28,6 +31,26 @@ class File:
 		self.tags	= tags
 		self.backup	= backup
 		self.isDir	= isDir
+		self.fullPath	= fullPath
+
+		if not fullPath == None:
+			if fullPath.endswith("/") or fullPath.endswith("\\"):
+				p = re.compile("((?:.*\\\)|(?:.*/))((?:[^/]*)|(?:[^\\\]*))([/|\\\])")
+				match = p.match(fullPath)
+				if not match.group(1) == None and not match.group(2) == None:
+					self.path = match.group(1)
+					print self.path
+					self.fileName = match.group(2)+match.group(3)
+					print self.fileName
+			else:
+				p = re.compile("((?:.*\\\)|(?:.*/))((?:[^/]*)|(?:[^\\\]*))")
+				match = p.match(fullPath)
+				if not match.group(1) == None and not match.group(2) == None:
+					self.path = match.group(1)
+					print self.path
+					self.fileName = match.group(2)
+					print self.fileName
+
 	
 	def setFileName(self, fileName):
 	  	"""@param	filename	, string"""
@@ -118,4 +141,8 @@ if __name__ == "__main__":
 	else:
 	  	print "Test #6: FAIL"
 
+	test = File(fullPath="/home/niklaus/lol.txt")
+	test2 = File(fullPath="C:\\windows\\system32\\chlous.txt.test")
+	test3 = File(fullPath="C:\\windows\\system32\\")
+	test4 = File(fullPath="/home/niklaus/Music/")
 	print File.__init__.__doc__
