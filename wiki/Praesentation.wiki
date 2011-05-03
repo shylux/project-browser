@@ -8,9 +8,9 @@ Präsentation
 = Details =
 
 Add your content here.  Format your content with:
-* Ablauf vom Projekt(Planung, Soll/Ist)
-* Über Voranalyse
-* Über Konzept
-* Über Realisierungsbericht
+  * Ablauf vom Projekt(Planung, Soll/Ist)
+  * Über Voranalyse
+  * Über Konzept
+  * Über Realisierungsbericht
 	* evnt. Code ausschnitte
-* Rückblick
+  * Rückblick
