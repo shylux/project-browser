@@ -102,6 +102,9 @@ class File:
 		uses .extend"""
 	  	self.tags.extend(tags)
 
+	def ex_backup(self):
+		print "Backup", self.getPath()
+
 if __name__ == "__main__":
   	print "Starting tests"
 	print "=============="
@@ -134,6 +137,10 @@ if __name__ == "__main__":
 		print "Test #5: Succeed"
 	else:
 	  	print "Test #5: FAIL"
+
+	#Backup
+	b = File()
+	b.ex_backup()
 	
 	x.setIsDir(True)
 	if x.getIsDir():

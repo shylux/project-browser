@@ -44,6 +44,7 @@ class FileSystemListener(threading.Thread):
 
 	# Event kommt als String mit dem Dateipfad an. 
 	def create_event(self, event):
+		self.sys.gui.actview.update()
 		print "create_event: ", event
 		
 	def delete_event(self, event):
@@ -52,10 +53,3 @@ class FileSystemListener(threading.Thread):
 		print "delete_event: ", event
 	def modify_event(self, event):
 		print "modify_event: ", event
-
-class FileSystemListener_Stop(threading.Thread):
-	def __init__(self, listener):
-		threading.Thread.__init__(self)
-		self.listener = listener
-	def run(self):
-		pass
