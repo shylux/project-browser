@@ -83,6 +83,9 @@ class Main():
 			except RuntimeError:
 				pass
 
+	def getDb(self):
+		return self.db
+
 	#Wird gebraucht, dass diese Klasse wie ein Objekt aufgerufen werden kann
 	def __call__(self,a,b,c):
 		pass
