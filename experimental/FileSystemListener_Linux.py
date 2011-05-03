@@ -10,7 +10,7 @@
 #			0.2		18.4.2011	Events werden korrekt abgefangen. TODO: add_watch implementieren und blockierendes .loop() in thread
 
 try:
-	import pyinotify
+	from pyinotify import *
 except:
 	pass
 	
