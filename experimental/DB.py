@@ -164,12 +164,18 @@ class DB:
 			self.updateFile(fi)
 
 	def removeFile(self, fi):
-		query = "DELETE FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath(),)
-		self.cursor.execute(query)
+		idQuery = "SELECT files.fid FROM files WhERE files.path = '%s' AND files.filename = '%s" % (fi.getPath(), fi.getFileName())
+		self.cursor.execute(idQuery)
+		fid = self.cursor.fetchall()[0][0]
+		echo "deleting files with id '%s'" % (fid, )
+		delFileQuery = "DELETE FROM files WHERE files.fid = '%s'" % (fid, )
+		self.cursor.execute(delFileQuery)
+		delTagConQuery = "DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = '%s'" % (fid, )
+		self.cursor.execute(delTagConQuery)
 		self.connection.commit()
-
-	def moveFile(self, fi):
-		pass
+		delTagQuery = "DELETE FROM tagnames WHERE tagnames.tagname NOT IN (SELECT file_tag_relations.fk_tagid FROM file_tag_relations)"
+		self.cursor.execute(delTagQuery)
+		self.connection.commit()
 
 	def addTagToFile(self, fi, tag):
 		if self.fileInDB(fi):
