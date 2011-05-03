@@ -51,10 +51,11 @@ class Main():
 		self.t = []
 
 		#FileSystemListener in einem eigenen Thread
-		#self.fslistener = FileSystemListener(self)
-		#self.fslistener.daemon = True
-		#self.t.append(self.fslistener)
-		#self.fslistener.start()
+		self.fslistener = FileSystemListener(self)
+		self.fslistener.daemon = True
+		self.t.append(self.fslistener)
+		self.fslistener.add_watch("/home/shylux/project-browser/experimental", True)
+		self.fslistener.start()
 
 		if modus == 'cli':
 			#CLI in einem eigenen Thread
@@ -75,11 +76,11 @@ class Main():
 
 	def stoppall(self):
 		#Threads beenden
-		print('stoppall')
+		#self.fslistener.stop()
 		for t in self.t:
 			print('close: '+str(t))
 			try:
-				t.join()
+				t.stop()
 			except RuntimeError:
 				pass
 

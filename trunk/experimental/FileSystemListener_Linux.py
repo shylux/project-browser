@@ -9,10 +9,7 @@
 #			0.1		14.4.2011	Grundgeruest erstellt
 #			0.2		18.4.2011	Events werden korrekt abgefangen. TODO: add_watch implementieren und blockierendes .loop() in thread
 
-try:
-	from pyinotify import *
-except:
-	pass
+import pyinotify
 	
 class FileSystemListener_Linux(pyinotify.ProcessEvent):
 	listener = None
@@ -31,6 +28,8 @@ class FileSystemListener_Linux(pyinotify.ProcessEvent):
 
 	def start(self):
 		self.notifier.loop()
+	def stop(self):
+		self.notifier.stop()
 
 	def process_IN_CREATE(self, event):
 		self.parent.create_event(event.pathname)
