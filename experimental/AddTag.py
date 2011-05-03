@@ -48,7 +48,6 @@ class AddTag():
 	def updateModel(self):
 		self.model.clear()
 		for tag in self.sys.db.getAllTags():
-			print('for')
 			self.model.append(None,[tag])
 		pass
 
@@ -58,7 +57,6 @@ class AddTag():
 		self.model.clear()
 		self.txtFiles.set_text('')
 		self.txtTags.set_text('')
-		print('txttags'+self.txtTags.get_text())
 		self.updateModel()
 		
 	def getWidget(self):

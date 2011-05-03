@@ -90,7 +90,6 @@ class FileManager:
 
 
 	def openFile(self,path):
-		print('fullpath: '+path)
 		if self.sys.c.os == 'linux':
 			#Funktioniert nur bei Ubuntu
 			os.system('/usr/bin/xdg-open '+path.replace(chr(32),'\ '))
@@ -103,7 +102,6 @@ class FileManager:
 			pass
 
 	def openDir(self,path):
-		print('fullpath: '+path)
 		self.sys.gui.txtEntry.set_text(path)
 		self.sys.gui.updateView()
 		

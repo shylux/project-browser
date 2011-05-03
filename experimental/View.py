@@ -30,6 +30,8 @@ class View(gtk.TreeView):
 		
 		self.history = []
 		self.historyCursor = -1
+
+		self.triggeredByNavigation = False
 		
 		self.createTree()
 		self.connect('button_release_event',self.showContext)
@@ -115,52 +117,45 @@ class View(gtk.TreeView):
 
 	def updateTagProperties(self,event):
 		try:
-			print('name: '+self.getFObjFromSelectedRow().getFileName())
 			self.sys.gui.addTagContent.update(self.getFObjFromSelectedRow())
 		except:
 			pass
 	
-	def historyAddItem(self):
-		print('add item' + 'cursor: '+str(self.historyCursor)+', len history: '+str(len(self.history)))
+	def historyUpdate(self,actor='fn'):
 		#Wenn wieder vorwaertz gesprungen wird, werden alle Element nach der aktuelen Position geloescht
-		if self.historyCursor < len(self.history)-1:
-			rem = (len(self.history)-1) - self.historyCursor
-			print('delete item: '+str(rem))
-			for i in range(rem):
-				print('entfernen')
-				print('entfernt------------------------------: '+str(self.history[len(self.history)-i]))
-				print('-------------------')
-				self.history.remove(self.history[len(self.history)-i])
-			self.historyCursor = self.historyCursor - rem
-		else:
-			pass
-		self.historyCursor = self.historyCursor + 1
-		self.history.append(self.get_actTxtInput())
-		self.historyManagement()
+		print('historyCursor: '+str(self.historyCursor))
+		if self.historyCursor > -1:
+			if actor == 'user' and self.history[self.historyCursor] != self.get_actTxtInput():
+				if self.historyCursor < len(self.history)-1:
+					rem = (len(self.history)-1) - self.historyCursor
+					print('history delete items: '+rem)
+					for i in range(rem):
+						print('delete history entry: '+self.history[len(self.history)-1-i])
+						self.history.remove(self.history[len(self.history)-1-i])
+					self.historyCursor = self.historyCursor - rem
+				self.historyCursor = self.historyCursor + 1
+				self.history.append(self.get_actTxtInput())
+				print('historyUpdate: '+str(self.history))
+		elif len(self.history) == 0:
+			self.historyCursor = self.historyCursor + 1
+			self.history.append(self.get_actTxtInput())
+			print('historyUpdate: '+str(self.history))
+			#self.historySymboleManagement()
 		
-	def historyManagement(self):
-			print('history: '+str(self.history))
-			print('history cursor: '+str(self.historyCursor))
+	def historySymboleManagement(self):
+			return 0
 			if len(self.history) != self.historyCursor or len(self.history) != 0:
 				self.sys.gui.btnBack.set_sensitive(True)
 				self.sys.gui.btnFor.set_sensitive(True)
-			if len(self.history) >= self.historyCursor or len(self.history) != 0:
+			if len(self.history) > self.historyCursor or len(self.history) != 0:
 				self.sys.gui.btnBack.set_sensitive(True)
 				self.sys.gui.btnFor.set_sensitive(False)
+			if len(self.history) < self.historyCursor or len(self.history) != 0:
+				self.sys.gui.btnBack.set_sensitive(False)
+				self.sys.gui.btnFor.set_sensitive(True)
 			if self.historyCursor == 0 or len(self.history) < 1:
 				self.sys.gui.btnBack.set_sensitive(False)
 				self.sys.gui.btnFor.set_sensitive(False)
-		
-	
-	def getHistory(self):
-		return self.history
-		
-	def getHistoryCursor(self):
-		return self.historyCursor
-		
-	def setHistoryCursor(self,i):
-		self.historyCursor = i
-	
 	
 
 #Registriert diese Klasse als pygtk-widget

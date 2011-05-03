@@ -18,7 +18,7 @@ class TagView(View):
 		self.set_actTxtInput(sys.c.initStrTag)
 		self.connect('row-activated',self.rowActivate)
 
-	def update(self):
+	def update(self, actor = 'fn'):
 		self.model.clear()
 		if self.get_actTxtInput() == '':
 			t = self.sys.db.getAllTags()
