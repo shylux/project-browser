@@ -167,7 +167,6 @@ class DB:
 		idQuery = "SELECT files.fid FROM files WhERE files.path = '%s' AND files.filename = '%s" % (fi.getPath(), fi.getFileName())
 		self.cursor.execute(idQuery)
 		fid = self.cursor.fetchall()[0][0]
-		echo "deleting files with id '%s'" % (fid, )
 		delFileQuery = "DELETE FROM files WHERE files.fid = '%s'" % (fid, )
 		self.cursor.execute(delFileQuery)
 		delTagConQuery = "DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = '%s'" % (fid, )
@@ -198,7 +197,7 @@ if __name__ == "__main__":
 	#db.test(1)
 	#fi	= File.File(fileName="name1", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagy', 'tag77'], isDir=False)
 	fi	= File.File(fileName="name2", path="/home/niklaus/", tags=['tag1', 'tagy', 'tagZZ'], isDir=False)
-	##db.addFile(fi)
+	db.addFile(fi)
 	#db.addTagToFile(fi, "testTag07")
 	#db.updateFile(fi)
 	#li = db.getFilesFromTag("tagX")
