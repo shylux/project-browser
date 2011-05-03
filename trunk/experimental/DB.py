@@ -55,7 +55,7 @@ class DB:
 		return ret_value
 
 	def __connectTagsToFile(self, tags, fid):
-			tags = list(set(tags))
+			tags = list(set(tags))	#remove duplicates from list
 			for row in tags:
 				tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
 				print tagQuery
@@ -87,8 +87,8 @@ class DB:
 		return ret_value
 
 	def updateFile(self, fi):
-	  	new_tags = []
-		old_tags = []
+	  	new_tags = []	#Tags from file object (ATTENTION! They get filtered later!)
+		old_tags = []	#Tags from database
 		if self.fileInDB(fi):
 			old_tags = self.getTagsToFile(fi)
 			print old_tags
@@ -96,18 +96,43 @@ class DB:
 			print new_tags
 			for row in old_tags:
 				try:
+					#remove all occurences of old tags from the new tag array, so only new tags are left
 					new_tags = filter (lambda a: a != row, new_tags)
 				except:
 					print "Error while removing element from old_tags"
 			print new_tags
+			#Following three lines were moved out of the if statement in order to be able to use fid for the remove thing
+			fidQuery = "SELECT files.fid FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath())
+			self.cursor.execute(fidQuery)
+			fid = self.cursor.fetchall()[0][0]
 			if len(new_tags) > 0:
-				fidQuery = "SELECT files.fid FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath())
-				self.cursor.execute(fidQuery)
-				fid = self.cursor.fetchall()[0][0]
-				print fid
 				self.__connectTagsToFile(new_tags, fid)
 			else:
 				print "No new tags, won't do anything"
+
+			#Remove old tags from database
+			deprecatedTags = old_tags
+			for row in fi.getTags():
+				try:
+					#Remove all tags tags of the file object from the array of tags that are in the database
+					#This leaves us with just the tags that are in the database but that are NOT in the file object
+					deprecatedTags = filter(lambda a: a != row, deprecatedTags)
+				except:
+					print ""
+			if len(deprecatedTags) > 0:
+				print deprecatedTags
+				#OK, I know that this is DAMNED UGLY, but I can't see any other way for getthing rid of the god damned stupid u in front of each element of the list
+				dT = ""
+				for line in deprecatedTags:
+					print str(line)
+					dT = dT + "'" + line + "'" + ", "
+				#remove , and space at the end
+				dT = dT[:-2]
+				print dT
+				delTagQuery = "DELETE FROM file_tag_relations WHERE fk_tagid IN (SELECT tagid FROM tagnames WHERE tagname IN (%s)) AND fk_fid = '%s'" % (dT, fid, )
+				print delTagQuery
+				self.cursor.execute(delTagQuery)
+				self.connection.commit()
 		else:
 			print "File not yet in DB, will run addFile instead"
 			self.addFile(fi)
@@ -192,13 +217,13 @@ class DB:
 if __name__ == "__main__":
    	#print "TEST"
 	#db = DB("/home/niklaus/.project-browser/db")
-	path = os.path.expanduser("~/.project-browser/db")
-	db = DB(path)
+	#path = os.path.expanduser("~/.project-browser/db")
+	#db = DB(path)
 	#db.test(File.File())
 	#db.test(1)
 	#fi	= File.File(fileName="name1", path="/home/niklaus/", tags=['tag1', 'tag2', 'tagy', 'tag77'], isDir=False)
-	fi	= File.File(fileName="name2", path="/home/niklaus/", tags=['tag1', 'tagy', 'tagZZ'], isDir=False)
-	db.addFile(fi)
+	#fi	= File.File(fileName="name2", path="/home/niklaus/", tags=['tag1', 'tagy', 'tagZZ'], isDir=False)
+	#db.addFile(fi)
 	#db.addTagToFile(fi, "testTag07")
 	#db.updateFile(fi)
 	#li = db.getFilesFromTag("tagX")
@@ -229,3 +254,28 @@ if __name__ == "__main__":
 	#db.fileInDB(File.File(fileName="name", path="/home/niklaus/"))
 	#db.addFile(File.File(fileName="addTagTestFile2.test", path="/home/niklaus/text/", tags=['testTag1', 'testTag2'], isDir=False, backup=False))
 	#db.addTagToFile(File.File(fileName="addTagTestFile.test", path="/home/niklaus/text/"), 'testTag3')
+
+	#Let's go and test the new stuff in updateFile!!
+	#=================================================
+	db = DB("testdb")
+	f1 = File.File(fileName="test.txt", path="/home/niklaus/", tags=['test', 'projectbrowser', ])
+	f2 = File.File(fileName="cc.ogg", path="/home/niklaus/Music/", tags=['music', 'ogg', 'creative commons', ])
+	f3 = File.File(fileName="ozzed.ogg", path="/home/niklaus/Music/", tags=['music', 'ogg', 'creative commons', 'ozzed', '8bit', 'chiptune', ])
+	f4 = File.File(fileName="evil.mp3", path="/home/niklaus/Music/", tags=['music', 'mp3', 'proprietary', ])
+	f5 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'test', ])
+	db.addFile(f1)
+	db.addFile(f2)
+	db.addFile(f3)
+	db.addFile(f4)
+	db.addFile(f5)
+	print db.getAllTags()
+	for line in db.getFilesFromPath("/home/niklaus/Music/"):
+		print line.getFileName()
+	f6 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'test', 'document', 'projectbrowser', 'random', ])
+	db.updateFile(f6)
+	print db.getAllTags()
+	for line in db.getFilesFromPath("/home/niklaus/Music/"):
+		print line.getFileName()
+	f7 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'document', 'projectbrowser', ])
+	db.updateFile(f7)
+	print db.getTagsToFile(f7)
