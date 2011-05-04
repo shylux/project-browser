@@ -63,6 +63,6 @@ class TagView(View):
 			self.sys.gui.updateView()
 		else:
 			if not f.getIsDir():
-				self.sys.filemanager.openFile(f.getPath())
+				self.sys.filemanager.openFile(f.getFullPath())
 			else:
-				self.sys.gui.openDirInHirarchical(f.getPath())
+				self.sys.gui.openDirInHirarchical(f.getFullPath())

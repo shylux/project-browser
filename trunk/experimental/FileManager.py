@@ -29,9 +29,8 @@ class FileManager:
 			else:
 				return a
 			for i in range(len(array)):
-				a.append(File(self.getDirName(array[i]),array[i]))
+				a.append(File(fullPath=array[i],isDir=self.isDir(array[i])))
 				a[i].setTags(self.sys.db.getTagsToFile(a[i]))
-				a[i].setIsDir(self.isDir(array[i]))
 		else:
 			if path == '':
 				path = path + '/'
@@ -42,9 +41,8 @@ class FileManager:
 				fullpath = path + array[i]
 				if self.isDir(fullpath):
 					fullpath = fullpath + '/'
-				a.append(File(array[i],fullpath))
+				a.append(File(fullPath=fullpath,isDir=self.isDir(fullpath)))
 				a[i].setTags(self.sys.db.getTagsToFile(a[i]))
-				a[i].setIsDir(self.isDir(fullpath))
 		return a
 
 	def getFileName(self,path):
@@ -102,6 +100,7 @@ class FileManager:
 			pass
 
 	def openDir(self,path):
+		print('open dir: '+path)
 		self.sys.gui.txtEntry.set_text(path)
 		self.sys.gui.updateView()
 		
