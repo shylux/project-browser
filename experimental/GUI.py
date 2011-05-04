@@ -203,6 +203,7 @@ class GUI():
 		self.showall()
 
 		#Update-View
+		print(self.actview)
 		self.actview.update()
 
 	#def searchKey(self,widget,event):
@@ -211,7 +212,6 @@ class GUI():
 		if self.actview.triggeredByNavigation:
 			self.updateView()
 		else:
-			print('als user')
 			self.updateView('user')
 	
 	def searchCompletion(self,completion, prefix, user_param1):
@@ -232,7 +232,6 @@ class GUI():
 		self.actview.historyCursor = self.actview.historyCursor-1
 		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
-		self.actview.historySymboleManagement()
 		self.actview.triggeredByNavigation = False
 		
 	def historyFor(self,widget,event):
@@ -240,7 +239,6 @@ class GUI():
 		self.actview.historyCursor = self.actview.historyCursor+1
 		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
-		self.actview.historySymboleManagement()
 		self.actview.triggeredByNavigation = False
 		
 	def getParentFolder(self,widget,event):

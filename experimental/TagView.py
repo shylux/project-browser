@@ -19,25 +19,42 @@ class TagView(View):
 		self.connect('row-activated',self.rowActivate)
 
 	def update(self, actor = 'fn'):
-		self.model.clear()
-		if self.get_actTxtInput() == '':
-			t = self.sys.db.getAllTags()
-			for i in range(len(t)):
-				self.model.append(None,[self.getFolderIcon(),'*',[t[i]],t[i]])
+		print('TAG UPDATE')
+		if self.sys.gui != None:
+			print('TAG UPDATE IN IF')
+			oldmodel = self.get_model()
+			self.model.clear()
+			#Dieser Durchgang ist, wenn noch nicht's im TextFeld steht
+			if self.get_actTxtInput() == '':
+				t = self.sys.db.getAllTags()
+				for i in range(len(t)):
+					self.model.append(None,[self.getFolderIcon(),'*',[t[i]],t[i]])
+				self.set_model(self.model)
+				print('vor aufruf1')
+				self.historyUpdate(actor)
+				self.historySymboleManagement()
+				self.updateParentFolderBtn()
+				self.completion()
+				#Damit diese Funktion abgebrochen wird
+				return 0
+			#Dieser Durchgang ist, wenn Zeichen im Text Feld stehen
+			itemarray = self.get_actTxtInput().split(',')
+			for j in range(len(itemarray)):
+				oneitem = itemarray[j].strip()
+				self.items = self.sys.db.getFilesFromTag(oneitem)
+				for i in range(len(self.items)):
+					self.items[i].setIsDir(self.sys.u.strBooleanToBoolean(self.items[i].getIsDir()))
+					if self.items[i].getIsDir():
+						self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
+					else:
+						self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 			self.set_model(self.model)
-			return 0
-		itemarray = self.get_actTxtInput().split(',')
-		for j in range(len(itemarray)):
-			oneitem = itemarray[j].strip()
-			self.items = self.sys.db.getFilesFromTag(oneitem)
-			for i in range(len(self.items)):
-				self.items[i].setIsDir(self.sys.u.strBooleanToBoolean(self.items[i].getIsDir()))
-				if self.items[i].getIsDir():
-					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
-				else:
-					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
-		self.set_model(self.model)
-		self.completion()
+			print('vor aufruf2')
+			if len(self.items)>0:
+				self.historyUpdate(actor)
+			self.historySymboleManagement()
+			self.updateParentFolderBtn()
+			self.completion()
 
 	def completion(self):
 			print('search matched: '+self.get_actTxtInput())
@@ -55,6 +72,10 @@ class TagView(View):
 		#except:
 		#	pass
 
+
+	def updateParentFolderBtn(self):
+		self.sys.gui.btnUp.set_sensitive(False)
+
 	def rowActivate(self,treeview, path, user_data):
 		f = self.getFObjFromSelectedRow()
 		if isinstance(f,list):
@@ -66,3 +87,6 @@ class TagView(View):
 				self.sys.filemanager.openFile(f.getFullPath())
 			else:
 				self.sys.gui.openDirInHirarchical(f.getFullPath())
+
+
+

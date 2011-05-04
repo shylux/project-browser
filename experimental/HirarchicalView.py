@@ -19,31 +19,35 @@ class HirarchicalView(View):
 	def __init__(self,sys):
 		View.__init__(self,sys)
 		
+		self.history.append('/')
+		self.historyCursor = 0
 		self.sys = sys
 		self.set_actTxtInput(sys.c.initStrHirarchical)
 		self.connect('row-activated',self.rowActivate)
 
 	def update(self, actor = 'fn'):
-		if self.get_actTxtInput() == '' and self.sys.gui != None:
-			self.sys.gui.txtEntry.set_text('/')
-			return 0
-		self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
-		if self.items != 'error':
-			#Ordner konnte geoffnet werden
-			self.model.clear()
-			for i in range(len(self.items)):
-				if self.items[i].getIsDir():
-					self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
-				else:
-					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
-			self.set_model(self.model)
-			#Ruft History Verwaltung auf
-			if len(self.get_actTxtInput()) > 0:
-				if self.get_actTxtInput()[-1] == '/':
-					self.historyUpdate(actor)
-					self.updateParentFolderBtn()
-		#Ruft Auto-Completion Update Funktion auf
-		self.completion()
+		if self.sys.gui != None:
+			if self.get_actTxtInput() == '':
+				self.sys.gui.txtEntry.set_text('/')
+				return 0
+			self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
+			if self.items != 'error':
+				#Ordner konnte geoffnet werden
+				self.model.clear()
+				for i in range(len(self.items)):
+					if self.items[i].getIsDir():
+						self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
+					else:
+						self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
+				self.set_model(self.model)
+				#Ruft History Verwaltung auf
+				if len(self.get_actTxtInput()) > 0:
+					if self.get_actTxtInput()[-1] == '/':
+						self.historyUpdate(actor)
+			self.updateParentFolderBtn()
+			self.historySymboleManagement()
+			#Ruft Auto-Completion Update Funktion auf
+			self.completion()
 
 	def completion(self):
 		matched = self.sys.filemanager.searchMatchDir(self.get_actTxtInput())
@@ -71,4 +75,8 @@ class HirarchicalView(View):
 			self.sys.filemanager.openFile(f.getFullPath())
 		else:
 			self.sys.filemanager.openDir(f.getFullPath())
+
+
+
+
 		
