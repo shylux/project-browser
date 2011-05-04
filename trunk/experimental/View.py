@@ -128,11 +128,16 @@ class View(gtk.TreeView):
 			if actor == 'user' and self.history[self.historyCursor] != self.get_actTxtInput():
 				if self.historyCursor < len(self.history)-1:
 					rem = (len(self.history)-1) - self.historyCursor
+					l = len(self.history)
 					print('history delete items: '+str(rem))
-					for i in range(rem):
-						print('delete history entry: '+self.history[len(self.history)-1-i])
-						self.history.remove(self.history[len(self.history)-1-i])
-					self.historyCursor = self.historyCursor - rem
+					i = 1
+					#rem+1 weil die len von history eins mehr ist als der cursor
+					while i<rem+1:
+						print('i: '+str(i)+'delete index: '+str(l-i))
+						print('delete history entry: '+self.history[l-i])
+						self.history.remove(self.history[l-i])
+						i = i + 1
+					self.historyCursor = self.historyCursor
 				self.historyCursor = self.historyCursor + 1
 				self.history.append(self.get_actTxtInput())
 				print('historyUpdate: '+str(self.history))
@@ -144,18 +149,15 @@ class View(gtk.TreeView):
 			self.historySymboleManagement()
 		
 	def historySymboleManagement(self):
-			return 0
-			if len(self.history) != self.historyCursor or len(self.history) != 0:
+			h = len(self.history)-1
+			c = self.historyCursor
+			if h >= c and h != 0 and c > 0:
 				self.sys.gui.btnBack.set_sensitive(True)
+			if h >= c and h != 0:
 				self.sys.gui.btnFor.set_sensitive(True)
-			if len(self.history) < self.historyCursor or len(self.history) != 0:
-				self.sys.gui.btnBack.set_sensitive(True)
-				self.sys.gui.btnFor.set_sensitive(False)
-			if len(self.history) > self.historyCursor or len(self.history) != 0:
+			if c == 0:
 				self.sys.gui.btnBack.set_sensitive(False)
-				self.sys.gui.btnFor.set_sensitive(True)
-			if self.historyCursor == 0 or len(self.history) < 1:
-				self.sys.gui.btnBack.set_sensitive(False)
+			if c == h:
 				self.sys.gui.btnFor.set_sensitive(False)
 	
 

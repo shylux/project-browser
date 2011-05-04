@@ -77,7 +77,10 @@ class AddTag():
 		print('save')
 		tags = self.txtTags.get_text().split(',')
 		for i in range(len(tags)):
-			tags[i] = tags[i].strip()
+			if tags[i].strip() != '':
+				tags[i] = tags[i].strip()
+			else:
+				tags.remove(tags[i])
 		tags = list(set(tags))
 		if len(tags) != 0:
 			self.fobj.setTags(tags)
