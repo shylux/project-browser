@@ -56,7 +56,7 @@ class HirarchicalView(View):
 	def rowActivate(self,treeview, path, user_data):
 		f = self.getFObjFromSelectedRow()
 		if not f.getIsDir():
-			self.sys.filemanager.openFile(f.getPath())
+			self.sys.filemanager.openFile(f.getFullPath())
 		else:
-			self.sys.filemanager.openDir(f.getPath())
+			self.sys.filemanager.openDir(f.getFullPath())
 		
