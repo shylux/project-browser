@@ -62,17 +62,17 @@ class File:
 		# This is highly experimental! Tell me if you have any trouble with it!
 		if self.os == 'linux' or self.os == 'mac':
 			if not self.path == None:
-				if not self.path.endswith("/"):
+				if not self.path.endswith("/") and not self.path.endswith("\\"):
 					self.path = self.path+"/"
 			if not self.fileName == None:
-				if self.isDir == True and not self.fileName.endswith("/"):
+				if self.isDir == True and not self.fileName.endswith("/") and not self.fileName.endswith("\\"):
 					self.fileName = self.fileName+"/"
 		elif self.os == 'win':
 			if not self.path == None:
-				if not self.path.endswith("\\"):
+				if not self.path.endswith("\\") and not self.path.endswith("/"):
 					self.path = self.path+"\\"
 			if not self.fileName == None:
-				if self.isDir == True and not self.fileName.endswith("\\"):
+				if self.isDir == True and not self.fileName.endswith("\\") and not self.fileName.endswith("/"):
 					self.fileName = self.fileName+"\\"
 
 	
@@ -189,14 +189,14 @@ if __name__ == "__main__":
 		print "Test #07: FAIL"
 
 	f2 = File(fullPath="C:\\windows\\system32\\chlous.txt.test")
-	if f2.getPath() == "C:\\windows\\system32\\/" \
+	if f2.getPath() == "C:\\windows\\system32\\" \
 	    and f2.getFileName() == "chlous.txt.test" and f2.getFullPath() == "C:\\windows\\system32\\chlous.txt.test":
 		print "Test #09: Succeed"
 	else:
 	  	print "Test #09: FAIL"
 
 	f3 = File(fullPath="C:\\windows\\system32\\")
-	if f3.getPath() == "C:\\windows\\/" \
+	if f3.getPath() == "C:\\windows\\" \
 	    and f3.getFileName() == "system32\\" and f3.getFullPath() == "C:\\windows\\system32\\":
 		print "Test #10: Succeed"
 	else:
@@ -222,13 +222,13 @@ if __name__ == "__main__":
 	  	print "Test #13: FAIL"
 
 	f7 = File(fileName="hosts", path="C:\\windows\\system32\\etc\\")
-	if f7.getFullPath() == "C:\\windows\\system32\\etc\\/hosts":
+	if f7.getFullPath() == "C:\\windows\\system32\\etc\\hosts":
 		print "Test #14: Succeed"
 	else:
 		print "Test #14: FAIL"
 
 	f8 = File(fileName="etc\\", path="C:\\windows\\system32\\", isDir=True)
-	if f8.getFullPath() == "C:\\windows\\system32\\/etc\\/" and f8.getIsDir() == True:
+	if f8.getFullPath() == "C:\\windows\\system32\\etc\\" and f8.getIsDir() == True:
 		print "Test #15: Succeed"
 	else:
 	  	print "Test #15: FAIL"
