@@ -32,6 +32,7 @@ import os.path
 class Main():
   	db	= None
 	dbPath	= None
+	gui	= None
 	def __init__(self):
 		pass
 

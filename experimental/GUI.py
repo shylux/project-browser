@@ -96,13 +96,13 @@ class GUI():
 		#Init Navigation Buttons
 		self.btnBack = self.xml.get_widget('btnBackward')
 		self.btnBack.connect('button_press_event',self.historyBack)
-		#self.btnBack.set_sensitive(False)
+		self.btnBack.set_sensitive(False)
 		self.btnFor = self.xml.get_widget('btnForward')
 		self.btnFor.connect('button_press_event',self.historyFor)
-		#self.btnFor.set_sensitive(False)
+		self.btnFor.set_sensitive(False)
 		self.btnUp = self.xml.get_widget('btnUp')
 		self.btnUp.connect('button_press_event',self.getParentFolder)
-		#self.btnUp.set_sensitive(False)
+		self.btnUp.set_sensitive(False)
 		
 		#Init-View
 		self.hspView = self.xml.get_widget('hspView')
@@ -211,6 +211,7 @@ class GUI():
 		if self.actview.triggeredByNavigation:
 			self.updateView()
 		else:
+			print('als user')
 			self.updateView('user')
 	
 	def searchCompletion(self,completion, prefix, user_param1):
@@ -230,7 +231,7 @@ class GUI():
 		self.actview.triggeredByNavigation = True
 		self.actview.historyCursor = self.actview.historyCursor-1
 		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
-		self.actview.sys.gui.txtEntry.set_text(self.actview.get_actTxtInput())
+		self.txtEntry.set_text(self.actview.get_actTxtInput())
 		self.actview.historySymboleManagement()
 		self.actview.triggeredByNavigation = False
 		
@@ -238,12 +239,13 @@ class GUI():
 		self.actview.triggeredByNavigation = True
 		self.actview.historyCursor = self.actview.historyCursor+1
 		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
-		self.actview.sys.gui.txtEntry.set_text(self.actview.get_actTxtInput())
+		self.txtEntry.set_text(self.actview.get_actTxtInput())
 		self.actview.historySymboleManagement()
 		self.actview.triggeredByNavigation = False
 		
 	def getParentFolder(self,widget,event):
-		pass
+		parent=self.sys.filemanager.getParentDir(self.actview.get_actTxtInput())
+		self.txtEntry.set_text(parent)
 	###
 
 

@@ -24,6 +24,9 @@ class HirarchicalView(View):
 		self.connect('row-activated',self.rowActivate)
 
 	def update(self, actor = 'fn'):
+		if self.get_actTxtInput() == '' and self.sys.gui != None:
+			self.sys.gui.txtEntry.set_text('/')
+			return 0
 		self.items = self.sys.filemanager.getFilesFromDir(self.acttxtinput) 
 		if self.items != 'error':
 			#Ordner konnte geoffnet werden
@@ -34,9 +37,12 @@ class HirarchicalView(View):
 				else:
 					self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 			self.set_model(self.model)
+			#Ruft History Verwaltung auf
 			if len(self.get_actTxtInput()) > 0:
 				if self.get_actTxtInput()[-1] == '/':
 					self.historyUpdate(actor)
+					self.updateParentFolderBtn()
+		#Ruft Auto-Completion Update Funktion auf
 		self.completion()
 
 	def completion(self):
@@ -52,6 +58,12 @@ class HirarchicalView(View):
 		except:
 			pass
 
+	def updateParentFolderBtn(self):
+		parent = self.sys.filemanager.getParentDir(self.get_actTxtInput())
+		if parent:
+			self.sys.gui.btnUp.set_sensitive(True)
+		else:
+			self.sys.gui.btnUp.set_sensitive(False)
 
 	def rowActivate(self,treeview, path, user_data):
 		f = self.getFObjFromSelectedRow()

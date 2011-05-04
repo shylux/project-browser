@@ -52,6 +52,16 @@ class FileManager:
 		s = path.split('/')
 		return s[len(s)-2]
 
+	def getParentDir(self,path):
+		s = path.split('/')
+		l = len(s)
+		print('l'+str(l))
+		if l >= 3:
+			s.remove(s[l-2])
+			return '/'.join(s)
+		else:
+			return False
+
 	def isDir(self,path):
 		return os.path.isdir(path)
 
@@ -100,7 +110,6 @@ class FileManager:
 			pass
 
 	def openDir(self,path):
-		print('open dir: '+path)
 		self.sys.gui.txtEntry.set_text(path)
 		self.sys.gui.updateView()
 		
