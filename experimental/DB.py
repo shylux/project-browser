@@ -91,8 +91,8 @@ class DB:
 		old_tags = []	#Tags from database
 		if self.fileInDB(fi):
 			old_tags = self.getTagsToFile(fi)
-			print old_tags
 			new_tags = fi.getTags()
+			print "Tags inside the file: "
 			print new_tags
 			for row in old_tags:
 				try:
@@ -120,7 +120,7 @@ class DB:
 				except:
 					print ""
 			if len(deprecatedTags) > 0:
-				print deprecatedTags
+				print "There ae old tags to be removed!"
 				#OK, I know that this is DAMNED UGLY, but I can't see any other way for getthing rid of the god damned stupid u in front of each element of the list
 				dT = ""
 				for line in deprecatedTags:
@@ -130,7 +130,6 @@ class DB:
 				dT = dT[:-2]
 				print dT
 				delTagQuery = "DELETE FROM file_tag_relations WHERE fk_tagid IN (SELECT tagid FROM tagnames WHERE tagname IN (%s)) AND fk_fid = '%s'" % (dT, fid, )
-				print delTagQuery
 				self.cursor.execute(delTagQuery)
 				self.connection.commit()
 		else:
@@ -213,6 +212,18 @@ class DB:
 		query = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (tag, )
 		self.cursor.execute(query)
 		self.connection.commit()
+	
+	def moveFile(self, f1, f2):
+		"""rename/move a file.
+		@param f1, File, a File object with the path and the name of the file as it is BEFORE the movement
+		@param f2, File, a File object with the path and the name of the file as it is AFTER the movement"""
+		updateQuery = "UPDATE files SET filename='%s', path='%s' WHERE filename='%s' AND path='%s'" % (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), )
+		self.cursor.execute(updateQuery)
+		self.connection.commit()
+	
+	def renameFile(self, f1, f2):
+		#Just calling moveFile
+		self.moveFile(f1, f2)
 
 if __name__ == "__main__":
    	#print "TEST"
@@ -277,5 +288,16 @@ if __name__ == "__main__":
 	for line in db.getFilesFromPath("/home/niklaus/Music/"):
 		print line.getFileName()
 	f7 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'document', 'projectbrowser', ])
+	print db.getTagsToFile(f7)
 	db.updateFile(f7)
 	print db.getTagsToFile(f7)
+	f8 = File.File(fileName="documentation.tex", path="/home/niklaus/Documents/LaTeX/", tags=['document', 'projectbrowser', 'latex', ])
+	db.renameFile(f7, f8)
+	print '='*10
+	for line in db.getFilesFromPath("/home/niklaus/Documents/LaTeX/"):
+		print line.getFileName()
+	db.updateFile(f8)
+	print db.getTagsToFile(f8)
+	print '='*10
+	print db.getTagsToFile(f7)
+
