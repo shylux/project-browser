@@ -42,20 +42,23 @@ class File:
 		self.constant = Constant(self)
 		self.os		= self.constant.os
 
-		if not fullPath == None:
-			if fullPath.endswith("/") or fullPath.endswith("\\"):
+		self.__splitFullPath()
+		self.__checkPaths()
+
+	def __splitFullPath(self):
+		if not self.fullPath == None:
+			if self.fullPath.endswith("/") or self.fullPath.endswith("\\"):
 				p = re.compile("((?:.*\\\)|(?:.*/))((?:[^/]*)|(?:[^\\\]*))([/|\\\])")
-				match = p.match(fullPath)
+				match = p.match(self.fullPath)
 				if not match.group(1) == None and not match.group(2) == None:
 					self.path = match.group(1)
 					self.fileName = match.group(2)+match.group(3)
 			else:
 				p = re.compile("((?:.*\\\)|(?:.*/))((?:[^/]*)|(?:[^\\\]*))")
-				match = p.match(fullPath)
+				match = p.match(self.fullPath)
 				if not match.group(1) == None and not match.group(2) == None:
 					self.path = match.group(1)
 					self.fileName = match.group(2)
-		self.__checkPaths()
 
 	def __checkPaths(self):
 		# Check wether all paths have / (or \ on Windows) at the end
@@ -79,14 +82,17 @@ class File:
 	def setFileName(self, fileName):
 	  	"""@param	filename	, string"""
 		self.fileName	= fileName
+		self.__checkPaths()
 
 	def setPath(self, path):
 	  	"""@param	path	, string"""
 	  	self.path	= path
+		self.__checkPaths()
 
 	def setIsDir(self,b):
 		"""@param	b	, boolean """
 		self.isDir = b
+		self.__checkPaths()
 
 	def setTags(self, tags):
 	  	"""@param	tags	, list"""
@@ -98,7 +104,9 @@ class File:
 
 	def setFullPath(self, fullPath):
 		"""@param fullPath	, Path including filename"""
-		this.fullPath	= fullPath
+		self.fullPath	= fullPath
+		self.__splitFullPath()
+		self.__checkPaths()
 
 	def getFileName(self):
 	  	"""@return fileName, string"""
@@ -253,10 +261,24 @@ if __name__ == "__main__":
 		print "Test #18: FAIL"
 	
 	f12 = File(path="/home/niklaus/somepath")
-	if f12.getPath() == "/home/niklaus/somepath" and f12.getFileName() == None:
+	if f12.getPath() == "/home/niklaus/somepath/" and f12.getFileName() == None:
 		print "Test #19: Succeed"
 	else:
-	  	print "Test #19: Succeed"
+	  	print "Test #19: FAIL"
+
+	f13 = File()
+	f13.setFullPath("/home/niklaus/File.php")
+	if f13.getPath() == "/home/niklaus/" and f13.getFileName() == "File.php":
+		print "Test #20: Succeed"
+	else:
+		print "Test #20: FAIL"
+
+	f14 = File(isDir=True)
+	f14.setFullPath("/home/niklaus/Music")
+	if f14.getPath() == "/home/niklaus/" and f14.getFileName() == "Music/":
+		print "Test #21: Succeed"
+	else:
+		print "Test #21: FAIL"
 
 	print File.__init__.__doc__
 
