@@ -72,6 +72,10 @@ class File:
 	  	"""@param backup	, boolean"""
 	  	self.backup	= backup
 
+	def setFullPath(self, fullPath):
+		"""@param fullPath	, Path including filename"""
+		this.fullPath	= fullPath
+
 	def getFileName(self):
 	  	"""@return fileName, string"""
 	  	return self.fileName
@@ -91,6 +95,13 @@ class File:
 	def getBackup(self):
 	  	"""@return backup, boolean"""
 	  	return self.backup
+
+	def getFullPath(self):
+		"""@return fullPath, String representing the full path to the file, including the file's name"""
+		if self.fullPath == None:
+			return self.path + self.fileName
+		else:
+			return self.fullPath
 	
 	def addTag(self, tag):
 	  	"""Adds a single tag (passed as string) to the list of tags.
