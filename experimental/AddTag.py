@@ -80,7 +80,7 @@ class AddTag():
 			tags[i] = tags[i].strip()
 		tags = list(set(tags))
 		if len(tags) != 0:
-			self.fobj.addTags(tags)
+			self.fobj.setTags(tags)
 			self.sys.db.updateFile(self.fobj)
 		self.updateModel()
 		self.sys.gui.actview.update()
