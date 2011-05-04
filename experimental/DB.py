@@ -54,6 +54,11 @@ class DB:
 			ret_value.append(row[0])
 		return ret_value
 
+	def __cleanupTags(self):
+		delTagQuery = "DELETE FROM tagnames WHERE tagnames.tagid NOT IN (SELECT file_tag_relations.fk_tagid FROM file_tag_relations)"
+		self.cursor.execute(delTagQuery)
+		self.connection.commit()
+
 	def __connectTagsToFile(self, tags, fid):
 			tags = list(set(tags))	#remove duplicates from list
 			for row in tags:
@@ -132,6 +137,7 @@ class DB:
 				delTagQuery = "DELETE FROM file_tag_relations WHERE fk_tagid IN (SELECT tagid FROM tagnames WHERE tagname IN (%s)) AND fk_fid = '%s'" % (dT, fid, )
 				self.cursor.execute(delTagQuery)
 				self.connection.commit()
+				self.__cleanupTags()
 		else:
 			print "File not yet in DB, will run addFile instead"
 			self.addFile(fi)
@@ -197,9 +203,7 @@ class DB:
 		delTagConQuery = "DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = '%s'" % (fid, )
 		self.cursor.execute(delTagConQuery)
 		self.connection.commit()
-		delTagQuery = "DELETE FROM tagnames WHERE tagnames.tagid NOT IN (SELECT file_tag_relations.fk_tagid FROM file_tag_relations)"
-		self.cursor.execute(delTagQuery)
-		self.connection.commit()
+		self.__cleanupTags()
 
 	def addTagToFile(self, fi, tag):
 		if self.fileInDB(fi):
@@ -209,6 +213,9 @@ class DB:
 			self.__connectTagsToFile([tag, ], fid)
 
 	def addTag(self, tag):
+		"""DEPRECATED!
+		Add a tag to the database without connecting it to a file.
+		Does not really make any sense, because we are deleting tags with no relations at several points."""
 		query = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (tag, )
 		self.cursor.execute(query)
 		self.connection.commit()
@@ -217,6 +224,7 @@ class DB:
 		"""rename/move a file.
 		@param f1, File, a File object with the path and the name of the file as it is BEFORE the movement
 		@param f2, File, a File object with the path and the name of the file as it is AFTER the movement"""
+		#TODO Check if such a file does not exist yet
 		updateQuery = "UPDATE files SET filename='%s', path='%s' WHERE filename='%s' AND path='%s'" % (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), )
 		self.cursor.execute(updateQuery)
 		self.connection.commit()
@@ -279,11 +287,15 @@ if __name__ == "__main__":
 	db.addFile(f3)
 	db.addFile(f4)
 	db.addFile(f5)
+	print "Tags in the DB: "
+	print '='*10
 	print db.getAllTags()
 	for line in db.getFilesFromPath("/home/niklaus/Music/"):
 		print line.getFileName()
 	f6 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'test', 'document', 'projectbrowser', 'random', ])
 	db.updateFile(f6)
+	print "Tags in the DB: "
+	print '='*10
 	print db.getAllTags()
 	for line in db.getFilesFromPath("/home/niklaus/Music/"):
 		print line.getFileName()
@@ -291,6 +303,9 @@ if __name__ == "__main__":
 	print db.getTagsToFile(f7)
 	db.updateFile(f7)
 	print db.getTagsToFile(f7)
+	print "Tags in the DB: "
+	print '='*10
+	print db.getAllTags()
 	f8 = File.File(fileName="documentation.tex", path="/home/niklaus/Documents/LaTeX/", tags=['document', 'projectbrowser', 'latex', ])
 	db.renameFile(f7, f8)
 	print '='*10
