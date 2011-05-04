@@ -151,13 +151,14 @@ class View(gtk.TreeView):
 	def historySymboleManagement(self):
 			h = len(self.history)-1
 			c = self.historyCursor
+			print('Symbole wurden aktualisiert: '+str(h)+','+str(c))
 			if h >= c and h != 0 and c > 0:
 				self.sys.gui.btnBack.set_sensitive(True)
 			if h >= c and h != 0:
 				self.sys.gui.btnFor.set_sensitive(True)
-			if c == 0:
+			if c <= 0 or h == 0:
 				self.sys.gui.btnBack.set_sensitive(False)
-			if c == h:
+			if c == h or h == 0:
 				self.sys.gui.btnFor.set_sensitive(False)
 	
 
