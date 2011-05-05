@@ -101,7 +101,7 @@ class FileManager:
 			#Funktioniert nur bei Ubuntu
 			os.system('/usr/bin/xdg-open '+path.replace(chr(32),'\ '))
 		elif self.sys.c.os == 'windows':
-			os.system(path)
+			os.system('"'+path+'"')
 		elif self.sys.c.os == 'mac':
 			os.system('open '+path.replace(chr(32),'\ '))
 		else:
