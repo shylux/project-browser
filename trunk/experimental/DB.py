@@ -23,7 +23,7 @@ class DB:
 		self.establishConnection()
 
 	def establishConnection(self):
-	  	print self.dbpath
+	  	#print self.dbpath
 	  	self.connection	= sqlite3.connect(self.dbpath,check_same_thread = False)
 		self.cursor	= self.connection.cursor()
 		print "connection established"
@@ -31,7 +31,7 @@ class DB:
 		self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='files'")
 		if len(self.cursor.fetchall()) != 1:
 			print "DB's empty. Creating tables"
-			self.createDB()
+			self.__createDB()
 
 	def fileInDB(self, fi):
 	  	"""Checks wether a files is in the db or not"""
@@ -44,8 +44,9 @@ class DB:
 		else:
 		  	return False
 
-	def executeQuerry(self, querry):
-		self.cursor.execute(querry)
+	def executeQuerry(self, query):
+		"""Deprecated! Won't be provided anymore for security reasons!"""
+		self.cursor.execute(query)
 		return self.cursor.fetchall()
 
 	def __changeList(self, li):
@@ -63,7 +64,7 @@ class DB:
 			tags = list(set(tags))	#remove duplicates from list
 			for row in tags:
 				tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
-				print tagQuery
+				#print tagQuery
 				self.cursor.execute(tagQuery)
 
 				idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
@@ -97,15 +98,15 @@ class DB:
 		if self.fileInDB(fi):
 			old_tags = self.getTagsToFile(fi)
 			new_tags = fi.getTags()
-			print "Tags inside the file: "
-			print new_tags
+			#print "Tags inside the file: "
+			#print new_tags
 			for row in old_tags:
 				try:
 					#remove all occurences of old tags from the new tag array, so only new tags are left
 					new_tags = filter (lambda a: a != row, new_tags)
 				except:
 					print "Error while removing element from old_tags"
-			print new_tags
+			#print new_tags
 			#Following three lines were moved out of the if statement in order to be able to use fid for the remove thing
 			fidQuery = "SELECT files.fid FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath())
 			self.cursor.execute(fidQuery)
@@ -113,7 +114,8 @@ class DB:
 			if len(new_tags) > 0:
 				self.__connectTagsToFile(new_tags, fid)
 			else:
-				print "No new tags, won't do anything"
+				#print "No new tags, won't do anything"
+				pass
 
 			#Remove old tags from database
 			deprecatedTags = old_tags
@@ -125,15 +127,15 @@ class DB:
 				except:
 					print ""
 			if len(deprecatedTags) > 0:
-				print "There ae old tags to be removed!"
+				#print "There ae old tags to be removed!"
 				#OK, I know that this is DAMNED UGLY, but I can't see any other way for getthing rid of the god damned stupid u in front of each element of the list
 				dT = ""
 				for line in deprecatedTags:
-					print str(line)
+					#print str(line)
 					dT = dT + "'" + line + "'" + ", "
 				#remove , and space at the end
 				dT = dT[:-2]
-				print dT
+				#print dT
 				delTagQuery = "DELETE FROM file_tag_relations WHERE fk_tagid IN (SELECT tagid FROM tagnames WHERE tagname IN (%s)) AND fk_fid = '%s'" % (dT, fid, )
 				self.cursor.execute(delTagQuery)
 				self.connection.commit()
@@ -174,7 +176,7 @@ class DB:
 		li = self.cursor.fetchall()
 		return self.__changeList(li)
 
-	def createDB(self):
+	def __createDB(self):
 	  	self.cursor.execute("CREATE TABLE files(fid INTEGER PRIMARY KEY, filename TEXT, path TEXT, backup BOOLEAN, isdir BOOLEAN)")
 		self.cursor.execute("CREATE TABLE tagnames(tagid INTEGER PRIMARY KEY, tagname TEXT UNIQUE , backup BOOLEAN)")
 		self.cursor.execute("CREATE TABLE file_tag_relations(relid INTEGER PRIMARY KEY, fk_fid INTEGER, fk_tagid INTEGER)")
@@ -276,43 +278,162 @@ if __name__ == "__main__":
 
 	#Let's go and test the new stuff in updateFile!!
 	#=================================================
-	db = DB("testdb")
-	f1 = File.File(fileName="test.txt", path="/home/niklaus/", tags=['test', 'projectbrowser', ])
-	f2 = File.File(fileName="cc.ogg", path="/home/niklaus/Music/", tags=['music', 'ogg', 'creative commons', ])
-	f3 = File.File(fileName="ozzed.ogg", path="/home/niklaus/Music/", tags=['music', 'ogg', 'creative commons', 'ozzed', '8bit', 'chiptune', ])
-	f4 = File.File(fileName="evil.mp3", path="/home/niklaus/Music/", tags=['music', 'mp3', 'proprietary', ])
-	f5 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'test', ])
-	db.addFile(f1)
-	db.addFile(f2)
-	db.addFile(f3)
-	db.addFile(f4)
-	db.addFile(f5)
-	print "Tags in the DB: "
-	print '='*10
-	print db.getAllTags()
-	for line in db.getFilesFromPath("/home/niklaus/Music/"):
-		print line.getFileName()
-	f6 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'test', 'document', 'projectbrowser', 'random', ])
-	db.updateFile(f6)
-	print "Tags in the DB: "
-	print '='*10
-	print db.getAllTags()
-	for line in db.getFilesFromPath("/home/niklaus/Music/"):
-		print line.getFileName()
-	f7 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'document', 'projectbrowser', ])
-	print db.getTagsToFile(f7)
-	db.updateFile(f7)
-	print db.getTagsToFile(f7)
-	print "Tags in the DB: "
-	print '='*10
-	print db.getAllTags()
-	f8 = File.File(fileName="documentation.tex", path="/home/niklaus/Documents/LaTeX/", tags=['document', 'projectbrowser', 'latex', ])
-	db.renameFile(f7, f8)
-	print '='*10
-	for line in db.getFilesFromPath("/home/niklaus/Documents/LaTeX/"):
-		print line.getFileName()
-	db.updateFile(f8)
-	print db.getTagsToFile(f8)
-	print '='*10
-	print db.getTagsToFile(f7)
+	#db = DB("testdb")
+	#f1 = File.File(fileName="test.txt", path="/home/niklaus/", tags=['test', 'projectbrowser', ])
+	#f2 = File.File(fileName="cc.ogg", path="/home/niklaus/Music/", tags=['music', 'ogg', 'creative commons', ])
+	#f3 = File.File(fileName="ozzed.ogg", path="/home/niklaus/Music/", tags=['music', 'ogg', 'creative commons', 'ozzed', '8bit', 'chiptune', ])
+	#f4 = File.File(fileName="evil.mp3", path="/home/niklaus/Music/", tags=['music', 'mp3', 'proprietary', ])
+	#f5 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'test', ])
+	#db.addFile(f1)
+	#db.addFile(f2)
+	#db.addFile(f3)
+	#db.addFile(f4)
+	#db.addFile(f5)
+	#print "Tags in the DB: "
+	#print '='*10
+	#print db.getAllTags()
+	#for line in db.getFilesFromPath("/home/niklaus/Music/"):
+	#	print line.getFileName()
+	#f6 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'test', 'document', 'projectbrowser', 'random', ])
+	#db.updateFile(f6)
+	#print "Tags in the DB: "
+	#print '='*10
+	#print db.getAllTags()
+	#for line in db.getFilesFromPath("/home/niklaus/Music/"):
+	#	print line.getFileName()
+	#f7 = File.File(fileName="documentation.odt", path="/home/niklaus/Documents/", tags=['libreoffice', 'odt', 'document', 'projectbrowser', ])
+	#print db.getTagsToFile(f7)
+	#db.updateFile(f7)
+	#print db.getTagsToFile(f7)
+	#print "Tags in the DB: "
+	#print '='*10
+	#print db.getAllTags()
+	#f8 = File.File(fileName="documentation.tex", path="/home/niklaus/Documents/LaTeX/", tags=['document', 'projectbrowser', 'latex', ])
+	#db.renameFile(f7, f8)
+	#print '='*10
+	#for line in db.getFilesFromPath("/home/niklaus/Documents/LaTeX/"):
+	#	print line.getFileName()
+	#db.updateFile(f8)
+	#print db.getTagsToFile(f8)
+	#print '='*10
+	#print db.getTagsToFile(f7)
 
+
+	#Modul tests:
+	#==========================================
+	print 'Mdule tests start'
+	db = DB("testdb")
+	f1 = File.File(fileName="documentation.tex", path="/home/niklaus/Documents/", tags=['LaTeX', 'documentation', 'filebrowser', 'project', 'school', 'test', ])
+	db.addFile(f1)
+	if len(db.getAllTags()) == 6:
+		print "Test 01: Succeed"
+	else:
+		print "Test 01: FAIL"
+
+	f2 = File.File(fileName="Music/", path="/home/niklaus/", tags=['music', 'multimedia', 'entertainment', 'test',])
+	db.addFile(f2)
+	if len(db.getAllTags()) == 9:
+		print "Test 02: Succeed"
+	else:
+		print "Test 02: FAIL"
+
+	if len(db.getTagsToFile(f2)) == 4:
+		print "Test 03: Succeed"
+	else:
+		print "Test 03: FAIL"
+
+	f3 = File.File(fileName="Music/", path="/home/niklaus/", tags=['music', 'multimedia', 'entertainment',])
+	db.updateFile(f3)
+	if len(db.getAllTags()) == 9 and len(db.getTagsToFile(f3)) == 3:
+		print "Test 04: Succeed"
+	else:
+		print "Test 04: FAIL"
+
+	f4 = File.File(fileName="documentation.tex", path="/home/niklaus/Documents/", tags=['LaTeX', 'documentation', 'filebrowser', 'project', 'school', ])
+	db.addFile(f4)
+	if len(db.getAllTags()) == 8 and len (db.getTagsToFile(f4)) == 5:
+		print "Test 05: Succeed"
+	else:
+		print "Test 05: FAIL"
+	
+	f5 = File.File(fileName="documentation.tex", path="/home/niklaus/Documents", tags=['LaTeX', 'documentation', 'filebrowser', 'project', 'school', 'dbtest', 'modultest', ])
+	db.updateFile(f5)
+	if len(db.getAllTags()) == 10 and len(db.getTagsToFile(f5)) == 7:
+		print "Test 06: Succeed"
+	else:
+		print "Test 06: FAIL"
+	
+	db.removeFile(f5)
+	if len(db.getFilesFromPath("/home/niklaus/Documents/")) == 0 and len(db.getAllTags()) == 3:
+		print "Test 07: Succeed"
+	else:
+		print "Test 07:FAIL"
+
+	f6 = File.File(path="/home/niklaus/Videos/", fileName="Movies/", isDir=True, tags=['entertainment', 'multimedia', 'movie'])
+	db.updateFile(f6)
+	fTest = db.getFilesFromPath("/home/niklaus/Videos/")[0]
+	if fTest.getFileName() == "Movies/" and fTest.getPath() == "/home/niklaus/Videos/" and fTest.getIsDir() == "True" and fTest.getTags() == ['movie', 'multimedia', 'entertainment', ]:
+		print "Test 08: Succeed"
+	else:
+		print "Test 08: FAIL"
+
+	f7 = File.File(path="/home/niklaus/doku/", fileName="projektantrag.tex", tags=['LaTeX', 'projectexplorer', 'berufsschule',], backup=True)
+	f8 = File.File(path="/home/niklaus/", fileName="doku/", isDir=True, tags=['projectexplorer', 'brufsschule', ])
+	f9 = File.File(path="/home/niklaus/doku/", fileName="projektantrag.pdf", tags=['projectexplorer', 'berufsschule'])
+	f10 = File.File(path="/home/niklaus/doku/", fileName="projektplan.tex", tags=['LaTeX', 'projectexplorer', 'berufsschule',], backup=True)
+	f11 = File.File(path="/home/niklaus/doku/", fileName="projektplan.pdf", tags=['projectexplorer', 'berufsschule'])
+	db.addFile(f7)
+	db.addFile(f8)
+	db.addFile(f9)
+	db.addFile(f10)
+	db.addFile(f11)
+	if len(db.getFilesFromPath("/home/niklaus/doku/")) == 4 and db.getFilesFromTag("LaTeX")[0].getBackup() == "True":
+		print "Test 09: Succeed"
+	else:
+		print "Test 09: FAIL"
+
+	f12 = File.File(path="/home/niklaus/doku/projektplan/", fileName="projektplan.tex", tags=['LaTeX', 'projectexplorer', 'berufsschule',], backup=True)
+	f13 = File.File(path="/home/niklaus/doku/projektplan/", fileName="projektplan01.pdf", tags=['projectexplorer', 'berufsschule'])
+	db.moveFile(f10, f12)
+	db.renameFile(f11, f13)
+	if len(db.getFilesFromPath("/home/niklaus/doku/")) == 2 and len(db.getFilesFromPath("/home/niklaus/doku/projektplan/")) == 2:
+		print "Test 10: Succeed"
+	else:
+		print "Test 10: FAIL"
+
+	if db.getFilesFromPath("/home/niklaus/doku/projektplan/")[1].getFileName()=="projektplan01.pdf" or db.getFilesFromPath("/home/niklaus/doku/projektplan/")[0].getFileName()=="projektplan01.pdf":
+		print "Test 11: Succeed"
+	else:
+	  	print "Test 11: FAIL"
+
+	if db.getFilesFromPath("/home/niklaus/doku/projektplan/")[1].getFileName()=="projektplan.tex" or db.getFilesFromPath("/home/niklaus/doku/projektplan/")[0].getFileName()=="projektplan.tex":
+		print "Test 12: Succeed"
+	else:
+	  	print "Test 12: FAIL"
+
+	if db.fileInDB(f13):
+		print "Test 13: Succeed"
+	else:
+	  	print "Test 13: FAIL"
+	
+	if not db.fileInDB(f10):
+		print "Test 14: Succeed"
+	else:
+	  	print "Test 14: FAIL"
+
+	f14 = File.File(path="/home/niklaus/test/", fileName="test.txt", tags=['foo', 'bar', ])
+	f15 = File.File(path="/home/niklaus/test/", fileName="test.txt", tags=['foo', 'bar', ])
+	db.addFile(f14)
+	db.addFile(f15)
+	if len(db.getFilesFromPath("/home/niklaus/test/")) == 1:
+		print "Test 15: Succeed"
+	else:
+		print "Test 15: FAIL"
+	
+	f16 = File.File(path="/home/niklaus/test/", fileName="test.txt", tags=['foo', 'bar', 'muh', ])
+	db.addFile(f16)
+	if len(db.getFilesFromPath("/home/niklaus/test/")) == 1 and db.getFilesFromPath("/home/niklaus/test/")[0].getTags() == ['foo', 'bar', 'muh', ]:
+		print "Test 16: Succeed"
+	else:
+	  	print "Test 16: FAIL"
+	#TODO addTagToFile
