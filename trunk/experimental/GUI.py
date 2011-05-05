@@ -145,6 +145,10 @@ class GUI():
 			if self.btnHirarchical.get_active():
 				self.mnuHirarchical.set_active(True)
 			else:
+				#Wenn zweimal die gleiche Ansicht gewaehlt wird wird die andere Ansicht aktiviert
+				if isinstance(self.actview,HirarchicalView):
+					self.showTag('init')
+					return 0
 				self.mnuHirarchical.set_active(False)
 		if event == 'init':
 			self.btnHirarchical.set_active(True)
@@ -164,6 +168,10 @@ class GUI():
 			if self.btnTag.get_active():
 				self.mnuTag.set_active(True)
 			else:
+				#Wenn zweimal die gleiche Ansicht gewaehlt wird wird die andere Ansicht aktiviert
+				if isinstance(self.actview,TagView):
+					self.showHirarchical('init')
+					return 0
 				self.mnuTag.set_active(False)
 		if event == 'init':
 			self.btnTag.set_active(True)
