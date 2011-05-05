@@ -154,7 +154,7 @@ class DB:
 				self.connection.commit()
 				self.__cleanupTags()
 		else:
-			print "File not yet in DB, will run addFile instead"
+			#print "File not yet in DB, will run addFile instead"
 			self.addFile(fi)
 				
 	     	
@@ -209,7 +209,7 @@ class DB:
 			self.connection.commit();
 			self.__connectTagsToFile(fi.getTags(), fid)
 		else:
-			print "File already in DB, won't add it again, will run updateFile instead!"
+			#print "File already in DB, won't add it again, will run updateFile instead!"
 			self.updateFile(fi)
 
 	def removeFile(self, fi):
@@ -249,12 +249,33 @@ class DB:
 		#TODO Check if such a file does not exist yet
 		#updateQuery = "UPDATE files SET filename='%s', path='%s' WHERE filename='%s' AND path='%s'" % (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), )
 		#self.cursor.execute(updateQuery)
-		self.cursor.execute("UPDATE files SET filename = ?, path = ? WHERE filename = ? AND path = ?", (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), ))
-		self.connection.commit()
+		if not self.fileInDB(f2):
+			self.cursor.execute("UPDATE files SET filename = ?, path = ? WHERE filename = ? AND path = ?", (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), ))
+			self.connection.commit()
+		else:
+			print "file '" + f2.getFullPath +"' exists, can't move!"
 	
 	def renameFile(self, f1, f2):
 		#Just calling moveFile
 		self.moveFile(f1, f2)
+
+	def getFile(self, fi):
+	  	"""Gets all the details to a file (tags, backup state, ....
+		@param fi, File, A file object with the filename and the path of the file whichs details you want to get"""
+		self.cursor.execute("SELECT * from files WHERE filename = ? and path = ?", (fi.getFileName(), fi.getPath()))	
+		f2 = self.cursor.fetchall()
+		f3 = self.__generateFilesArray(f2)[0]
+		return f3
+
+	def copyFile(self, f1, f2):
+		"""Copy a file (including all tags, backup stae 'n' stuff).
+		@param f1, File, the file you want to copy
+		@param f2, File, a File object with the name and the path of the copy"""
+		if not self.fileInDB(f2):
+			f3 = self.getFile(f1)
+			f3.setFileName(f2.getFileName())
+			f3.setPath(f2.getPath())
+			self.addFile(f3)
 
 if __name__ == "__main__":
    	#print "TEST"
@@ -478,4 +499,22 @@ if __name__ == "__main__":
 		print "Test 19: Succeed"
 	else:
 	  	print "Test 19: FAIL"
+
+	f20 = db.getFile(f18)
+	if len(f20.getTags()) == 1 and f20.getTags()[0] == 'tschabold':
+		print "Test 20: Succeed"
+	else:
+		print "Test 20: FAIL"
+
+	f21 = File.File(path="/home/niklaus/copy/", fileName="copy.text", tags=['copy', 'test', 'projectexplorer'])
+	f22 = File.File(path="/home/test/copy/", fileName="copy.tested")
+	db.addFile(f21)
+	db.copyFile(f21, f22)
+	f23 = db.getFile(f22)
+	if f23.getFileName() == "copy.tested" and f23.getPath()=="/home/test/copy/" and len(f23.getTags()) == 3:
+		print "Test 21: Succeed"
+	else:
+	  	print "Test 21: FAIL"
 	#TODO addTagToFile
+	print "="*20
+	db.getFile(f18)
