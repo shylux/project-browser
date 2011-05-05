@@ -21,6 +21,7 @@ class DB:
 	def __init__(self, dbpath):
 		self.dbpath	= dbpath
 		self.establishConnection()
+		self.connection.text_factory = str
 
 	def establishConnection(self):
 	  	#print self.dbpath
@@ -35,8 +36,9 @@ class DB:
 
 	def fileInDB(self, fi):
 	  	"""Checks wether a files is in the db or not"""
-		checkQuery = "SELECT files.filename FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath(), )
-		self.cursor.execute(checkQuery)
+		#checkQuery = "SELECT files.filename FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath(), )
+		#self.cursor.execute(checkQuery)
+		self.cursor.execute("SELECT files.filename FROM files WHERE files.filename = ? AND files.path = ?", (fi.getFileName(), fi.getPath(), ))
 		value = self.cursor.fetchall()
 
 		if len(value) > 0:
@@ -63,16 +65,19 @@ class DB:
 	def __connectTagsToFile(self, tags, fid):
 			tags = list(set(tags))	#remove duplicates from list
 			for row in tags:
-				tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
+				#tagQuery = "INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES ('%s', 'False')" % (row, )
 				#print tagQuery
-				self.cursor.execute(tagQuery)
+				#self.cursor.execute(tagQuery)
+				self.cursor.execute("INSERT OR IGNORE INTO tagnames (tagname, backup) VALUES (?, ?)", (row, False))
 
-				idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
-				self.cursor.execute(idQuery)
+				#idQuery	= "SELECT tagid FROM tagnames WHERE tagname = '%s'" % (row, )
+				#self.cursor.execute(idQuery)
+				self.cursor.execute("SELECT tagid FROM tagnames WHERE tagname = ?", (row, ))
 				res = self.cursor.fetchall()
 
-				relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
-				self.cursor.execute(relQuery)
+				#relQuery = "INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES ('%s', '%s')" % (fid, res[0][0], )
+				#self.cursor.execute(relQuery)
+				self.cursor.execute("INSERT INTO file_tag_relations(fk_fid, fk_tagid) VALUES (?, ?)", (fid, res[0][0]))
 
 			self.connection.commit()
 	
@@ -83,8 +88,9 @@ class DB:
 		into a File.py object"""
 	  	ret_value	= []
 		for row in li:
-			tagQuery	= "SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE files.fid = '%d'" % (row[0], )
-			self.cursor.execute(tagQuery)
+			#tagQuery	= "SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE files.fid = '%d'" % (row[0], )
+			#self.cursor.execute(tagQuery)
+			self.cursor.execute("SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE files.fid = ?", (row[0], ))
 			tagLi		= self.cursor.fetchall()
 			tagList		= self.__changeList(tagLi)
 
@@ -108,8 +114,9 @@ class DB:
 					print "Error while removing element from old_tags"
 			#print new_tags
 			#Following three lines were moved out of the if statement in order to be able to use fid for the remove thing
-			fidQuery = "SELECT files.fid FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath())
-			self.cursor.execute(fidQuery)
+			#fidQuery = "SELECT files.fid FROM files WHERE files.filename = '%s' AND files.path = '%s'" % (fi.getFileName(), fi.getPath())
+			#self.cursor.execute(fidQuery)
+			self.cursor.execute("SELECT files.fid FROM files WHERE files.filename = ? AND files.path = ?", (fi.getFileName(), fi.getPath(), ))
 			fid = self.cursor.fetchall()[0][0]
 			if len(new_tags) > 0:
 				self.__connectTagsToFile(new_tags, fid)
@@ -129,15 +136,21 @@ class DB:
 			if len(deprecatedTags) > 0:
 				#print "There ae old tags to be removed!"
 				#OK, I know that this is DAMNED UGLY, but I can't see any other way for getthing rid of the god damned stupid u in front of each element of the list
-				dT = ""
-				for line in deprecatedTags:
-					#print str(line)
-					dT = dT + "'" + line + "'" + ", "
-				#remove , and space at the end
-				dT = dT[:-2]
+				#dT = ""
+				#for line in deprecatedTags:
+				#	#print str(line)
+				#	dT = dT + "'" + line + "'" + ", "
+				##remove , and space at the end
+				#dT = dT[:-2]
 				#print dT
-				delTagQuery = "DELETE FROM file_tag_relations WHERE fk_tagid IN (SELECT tagid FROM tagnames WHERE tagname IN (%s)) AND fk_fid = '%s'" % (dT, fid, )
-				self.cursor.execute(delTagQuery)
+				tagids = []
+				for line in deprecatedTags:
+					self.cursor.execute("SELECT tagid FROM tagnames WHERE tagname = ?", (line, ))
+					tagids.extend(self.cursor.fetchall()[0])
+				#delTagQuery = "DELETE FROM file_tag_relations WHERE fk_tagid IN (SELECT tagid FROM tagnames WHERE tagname IN (%s)) AND fk_fid = '%s'" % (dT, fid, )
+				#self.cursor.execute(delTagQuery)
+				for line in tagids:
+					self.cursor.execute("DELETE FROM file_tag_relations WHERE fk_tagid = ? AND fk_fid = ?", (line, fid, ))
 				self.connection.commit()
 				self.__cleanupTags()
 		else:
@@ -147,8 +160,9 @@ class DB:
 	     	
 	def getTagsToFile(self, _file):
 		li		= None
-	  	query	= "SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE path = '%s' AND filename = '%s'" % (_file.getPath(), _file.getFileName())
-		self.cursor.execute(query)
+	  	#query	= "SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE path = '%s' AND filename = '%s'" % (_file.getPath(), _file.getFileName())
+		#self.cursor.execute(query)
+		self.cursor.execute("SELECT tagnames.tagname FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE path = ? AND filename = ?", (_file.getPath(), _file.getFileName()))
 		li	= self.cursor.fetchall()
 		return self.__changeList(li)
 
@@ -156,8 +170,9 @@ class DB:
 		ret_value	= []
 		li		= None
 
-		query	= "SELECT * FROM files WHERE path = '%s'" % (path, )
-		self.cursor.execute(query)
+		#query	= "SELECT * FROM files WHERE path = '%s'" % (path, )
+		#self.cursor.execute(query)
+		self.cursor.execute("SELECT * FROM files WHERE path = ?", (path, ))
 		li	= self.cursor.fetchall()
 		return self.__generateFilesArray(li)
 
@@ -166,8 +181,9 @@ class DB:
 		li		= None
 		ids		= []
 
-		query	= "SELECT files.* FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE tagnames.tagname = '%s'" % (tag, )
-		self.cursor.execute(query)
+		#query	= "SELECT files.* FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERE tagnames.tagname = '%s'" % (tag, )
+		#self.cursor.execute(query)
+		self.cursor.execute("SELECT files.* FROM files LEFT JOIN file_tag_relations, tagnames ON (files.fid = file_tag_relations.fk_fid AND file_tag_relations.fk_tagid = tagnames.tagid) WHERe tagnames.tagname = ?", (tag, ))
 		li	= self.cursor.fetchall()
 		return self.__generateFilesArray(li)
 
@@ -186,8 +202,9 @@ class DB:
 		#IMPORTANT: For this to work, the field tagnames.tagname has to be marked as UNIQUE!
 		#Otherwise, attempts to insert tags might cause trouble!
 		if not self.fileInDB(fi):
-			query = "INSERT INTO FILES (filename, path, backup, isdir) VALUES ('%s', '%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir())
-			self.cursor.execute(query)
+			#query = "INSERT INTO FILES (filename, path, backup, isdir) VALUES ('%s', '%s', '%s', '%s')" % (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir())
+			#self.cursor.execute(query)
+			self.cursor.execute("INSERT INTO FILES (filename, path, backup, isdir) VALUES (?, ?, ?, ?)", (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir()))
 			fid	= self.cursor.lastrowid
 			self.connection.commit();
 			self.__connectTagsToFile(fi.getTags(), fid)
@@ -196,14 +213,17 @@ class DB:
 			self.updateFile(fi)
 
 	def removeFile(self, fi):
-		idQuery = "SELECT files.fid FROM files WhERE files.path = '%s' AND files.filename = '%s'" % (fi.getPath(), fi.getFileName())
-		self.cursor.execute(idQuery)
+		#idQuery = "SELECT files.fid FROM files WhERE files.path = '%s' AND files.filename = '%s'" % (fi.getPath(), fi.getFileName())
+		#self.cursor.execute(idQuery)
+		self.cursor.execute("SELECT files.fid FROM files WhERE files.path = ? AND files.filename = ? ", (fi.getPath(), fi.getFileName()))
 		fid = self.cursor.fetchall()[0][0]
-		delFileQuery = "DELETE FROM files WHERE files.fid = '%s'" % (fid, )
-		self.cursor.execute(delFileQuery)
+		#delFileQuery = "DELETE FROM files WHERE files.fid = '%s'" % (fid, )
+		#self.cursor.execute(delFileQuery)
+		self.cursor.execute("DELETE FROM files WHERE files.fid = ?", (fid, ))
 		self.connection.commit()
-		delTagConQuery = "DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = '%s'" % (fid, )
-		self.cursor.execute(delTagConQuery)
+		#delTagConQuery = "DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = '%s'" % (fid, )
+		#self.cursor.execute(delTagConQuery)
+		self.cursor.execute("DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = ? ", (fid, ))
 		self.connection.commit()
 		self.__cleanupTags()
 
@@ -227,8 +247,9 @@ class DB:
 		@param f1, File, a File object with the path and the name of the file as it is BEFORE the movement
 		@param f2, File, a File object with the path and the name of the file as it is AFTER the movement"""
 		#TODO Check if such a file does not exist yet
-		updateQuery = "UPDATE files SET filename='%s', path='%s' WHERE filename='%s' AND path='%s'" % (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), )
-		self.cursor.execute(updateQuery)
+		#updateQuery = "UPDATE files SET filename='%s', path='%s' WHERE filename='%s' AND path='%s'" % (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), )
+		#self.cursor.execute(updateQuery)
+		self.cursor.execute("UPDATE files SET filename = ?, path = ? WHERE filename = ? AND path = ?", (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), ))
 		self.connection.commit()
 	
 	def renameFile(self, f1, f2):
@@ -372,7 +393,7 @@ if __name__ == "__main__":
 	f6 = File.File(path="/home/niklaus/Videos/", fileName="Movies/", isDir=True, tags=['entertainment', 'multimedia', 'movie'])
 	db.updateFile(f6)
 	fTest = db.getFilesFromPath("/home/niklaus/Videos/")[0]
-	if fTest.getFileName() == "Movies/" and fTest.getPath() == "/home/niklaus/Videos/" and fTest.getIsDir() == "True" and fTest.getTags() == ['movie', 'multimedia', 'entertainment', ]:
+	if fTest.getFileName() == "Movies/" and fTest.getPath() == "/home/niklaus/Videos/" and fTest.getIsDir() == True and fTest.getTags() == ['movie', 'multimedia', 'entertainment', ]:
 		print "Test 08: Succeed"
 	else:
 		print "Test 08: FAIL"
@@ -387,7 +408,7 @@ if __name__ == "__main__":
 	db.addFile(f9)
 	db.addFile(f10)
 	db.addFile(f11)
-	if len(db.getFilesFromPath("/home/niklaus/doku/")) == 4 and db.getFilesFromTag("LaTeX")[0].getBackup() == "True":
+	if len(db.getFilesFromPath("/home/niklaus/doku/")) == 4 and db.getFilesFromTag("LaTeX")[0].getBackup() == True:
 		print "Test 09: Succeed"
 	else:
 		print "Test 09: FAIL"
@@ -436,4 +457,25 @@ if __name__ == "__main__":
 		print "Test 16: Succeed"
 	else:
 	  	print "Test 16: FAIL"
+
+	f17 = File.File(path="/home/project/", fileName="heroes", tags=['shylux', 'tschabold', 'bash.vi'])
+	db.addFile(f17)
+	if len(db.getTagsToFile(f17)) == 3:
+		print "Test 17: Succeed"
+	else:
+	  	print "Test 17: FAIL"
+
+	f18 = File.File(path="/home/project/", fileName="heroes", tags=['shylux', 'tschabold', 'bash.vi', 'heroes', 'project'])
+	db.updateFile(f18)
+	if len(db.getTagsToFile(f17)) == 5:
+		print "Test 18: Succeed"
+	else:
+	  	print "Test 18: FAIL"
+	
+	f19 = File.File(path="/home/project/", fileName="heroes", tags=['tschabold', ])
+	db.updateFile(f19)
+	if len(db.getTagsToFile(f17)) == 1:
+		print "Test 19: Succeed"
+	else:
+	  	print "Test 19: FAIL"
 	#TODO addTagToFile
