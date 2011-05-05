@@ -43,7 +43,7 @@ class TagView(View):
 				oneitem = itemarray[j].strip()
 				self.items = self.sys.db.getFilesFromTag(oneitem)
 				for i in range(len(self.items)):
-					self.items[i].setIsDir(self.sys.u.strBooleanToBoolean(self.items[i].getIsDir()))
+					self.items[i].setIsDir(self.items[i].getIsDir())
 					if self.items[i].getIsDir():
 						self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 					else:
