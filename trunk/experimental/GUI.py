@@ -211,7 +211,6 @@ class GUI():
 		self.showall()
 
 		#Update-View
-		print(self.actview)
 		self.actview.update()
 
 	#def searchKey(self,widget,event):

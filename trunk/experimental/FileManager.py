@@ -55,7 +55,6 @@ class FileManager:
 	def getParentDir(self,path):
 		s = path.split('/')
 		l = len(s)
-		print('l'+str(l))
 		if l >= 3:
 			s.remove(s[l-2])
 			return '/'.join(s)

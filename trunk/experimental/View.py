@@ -123,35 +123,28 @@ class View(gtk.TreeView):
 	
 	def historyUpdate(self,actor='fn'):
 		#Wenn wieder vorwaertz gesprungen wird, werden alle Element nach der aktuelen Position geloescht
-		print('historyCursor: '+str(self.historyCursor))
 		if self.historyCursor > -1:
 			if actor == 'user' and self.history[self.historyCursor] != self.get_actTxtInput():
 				if self.historyCursor < len(self.history)-1:
 					rem = (len(self.history)-1) - self.historyCursor
 					l = len(self.history)
-					print('history delete items: '+str(rem))
 					i = 1
 					#rem+1 weil die len von history eins mehr ist als der cursor
 					while i<rem+1:
-						print('i: '+str(i)+'delete index: '+str(l-i))
-						print('delete history entry: '+self.history[l-i])
 						self.history.remove(self.history[l-i])
 						i = i + 1
 					self.historyCursor = self.historyCursor
 				self.historyCursor = self.historyCursor + 1
 				self.history.append(self.get_actTxtInput())
-				print('historyUpdate: '+str(self.history))
 				self.historySymboleManagement()
 		elif len(self.history) == 0:
 			self.historyCursor = self.historyCursor + 1
 			self.history.append(self.get_actTxtInput())
-			print('historyUpdate: '+str(self.history))
 			self.historySymboleManagement()
 		
 	def historySymboleManagement(self):
 			h = len(self.history)-1
 			c = self.historyCursor
-			print('Symbole wurden aktualisiert: '+str(h)+','+str(c))
 			if h >= c and h != 0 and c > 0:
 				self.sys.gui.btnBack.set_sensitive(True)
 			if h >= c and h != 0:

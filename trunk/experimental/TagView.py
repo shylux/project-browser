@@ -19,9 +19,7 @@ class TagView(View):
 		self.connect('row-activated',self.rowActivate)
 
 	def update(self, actor = 'fn'):
-		print('TAG UPDATE')
 		if self.sys.gui != None:
-			print('TAG UPDATE IN IF')
 			oldmodel = self.get_model()
 			self.model.clear()
 			#Dieser Durchgang ist, wenn noch nicht's im TextFeld steht
@@ -30,7 +28,6 @@ class TagView(View):
 				for i in range(len(t)):
 					self.model.append(None,[self.getFolderIcon(),'*',[t[i]],t[i]])
 				self.set_model(self.model)
-				print('vor aufruf1')
 				self.historyUpdate(actor)
 				self.historySymboleManagement()
 				self.updateParentFolderBtn()
@@ -49,7 +46,6 @@ class TagView(View):
 					else:
 						self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 			self.set_model(self.model)
-			print('vor aufruf2')
 			if len(self.items)>0:
 				self.historyUpdate(actor)
 			self.historySymboleManagement()
@@ -57,9 +53,7 @@ class TagView(View):
 			self.completion()
 
 	def completion(self):
-			print('search matched: '+self.get_actTxtInput())
 			matched = self.sys.tagmanager.searchMatchTags(self.get_actTxtInput())
-			print('matched :'+str(matched))
 		#try:
 			if self.sys.gui.listcompl != None:
 				#try:
@@ -67,7 +61,6 @@ class TagView(View):
 				#except:
 				#	pass
 			for i in range(len(matched)):
-				print('for '+str(i)+'matched word: '+str(matched[i]))
 				self.sys.gui.listcompl.append([matched[i]])
 		#except:
 		#	pass
