@@ -41,7 +41,6 @@ class AddTag():
 		self.fobj = None
 		self.fobj = fobj
 		self.txtTags.set_text(', '.join(self.fobj.getTags()))
-		print('gesetzte tags'+str(self.fobj.getTags()))
 		self.txtFiles.set_text(self.fobj.getFileName())
 		self.updateModel()
 
@@ -52,7 +51,6 @@ class AddTag():
 		pass
 
 	def clearAll(self):
-		print('clear all')
 		self.fobj = None
 		self.model.clear()
 		self.txtFiles.set_text('')
