@@ -131,10 +131,7 @@ class File:
 	def getFullPath(self):
 		"""@return fullPath, String representing the full path to the file, including the file's name"""
 		if self.fullPath == None:
-			if self.path == None:
-				return self.fileName
-			else:
-				return self.path + self.fileName
+			return self.path + self.fileName
 		else:
 			return self.fullPath
 	
