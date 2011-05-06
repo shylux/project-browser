@@ -266,7 +266,7 @@
               <widget class="GtkHPaned" id="hspView">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="position">310</property>
+                <property name="position">300</property>
                 <child>
                   <widget class="GtkScrolledWindow" id="View">
                     <property name="visible">True</property>
