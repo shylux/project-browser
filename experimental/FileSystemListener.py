@@ -56,8 +56,7 @@ class FileSystemListener(threading.Thread):
 		#self.sys.gui.showTag('init')
 		print "create_event: ", event
 	def delete_event(self, event):
-		f = File(event)
-		#self.db.removeFile(f)
+		self.db.removeFile(File(event))
 		print "delete_event: ", event
 	def modify_event(self, event):
 		print "modify_event: ", event

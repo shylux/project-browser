@@ -131,7 +131,10 @@ class File:
 	def getFullPath(self):
 		"""@return fullPath, String representing the full path to the file, including the file's name"""
 		if self.fullPath == None:
-			return self.path + self.fileName
+			if self.path == None:
+				return self.fileName
+			else:
+				return self.path + self.fileName
 		else:
 			return self.fullPath
 	
@@ -146,7 +149,7 @@ class File:
 	  	self.tags.extend(tags)
 
 	def ex_backup(self):
-		print "Backup", self.getPath()
+		print "Backup", self.fileName
 	
 if __name__ == "__main__":
   	print "Starting tests"
