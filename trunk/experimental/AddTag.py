@@ -4,7 +4,7 @@ class AddTag():
 	def __init__(self,sys):
 		self.sys = sys
 		self.fobj = None
-		self.xml = gtk.glade.XML("addTag4.glade")
+		self.xml = gtk.glade.XML("addTag.glade")
 		self.main = self.xml .get_widget("vbxMain")
 		self.txtFiles = self.xml.get_widget("txtFileNames")
 		self.txtTags = self.xml.get_widget("txtTags")
