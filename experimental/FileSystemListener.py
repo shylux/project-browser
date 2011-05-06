@@ -53,12 +53,14 @@ class FileSystemListener(threading.Thread):
 
 	# Event kommt als String mit dem Dateipfad an. 
 	def create_event(self, event):
-		self.sys.gui.actview.update()
+		#self.sys.gui.showTag('init')
 		print "create_event: ", event
-		
 	def delete_event(self, event):
 		f = File(event)
-		self.db.removeFile(f)
+		#self.db.removeFile(f)
 		print "delete_event: ", event
 	def modify_event(self, event):
 		print "modify_event: ", event
+	def move_event(self, fr, to):
+		self.db.moveFile(File(fr), File(to))
+		print "move: from: ", fr, " to: ", to

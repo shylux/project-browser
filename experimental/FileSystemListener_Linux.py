@@ -15,7 +15,8 @@ class FileSystemListener_Linux(pyinotify.ProcessEvent):
 	listener = None
 	notifier = None
 	parent = None
-	mask = pyinotify.IN_DELETE | pyinotify.IN_CREATE | pyinotify.IN_MODIFY # watched events
+	mask = pyinotify.IN_DELETE | pyinotify.IN_CREATE | pyinotify.IN_MODIFY | pyinotify.IN_MOVED_FROM | pyinotify.IN_MOVED_TO # watched events
+	lastfrom = None
 	def __init__(self, tparent):
 		self.parent = tparent
 		self.listener = pyinotify.WatchManager()
@@ -37,3 +38,9 @@ class FileSystemListener_Linux(pyinotify.ProcessEvent):
 		self.parent.delete_event(event.pathname)
 	def process_IN_MODIFY(self, event):
 		self.parent.modify_event(event.pathname)
+	def process_IN_MOVED_FROM(self, event):
+		self.lastfrom = event.pathname
+	def process_IN_MOVED_TO(self, event):
+		if (self.lastfrom != None):
+			self.parent.move_event(self.lastfrom, event.pathname)		
+		self.lastfrom = None
