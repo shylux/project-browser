@@ -4,10 +4,12 @@ class AddTag():
 	def __init__(self,sys):
 		self.sys = sys
 		self.fobj = None
-		self.xml = gtk.glade.XML("addTag.glade")
+		self.xml = gtk.glade.XML("addTag4.glade")
 		self.main = self.xml .get_widget("vbxMain")
 		self.txtFiles = self.xml.get_widget("txtFileNames")
 		self.txtTags = self.xml.get_widget("txtTags")
+		self.txtTags.connect('key-release-event',self.enterEventHandler)
+		#self.txtTags.connect('drag_data_received', self.test)
 		self.btnSave = self.xml.get_widget("btnSave")
 		self.btnSave.connect('button_release_event',self.save)
 		self.con = self.xml.get_widget("conTagList")		
@@ -17,6 +19,7 @@ class AddTag():
 
 		#Tree Definition
 		self.tree = gtk.TreeView(self.model)
+		#self.tree.drag_source_set(gtk.gdk.BUTTON1_MASK,self.model,gtk.gdk.ACTION_DEFAULT)
 		self.tree.connect('row-activated',self.addClickedTag)
 		self.con.add(self.tree)
 
@@ -35,6 +38,9 @@ class AddTag():
 		
 		self.updateModel()
 		self.main.show_all()
+
+	def test(self):
+		print('test')
 
 	def update(self,fobj):
 		self.clearAll()
@@ -70,7 +76,10 @@ class AddTag():
 		else:
 			self.txtTags.set_text(self.txtTags.get_text()+', '+tagname)
 
-	
+	def enterEventHandler(self,widget,event):
+		if event.keyval == gtk.gdk.keyval_from_name("Return"):
+			self.save(widget,event)
+
 	def save(self,widget,event):
 		print('save')
 		tags = self.txtTags.get_text().split(',')
