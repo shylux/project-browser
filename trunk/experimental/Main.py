@@ -55,7 +55,7 @@ class Main():
 		self.fslistener = FileSystemListener(self)
 		self.fslistener.daemon = True
 		self.t.append(self.fslistener)
-		#self.fslistener.add_watch("/home/shylux/project-browser/experimental", True)
+		self.fslistener.add_watch(".", True)
 		self.fslistener.start()
 
 		if modus == 'cli':
