@@ -34,7 +34,7 @@ class Utility:
 		if s == 'True':
 			return True
 	def getTime(self):
-		return strftime("%Y-%m-%d %H:%M:%S")
+		return strftime("%Y-%m-%d_%H:%M:%S")
 
 #Dynamisches Objekt, dass fuer normale Objekte gebraucht werden kann
 class NO():
