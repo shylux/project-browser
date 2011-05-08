@@ -24,7 +24,7 @@ class File:
 	u		= None
 	constant	= None
 	os		= None
-	def __init__(self, fileName=None, path=None, tags=[], backup=False, isDir=False, fullPath=None):
+	def __init__(self, fullPath=None, fileName=None, path=None, tags=[], backup=False, isDir=False):
 	  	"""Constructor
 		@param	fileName, string	, optional 
 		@param	path	, string	, optional
@@ -131,7 +131,10 @@ class File:
 	def getFullPath(self):
 		"""@return fullPath, String representing the full path to the file, including the file's name"""
 		if self.fullPath == None:
-			return self.path + self.fileName
+		  	if not self.path==None or not self.fileName==None:
+				return self.path + self.fileName
+			else:
+				print "either path or fileName (or both) are not specified. You can't use this function unless both are specified"
 		else:
 			return self.fullPath
 	
@@ -218,7 +221,7 @@ if __name__ == "__main__":
 	else:
 	  	print "Test #10: FAIL"
 
-	f4 = File(fullPath="/home/niklaus/Music/")
+	f4 = File("/home/niklaus/Music/")
 	if f4.getPath() == "/home/niklaus/" \
 	    and f4.getFileName() == "Music/" and f4.getFullPath() == "/home/niklaus/Music/":
 		print "Test #11: Succeed"
@@ -291,5 +294,5 @@ if __name__ == "__main__":
 	print File.__init__.__doc__
 
 	#Backup
-	b = File()
-	b.ex_backup()
+	#b = File("/home/laden")
+	#b.ex_backup()
