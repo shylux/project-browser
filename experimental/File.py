@@ -147,6 +147,14 @@ class File:
 
 	def ex_backup(self):
 		print "Backup", self.fileName
+		print "FileName: ", self.getFileName()
+		print "path: ", self.getPath()
+		print "FillPath", self.getFullPath()
+		dir = self.getPath() + ".pb_backup"
+		if not os.path.exists(dir):
+			os.makedirs(dir)
+		print self.u.getTime()
+		
 	
 if __name__ == "__main__":
   	print "Starting tests"

@@ -10,6 +10,7 @@
 #			0.2		18.4.2011	Funktion um ein neues Objekt zu erstellen
 
 import sys
+from time import strftime
 
 class Utility:
 
@@ -32,6 +33,8 @@ class Utility:
 			return False
 		if s == 'True':
 			return True
+	def getTime(self):
+		return strftime("%Y-%m-%d %H:%M:%S")
 
 #Dynamisches Objekt, dass fuer normale Objekte gebraucht werden kann
 class NO():
