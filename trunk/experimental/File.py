@@ -10,8 +10,10 @@
 #			0.9		21.04.2011	Created methods and functionality. Added __doc__s. added test (bottom)
 
 import re
+import os
 from Constant import *
 from Utility import *
+from shutil import copytree, ignore_patterns, copyfile
 
 class File:
   	"""represents a file on the filesysem"""
@@ -149,16 +151,19 @@ class File:
 	  	self.tags.extend(tags)
 
 	def ex_backup(self):
-		print "Backup", self.fileName
-		print "FileName: ", self.getFileName()
-		print "path: ", self.getPath()
-		print "FillPath", self.getFullPath()
+		print "FullPath", self.getFullPath()
 		dir = self.getPath() + ".pb_backup"
 		if not os.path.exists(dir):
 			os.makedirs(dir)
-		print self.u.getTime()
-		
-	
+		bdir = dir + "/" + self.u.getTime()
+		if not os.path.exists(bdir):
+			os.makedirs(bdir)
+		if (os.path.isdir(self.getFullPath())):
+			copytree(self.getFullPath(), bdir + "/" + self.getFileName(), ignore=ignore_patterns('.*', '*.pyc'))
+		else:
+			copyfile(self.getFullPath(), bdir + "/" + self.getFileName())
+			
+
 if __name__ == "__main__":
   	print "Starting tests"
 	print "Note: Tests 9,10,14,15 will fail on Windows... and so will many others probably"
