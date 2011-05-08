@@ -232,7 +232,7 @@ class DB:
 			self.cursor.execute("UPDATE files SET filename = ?, path = ? WHERE filename = ? AND path = ?", (f2.getFileName(), f2.getPath(), f1.getFileName(), f1.getPath(), ))
 			self.connection.commit()
 		else:
-			print "file '" + f2.getFullPath +"' exists, can't move!"
+			print "file '" + f2.getFullPath() +"' exists, can't move!"
 	
 	def renameFile(self, f1, f2):
 		#Just calling moveFile
@@ -411,6 +411,11 @@ if __name__ == "__main__":
 		print "Test 21: Succeed"
 	else:
 	  	print "Test 21: FAIL"
+
+	fx1 = File.File(path="/test/27/", fileName="foo")
+	fx2 = File.File(path="/test/28/", fileName="bar")
+	db.moveFile(fx1, fx2)
+	print "Still running"
 	#TODO addTagToFile
 	print "="*20
 	db.getFile(f18)
