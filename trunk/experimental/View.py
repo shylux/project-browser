@@ -66,9 +66,9 @@ class View(gtk.TreeView):
 		self.cl2.add_attribute(render3,'text',3)
 
 		#Allgemeine Definitionen fuer den Baum
-		self.set_search_column(1)
-		self.cl1.set_sort_column_id(0)
-		self.cl2.set_sort_column_id(1)
+		#self.set_search_column(1)
+		#self.cl1.set_sort_column_id(0)
+		#self.cl2.set_sort_column_id(1)
 
 		self.update()
 
@@ -125,9 +125,7 @@ class View(gtk.TreeView):
 	
 	def updateBackupBtn(self):
 		try:
-			print(self.getFObjFromSelectedRow())
 			if(isinstance(self.getFObjFromSelectedRow(),File) or type(self.getFObjFromSelectedRow()) == list):
-				print(self.getFObjFromSelectedRow())
 				self.sys.gui.btnBackup.set_sensitive(True)
 			else:
 				self.sys.gui.btnBackup.set_sensitive(False)
@@ -135,7 +133,6 @@ class View(gtk.TreeView):
 			self.sys.gui.btnBackup.set_sensitive(False)
 
 	def backupSelectedObject(self):
-		print('backup')
 		f = self.getFObjFromSelectedRow()
 		f.ex_backup()
 	
