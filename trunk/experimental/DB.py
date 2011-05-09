@@ -198,13 +198,16 @@ class DB:
 	def removeFile(self, fi):
 		"""Removes a file from the Database.
 		@param fi, File, Fileobject representing the file you want to remove (only fileName and path are important)"""
-		self.cursor.execute("SELECT files.fid FROM files WhERE files.path = ? AND files.filename = ? ", (fi.getPath(), fi.getFileName()))
-		fid = self.cursor.fetchall()[0][0]
-		self.cursor.execute("DELETE FROM files WHERE files.fid = ?", (fid, ))
-		self.connection.commit()
-		self.cursor.execute("DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = ? ", (fid, ))
-		self.connection.commit()
-		self.__cleanupTags()
+		if self.fileInDB(fi):
+			self.cursor.execute("SELECT files.fid FROM files WhERE files.path = ? AND files.filename = ? ", (fi.getPath(), fi.getFileName()))
+			fid = self.cursor.fetchall()[0][0]
+			self.cursor.execute("DELETE FROM files WHERE files.fid = ?", (fid, ))
+			self.connection.commit()
+			self.cursor.execute("DELETE FROM file_tag_relations WHERE file_tag_relations.fk_fid = ? ", (fid, ))
+			self.connection.commit()
+			self.__cleanupTags()
+		else:
+		  	print "The File "+fi.getFullPath()+" is not in the database, won't be removed"
 
 	def addTagToFile(self, fi, tag):
 	  	"""Adds a single tag to a file.
@@ -416,6 +419,9 @@ if __name__ == "__main__":
 	fx2 = File.File(path="/test/28/", fileName="bar")
 	db.moveFile(fx1, fx2)
 	print "Still running"
+	fy1 = File.File("/bin/fantasy/test.txt")
+	db.removeFile(fy1)
+	print "still running"
 	#TODO addTagToFile
 	print "="*20
 	db.getFile(f18)
