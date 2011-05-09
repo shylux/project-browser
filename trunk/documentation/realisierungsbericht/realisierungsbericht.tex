@@ -1,0 +1,190 @@
+\documentclass[10pt,paper=a4,final]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}		%used for the tables
+\usepackage{geometry}		%allows us to specify the 'seitenrand'
+\usepackage[table]{xcolor}	%allows us to make colored fields in the tables
+\usepackage{graphicx}		%package used to include graphics
+\usepackage{hyperref}   	%used to make klickable links
+
+%\hypersetup{linktocpage}	%make the tableofcontent klickable
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\setcounter{tocdepth}{4}	%include paragraph in tableofcontents
+\setcounter{secnumdepth}{5}	%also number the paragraphs
+
+%These two lines will allow us to specify our own headers/footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+ \setlength{\parskip}{0pt}
+ \setlength{\baselineskip}{0pt}
+
+%The next three lines set the default font to Arial
+%use 'getnonfreefonts arial-urw' to install uarial on Linux systems
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault}
+
+\geometry{a4paper, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\title{Realisierungsbericht}
+\author{Niklaus Hofer, Lukas Kn\"opfel, Kaleb Tschabold}
+\date{\today}
+
+%defining header and footer
+\fancyhf{}	%delete default values
+\setlength{\headwidth}{\textwidth}	%header and footer width equal the text width
+\fancyhead[LE,LO]{\includegraphics[scale=0.6]{header.png}}
+\fancyhead[RE,RO]{ProjectExplorer}
+\fancyfoot[CE,CO]{Speicherdatum: \today{}}
+\fancyfoot[RE,RO]{\thepage}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{tabularx}{\textwidth}{ r X }	%X fields are stretched over the whole space
+  \textcolor{white}{{\bf Status}}\cellcolor{blue!80!} & In Arbeit/{\bf In Prüfung}/ Abgeschlossen\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektname}}\cellcolor{blue!80!} & Projektexplorer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektleiter}}\cellcolor{blue!80!} & Lukas Kn\"opfel\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Auftraggeber}}\cellcolor{blue!80!} & M. Frieden, GIBB\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Autoren}}\cellcolor{blue!80!} & Kaleb Tschabold, Lukas Kn\"opfel, Niklaus Hofer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Verteiler}}\cellcolor{blue!80!} & Lukas Knöpfel, Kaleb Tschabolt, Niklaus Hofer\cellcolor{blue!20!}
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Änderungskontrolle, Prüfung, Genehmigung}
+\newline
+
+\begin{tabularx}{\textwidth}{l l X X}
+\textcolor{white}{Version}\cellcolor{blue!80!} & \textcolor{white}{Datum}\cellcolor{blue!80!} & \textcolor{white}{Beschreibung, Bemerkung}\cellcolor{blue!80!} & \textcolor{white}{Name oder Rolle}\cellcolor{blue!80!} \\
+\cellcolor{blue!20!} 0.1& \cellcolor{blue!20!} 08.02.2011 & Gesammelten Text einfügen \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 0.9& \cellcolor{blue!20!} 08.02.2011 & Abgabebereit \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 0.99& \cellcolor{blue!20!} \today{} & Transfer nach \LaTeX \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 1.0& \cellcolor{blue!20!} \today{} & Korrekturen \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Definitionen und Abkürzungen}
+\newline
+
+\begin{tabularx}{\textwidth}{l X}
+\textcolor{white}{Begriff/ Abkürzung}\cellcolor{blue!80!} & \textcolor{white}{Bedeutung}\cellcolor{blue!80!} \\
+CLI \cellcolor{blue!20!} & Command Line Interface\cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+\bibliographystyle{plain}
+\bibliography{projektantrag}{}
+\flushleft
+\newpage
+\tableofcontents
+\newpage
+\section{Zweck des Dokuments}
+Wir hatte jetzt einige Wochen Zeit um an der Realisierungs zu arbeiten. Wir konnten jetzt unsere Programm Spezifikationen noch genauer ausarbeiten, weil wir während dem programmieren gesehen haben was noch verbessert oder ergänzt werden sollte. In diesem Dokumente sind jetzt die genauen Informationen zum Programm.
+\section{Technische Detailspezifikation}
+\subsection{Innere Struktur}
+\subsubsection{L\"osungsvorschl\"age f\"ur die Struktur des Systemdesigns}
+\paragraph{GUI}
+\paragraph{Datenstruktur}
+\subsubsection{Struktur des Systemdesigns}
+\subsubsection{Beschreibung der Elemente}
+\begin{description}
+  \item{\bf Main} Wird zum Starten des Programmes aufgerufen. Main.py instanziert alle weiteren Elemente die f\"ur das Funktionieren des Programms n\"otig sind und koordiniert die Kommunikation zwischen den einzelnen Elementen.
+  \item{\bf DB} DB.py ist ein interface zur Datenbank. Es nimmt allen anderen Klassen die Aufgabe ab selbst SQL statements ab zu setzen und bietet stattdessen nach aussen hin verschiedene Funktionen an um Daten zu lesen oder zu schreiben.
+  \item{\bf Utility} Enth\"alt verschiedene n\"utzliche Methoden die immer mal wieder von einzelnen Teilen des Programmes ben\"otigt werden.
+  \item{\bf CLI} Dient als Command-line-interface f\"ur das Program. Es nimm \"uber die Kommandozeile beim Aufruf verschiedene Befehle entgegen die es dann asf\"uhrt.
+  \item{\bf TagManager} Der Tag Manger ist für kleine Tag Verwaltungsaufgaben zuständig.
+  \item{\bf FileManager} Über den FileManager wird auf das Dateisystem zugegriffen. Hier wird aus jeder Datei aus dem File System ein File Objekt erstellt.
+  \item{\bf FileSystemListener} Registriert beim Kernel Listener f\"ur zu \"uberwachende Ordner. Wird in diesen Ordnern eine Operation ausgef\"uhrt (wie das Verschieben, L\"oschen, Umbenennen oder Erstellen einer Datei), so wird der FileSystemListener vom Kernel dar\"uber in Kenntnis gesetzt, woraufhin er wiederum die n\"otigen Aktionen ausl\"ost um die Datenbank auf dem aktuellen Stand zu halten.\\
+    Dies soll dazu beitragen, dass m\"oglichst selten Dateien angezeigt werden, die auf Dateisystem-Ebene nicht existieren.
+  \item{\bf GUI} Ist f\"ur die grafische Darstellung des Programms mittels GTK zust\"andig. Das GUI ist in der Lage je nach Bedarf eine andere ‘View’ darzustellen. Direkt nach dem Programmstart wird HierachicalView dargestellt. Im Betrieb kann jederzeit zwischen ‘TagView’ und ‘HirachicalView’ umgeschaltet werden.\\
+    Dazu kann GUI, per Polymorphismus, eine Klasse aufnehmen die von ‘View’ erbt.
+  \item{\bf TagView} Enth\"alt die Darstellung der Tag-Ansicht und wird von ‘GUI’ bei Bedarf geladen.
+  \item{\bf HierarchicalView} Enth\"alt die Darstellung der hierachischen Ansicht und wird von ‘GUI’ bei Bedarf geladen.
+  \item{\bf View} Mutterklasse von GUI.
+  \item{\bf File} Repr\"asentiert eine Datei und wird benutzt um Iformationen \"ueber Dateine zwischen den Elementen des Programms auszutauschen. Fuer mehr Informationen siehe 2.3.2.
+\end{description}
+\subsection{Schnittstellendefinition}
+\subsection{Datenmodell}
+\subsubsection{Datenbank}
+\subsubsection{File-object}
+\subsection{Sicherheit}
+\subsection{Anforderungszuordnung}
+\begin{enumerate}
+  \item Main
+  \item DB
+  \item Utility
+  \item CLI
+  \item TagManager
+  \item FileManager
+  \item FileSystemListener
+  \item GUI
+  \item TagView
+  \item HierarchicalView
+  \item View
+  \item File
+\end{enumerate}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  \bf Nr. & \bf Anforderungen &\bf 1 &\bf 2 &\bf 3 &\bf 4 &\bf 5 &\bf 6 &\bf 7 &\bf 8 &\bf 9 &\bf 10 &\bf 11 &\bf 12 \\ \hline
+  1 & Das Programm starten & \cellcolor[gray]{0.7} & & & & & & & & & & & \\ \hline
+  2 & GUI vorhanden & & & & & & & & \cellcolor[gray]{0.7} &\cellcolor[gray]{0.7} &\cellcolor[gray]{0.7} &\cellcolor[gray]{0.7} & \\ \hline
+  3 & CLI vorhanden & & & &\cellcolor[gray]{0.7} & & & & & & & & \\ \hline
+  4 & Tag hinzuf\"ugen & & & &\cellcolor[gray]{0.7} &\cellcolor[gray]{0.7} & & & &\cellcolor[gray]{0.7} & & & \\ \hline
+  5 & Datei ausw\"ahlen & & & & & & \cellcolor[gray]{0.7} & & & & & & \cellcolor[gray]{0.7} \\ \hline
+  6 & Versionierung & & \cellcolor[gray]{0.7} & & & & \cellcolor[gray]{0.7} & \cellcolor[gray]{0.7} & & & & & \cellcolor[gray]{0.7} \\ \hline
+  7 & GUI: Versionierung f\"ur Tags & & & & & & & & \cellcolor[gray]{0.7} & & & & \\ \hline
+  8 & Datei\"anderungen werden erkannt & & & & & & & & \cellcolor[gray]{0.7} & & & & \\ \hline
+  9 & L\"oschen wird erkannt & & & & & & & & \cellcolor[gray]{0.7} & & & & \\ \hline
+  10 & Neue Dateien werden erkannt & & & & & & & & \cellcolor[gray]{0.7} & & & & \\ \hline
+  11 & Hierarchische Anzeige & & & & & & & & & & & \cellcolor[gray]{0.7} & \\ \hline
+  12 & Tag Anzeige & & & & & & & & & \cellcolor[gray]{0.7} & & & \\ \hline
+\end{tabularx}
+\section{Systemdokumentation}
+\subsection{Inline-Dokumentation}
+\subsection{Benutzerhandbuch}
+\subsubsection{System\"ubersicht}
+\paragraph{Aufgabengebiet des Programms}
+\paragraph{Programmoberfl\"ache}
+\paragraph{Anmerkungen zur korrekten Verwendung unter dem Aspekt der Sicherheit}
+\subsubsection{Anwenderfunktionalit\"at}
+\paragraph{Ansicht wechseln}
+\paragraph{Verzeichnis wechseln}
+\paragraph{Hisotry}
+\paragraph{Dateien \"Offnen}
+\paragraph{Tags hinzuf\"ugen}
+\paragraph{Tags entfernen}
+\paragraph{Dateien anhand der Tags durchsuchen}
+\paragraph{Fehlermeldungen}
+\subsection{Supporthandbuch}
+\subsubsection{Massnahmen bei Benutzerproblemen}
+\subsubsection{Massnahmen bei technischen Problemen}
+\subsubsection{Anhang zum Supporthandbuch}
+\section{Systemtest}
+\subsection{Testspezifikation}
+\subsubsection{Kritikalit\"at der Funktionseinheit}
+\subsubsection{Testanforderungen}
+\subsubsection{Testverfahren}
+\subsubsection{Testkriterine}
+\subsubsection{Testf\"alle}
+\subsection{Testprozedur}
+\subsubsection{Vorbereitung}
+\subsubsection{Durchf\"uhrung}
+\subsubsection{Nachbearbeitung}
+\subsection{Testprotokoll}
+\subsubsection{Testobjekt}
+\subsubsection{Testresultate}
+\subsubsection{Testauswerung}
+\section{Mittelbedarf}
+\section{Planung und Organisation}
+\section{Wirtschaftlichkeit}
+\section{Konsequenzen}
+\section{Antrag auf Freigabe der n\"achsten Projektphase}
+\end{document}
