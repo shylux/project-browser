@@ -172,13 +172,13 @@
                     <child>
                       <widget class="GtkHBox" id="hbox2">
                         <property name="visible">True</property>
+                        <property name="homogeneous">True</property>
                         <child>
                           <widget class="GtkButton" id="btnBackward">
-                            <property name="label">gtk-go-back</property>
+                            <property name="label">Zur&#xFC;ck</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="use_stock">True</property>
                             <property name="image_position">bottom</property>
                           </widget>
                           <packing>
@@ -187,11 +187,10 @@
                         </child>
                         <child>
                           <widget class="GtkButton" id="btnForward">
-                            <property name="label">gtk-go-forward</property>
+                            <property name="label">Vor</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="use_stock">True</property>
                           </widget>
                           <packing>
                             <property name="position">1</property>
@@ -199,11 +198,10 @@
                         </child>
                         <child>
                           <widget class="GtkButton" id="btnUp">
-                            <property name="label">gtk-go-up</property>
+                            <property name="label">Hoch</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="use_stock">True</property>
                           </widget>
                           <packing>
                             <property name="position">2</property>
@@ -215,7 +213,7 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkButton" id="button1">
+                      <widget class="GtkButton" id="btnBackup">
                         <property name="label" translatable="yes">Sichern</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
