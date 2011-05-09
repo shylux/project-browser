@@ -33,8 +33,8 @@ class AddTag():
 		self.cl1.add_attribute(render,'text',0)
 
 		#Allgemeine Tree Definitionen
-		self.tree.set_search_column(0)
-		self.cl1.set_sort_column_id(0)
+		#self.tree.set_search_column(0)
+		#self.cl1.set_sort_column_id(0)
 		
 		self.updateModel()
 		self.main.show_all()
