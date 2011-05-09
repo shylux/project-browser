@@ -188,7 +188,7 @@ class DB:
 		#IMPORTANT: For this to work, the field tagnames.tagname has to be marked as UNIQUE!
 		#Otherwise, attempts to insert tags might cause trouble!
 		if not self.fileInDB(fi):
-			self.cursor.execute("INSERT INTO FILES (filename, path, backup, isdir) VALUES (?, ?, ?, ?)", (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir()))
+			self.cursor.execute("INSERT INTO files(filename, path, backup, isdir) VALUES (?, ?, ?, ?)", (fi.getFileName(), fi.getPath(), fi.getBackup(), fi.getIsDir()))
 			fid	= self.cursor.lastrowid
 			self.connection.commit();
 			self.__connectTagsToFile(fi.getTags(), fid)
