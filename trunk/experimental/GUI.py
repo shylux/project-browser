@@ -95,14 +95,17 @@ class GUI():
 		
 		#Init Navigation Buttons
 		self.btnBack = self.xml.get_widget('btnBackward')
-		self.btnBack.connect('button_press_event',self.historyBack)
+		self.btnBack.connect('clicked',self.historyBack)
 		self.btnBack.set_sensitive(False)
 		self.btnFor = self.xml.get_widget('btnForward')
-		self.btnFor.connect('button_press_event',self.historyFor)
+		self.btnFor.connect('clicked',self.historyFor)
 		self.btnFor.set_sensitive(False)
 		self.btnUp = self.xml.get_widget('btnUp')
-		self.btnUp.connect('button_press_event',self.getParentFolder)
+		self.btnUp.connect('clicked',self.getParentFolder)
 		self.btnUp.set_sensitive(False)
+		self.btnBackup = self.xml.get_widget('btnBackup')
+		self.btnBackup.connect('clicked',self.makeBackup)
+		self.btnBackup.set_sensitive(False)
 		
 		#Init-View
 		self.hspView = self.xml.get_widget('hspView')
@@ -234,23 +237,26 @@ class GUI():
 		self.listcompl.clear()
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
 		
-	def historyBack(self,widget,event):
+	def historyBack(self,event):
 		self.actview.triggeredByNavigation = True
 		self.actview.historyCursor = self.actview.historyCursor-1
 		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
 		self.actview.triggeredByNavigation = False
 		
-	def historyFor(self,widget,event):
+	def historyFor(self,event):
 		self.actview.triggeredByNavigation = True
 		self.actview.historyCursor = self.actview.historyCursor+1
 		self.actview.set_actTxtInput(self.actview.history[self.actview.historyCursor])
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
 		self.actview.triggeredByNavigation = False
 		
-	def getParentFolder(self,widget,event):
+	def getParentFolder(self,event):
 		parent=self.sys.filemanager.getParentDir(self.actview.get_actTxtInput())
 		self.txtEntry.set_text(parent)
+
+	def makeBackup(self,event):
+		self.actview.backupSelectedObject()
 	###
 
 
