@@ -1,49 +1,74 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2011.5.1)  10 MAY 2011 12:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.19)  10 MAY 2011 16:51
 entering extended mode
  %&-line parsing enabled.
 **realisierungsbericht.tex
 (./realisierungsbericht.tex
-LaTeX2e <2005/12/01>
-Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
-erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
- french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
-us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
-tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
-turkish, ukenglish, ukrainian, loaded.
-(/usr/share/texmf/tex/latex/koma-script/scrartcl.cls
-Document Class: scrartcl 2006/07/30 v2.95b KOMA-Script document class (article)
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(/usr/share/texmf-texlive/tex/latex/koma-script/scrartcl.cls
+Document Class: scrartcl 2009/07/24 v3.04a KOMA-Script document class (article)
 
-(/usr/share/texmf/tex/latex/koma-script/scrkbase.sty
-Package: scrkbase 2006/07/30 v2.95b KOMA-Script package (basics and keyval use)
+(/usr/share/texmf-texlive/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2009/07/24 v3.04a KOMA-Script package (KOMA-Script-dependent 
+basics and keyval usage)
 
+(/usr/share/texmf-texlive/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2009/07/24 v3.04a KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
 
-(/usr/share/texmf/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2006/03/28 v2.95 KOMA-Script package (loading files)
-
-Package scrlfile, 2006/03/28 v2.95 KOMA-Script package (loading files)
-                  Copyright (C) Markus Kohm
-
-) (/usr/share/texmf/tex/latex/graphics/keyval.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
-))
-Package scrkbase Info: You've used the obsolete option `final'.
-(scrkbase)             \KOMAoptions{draft=false} will be used instead.
-(scrkbase)             You should do this change too on input line 594.
-Package scrkbase Info: You've used the obsolete option `10pt'.
-(scrkbase)             \KOMAoptions{fontsize=10pt} will be used instead.
-(scrkbase)             You should do this change too on input line 594.
-
-(/usr/share/texmf/tex/latex/base/size10.clo
-File: size10.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
 )
-(/usr/share/texmf/tex/latex/koma-script/typearea.sty
-Package: typearea 2006/07/30 v2.95b KOMA-Script package (type area)
+(/usr/share/texmf-texlive/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2009/03/25 v3.03 KOMA-Script package (loading files)
 
-Package typearea, 2006/07/30 v2.95b KOMA-Script package (type area)
+Package scrlfile, 2009/03/25 v3.03 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) (/usr/share/texmf-texlive/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2009/06/08 v3.03b KOMA-Script package (handling toc-files)
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 115.
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 116.
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 117.
+Package scrartcl Info: You've used obsolete option `10pt'.
+(scrartcl)             \KOMAExecuteOptions{fontsize=10pt} will be
+(scrartcl)             used instead.
+(scrartcl)             You may simply replace `10pt'
+(scrartcl)             by `fontsize=10pt'.
+Class scrartcl Info: You've used standard option `final'.
+(scrartcl)           This is correct!
+(scrartcl)           Internaly I'm using `draft=false'.
+(scrartcl)           If you'd like to set the option with \KOMAoptions,
+(scrartcl)           you'd have to use `draft=false' there
+(scrartcl)           instead of `final', too.
+Class scrartcl Info: File `scrsize10pt.clo' used to setup font sizes on input l
+ine 1171.
+
+(/usr/share/texmf-texlive/tex/latex/koma-script/scrsize10pt.clo
+File: scrsize10pt.clo 2009/07/24 v3.04a KOMA-Script font size class option (10p
+t)
+)
+(/usr/share/texmf-texlive/tex/latex/koma-script/typearea.sty
+Package: typearea 2009/07/24 v3.04a KOMA-Script package (type area)
+
+Package typearea, 2009/07/24 v3.04a KOMA-Script package (type area)
                   Copyright (C) Frank Neukam, 1992-1994
-                  Copyright (C) Markus Kohm, 1994-2002
+                  Copyright (C) Markus Kohm, 1994-
 
 \ta@bcor=\skip41
 \ta@div=\count79
@@ -55,7 +80,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)             BCOR = 0.0pt
 (typearea)             \paperwidth      = 597.50793pt
 (typearea)              \textwidth      = 373.44246pt
-(typearea)              DIV-departure   = -4/100
+(typearea)              DIV departure   = -4%
 (typearea)              \evensidemargin = 39.76274pt
 (typearea)              \oddsidemargin  = 39.76274pt
 (typearea)             \paperheight     = 845.04694pt
@@ -66,7 +91,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 10.0pt
 (typearea)              \footskip       = 42.0pt
 (typearea)              \baselineskip   = 12.0pt
-(typearea)              on input line 832.
+(typearea)              on input line 1115.
 )
 \c@part=\count80
 \c@section=\count81
@@ -80,20 +105,20 @@ Package typearea Info: These are the values describing the layout:
 \c@figure=\count86
 \c@table=\count87
 \bibindent=\dimen102
-) (/usr/share/texmf/tex/latex/base/inputenc.sty
-Package: inputenc 2006/05/05 v1.1b Input encoding file
+) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 
-(/usr/share/texmf/tex/latex/base/utf8.def
-File: utf8.def 2006/03/30 v1.1i UTF-8 support for inputenc
+(/usr/share/texmf-texlive/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
-... processing UTF-8 mapping file for font encodingT1
+... processing UTF-8 mapping file for font encoding T1
 
-(/usr/share/texmf/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2006/03/30 v1.1i UTF-8 support for inputenc
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
@@ -240,10 +265,10 @@ File: t1enc.dfu 2006/03/30 v1.1i UTF-8 support for inputenc
    defining Unicode char U+2423 (decimal 9251)
 )
 Now handling font encoding OT1 ...
-... processing UTF-8 mapping file for font encodingOT1
+... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/share/texmf/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2006/03/30 v1.1i UTF-8 support for inputenc
+(/usr/share/texmf-texlive/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00B8 (decimal 184)
@@ -271,10 +296,10 @@ File: ot1enc.dfu 2006/03/30 v1.1i UTF-8 support for inputenc
    defining Unicode char U+201D (decimal 8221)
 )
 Now handling font encoding OMS ...
-... processing UTF-8 mapping file for font encodingOMS
+... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/share/texmf/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2006/03/30 v1.1i UTF-8 support for inputenc
+(/usr/share/texmf-texlive/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -297,11 +322,11 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/share/texmf/tex/latex/tools/tabularx.sty
+(/usr/share/texmf-texlive/tex/latex/tools/tabularx.sty
 Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
 
-(/usr/share/texmf/tex/latex/tools/array.sty
-Package: array 2005/08/23 v2.4b Tabular extension package (FMi)
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen103
 \extrarowheight=\dimen104
 \NC@list=\toks17
@@ -316,8 +341,17 @@ Package: array 2005/08/23 v2.4b Tabular extension package (FMi)
 \TX@cols=\count88
 \TX@ftn=\toks18
 )
-(/usr/share/texmf/tex/latex/geometry/geometry.sty
-Package: geometry 2002/07/08 v3.2 Page Geometry
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
 \Gm@cnth=\count89
 \Gm@cntv=\count90
 \c@Gm@tempcnt=\count91
@@ -327,20 +361,20 @@ Package: geometry 2002/07/08 v3.2 Page Geometry
 \Gm@even@mp=\dimen113
 \Gm@dimlist=\toks19
 
-(/usr/share/texmf/tex/xelatex/xetexconfig/geometry.cfg))
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
 (/usr/share/texmf/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/usr/share/texmf/tex/latex/config/color.cfg
+(/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count92
 )
-(/usr/share/texmf/tex/latex/colortbl/colortbl.sty
+(/usr/share/texmf-texlive/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2001/02/13 v0.1j Color table columns (DPC)
 \everycr=\toks20
 \minrowclearance=\skip49
@@ -356,147 +390,241 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf/tex/latex/graphics/graphics.sty
-Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf/tex/latex/graphics/trig.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/share/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 90.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 )
 \Gin@req@height=\dimen114
 \Gin@req@width=\dimen115
 )
-(/usr/share/texmf/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2007/02/07 v6.75r Hypertext links for LaTeX
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
 \@linkdim=\dimen116
 \Hy@linkcounter=\count94
 \Hy@pagecounter=\count95
 
-(/usr/share/texmf/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2007/02/07 v6.75r Hyperref: PDFDocEncoding definition (HO)
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(/usr/share/texmf/tex/latex/config/hyperref.cfg
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-(/usr/share/texmf/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2006/08/22 v2.4 Connects package keyval with LaTeX options (
-HO)
-)
-Package hyperref Info: Option `final' set `true' on input line 2238.
-Package hyperref Info: Hyper figures OFF on input line 2288.
-Package hyperref Info: Link nesting OFF on input line 2293.
-Package hyperref Info: Hyper index ON on input line 2296.
-Package hyperref Info: Plain pages OFF on input line 2303.
-Package hyperref Info: Backreferencing OFF on input line 2308.
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Option `final' set `true' on input line 2864.
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
 
 Implicit mode ON; LaTeX internals redefined
-Package hyperref Info: Bookmarks ON on input line 2444.
-(/usr/share/texmf/tex/latex/ltxmisc/url.sty
+Package hyperref Info: Bookmarks ON on input line 3191.
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip10
-Package: url 2005/06/27  ver 3.2  Verb mode for urls, etc.
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 2599.
+LaTeX Info: Redefining \url on input line 3428.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
 \Fld@menulength=\count96
 \Field@Width=\dimen117
 \Fld@charsize=\dimen118
-\Choice@toks=\toks21
-\Field@toks=\toks22
-Package hyperref Info: Hyper figures OFF on input line 3102.
-Package hyperref Info: Link nesting OFF on input line 3107.
-Package hyperref Info: Hyper index ON on input line 3110.
-Package hyperref Info: backreferencing OFF on input line 3117.
-Package hyperref Info: Link coloring OFF on input line 3122.
+\Field@toks=\toks21
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring OFF on input line 4397.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
 \Hy@abspage=\count97
 \c@Item=\count98
 )
 *hyperref using default driver hpdftex*
-(/usr/share/texmf/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 \Fld@listcount=\count99
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 16.
-
-(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip50
-\f@ncyO@elh=\skip51
-\f@ncyO@erh=\skip52
-\f@ncyO@olh=\skip53
-\f@ncyO@orh=\skip54
-\f@ncyO@elf=\skip55
-\f@ncyO@erf=\skip56
-\f@ncyO@olf=\skip57
-\f@ncyO@orf=\skip58
+(/usr/share/texmf-texlive/tex/latex/supertabular/supertabular.sty
+Package: supertabular 2004/02/20 v4.1e the supertabular environment
+\c@tracingst=\count100
+\ST@wd=\dimen119
+\ST@rightskip=\skip50
+\ST@leftskip=\skip51
+\ST@parfillskip=\skip52
+\ST@pageleft=\dimen120
+\ST@headht=\dimen121
+\ST@tailht=\dimen122
+\ST@pagesofar=\dimen123
+\ST@pboxht=\dimen124
+\ST@lineht=\dimen125
+\ST@stretchht=\dimen126
+\ST@prevht=\dimen127
+\ST@toadd=\dimen128
+\ST@dimen=\dimen129
+\ST@pbox=\box27
 )
-(/usr/share/texmf/tex/latex/base/fontenc.sty
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count101
+\lst@gtempboxa=\box28
+\lst@token=\toks22
+\lst@length=\count102
+\lst@currlwidth=\dimen130
+\lst@column=\count103
+\lst@pos=\count104
+\lst@lostspace=\dimen131
+\lst@width=\dimen132
+\lst@newlines=\count105
+\lst@lineno=\count106
+\lst@maxwidth=\dimen133
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count107
+\lst@skipnumbers=\count108
+\lst@framebox=\box29
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 30.
+
+(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip53
+\f@ncyO@elh=\skip54
+\f@ncyO@erh=\skip55
+\f@ncyO@olh=\skip56
+\f@ncyO@orh=\skip57
+\f@ncyO@elf=\skip58
+\f@ncyO@erf=\skip59
+\f@ncyO@olf=\skip60
+\f@ncyO@orf=\skip61
+)
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf/tex/latex/base/t1enc.def
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-
-! LaTeX Error: File `uarial.sty' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-
-! LaTeX Error: Unknown option `scaled' for package `uarial'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.31 \renewcommand
-                  *\familydefault{\sfdefault}
-? 
+(/home/bash/texmf/tex/latex/ua1/uarial.sty
+Package: uarial 2006/03/21 1.0 (WaS)
+)
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 41.
+less on input line 55.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 42.
+less on input line 56.
 
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 43.
+less on input line 57.
 
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 44.
+less on input line 58.
 
 (./realisierungsbericht.aux)
 \openout1 = `realisierungsbericht.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 46.
- (/usr/share/texmf/tex/latex/base/t1cmss.fd
-File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Try loading font information for T1+ua1 on input line 60.
+ (/home/bash/texmf/tex/latex/ua1/t1ua1.fd
+File: t1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for T1/ua1.
 )
+LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 60.
+
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
 -------------------- Geometry parameters
 paper: a4paper
 landscape: --
@@ -536,103 +664,119 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-
-(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count100
-\scratchdimen=\dimen119
-\scratchbox=\box27
-\nofMPsegments=\count101
-\nofMParguments=\count102
-\MPscratchCnt=\count103
-\MPscratchDim=\dimen120
-\MPnumerator=\count104
-\everyMPtoPDFconversion=\toks23
+\scratchcounter=\count109
+\scratchdimen=\dimen134
+\scratchbox=\box30
+\nofMPsegments=\count110
+\nofMParguments=\count111
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count112
+\MPscratchDim=\dimen135
+\MPnumerator=\count113
+\everyMPtoPDFconversion=\toks24
 )
-Package hyperref Info: Link coloring ON on input line 46.
- (/usr/share/texmf/tex/latex/hyperref/nameref.sty
-Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
+Package hyperref Info: Link coloring ON on input line 60.
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
-(/usr/share/texmf/tex/latex/oberdiek/refcount.sty
-Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count105
+\c@section@level=\count114
 )
-LaTeX Info: Redefining \ref on input line 46.
-LaTeX Info: Redefining \pageref on input line 46.
- (./realisierungsbericht.out) (./realisierungsbericht.out)
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+
+(./realisierungsbericht.out) (./realisierungsbericht.out)
 \@outlinefile=\write3
 \openout3 = `realisierungsbericht.out'.
 
+\AtBeginShipoutBox=\box31
+\c@lstlisting=\count115
+LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <10> not available
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 62.
+LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
+(Font)              scaled to size 9.49997pt on input line 62.
+LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 62.
+LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
+(Font)              scaled to size 19.70294pt on input line 62.
+LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 48.
+(Font)              <14.4> on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 48.
+(Font)              <7> on input line 62.
  [1
 
 
-{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 56--62
+{/home/bash/.texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 70--76
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--62
+Underfull \hbox (badness 10000) in paragraph at lines 70--76
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--62
+Underfull \hbox (badness 10000) in paragraph at lines 70--76
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--62
+Underfull \hbox (badness 10000) in paragraph at lines 70--76
 
  []
 
 
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 69--75
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 82--88
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--75
+Underfull \hbox (badness 10000) in paragraph at lines 82--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--75
+Underfull \hbox (badness 10000) in paragraph at lines 82--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--75
+Underfull \hbox (badness 10000) in paragraph at lines 82--88
 
  []
 
-No file realisierungsbericht.bbl.
-
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 79--85
+(./realisierungsbericht.bbl
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 94--1
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--85
+Underfull \hbox (badness 10000) in paragraph at lines 94--1
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--85
+Underfull \hbox (badness 10000) in paragraph at lines 94--1
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--85
+Underfull \hbox (badness 10000) in paragraph at lines 94--1
 
  []
 
-<header.png, id=231, 191.21437pt x 27.01pt>
+LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
+(Font)              scaled to size 13.67995pt on input line 1.
+) <header.png, id=306, 191.21437pt x 27.01pt>
 File: header.png Graphic file (type png)
  <use header.png>
 
@@ -642,37 +786,111 @@ Package Fancyhdr Warning: \headheight is too small (15.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2 <./header.png (PNG copy)>] (./realisierungsbericht.toc
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 1.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 2.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 15.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 36.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 53.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 54.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 55.
 File: header.png Graphic file (type png)
  <use header.png>
-[3])
+[3]
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 56.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 57.
+Class scrartcl Info: You've told me to use the font selection of the element
+(scrartcl)           `sectioning' that is an alias of element `disposition'
+(scrartcl)            on input line 58.
+
+Overfull \hbox (1.9189pt too wide) detected at line 68
+\T1/ua1/m/n/10 10.10 
+ []
+
+
+Overfull \hbox (1.9189pt too wide) detected at line 69
+\T1/ua1/m/n/10 10.11 
+ []
+
+
+Overfull \hbox (1.9189pt too wide) detected at line 70
+\T1/ua1/m/n/10 10.12 
+ []
+
+
+Overfull \hbox (1.9189pt too wide) detected at line 71
+\T1/ua1/m/n/10 10.13 
+ []
+
+
+Overfull \hbox (1.9189pt too wide) detected at line 72
+\T1/ua1/m/n/10 10.14 
+ []
+
+
+Overfull \hbox (1.9189pt too wide) detected at line 73
+\T1/ua1/m/n/10 10.15 
+ []
+
+
+Overfull \hbox (1.9189pt too wide) detected at line 74
+\T1/ua1/m/n/10 10.16 
+ []
+
+)
 \tf@toc=\write4
 \openout4 = `realisierungsbericht.toc'.
 
 File: header.png Graphic file (type png)
  <use header.png> [4]
+LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <12> not available
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
+(Font)              scaled to size 11.39996pt on input line 107.
 File: header.png Graphic file (type png)
  <use header.png> [5]
-<db.jpeg, id=307, 448.67625pt x 245.91875pt>
+<class.png, id=400, 847.165pt x 1235.61626pt>
+File: class.png Graphic file (type png)
+ <use class.png>
+File: header.png Graphic file (type png)
+ <use header.png>
+[6 <./class.png (PNG copy)>]
+File: header.png Graphic file (type png)
+ <use header.png> [7]
+<db.jpeg, id=420, 448.67625pt x 245.91875pt>
 File: db.jpeg Graphic file (type jpg)
  <use db.jpeg>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 4048) in paragraph at lines 176--176
-[]|\T1/cmss/m/n/10 Die Werte in Tag-names wer-den mit
+Underfull \hbox (badness 5175) in paragraph at lines 198--198
+[]|\T1/ua1/m/n/10 Die Werte in Tag-names wer-den mit
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--176
-\T1/cmss/m/n/10 file_tag_relation mit de-nen in files
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+\T1/ua1/m/n/10 file_tag_relation mit de-nen in files
  []
 
 File: header.png Graphic file (type png)
-<use header.png> [6]
+<use header.png> [8 <./db.jpeg>]
 File: header.png Graphic file (type png)
- <use header.png> [7 <./db.jpeg>]
-<erlaeuterungen_gui.png, id=332, 912.40875pt x 605.26125pt>
+ <use header.png> [9]
+<erlaeuterungen_gui.png, id=444, 873.2625pt x 474.77374pt>
 File: erlaeuterungen_gui.png Graphic file (type png)
 
 <use erlaeuterungen_gui.png>
@@ -680,46 +898,827 @@ File: erlaeuterungen_gui.png Graphic file (type png)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: header.png Graphic file (type png)
-<use header.png> [8]
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 241
-.
-LaTeX Font Info:    No file OMScmss.fd. on input line 241.
+<use header.png> [10]
+LaTeX Font Info:    Try loading font information for OMS+ua1 on input line 265.
+
+LaTeX Font Info:    No file OMSua1.fd. on input line 265.
 
 
-LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+LaTeX Font Warning: Font shape `OMS/ua1/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 241.
+(Font)              for symbol `textbullet' on input line 265.
 
 File: header.png Graphic file (type png)
-<use header.png> [9 <./erlaeuterungen_gui.png>]
+<use header.png> [11 <./erlaeuterungen_gui.png>]
 File: header.png Graphic file (type png)
- <use header.png> [10]
+ <use header.png> [12]
+Overfull \hbox (2.1317pt too wide) in paragraph at lines 338--338
+[]\T1/ua1/b/n/10 Anwendungsfall| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--338
+[]\T1/ua1/b/n/10 erwartetes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--338
+[]\T1/ua1/b/n/10 Bemerkungen,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--339
+[]\T1/ua1/m/n/10 Normale Be-
+ []
+
+
+Underfull \hbox (badness 5607) in paragraph at lines 339--339
+[]\T1/ua1/m/n/10 Programm läuft
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--339
+[]\T1/ua1/m/n/10 Programm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+[]\T1/ua1/m/n/10 Anwender fügt
+ []
+
+
+Underfull \hbox (badness 3148) in paragraph at lines 340--340
+\T1/ua1/m/n/10 einer Datei ein
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+[]\T1/ua1/m/n/10 Die Datei
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 /.bashrc hat
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+[]\T1/ua1/m/n/10 Der Nutzer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 wech-selt in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 das Verze-ich-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 Datei .bashrc
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 an und fügt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 ihr im rechten
+ []
+
+
+Underfull \hbox (badness 4181) in paragraph at lines 340--340
+\T1/ua1/m/n/10 Panel das Tag
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+[]\T1/ua1/m/n/10 Nach einem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 Neustart des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 Pro-grammes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 und dem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 erneuten Se-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--340
+\T1/ua1/m/n/10 lek-tieren der
+ []
+
+
+Underfull \hbox (badness 4266) in paragraph at lines 340--340
+\T1/ua1/m/n/10 Datei wird das
+ []
+
+
+Overfull \hbox (3.47025pt too wide) in paragraph at lines 336--340
+[]  
+ []
+
+File: header.png Graphic file (type png)
+<use header.png> [13]
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+[]\T1/ua1/m/n/10 Normale Be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+[]\T1/ua1/m/n/10 Programm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+[]\T1/ua1/m/n/10 Fenster mit
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+\T1/ua1/m/n/10 Menu, But-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+\T1/ua1/m/n/10 tons und
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+\T1/ua1/m/n/10 Eingabefeldern
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+[]\T1/ua1/m/n/10 Erstellen von
+ []
+
+
+Underfull \hbox (badness 6708) in paragraph at lines 342--342
+\T1/ua1/m/n/10 Tags mit Son-
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 342--342
+[]\T1/ua1/m/n/10 Das Tag /' ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+[]\T1/ua1/m/n/10 Eine be-liebige
+ []
+
+
+Underfull \hbox (badness 1152) in paragraph at lines 342--342
+\T1/ua1/m/n/10 tiert, der Name
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 der Tags-Liste
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 eingeegeben
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 und durch
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 'spe-ich-ern'
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 fest-ge-hal-ten.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 Danach wird
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 das Tag einer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 weit-eren Datei
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+[]\T1/ua1/m/n/10 Nach dem er-
+ []
+
+
+Underfull \hbox (badness 3690) in paragraph at lines 342--342
+\T1/ua1/m/n/10 sten Spe-ich-ern,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 er-scheint das
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 342--342
+\T1/ua1/m/n/10 auf der rechten
+ []
+
+
+Underfull \hbox (badness 4303) in paragraph at lines 342--342
+\T1/ua1/m/n/10 Seite des Pro-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 Datei hnzuge-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--342
+\T1/ua1/m/n/10 fügt, so wird
+ []
+
+
+Underfull \hbox (badness 7133) in paragraph at lines 342--342
+\T1/ua1/m/n/10 es NICHT du-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
+[]\T1/ua1/m/n/10 Benutzung auf
+ []
+
+
+Underfull \hbox (badness 2573) in paragraph at lines 343--343
+\T1/ua1/m/n/10 nicht grafis-chen
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
+[]\T1/ua1/m/n/10 Programm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
+[]\T1/ua1/m/n/10 Command
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
+\T1/ua1/m/n/10 Prompt er-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--344
+[]\T1/ua1/m/n/10 Normale Be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--344
+[]\T1/ua1/m/n/10 Programm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--344
+\T1/ua1/m/n/10 wurde er-fol-gre-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--344
+[]\T1/ua1/m/n/10 Tags wer-den
+ []
+
+
+Underfull \hbox (badness 5637) in paragraph at lines 345--345
+[]\T1/ua1/m/n/10 Ein Verze-ich-nis
+ []
+
+
+Underfull \hbox (badness 3668) in paragraph at lines 345--345
+\T1/ua1/m/n/10 das eine Datei
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--345
+\T1/ua1/m/n/10 mit Son-derze-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--345
+\T1/ua1/m/n/10 en-thält wird
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--345
+\T1/ua1/m/n/10 Datei ein Tag
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 345--345
+\T1/ua1/m/n/10 hat keine Tags
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 345--345
+\T1/ua1/m/n/10 und ihr ein be-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--345
+\T1/ua1/m/n/10 liebiges Tag
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--345
+[]\T1/ua1/m/n/10 Der Browser
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 345--345
+\T1/ua1/m/n/10 ist in der Lage
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 345--345
+\T1/ua1/m/n/10 das Verze-ich-nis
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--345
+\T1/ua1/m/n/10 mit der Datei
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--345
+\T1/ua1/m/n/10 Tag wird der
+ []
+
+
+Underfull \hbox (badness 1831) in paragraph at lines 345--345
+\T1/ua1/m/n/10 Datei er-fol-grech
+ []
+
+
+Underfull \hbox (badness 2600) in paragraph at lines 346--346
+[]\T1/ua1/m/n/10 ein Pro-jekt soll
+ []
+
+
+Underfull \hbox (badness 3872) in paragraph at lines 346--346
+\T1/ua1/m/n/10 Ver-sion-iert wer-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+[]\T1/ua1/m/n/10 Projektdaten
+ []
+
+
+Underfull \hbox (badness 2158) in paragraph at lines 346--346
+\T1/ua1/m/n/10 liegen auf dem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+[]\T1/ua1/m/n/10 Der User ak-
+ []
+
+
+Underfull \hbox (badness 7151) in paragraph at lines 346--346
+\T1/ua1/m/n/10 tiviert die Ver-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+[]\T1/ua1/m/n/10 Die Dateien
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+\T1/ua1/m/n/10 wer-den bei
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+\T1/ua1/m/n/10 Verän-derung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+\T1/ua1/m/n/10 und/oder nach
+ []
+
+
+Underfull \hbox (badness 7631) in paragraph at lines 346--346
+\T1/ua1/m/n/10 einer Zeitlichen
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+\T1/ua1/m/n/10 verzögerung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+[]\T1/ua1/m/n/10 Wechseln der
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 347--347
+[]\T1/ua1/m/n/10 Nach dem Pro-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 gramm-start wir
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 die hi-er-ar-chis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 che An-sicht
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+[]\T1/ua1/m/n/10 Der Nutzer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 wech-selt durch
+ []
+
+
+Underfull \hbox (badness 2521) in paragraph at lines 347--347
+\T1/ua1/m/n/10 einen Klick auf
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 347--347
+\T1/ua1/m/n/10 den But-ton Tag
+ []
+
+
+Underfull \hbox (badness 3189) in paragraph at lines 347--347
+\T1/ua1/m/n/10 (links un-ten im
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 Pro-gramm), in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 die Tagan-sicht.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 Danach wech-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 Ansichts-Menü
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 wieder zurück
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 zur hi-er-ar-chis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 auf den 'Tag'-
+ []
+
+
+Underfull \hbox (badness 2012) in paragraph at lines 347--347
+\T1/ua1/m/n/10 Button wech-selt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 das Pro-gramm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 Bei der über
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 347--347
+\T1/ua1/m/n/10 das Menü aus-
+ []
+
+
+Underfull \hbox (badness 6412) in paragraph at lines 347--347
+\T1/ua1/m/n/10 gelösten Ak-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 wieder zurück
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
+\T1/ua1/m/n/10 zur hi-er-ar-chis-
+ []
+
+File: header.png Graphic file (type png)
+<use header.png> [14]
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+[]\T1/ua1/m/n/10 Nach verän-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+\T1/ua1/m/n/10 derung einer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+\T1/ua1/m/n/10 Datei soll von
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+\T1/ua1/m/n/10 dieser ein
+ []
+
+
+Underfull \hbox (badness 5592) in paragraph at lines 348--348
+[]\T1/ua1/m/n/10 Die Datei liegt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+\T1/ua1/m/n/10 tem und der
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+\T1/ua1/m/n/10 FileSys-tem-Lis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+\T1/ua1/m/n/10 tener wurde
+ []
+
+
+Underfull \hbox (badness 6608) in paragraph at lines 348--348
+\T1/ua1/m/n/10 Lis-tener sendet
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
+\T1/ua1/m/n/10 ein Än-derung-
+ []
+
+
+Underfull \hbox (badness 3386) in paragraph at lines 349--349
+\T1/ua1/m/n/10 die Löschak-tion
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 349--349
+\T1/ua1/m/n/10 und sendet ein
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--349
+\T1/ua1/m/n/10 Event an die
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
+[]\T1/ua1/m/n/10 Der User legt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
+[]\T1/ua1/m/n/10 Der FileSys-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
+\T1/ua1/m/n/10 tem-Lis-tener
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
+\T1/ua1/m/n/10 überwacht das
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
+[]\T1/ua1/m/n/10 Der User legt
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 350--350
+\T1/ua1/m/n/10 die neue Datei
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
+\T1/ua1/m/n/10 und sendet
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
+\T1/ua1/m/n/10 ein Event an
+ []
+
+
+Underfull \hbox (badness 3536) in paragraph at lines 350--350
+\T1/ua1/m/n/10 das GUI damit
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--351
+[]\T1/ua1/m/n/10 Dateien liegen
+ []
+
+
+Underfull \hbox (badness 1888) in paragraph at lines 351--351
+[]\T1/ua1/m/n/10 Der User wählt
+ []
+
+
+Underfull \hbox (badness 1221) in paragraph at lines 393--393
+[]|\T1/ua1/m/n/10 Der User sucht vergebens nach einer Ver-sion-
+ []
+
+File: header.png Graphic file (type png)
+<use header.png> [15]
+File: header.png Graphic file (type png)
+ <use header.png> [16]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 419.
+LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
+(Font)              scaled to size 8.54997pt on input line 419.
+ (../../experimental/Main.py
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 8.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 45.
+
+(/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+File: header.png Graphic file (type png)
+ <use header.png> [17])
 File: header.png Graphic file (type png)
 
-<use header.png> [11] (./realisierungsbericht.aux)
+<use header.png> [18] (../../experimental/DB.py
+File: header.png Graphic file (type png)
+ <use header.png> [19]
+File: header.png Graphic file (type png)
+
+<use header.png> [20]
+File: header.png Graphic file (type png)
+ <use header.png> [21]
+File: header.png Graphic file (type png)
+ <use header.png> [22]
+File: header.png Graphic file (type png)
+
+<use header.png> [23]
+File: header.png Graphic file (type png)
+ <use header.png> [24]
+File: header.png Graphic file (type png)
+ <use header.png> [25])
+(../../experimental/Utility.py
+File: header.png Graphic file (type png)
+ <use header.png> [26])
+(../../experimental/CLI.py
+File: header.png Graphic file (type png)
+ <use header.png> [27])
+(../../experimental/TagManager.py
+File: header.png Graphic file (type png)
+ <use header.png> [28])
+(../../experimental/FileManager.py
+File: header.png Graphic file (type png)
+ <use header.png> [29]
+File: header.png Graphic file (type png)
+ <use header.png>
+[30]) (../../experimental/FileSystemListener.py
+File: header.png Graphic file (type png)
+ <use header.png> [31])
+(../../experimental/FileSystemListener_Linux.py)
+File: header.png Graphic file (type png)
+ <use header.png> [32]
+(../../experimental/FileSystemListener_Windows.py
+File: header.png Graphic file (type png)
+ <use header.png> [33])
+(../../experimental/FileSystemListener_Mac.py) (../../experimental/GUI.py
+File: header.png Graphic file (type png)
+
+<use header.png> [34]
+File: header.png Graphic file (type png)
+ <use header.png> [35]
+File: header.png Graphic file (type png)
+ <use header.png> [36]
+File: header.png Graphic file (type png)
+
+<use header.png> [37]) (../../experimental/TagView.py
+File: header.png Graphic file (type png)
+ <use header.png> [38]
+File: header.png Graphic file (type png)
+
+<use header.png> [39]) (../../experimental/HirarchicalView.py
+File: header.png Graphic file (type png)
+ <use header.png>
+[40]) (../../experimental/View.py
+File: header.png Graphic file (type png)
+ <use header.png> [41]
+File: header.png Graphic file (type png)
+ <use header.png>
+[42]
+File: header.png Graphic file (type png)
+ <use header.png> [43]) (../../experimental/File.py
+File: header.png Graphic file (type png)
+ <use header.png>
+[44]
+File: header.png Graphic file (type png)
+ <use header.png> [45]
+File: header.png Graphic file (type png)
+ <use header.png> [46]
+File: header.png Graphic file (type png)
+ <use header.png> [47]
+File: header.png Graphic file (type png)
+
+<use header.png> [48]) (../../experimental/AddTag.py
+File: header.png Graphic file (type png)
+ <use header.png> [49])
+File: header.png Graphic file (type png)
+
+<use header.png> [50] (./realisierungsbericht.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4965 strings out of 256216
- 65522 string characters out of 1917073
- 154255 words of memory out of 1500000
- 8106 multiletter control sequences out of 10000+200000
- 10695 words of font info for 25 fonts, out of 1200000 for 2000
- 645 hyphenation exceptions out of 8191
- 43i,17n,43p,447b,393s stack positions out of 5000i,500n,6000p,200000b,15000s
- </home/niklaus/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1200.6
-00pk> </home/niklaus/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx144
-0.600pk> </home/niklaus/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss
-0700.600pk> </home/niklaus/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-csx1000.600pk> </home/niklaus/.texlive2007/texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecss1000.600pk> </home/niklaus/.texlive2007/texmf-var/fonts/pk/ljfour/jknappe
-n/ec/ecss1440.600pk> </home/niklaus/.texlive2007/texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecsx2074.600pk></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb>
-Output written on realisierungsbericht.pdf (11 pages, 235107 bytes).
+ 11303 strings out of 493848
+ 163839 string characters out of 1152823
+ 844928 words of memory out of 3000000
+ 12194 multiletter control sequences out of 15000+50000
+ 56508 words of font info for 41 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 43i,17n,43p,521b,1836s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf-
+texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmsy9.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb></home/
+bash/texmf/fonts/type1/urw/arial/ua1b8a.pfb></home/bash/texmf/fonts/type1/urw/a
+rial/ua1r8a.pfb>
+Output written on realisierungsbericht.pdf (50 pages, 820811 bytes).
 PDF statistics:
- 688 PDF objects out of 1000 (max. 8388607)
- 91 named destinations out of 1000 (max. 131072)
- 464 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3127 PDF objects out of 3580 (max. 8388607)
+ 2191 named destinations out of 2487 (max. 500000)
+ 613 words of extra memory for PDF output out of 10000 (max. 10000000)
 

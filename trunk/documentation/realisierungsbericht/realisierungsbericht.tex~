@@ -6,19 +6,6 @@
 \usepackage{graphicx}		%package used to include graphics
 \usepackage{hyperref}   	%used to make klickable links
 \usepackage{supertabular}
-\usepackage{listings}
-\lstset{language=python,
-  basicstyle=\small, 
-  keywordstyle=\color{blue!80!black!100}, 
-  identifierstyle=, 
-  commentstyle=\color{green!50!black!100}, 
-  stringstyle=\ttfamily\color{red!80!black!100}, 
-  breaklines=true, 
-  numbers=left, 
-  numberstyle=\small, 
-  frame=single, 
-  backgroundcolor=\color{blue!3} 
-} 
 
 %\hypersetup{linktocpage}	%make the tableofcontent klickable
 \hypersetup{
@@ -79,6 +66,7 @@
 \cellcolor{blue!20!} 0.1& \cellcolor{blue!20!} 08.02.2011 & Gesammelten Text einfügen \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
 \cellcolor{blue!20!} 0.9& \cellcolor{blue!20!} 08.02.2011 & Abgabebereit \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
 \cellcolor{blue!20!} 0.99& \cellcolor{blue!20!} \today{} & Transfer nach \LaTeX \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 1.0& \cellcolor{blue!20!} \today{} & Korrekturen \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
 \end{tabularx}
 \newline
 \newline
@@ -89,14 +77,12 @@
 \begin{tabularx}{\textwidth}{l X}
 \textcolor{white}{Begriff/ Abkürzung}\cellcolor{blue!80!} & \textcolor{white}{Bedeutung}\cellcolor{blue!80!} \\
 CLI \cellcolor{blue!20!} & Command Line Interface\cellcolor{blue!20!} \\
-GUI \cellcolor{blue!20!} & Graphical user interface \cellcolor{blue!20!} \\
-DB \cellcolor{blue!20!} & Database\cellcolor{blue!20!} \\
 \end{tabularx}
 \newline
 \newline
 \newline
 \bibliographystyle{plain}
-\bibliography{realisierungsbericht}{}
+\bibliography{projektantrag}{}
 \flushleft
 \newpage
 \tableofcontents
@@ -127,7 +113,7 @@ Ist der ‘Dateinamen’ der Name eines neuen Verzeichnisses, so tr\"agt auch er
 \newpage
 \subsubsection{Struktur des Systemdesigns}
 \begin{figure}[h!]
-\includegraphics[scale=0.54]{class.png}
+\includegraphics[scale=0.55]{class.png}
 \caption{Klassendiagramm}
 \end{figure}
 \newpage
@@ -233,7 +219,6 @@ Die Datenbank ist also durch die Zugriffsberechtigung des Dateisystems gesch\"ut
 \end{tabularx}
 \section{Systemdokumentation}
 \subsection{Inline-Dokumentation}
-Siehe Ende Dokument!
 \subsection{Benutzerhandbuch}
 \subsubsection{System\"ubersicht}
 \paragraph{Aufgabengebiet des Programms}
@@ -405,46 +390,13 @@ Wenn in der Tabelle kein Kommentar ist, war der Test erfolgreich. Wenn der Test 
 \subsubsection{Testauswerung}
 Unter Mac hat der FileSystemListener nicht funktioniert, weil er bis zum jetztigen Zeitpunkt nicht implementiert ist. Unter Windows sind auch einige Fehler aufgetreten, weil noch nicht alles vollständig implementiert ist.
 \section{Mittelbedarf}
-Siehe Konzeptbericht.\cite{konzept}  Neu dazu gekommen ist das Program 'Enterprise Architect' um ein UML Klassendiagramm zu erstellen.
+Siehe Konzeptbericht. Neu dazu gekommen ist das Program 'Enterprise Architect' um ein UML Klassendiagramm zu erstellen.
 \section{Planung und Organisation}
-Siehe Konzeptbericht\cite{konzept}
+Siehe Konzeptbericht
 \section{Wirtschaftlichkeit}
-Siehe Konzeptbericht\cite{konzept}
+Siehe Konzeptbericht
 \section{Konsequenzen}
-Siehe Konzeptbericht\cite{konzept}
+Siehe Konzeptbericht
 \section{Antrag auf Freigabe der n\"achsten Projektphase}
 Wir bitten sie uns die Freigabe der n\"achsten Projektphase freizugeben
-\section{Sourcecode}
-\subsection{Main.py}
-\lstinputlisting{../../experimental/Main.py}
-\subsection{DB.py}
-\lstinputlisting{../../experimental/DB.py}
-\subsection{Utility.py}
-\lstinputlisting{../../experimental/Utility.py}
-\subsection{CLI.py}
-\lstinputlisting{../../experimental/CLI.py}
-\subsection{TagManager.py}
-\lstinputlisting{../../experimental/TagManager.py}
-\subsection{FileManager.py}
-\lstinputlisting{../../experimental/FileManager.py}
-\subsection{FileSystemListener.py}
-\lstinputlisting{../../experimental/FileSystemListener.py}
-\subsection{FileSystemListener Linux.py}
-\lstinputlisting{../../experimental/FileSystemListener_Linux.py}
-\subsection{FileSystemListener Windows.py}
-\lstinputlisting{../../experimental/FileSystemListener_Windows.py}
-\subsection{FileSystemListener Mac.py}
-\lstinputlisting{../../experimental/FileSystemListener_Mac.py}
-\subsection{GUI.py}
-\lstinputlisting{../../experimental/GUI.py}
-\subsection{TagView.py}
-\lstinputlisting{../../experimental/TagView.py}
-\subsection{HirarchicalView.py}
-\lstinputlisting{../../experimental/HirarchicalView.py}
-\subsection{View.py}
-\lstinputlisting{../../experimental/View.py}
-\subsection{File.py}
-\lstinputlisting{../../experimental/File.py}
-\subsection{AddTag.py}
-\lstinputlisting{../../experimental/AddTag.py}
 \end{document}
