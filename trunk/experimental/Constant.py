@@ -18,7 +18,7 @@ class Constant():
 		#time to sleep in a endlos loop
 		self.sleep	= 0.1
 		self.prgname	= "Project Browser"
-		self.version	= 0.1
+		self.version	= 0.8
 		self.dbPath	= os.path.expanduser("~/.project-browser/")
 		#self.startview = 'tag'
 		self.startview = 'hirarchical'

@@ -57,7 +57,7 @@ class View(gtk.TreeView):
 		self.cl1.add_attribute(render2,'text',1)
 		
 		#2. Spalte
-		self.cl2 = gtk.TreeViewColumn("Tag's")
+		self.cl2 = gtk.TreeViewColumn("Tags")
 		self.append_column(self.cl2)
 		
 		#Definition des Textes fuer die 2. Spalte
