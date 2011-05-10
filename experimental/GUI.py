@@ -76,7 +76,7 @@ class GUI():
 		ansichtmenu = gtk.Menu()
 		ansicht = self.xml.get_widget('mnuAnsicht')
 		ansicht.set_submenu(ansichtmenu)
-		self.mnuHirarchical = gtk.RadioMenuItem(None,'Hirarchisch')
+		self.mnuHirarchical = gtk.RadioMenuItem(None,'Hierarchisch')
 		self.mnuHirarchical.connect('toggled',self.showHirarchical)
 		ansichtmenu.append(self.mnuHirarchical)
 		self.mnuTag = gtk.RadioMenuItem(self.mnuHirarchical,'Tag')
@@ -86,8 +86,12 @@ class GUI():
 		#Modify other MenuItems
 		self.mnuBeenden = self.xml.get_widget('mnuBeenden')
 		self.mnuBeenden.connect('activate',self.stopploop)
-		self.mnuNeu = self.xml.get_widget('mnuNeu')
-		self.mnuNeu.hide()
+		self.mnuDatei = self.xml.get_widget('mnuDatei')
+		self.mnuBearbeiten = self.xml.get_widget('mnuBearbeiten')
+		self.mnuHilfe = self.xml.get_widget('mnuHilfe')
+		self.mnuDatei.set_sensitive(False)
+		self.mnuBearbeiten.set_sensitive(False)
+		self.mnuHilfe.set_sensitive(False)
 
 		#Init Status Bar
 		self.Status = self.xml.get_widget('stsStatusBar')
