@@ -49,7 +49,6 @@ class TagView(View):
 			if len(self.items)>0:
 				self.historyUpdate(actor)
 			self.historySymboleManagement()
-			self.updateBackupBtn()
 			self.updateParentFolderBtn()
 			self.completion()
 
@@ -81,14 +80,3 @@ class TagView(View):
 				self.sys.filemanager.openFile(f.getFullPath())
 			else:
 				self.sys.gui.openDirInHirarchical(f.getFullPath())
-
-	def backupSelectedObject(self):
-		f = self.getFObjFromSelectedRow()
-		if type(f) == list:
-			tf = self.sys.db.getFilesFromTag(f[0])
-			for i in range(len(tf)):
-				tf[i].ex_backup()
-		else:
-			f.ex_backup()
-
-

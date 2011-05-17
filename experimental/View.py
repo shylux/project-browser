@@ -118,23 +118,9 @@ class View(gtk.TreeView):
 
 	def updateTagProperties(self,event):
 		try:
-			self.updateBackupBtn()
 			self.sys.gui.addTagContent.update(self.getFObjFromSelectedRow())
 		except:
 			pass
-	
-	def updateBackupBtn(self):
-		try:
-			if(isinstance(self.getFObjFromSelectedRow(),File) or type(self.getFObjFromSelectedRow()) == list):
-				self.sys.gui.btnBackup.set_sensitive(True)
-			else:
-				self.sys.gui.btnBackup.set_sensitive(False)
-		except:
-			self.sys.gui.btnBackup.set_sensitive(False)
-
-	def backupSelectedObject(self):
-		f = self.getFObjFromSelectedRow()
-		f.ex_backup()
 	
 	def historyUpdate(self,actor='fn'):
 		#Wenn wieder vorwaertz gesprungen wird, werden alle Element nach der aktuelen Position geloescht
