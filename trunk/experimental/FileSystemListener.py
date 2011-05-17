@@ -19,7 +19,8 @@ except:
 	pass
 try:
 	from FileSystemListener_Windows import *
-except:
+except ImportError as (errno, strerror):
+	print strerror
 	pass
 import threading
 from File import *
@@ -36,11 +37,11 @@ class FileSystemListener(threading.Thread):
 			print("it's a linux!")
 			self.listener = FileSystemListener_Linux(self)
 			return
-		if stros == "win":
+		if stros == "windows":
 			print("it's a windows!")
 			self.listener = FileSystemListener_Windows(self)
 			return
-		print "Can't initialize FileSystemListener."
+		print "Can't initialize FileSystemListener. Given: ", stros
 
 	def add_watch(self, path, rec):
 		self.listener.add_watch(path, rec)

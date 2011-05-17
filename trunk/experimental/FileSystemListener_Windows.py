@@ -10,9 +10,9 @@
 #			0.2		19.4.2011	Grundfunktionalitaet erstellt
 
 try:
+	import os
 	import win32file
 	import win32con
-	import os
 except ImportError:
 	#shit happens :P
 	pass
@@ -25,7 +25,7 @@ class FileSystemListener_Windows():
            1 : "Created",
            2 : "Deleted",
            3 : "Modified",
-           4 : "Delete",#"Renamed from something",
+           4 : "Delete",#"Renamed from something"
            5 : "Created"#"Renamed to something"
            }
     FILE_LIST_DIRECTORY = 0x0001
