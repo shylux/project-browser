@@ -45,7 +45,6 @@ class HirarchicalView(View):
 					if self.get_actTxtInput()[-1] == '/':
 						self.historyUpdate(actor)
 			self.updateParentFolderBtn()
-			self.updateBackupBtn()
 			self.historySymboleManagement()
 			#Ruft Auto-Completion Update Funktion auf
 			self.completion()

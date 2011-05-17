@@ -107,9 +107,6 @@ class GUI():
 		self.btnUp = self.xml.get_widget('btnUp')
 		self.btnUp.connect('clicked',self.getParentFolder)
 		self.btnUp.set_sensitive(False)
-		self.btnBackup = self.xml.get_widget('btnBackup')
-		self.btnBackup.connect('clicked',self.makeBackup)
-		self.btnBackup.set_sensitive(False)
 		
 		#Init-View
 		self.hspView = self.xml.get_widget('hspView')
@@ -258,9 +255,6 @@ class GUI():
 	def getParentFolder(self,event):
 		parent=self.sys.filemanager.getParentDir(self.actview.get_actTxtInput())
 		self.txtEntry.set_text(parent)
-
-	def makeBackup(self,event):
-		self.actview.backupSelectedObject()
 	###
 
 
