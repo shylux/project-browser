@@ -64,7 +64,6 @@ class AddTag():
 		print('test')
 
 	def update(self,fobj):
-		print('update')
 		self.clearAll()
 		self.fobj = None
 		self.fobj = fobj
@@ -123,12 +122,12 @@ class AddTag():
 			if tags[i].strip() != '':
 				tags[i] = tags[i].strip()
 			else:
-				tags.remove(tags[i])
+				self.fobj.setTags('')
 		tags = list(set(tags))
 		if len(tags) != 0:
 			self.fobj.setTags(tags)
 			self.sys.db.updateFile(self.fobj)
-		self.updateTagModel()
+		self.update(self.fobj)
 		self.sys.gui.actview.update()
 
 	def updateButtons(self):
