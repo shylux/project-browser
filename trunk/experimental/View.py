@@ -118,9 +118,13 @@ class View(gtk.TreeView):
 
 	def updateTagProperties(self,event):
 		try:
-			self.sys.gui.addTagContent.update(self.getFObjFromSelectedRow())
+			f = self.getFObjFromSelectedRow()
 		except:
 			pass
+		if f != None:
+			self.sys.gui.addTagContent.update(f)
+		#except:
+		#	pass
 	
 	def historyUpdate(self,actor='fn'):
 		#Wenn wieder vorwaertz gesprungen wird, werden alle Element nach der aktuelen Position geloescht

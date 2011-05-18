@@ -7,14 +7,16 @@ class AddTag():
 		self.fobj = None
 		self.xml = gtk.glade.XML("addTag.glade")
 		self.main = self.xml .get_widget("vbxMain")
-		self.txtFiles = self.xml.get_widget("txtFileNames")
+		self.txtObjNames = self.xml.get_widget("txtNames")
+		self.lblName = self.xml.get_widget("lblName")
 		self.txtTags = self.xml.get_widget("txtTags")
 		self.txtTags.connect('key-release-event',self.enterEventHandler)
 		#self.txtTags.connect('drag_data_received', self.test)
 		self.btnSave = self.xml.get_widget("btnSave")
 		self.btnSave.connect('button_release_event',self.save)
+		self.hbxTag = self.xml.get_widget("hbxTag")
 		self.tagCont = self.xml.get_widget("conTagList")
-		self.restoreCont = self.xml.get_widget("conRestoreList")
+		self.restoreCont = self.xml.get_widget("conRestoreCont")
 
 		#Backup/Restore
 		self.btnBackup = self.xml.get_widget("btnBackup")
@@ -24,53 +26,78 @@ class AddTag():
 		self.btnRestore.connect('clicked',self.restore)
 		self.btnRestore.set_sensitive(False)
 
+
+
 		#Model Tag
 		self.tagModel = gtk.TreeStore(gobject.TYPE_STRING)
 		self.treeTag = gtk.TreeView(self.tagModel)
-		#self.treeTag.drag_source_set(gtk.gdk.BUTTON1_MASK,self.tagModel,gtk.gdk.ACTION_DEFAULT)
 		self.treeTag.connect('row-activated',self.addClickedTag)
 		self.tagCont.add(self.treeTag)
 		#Spalte 1
-		self.cl1 = gtk.TreeViewColumn('Tag Name')
-		self.treeTag.append_column(self.cl1)
+		self.tagCl1 = gtk.TreeViewColumn('Tag Name')
+		self.treeTag.append_column(self.tagCl1)
 		#Definition der Text der 1. Spalte
-		render = gtk.CellRendererText()
-		self.cl1.pack_start(render)
-		self.cl1.add_attribute(render,'text',0)
+		tagRender = gtk.CellRendererText()
+		self.tagCl1.pack_start(tagRender)
+		self.tagCl1.add_attribute(tagRender,'text',0)
 		
+
+
 		#Model Tag
 		self.restoreModel = gtk.TreeStore(gobject.TYPE_STRING)
-		self.restoreTag = gtk.TreeView(self.tagModel)
+		self.restoreTag = gtk.TreeView(self.restoreModel)
+		self.restoreCont.add(self.restoreTag)
+		#Spalte 1
+		self.restoreCl1 = gtk.TreeViewColumn('Datum')
+		self.restoreTag.append_column(self.restoreCl1)
+		#Definition der Text der 1. Spalte
+		restoreRender = gtk.CellRendererText()
+		self.restoreCl1.pack_start(restoreRender)
+		self.restoreCl1.add_attribute(restoreRender,'text',0)
 		#self.restoreTag.connect('row-activated',self.showRestoreBtn)
 		
 
-		self.updateModel()
+		self.update(None)
 		self.main.show_all()
 
 	def test(self):
 		print('test')
 
 	def update(self,fobj):
+		print('update')
 		self.clearAll()
 		self.fobj = None
 		self.fobj = fobj
-		self.txtTags.set_text(', '.join(self.fobj.getTags()))
-		self.txtFiles.set_text(self.fobj.getFileName())
-		self.updateModel()
+		self.lblName.set_label('')
+		self.hbxTag.set_sensitive(False)
+		if isinstance(fobj,File):
+			self.lblName.set_label('Datei(en)')
+			self.txtTags.set_text(', '.join(self.fobj.getTags()))
+			self.txtObjNames.set_text(self.fobj.getFileName())
+			self.updateTagModel()
+			self.updateRestoreModel('file')
+			self.hbxTag.set_sensitive(True)
+		elif type(fobj) == list:
+			self.lblName.set_label('Tag(s)')
+			self.txtObjNames.set_text(fobj[0])
+			self.updateRestoreModel('tag')
+			self.hbxTag.set_sensitive(False)		
+		self.updateButtons()
 
-	def updateModel(self):
+	def updateTagModel(self):
 		self.tagModel.clear()
 		for tag in self.sys.db.getAllTags():
 			self.tagModel.append(None,[tag])
-		pass
-		self.updateButtons()
+
+	def updateRestoreModel(self,typ):
+		self.restoreModel.clear()
 
 	def clearAll(self):
 		self.fobj = None
 		self.tagModel.clear()
-		self.txtFiles.set_text('')
+		self.txtObjNames.set_text('')
 		self.txtTags.set_text('')
-		self.updateModel()
+		self.updateTagModel()
 		
 	def getWidget(self):
 		return self.main
@@ -101,7 +128,7 @@ class AddTag():
 		if len(tags) != 0:
 			self.fobj.setTags(tags)
 			self.sys.db.updateFile(self.fobj)
-		self.updateModel()
+		self.updateTagModel()
 		self.sys.gui.actview.update()
 
 	def updateButtons(self):
