@@ -13,7 +13,6 @@ import re
 import os
 from Constant import *
 from Utility import *
-from FileManger import *
 from shutil import copytree, ignore_patterns, copyfile
 
 class File:
