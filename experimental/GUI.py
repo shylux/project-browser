@@ -187,7 +187,7 @@ class GUI():
 	def changeView(self,newview):
 		#Speichert Text Input String in der zuschliessenden View
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
-		self.addTagContent.clearAll()
+		self.addTagContent.update(None)
 
 		#Schliesst die alte View
 		#self.view.remove(self.actview)
