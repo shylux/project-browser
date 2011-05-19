@@ -49,6 +49,7 @@ class GUI():
 		self.window.set_title(self.sys.c.prgname + ' - Version '  + str(self.sys.c.version))
 		#self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		self.window.connect("destroy", self.stopploop)
+		self.window.connect("key-release-event",self.eventF5)
 
 		#Connect Toogle-Buttons
 		self.btnHirarchical = self.xml.get_widget('btnHirarchical')
@@ -255,14 +256,13 @@ class GUI():
 	def getParentFolder(self,event):
 		parent=self.sys.filemanager.getParentDir(self.actview.get_actTxtInput())
 		self.txtEntry.set_text(parent)
-	###
-
-
-
-
 
 	def set_focus(self,widget):
 		self.window.set_focus(widget)
+		
+	def eventF5(self,widget,event):
+		if event.keyval == gtk.gdk.keyval_from_name("F5"):
+			self.actview.update()
 
 	def showall(self):
 		self.window.show_all()

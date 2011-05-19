@@ -30,12 +30,12 @@ class AddTag():
 
 		#Model Tag
 		self.tagModel = gtk.TreeStore(gobject.TYPE_STRING)
-		self.treeTag = gtk.TreeView(self.tagModel)
-		self.treeTag.connect('row-activated',self.addClickedTag)
-		self.tagCont.add(self.treeTag)
+		self.tagTree = gtk.TreeView(self.tagModel)
+		self.tagTree.connect('row-activated',self.addClickedTag)
+		self.tagCont.add(self.tagTree)
 		#Spalte 1
 		self.tagCl1 = gtk.TreeViewColumn('Tag Name')
-		self.treeTag.append_column(self.tagCl1)
+		self.tagTree.append_column(self.tagCl1)
 		#Definition der Text der 1. Spalte
 		tagRender = gtk.CellRendererText()
 		self.tagCl1.pack_start(tagRender)
@@ -44,17 +44,18 @@ class AddTag():
 
 
 		#Model Tag
-		self.restoreModel = gtk.TreeStore(gobject.TYPE_STRING)
-		self.restoreTag = gtk.TreeView(self.restoreModel)
-		self.restoreCont.add(self.restoreTag)
+		self.restoreModel = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
+		self.restoreTree = gtk.TreeView(self.restoreModel)
+		self.restoreTree.connect('cursor-changed',self.updateRestoreButton)
+		self.restoreCont.add(self.restoreTree)
 		#Spalte 1
 		self.restoreCl1 = gtk.TreeViewColumn('Datum')
-		self.restoreTag.append_column(self.restoreCl1)
+		self.restoreTree.append_column(self.restoreCl1)
 		#Definition der Text der 1. Spalte
 		restoreRender = gtk.CellRendererText()
 		self.restoreCl1.pack_start(restoreRender)
 		self.restoreCl1.add_attribute(restoreRender,'text',0)
-		#self.restoreTag.connect('row-activated',self.showRestoreBtn)
+		#self.restoreTree.connect('row-activated',self.showRestoreBtn)
 		
 
 		self.update(None)
@@ -90,6 +91,9 @@ class AddTag():
 
 	def updateRestoreModel(self,typ):
 		self.restoreModel.clear()
+		backups = self.fobj.get_backups()
+		for b in backups:
+			self.restoreModel.append(None,[b.getFileName(),b])
 
 	def clearAll(self):
 		self.fobj = None
@@ -116,29 +120,46 @@ class AddTag():
 			self.save(widget,event)
 
 	def save(self,widget,event):
-		print('save')
-		tags = self.txtTags.get_text().split(',')
-		for i in range(len(tags)):
-			if tags[i].strip() != '':
-				tags[i] = tags[i].strip()
-			else:
-				self.fobj.setTags('')
-		tags = list(set(tags))
-		if len(tags) != 0:
-			self.fobj.setTags(tags)
+			tags = self.txtTags.get_text().split(',')
+			l = len(tags)
+			newtags = []
+			for i in range(len(tags)):
+				if tags[i].strip() != '':
+					newtags.append(tags[i].strip())
+			tags = list(set(newtags))
+			self.fobj.setTags(newtags)
 			self.sys.db.updateFile(self.fobj)
-		self.update(self.fobj)
-		self.sys.gui.actview.update()
+			self.update(self.fobj)
+			self.sys.gui.actview.update()
 
 	def updateButtons(self):
-			if(isinstance(self.fobj,File) or type(self.fobj) == list):
+			if(isinstance(self.fobj,File)):
+				#                        or type(self.fobj) == list
 				self.btnBackup.set_sensitive(True)
 			else:
 				self.btnBackup.set_sensitive(False)
 			self.btnRestore.set_sensitive(False)
+			
+	def updateRestoreButton(self,event):
+		self.btnRestore.set_sensitive(True)
 
 	def backup(self,event):
-		self.fobj.ex_backup()
+		if isinstance(self.fobj,File):
+			self.fobj.ex_backup()
+			self.update(self.fobj)
+			self.sys.gui.actview.update()
+		elif type(self.fobj) == list:
+			pass
+
+	def getSelectedBackup(self):
+		treeview = self.restoreTree
+		selection = treeview.get_selection()
+		selection.set_mode(gtk.SELECTION_SINGLE)
+		tree_model, tree_iter = selection.get_selected()
+		return tree_model.get_value(tree_iter,1)
 
 	def restore(self,event):
-		print('test')
+		if isinstance(self.fobj,File):
+			self.fobj.restoreFrom(self.getSelectedBackup())
+		elif type(self.fobj) == list:
+			pass
