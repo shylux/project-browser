@@ -13,7 +13,7 @@ import re
 import os
 from Constant import *
 from Utility import *
-from shutil import copytree, ignore_patterns, copyfile
+from shutil import copytree, ignore_patterns, copyfile, rmtree
 
 class File:
   	"""represents a file on the filesysem"""
@@ -163,6 +163,29 @@ class File:
 		else:
 			copyfile(self.getFullPath(), bdir + "/" + self.getFileName())
 			
+	
+	def get_backups(self):
+		dir = self.getPath() + ".pb_backup"
+		founded = []
+		if os.path.exists(dir):
+			listOfBackups = os.listdir(dir)
+			for i in range(len(listOfBackups)):
+				bdir = dir + '/' + listOfBackups[i]
+				listOfDirs = os.listdir(bdir)
+				for j in range(len(listOfDirs)):
+					if listOfDirs[j] == self.getFileName()[:-1]:
+						founded.append(File(bdir))
+			return founded
+		else:
+			return []
+			
+	
+	def restoreFrom(self,b):
+		rmtree(self.getFullPath())
+		if (os.path.isdir(b.getFullPath()+"/"+self.getFileName())):
+			copytree(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName(), ignore=ignore_patterns('.*', '*.pyc'))
+		else:
+			copyfile(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName())
 
 if __name__ == "__main__":
   	print "Starting tests"
