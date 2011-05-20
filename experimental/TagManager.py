@@ -21,3 +21,27 @@ class TagManager():
 			if all[i].find(name) == 0:
 					matched.append(all[i])
 		return matched
+
+
+	def getBackups(self,tag):
+		files = self.sys.db.getFilesFromTag(tag)
+		backupArray = []
+		for i in range(len(files)):
+			backupArray.extend(files[i].getBackups())
+		print('founded backups: '+str(backupArray))
+		backupArray = self.sys.u.uniqueFiles(backupArray)
+		print('founded backups: '+str(backupArray))
+		return backupArray
+
+	def makeBackup(self,tag):
+		files = self.sys.db.getFilesFromTag(tag)
+		for i in range(len(files)):
+			files[i].makeBackup()
+
+	def restoreFrom(self,tag,backup):
+		files = self.sys.db.getFilesFromTag(tag)
+		for f in files:
+			fb = f.getBackups()
+			for eachBackup in fb:
+				if eachBackup.getFileName() == backup.getFileName():
+					f.restoreFrom(eachBackup)

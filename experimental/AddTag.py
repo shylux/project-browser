@@ -47,6 +47,7 @@ class AddTag():
 		self.restoreModel = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
 		self.restoreTree = gtk.TreeView(self.restoreModel)
 		self.restoreTree.connect('cursor-changed',self.updateRestoreButton)
+		self.restoreTree.connect('button_release_event',self.showContext)
 		self.restoreCont.add(self.restoreTree)
 		#Spalte 1
 		self.restoreCl1 = gtk.TreeViewColumn('Datum')
@@ -91,9 +92,15 @@ class AddTag():
 
 	def updateRestoreModel(self,typ):
 		self.restoreModel.clear()
-		backups = self.fobj.get_backups()
-		for b in backups:
-			self.restoreModel.append(None,[b.getFileName(),b])
+		if isinstance(self.fobj,File):
+			backups = self.fobj.getBackups()
+			for b in backups:
+				self.restoreModel.append(None,[b.getFileName(),b])
+		elif type(self.fobj) == list:
+			backupArray = self.sys.tagmanager.getBackups(self.fobj[0])
+			for b in backupArray:
+				self.restoreModel.append(None,[b.getFileName(),b])
+
 
 	def clearAll(self):
 		self.fobj = None
@@ -133,8 +140,7 @@ class AddTag():
 			self.sys.gui.actview.update()
 
 	def updateButtons(self):
-			if(isinstance(self.fobj,File)):
-				#                        or type(self.fobj) == list
+			if(isinstance(self.fobj,File) or type(self.fobj) == list):
 				self.btnBackup.set_sensitive(True)
 			else:
 				self.btnBackup.set_sensitive(False)
@@ -145,11 +151,11 @@ class AddTag():
 
 	def backup(self,event):
 		if isinstance(self.fobj,File):
-			self.fobj.ex_backup()
-			self.update(self.fobj)
-			self.sys.gui.actview.update()
+			self.fobj.makeBackup()
 		elif type(self.fobj) == list:
-			pass
+			self.sys.tagmanager.makeBackup(self.fobj[0])
+		self.update(self.fobj)
+		self.sys.gui.actview.update()
 
 	def getSelectedBackup(self):
 		treeview = self.restoreTree
@@ -162,4 +168,23 @@ class AddTag():
 		if isinstance(self.fobj,File):
 			self.fobj.restoreFrom(self.getSelectedBackup())
 		elif type(self.fobj) == list:
-			pass
+			self.sys.tagmanager.restoreFrom(self.fobj[0],self.getSelectedBackup())
+
+	def showContext(self, treeview, event):
+		if event.button == 3:
+			f = self.getSelectedBackup()
+			m = gtk.Menu()
+			m1 = gtk.MenuItem("Backup entfernen")
+			m.append(m1)
+			m1.connect('button_press_event',self.removeBackup,f)
+			m.show_all()
+			m.popup( None, None, None, event.button, event.time)
+			return True
+		return False
+
+	def removeBackup(self,widget,event,bf):
+		f = File(bf.getFullPath()+'/'+self.fobj.getFileName())
+		f.remove()
+		self.sys.db.updateFile(self.fobj)
+		self.update(self.fobj)
+		
