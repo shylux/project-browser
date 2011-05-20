@@ -72,7 +72,6 @@ class TagView(View):
 	def rowActivate(self,treeview, path, user_data):
 		f = self.getFObjFromSelectedRow()
 		if isinstance(f,list):
-			print('f: '+str(f[0]))
 			self.sys.gui.txtEntry.set_text(f[0])
 			self.sys.gui.updateView()
 		else:

@@ -36,6 +36,17 @@ class Utility:
 	def getTime(self):
 		return strftime("%Y-%m-%d_%H:%M")
 
+	def uniqueFiles(self,files):
+		unique = []
+		for f in files:
+			isUnique = True
+			for u in unique:
+				if f.getFileName() == u.getFileName():
+					isUnique = False
+			if isUnique:
+				unique.append(f)
+		return unique
+
 #Dynamisches Objekt, dass fuer normale Objekte gebraucht werden kann
 class NO():
 	pass

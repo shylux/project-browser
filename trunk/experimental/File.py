@@ -150,7 +150,13 @@ class File:
 		uses .extend"""
 	  	self.tags.extend(tags)
 
-	def ex_backup(self):
+	def remove(self):
+		if (os.path.isdir(self.getFullPath())):
+			rmtree(self.getFullPath())
+		else:
+			os.remove(self.getFullPath())
+
+	def makeBackup(self):
 		print "FullPath", self.getFullPath()
 		dir = self.getPath() + ".pb_backup"
 		if not os.path.exists(dir):
@@ -164,7 +170,7 @@ class File:
 			copyfile(self.getFullPath(), bdir + "/" + self.getFileName())
 			
 	
-	def get_backups(self):
+	def getBackups(self):
 		dir = self.getPath() + ".pb_backup"
 		founded = []
 		if os.path.exists(dir):
@@ -173,7 +179,8 @@ class File:
 				bdir = dir + '/' + listOfBackups[i]
 				listOfDirs = os.listdir(bdir)
 				for j in range(len(listOfDirs)):
-					if listOfDirs[j] == self.getFileName()[:-1]:
+					print('list: '+listOfDirs[j]+', '+self.getFileName())
+					if listOfDirs[j] == self.getFileName()[:-1] or listOfDirs[j] == self.getFileName():
 						founded.append(File(bdir))
 			return founded
 		else:
@@ -181,10 +188,12 @@ class File:
 			
 	
 	def restoreFrom(self,b):
-		rmtree(self.getFullPath())
 		if (os.path.isdir(b.getFullPath()+"/"+self.getFileName())):
+			rmtree(self.getFullPath())
 			copytree(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName(), ignore=ignore_patterns('.*', '*.pyc'))
 		else:
+			os.remove(self.getFullPath())
+			print('file restore: '+b.getFullPath()+'/'+self.getFileName()+', '+self.getPath()+self.getFileName())
 			copyfile(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName())
 
 if __name__ == "__main__":
@@ -323,4 +332,4 @@ if __name__ == "__main__":
 
 	#Backup
 	#b = File("/home/laden")
-	#b.ex_backup()
+	#b.makeBackup()
