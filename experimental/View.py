@@ -13,7 +13,7 @@
 #http://www.pygtk.org/pygtk2tutorial/sec-TreeViewDragAndDrop.html 	Bearbeitet selected
 
 #Eigene Klassen
-from AddTag import *
+from FileProperties import *
 from File import *
 
 #Andere Klassen
@@ -122,7 +122,7 @@ class View(gtk.TreeView):
 		except:
 			pass
 		if f != None:
-			self.sys.gui.addTagContent.update(f)
+			self.sys.gui.fileProperties.update(f)
 		#except:
 		#	pass
 	

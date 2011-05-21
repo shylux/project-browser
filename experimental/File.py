@@ -157,7 +157,6 @@ class File:
 			os.remove(self.getFullPath())
 
 	def makeBackup(self):
-		print "FullPath", self.getFullPath()
 		dir = self.getPath() + ".pb_backup"
 		if not os.path.exists(dir):
 			os.makedirs(dir)
@@ -179,7 +178,6 @@ class File:
 				bdir = dir + '/' + listOfBackups[i]
 				listOfDirs = os.listdir(bdir)
 				for j in range(len(listOfDirs)):
-					print('list: '+listOfDirs[j]+', '+self.getFileName())
 					if listOfDirs[j] == self.getFileName()[:-1] or listOfDirs[j] == self.getFileName():
 						founded.append(File(bdir))
 			return founded
@@ -193,7 +191,6 @@ class File:
 			copytree(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName(), ignore=ignore_patterns('.*', '*.pyc'))
 		else:
 			os.remove(self.getFullPath())
-			print('file restore: '+b.getFullPath()+'/'+self.getFileName()+', '+self.getPath()+self.getFileName())
 			copyfile(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName())
 
 if __name__ == "__main__":

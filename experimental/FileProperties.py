@@ -1,11 +1,11 @@
 import gtk
 import gobject
 from File import *
-class AddTag():
+class FileProperties():
 	def __init__(self,sys):
 		self.sys = sys
 		self.fobj = None
-		self.xml = gtk.glade.XML("addTag.glade")
+		self.xml = gtk.glade.XML("fileproperties.glade")
 		self.main = self.xml .get_widget("vbxMain")
 		self.txtObjNames = self.xml.get_widget("txtNames")
 		self.lblName = self.xml.get_widget("lblName")
@@ -61,9 +61,6 @@ class AddTag():
 
 		self.update(None)
 		self.main.show_all()
-
-	def test(self):
-		print('test')
 
 	def update(self,fobj):
 		self.clearAll()
