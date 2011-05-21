@@ -11,21 +11,20 @@ class FileProperties():
 		self.lblName = self.xml.get_widget("lblName")
 		self.txtTags = self.xml.get_widget("txtTags")
 		self.txtTags.connect('key-release-event',self.enterEventHandler)
-		#self.txtTags.connect('drag_data_received', self.test)
 		self.btnSave = self.xml.get_widget("btnSave")
 		self.btnSave.connect('button_release_event',self.save)
 		self.hbxTag = self.xml.get_widget("hbxTag")
 		self.tagCont = self.xml.get_widget("conTagList")
 		self.restoreCont = self.xml.get_widget("conRestoreCont")
 
+
 		#Backup/Restore
 		self.btnBackup = self.xml.get_widget("btnBackup")
 		self.btnBackup.connect('clicked',self.backup)
 		self.btnBackup.set_sensitive(False)
 		self.btnRestore = self.xml.get_widget("btnRestore")
-		self.btnRestore.connect('clicked',self.restore)
+		self.btnRestore.connect('clicked',self.restoreBackup)
 		self.btnRestore.set_sensitive(False)
-
 
 
 		#Model Tag
@@ -33,30 +32,24 @@ class FileProperties():
 		self.tagTree = gtk.TreeView(self.tagModel)
 		self.tagTree.connect('row-activated',self.addClickedTag)
 		self.tagCont.add(self.tagTree)
-		#Spalte 1
 		self.tagCl1 = gtk.TreeViewColumn('Tag Name')
 		self.tagTree.append_column(self.tagCl1)
-		#Definition der Text der 1. Spalte
 		tagRender = gtk.CellRendererText()
 		self.tagCl1.pack_start(tagRender)
 		self.tagCl1.add_attribute(tagRender,'text',0)
 		
 
-
-		#Model Tag
+		#Model Backups
 		self.restoreModel = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
 		self.restoreTree = gtk.TreeView(self.restoreModel)
 		self.restoreTree.connect('cursor-changed',self.updateRestoreButton)
 		self.restoreTree.connect('button_release_event',self.showContext)
 		self.restoreCont.add(self.restoreTree)
-		#Spalte 1
 		self.restoreCl1 = gtk.TreeViewColumn('Datum')
 		self.restoreTree.append_column(self.restoreCl1)
-		#Definition der Text der 1. Spalte
 		restoreRender = gtk.CellRendererText()
 		self.restoreCl1.pack_start(restoreRender)
 		self.restoreCl1.add_attribute(restoreRender,'text',0)
-		#self.restoreTree.connect('row-activated',self.showRestoreBtn)
 		
 
 		self.update(None)
@@ -68,18 +61,21 @@ class FileProperties():
 		self.fobj = fobj
 		self.lblName.set_label('')
 		self.hbxTag.set_sensitive(False)
-		if isinstance(fobj,File):
+		if isinstance(fobj,File):	
 			self.lblName.set_label('Datei(en)')
 			self.txtTags.set_text(', '.join(self.fobj.getTags()))
 			self.txtObjNames.set_text(self.fobj.getFileName())
 			self.updateTagModel()
 			self.updateRestoreModel('file')
 			self.hbxTag.set_sensitive(True)
+			if fobj.getDeleted():
+				self.lblName.set_label('Sicherung aus Backup')
+				self.btnBackup.set_sensitive(False)
+				self.hbxTag.set_sensitive(False)
 		elif type(fobj) == list:
 			self.lblName.set_label('Tag(s)')
 			self.txtObjNames.set_text(fobj[0])
 			self.updateRestoreModel('tag')
-			self.hbxTag.set_sensitive(False)		
 		self.updateButtons()
 
 	def updateTagModel(self):
@@ -139,6 +135,9 @@ class FileProperties():
 	def updateButtons(self):
 			if(isinstance(self.fobj,File) or type(self.fobj) == list):
 				self.btnBackup.set_sensitive(True)
+				if isinstance(self.fobj,File):
+					if self.fobj.getDeleted():
+						self.btnBackup.set_sensitive(False)
 			else:
 				self.btnBackup.set_sensitive(False)
 			self.btnRestore.set_sensitive(False)
@@ -161,12 +160,21 @@ class FileProperties():
 		tree_model, tree_iter = selection.get_selected()
 		return tree_model.get_value(tree_iter,1)
 
-	def restore(self,event):
+	def restoreBackup(self,event):
 		if isinstance(self.fobj,File):
 			self.fobj.restoreFrom(self.getSelectedBackup())
 		elif type(self.fobj) == list:
 			self.sys.tagmanager.restoreFrom(self.fobj[0],self.getSelectedBackup())
+		self.sys.gui.actview.update()
 
+	def removeBackup(self,widget,event,bf):
+		if(isinstance(self.fobj,File)):
+			f = File(bf.getFullPath()+'/'+self.fobj.getFileName())
+			f.remove()
+		elif type(self.fobj) == list:
+			self.sys.tagmanager.removeBackups(self.fobj[0],bf)
+		self.update(self.fobj)
+		
 	def showContext(self, treeview, event):
 		if event.button == 3:
 			f = self.getSelectedBackup()
@@ -178,10 +186,3 @@ class FileProperties():
 			m.popup( None, None, None, event.button, event.time)
 			return True
 		return False
-
-	def removeBackup(self,widget,event,bf):
-		f = File(bf.getFullPath()+'/'+self.fobj.getFileName())
-		f.remove()
-		self.sys.db.updateFile(self.fobj)
-		self.update(self.fobj)
-		

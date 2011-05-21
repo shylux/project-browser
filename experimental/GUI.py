@@ -182,12 +182,10 @@ class GUI():
 		self.fileProperties.update(None)
 
 		#Schliesst die alte View
-		#self.view.remove(self.actview)
 		if self.actview.get_parent() != None:
 			self.view.remove(self.actview)
 
 		#Fuegt die neue View an
-		#self.view.add(newview)
 		self.view.add(newview)
 
 		#Aender Aktuel View		
@@ -195,7 +193,6 @@ class GUI():
 		self.actview = newview
 
 		#Text Input aktualisieren
-		#self.listcompl.clear()
 		self.txtEntry.set_text(self.actview.get_actTxtInput())
 
 		#Fokus auf Text Input
@@ -209,9 +206,7 @@ class GUI():
 		#Update-View
 		self.actview.update()
 
-	#def searchKey(self,widget,event):
 	def searchKey(self,a):
-		#if event.keyval != gtk.gdk.keyval_from_name("Down") and event.keyval != gtk.gdk.keyval_from_name("Up"):
 		if self.actview.triggeredByNavigation:
 			self.updateView()
 		else:
@@ -259,10 +254,7 @@ class GUI():
 		self.window.show_all()
 
 	def terminate(self):
-		# must raise the SystemExit type, instead of a SystemExit() instance
-		# due to a bug in PyThreadState_SetAsyncExc
 		self.raise_exc(SystemExit)
-		pass
 
 	def startloop(self):
 		gtk.main()

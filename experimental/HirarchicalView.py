@@ -39,6 +39,10 @@ class HirarchicalView(View):
 						self.model.append(None,[self.getFolderIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
 					else:
 						self.model.append(None,[self.getFileIcon(),self.items[i].getFileName(),self.items[i],', '.join(self.items[i].getTags())])
+				#Sucht nach geloeschten Dateien/Ordner in den Backups
+				deletedFiles = self.sys.filemanager.getDeletedFilesFromBackups(self.acttxtinput)
+				for df in deletedFiles:
+					self.model.append(None,[self.getDeletedIcon(),df.getFileName(),df,''])
 				self.set_model(self.model)
 				#Ruft History Verwaltung auf
 				if len(self.get_actTxtInput()) > 0:
@@ -71,7 +75,6 @@ class HirarchicalView(View):
 
 	def rowActivate(self,treeview, path, user_data):
 		f = self.getFObjFromSelectedRow()
-		print('fullpath activated in rowActivated: '+f.getFullPath())
 		if not f.getIsDir():
 			self.sys.filemanager.openFile(f.getFullPath())
 		else:

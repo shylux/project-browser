@@ -41,26 +41,16 @@ class View(gtk.TreeView):
 	def createTree(self):
 		#Objekt fuer den Baum
 		self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING, gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
-		
-		#1. Spalte
 		self.cl1 = gtk.TreeViewColumn('Datei')
 		self.append_column(self.cl1)
-
-		#Definition des Icons der 1. Spalte
 		render1 = gtk.CellRendererPixbuf()
        		self.cl1.pack_start(render1, expand=False)
         	self.cl1.add_attribute(render1, 'pixbuf', 0)
-
-		#Definition der Text der 1. Spalte
 		render2 = gtk.CellRendererText()
 		self.cl1.pack_start(render2,True)
 		self.cl1.add_attribute(render2,'text',1)
-		
-		#2. Spalte
 		self.cl2 = gtk.TreeViewColumn("Tags")
 		self.append_column(self.cl2)
-		
-		#Definition des Textes fuer die 2. Spalte
 		render3 = gtk.CellRendererText()
 		self.cl2.pack_start(render3,True)
 		self.cl2.add_attribute(render3,'text',3)
@@ -81,6 +71,9 @@ class View(gtk.TreeView):
 
 	def getFileIcon(self):
 		return self.get_icon_pixbuf('STOCK_FILE')
+
+	def getDeletedIcon(self):
+		return self.get_icon_pixbuf('STOCK_CANCEL')
 
 	def update(self):
 		self.show_all()
@@ -159,6 +152,5 @@ class View(gtk.TreeView):
 			if c == h or h == 0:
 				self.sys.gui.btnFor.set_sensitive(False)
 	
-
 #Registriert diese Klasse als pygtk-widget
 gobject.type_register(View)
