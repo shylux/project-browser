@@ -174,6 +174,7 @@ class FileProperties():
 		elif type(self.fobj) == list:
 			self.sys.tagmanager.removeBackups(self.fobj[0],bf)
 		self.update(self.fobj)
+		self.sys.gui.actview.update()
 		
 	def showContext(self, treeview, event):
 		if event.button == 3:
