@@ -22,15 +22,12 @@ class TagManager():
 					matched.append(all[i])
 		return matched
 
-
 	def getBackups(self,tag):
 		files = self.sys.db.getFilesFromTag(tag)
 		backupArray = []
 		for i in range(len(files)):
 			backupArray.extend(files[i].getBackups())
-		print('founded backups: '+str(backupArray))
 		backupArray = self.sys.u.uniqueFiles(backupArray)
-		print('founded backups: '+str(backupArray))
 		return backupArray
 
 	def makeBackup(self,tag):

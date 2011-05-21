@@ -14,12 +14,10 @@
 
 from HirarchicalView import *
 from TagView import *
-from AddTag import *
+from FileProperties import *
 
 import gobject
 gobject.threads_init()
-
-#Modul um diese Klasse als Seperaten-Prozess zu starten
 import threading
 import pygtk
 pygtk.require('2.0')
@@ -47,7 +45,6 @@ class GUI():
 		self.xml = gtk.glade.XML("gui.glade")
 		self.window = self.xml.get_widget("winMain")
 		self.window.set_title(self.sys.c.prgname + ' - Version '  + str(self.sys.c.version))
-		#self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		self.window.connect("destroy", self.stopploop)
 		self.window.connect("key-release-event",self.eventF5)
 
@@ -59,19 +56,13 @@ class GUI():
 
 		#Connect TextInput Field
 		self.txtEntry = self.xml.get_widget('txtEntry')
-		#self.txtEntry.connect('key_release_event',self.searchKey)
 		self.txtEntry.connect('changed',self.searchKey)
 		self.com = gtk.EntryCompletion()
-		#com.set_inline_selection(True)
-		#com.connect('match-selected',self.searchCompletion)
 		self.txtEntry.set_completion(self.com)
 		self.listcompl = gtk.ListStore(gobject.TYPE_STRING)
 		self.com.set_model(self.listcompl)
 		self.com.set_text_column(0)
 		self.com.set_popup_set_width(True)
-		
-		#self.txtEntry.connect('activate',self.searchKey)
-		#self.txtEntry.connect('backspace',self.searchKey)
 
 		#Add Menu-Item by 'Ansicht'
 		ansichtmenu = gtk.Menu()
@@ -111,8 +102,8 @@ class GUI():
 		
 		#Init-View
 		self.hspView = self.xml.get_widget('hspView')
-		self.addTagContent = AddTag(self.sys)
-		self.hspView.add(self.addTagContent.getWidget())
+		self.fileProperties = FileProperties(self.sys)
+		self.hspView.add(self.fileProperties.getWidget())
 		self.view = self.xml.get_widget('View')
 		if self.mod == 'hirarchical':
 			self.actview = self.hview
@@ -188,7 +179,7 @@ class GUI():
 	def changeView(self,newview):
 		#Speichert Text Input String in der zuschliessenden View
 		self.actview.set_actTxtInput(self.txtEntry.get_text())
-		self.addTagContent.update(None)
+		self.fileProperties.update(None)
 
 		#Schliesst die alte View
 		#self.view.remove(self.actview)
