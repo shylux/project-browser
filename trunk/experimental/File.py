@@ -169,7 +169,7 @@ class File:
 		dir = self.getPath() + ".pb_backup"
 		if not os.path.exists(dir):
 			os.makedirs(dir)
-		bdir = dir + "/" + self.u.getTime()
+		bdir = dir + "/" + self.u.getTime().replace(':','')
 		if not os.path.exists(bdir):
 			os.makedirs(bdir)
 		if (os.path.isdir(self.getFullPath())):
