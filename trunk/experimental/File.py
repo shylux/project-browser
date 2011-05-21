@@ -23,10 +23,11 @@ class File:
 	tags		= None
 	backup		= None
 	fullPath	= None
+	deleted		= None
 	u		= None
 	constant	= None
 	os		= None
-	def __init__(self, fullPath=None, fileName=None, path=None, tags=[], backup=False, isDir=False):
+	def __init__(self, fullPath=None, fileName=None, path=None, tags=[], backup=False, isDir=False, deleted=False):
 	  	"""Constructor
 		@param	fileName, string	, optional 
 		@param	path	, string	, optional
@@ -38,6 +39,7 @@ class File:
 		self.tags	= tags
 		self.backup	= backup
 		self.isDir	= isDir
+		self.deleted	= deleted
 		self.fullPath	= fullPath
 
 		self.u = Utility()
@@ -149,13 +151,20 @@ class File:
 	  	"""Adds a list of tags (passed as list) to the list of tags.
 		uses .extend"""
 	  	self.tags.extend(tags)
-
+	
 	def remove(self):
-		if (os.path.isdir(self.getFullPath())):
-			rmtree(self.getFullPath())
-		else:
-			os.remove(self.getFullPath())
+		if os.path.exists(self.getFullPath()):
+			if (os.path.isdir(self.getFullPath())):
+				rmtree(self.getFullPath())
+			else:
+				os.remove(self.getFullPath())
 
+	def setDeleted(self,b):
+		self.deleted = b
+
+	def getDeleted(self):
+		return self.deleted
+		
 	def makeBackup(self):
 		dir = self.getPath() + ".pb_backup"
 		if not os.path.exists(dir):
@@ -186,11 +195,10 @@ class File:
 			
 	
 	def restoreFrom(self,b):
+		self.remove()
 		if (os.path.isdir(b.getFullPath()+"/"+self.getFileName())):
-			rmtree(self.getFullPath())
 			copytree(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName(), ignore=ignore_patterns('.*', '*.pyc'))
 		else:
-			os.remove(self.getFullPath())
 			copyfile(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName())
 
 if __name__ == "__main__":

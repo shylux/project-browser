@@ -111,4 +111,25 @@ class FileManager:
 	def openDir(self,path):
 		self.sys.gui.txtEntry.set_text(path)
 		self.sys.gui.updateView()
-		
+
+
+	def getDeletedFilesFromBackups(self,path):
+		items = self.getFilesFromDir(path)
+		found = []
+		originFolder = self.divideDirAndFile(path)[0] + '/'
+		if originFolder == '//':
+			originFolder = '/'
+		backupFolderPath = originFolder+'.pb_backup'+'/'
+		backupFolders = self.getFilesFromDir(backupFolderPath)
+		for backup in backupFolders:
+			backupPath = backup.getFullPath()
+			backup = self.getFilesFromDir(backupPath)
+			for backupFile in backup:
+				foundFile = False
+				if items != 'error':
+					for i in items:
+						if backupFile.getFileName() == i.getFileName():
+							foundFile = True
+				if foundFile == False:
+					found.append(File(originFolder+backupFile.getFileName(),deleted=True))
+		return found

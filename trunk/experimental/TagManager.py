@@ -8,6 +8,8 @@
 #History: 		--Version--	--Date--	--Activities--
 #			0.1		29.3.2011	Grundfunktionalitaeten werden erstellt
 
+from File import *
+
 class TagManager():
 	def __init__(self,sys):
 		self.sys = sys
@@ -42,3 +44,13 @@ class TagManager():
 			for eachBackup in fb:
 				if eachBackup.getFileName() == backup.getFileName():
 					f.restoreFrom(eachBackup)
+
+	def removeBackups(self,tag,backup):
+		files = self.sys.db.getFilesFromTag(tag)
+		for f in files:
+			fb = f.getBackups()
+			for eachBackup in fb:
+				if eachBackup.getFileName() == backup.getFileName():
+					o = File(eachBackup.getFullPath()+'/'+f.getFileName())
+					o.remove()
+		
