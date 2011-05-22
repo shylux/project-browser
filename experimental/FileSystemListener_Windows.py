@@ -21,12 +21,13 @@ class FileSystemListener_Windows():
     parent = None
     acpath = None
     hdir = None
+    lastfrom = None
     ACTIONS = {
            1 : "Created",
            2 : "Deleted",
            3 : "Modified",
-           4 : "Delete",#"Renamed from something"
-           5 : "Created"#"Renamed to something"
+           4 : "RenameF",#"Renamed from something"
+           5 : "RenameT"#"Renamed to something"
            }
     FILE_LIST_DIRECTORY = 0x0001
 
@@ -66,7 +67,13 @@ class FileSystemListener_Windows():
                 #print full_filename, self.ACTIONS.get(action, "Unknown")
                 if action == 3:
 		    self.parent.modify_event(full_filename)
-                elif action == 1 or action == 5:
+                elif action == 1:
                     self.parent.create_event(full_filename)
-                elif action == 2 or action == 4:
+                elif action == 2:
                     self.parent.delete_event(full_filename)
+		elif action == 4:
+		    self.lastfrom = full_filename
+		elif action == 5:
+		    if (self.lastfrom != None):
+		        self.parent.move_event(self.lastfrom, full_filename)
+		    self.lastfrom = None
