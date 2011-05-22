@@ -55,8 +55,8 @@ class Main():
 		self.fslistener = FileSystemListener(self)
 		self.fslistener.daemon = True
 		self.t.append(self.fslistener)
-		#self.fslistener.add_watch(".", True)
-		#self.fslistener.start()
+		self.fslistener.add_watch(os.path.abspath("."), True)
+		self.fslistener.start()
 
 		if modus == 'cli':
 			#CLI in einem eigenen Thread
