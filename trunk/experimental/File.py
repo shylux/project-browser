@@ -14,6 +14,7 @@ import os
 from Constant import *
 from Utility import *
 from shutil import copytree, ignore_patterns, copyfile, rmtree
+from RepeatTimer import *
 
 class File:
   	"""represents a file on the filesysem"""
@@ -201,6 +202,12 @@ class File:
 		else:
 			copyfile(b.getFullPath()+"/"+self.getFileName(), self.getPath()+self.getFileName())
 
+	def repeatBackup(self, seconds):
+		if seconds < 60:
+			seconds = 60
+		timer = RepeatTimer(seconds, self.makeBackup, 2)
+		timer.start()	
+
 if __name__ == "__main__":
   	print "Starting tests"
 	print "Note: Tests 9,10,14,15 will fail on Windows... and so will many others probably"
@@ -336,5 +343,5 @@ if __name__ == "__main__":
 	print File.__init__.__doc__
 
 	#Backup
-	#b = File("/home/laden")
-	#b.makeBackup()
+	b = File("/home/shylux/project-browser/experimental/small-test-programms")
+	b.repeatBackup(30.0)
