@@ -47,7 +47,7 @@
 \maketitle
 \newpage
 \begin{tabularx}{\textwidth}{ r X }	%X fields are stretched over the whole space
-\textcolor{white}{{\bf Status}}\cellcolor{blue!80!} & {\bf In Arbeit}/In Prüfung/Abgeschlossen\cellcolor{blue!20!} \\
+  \textcolor{white}{{\bf Status}}\cellcolor{blue!80!} & In Arbeit/In Prüfung/{\bf Abgeschlossen}\cellcolor{blue!20!} \\
 \textcolor{white}{{\bf Projektname}}\cellcolor{blue!80!} & Projektexplorer\cellcolor{blue!20!} \\
 \textcolor{white}{{\bf Projektleiter}}\cellcolor{blue!80!} & Niklaus Hofer\cellcolor{blue!20!} \\
 \textcolor{white}{{\bf Auftraggeber}}\cellcolor{blue!80!} & M. Frieden, GIBB\cellcolor{blue!20!} \\
@@ -155,12 +155,12 @@ Dabei geht es darum, dass dokumentiert wird wann welche Dateien geöffnet wurden
   \hline
   \bf Bezeichnung & \bf Beschreibung & \bf Priorit\"at (0-3) & \bf Zielhierarchie & \bf Zielkategorie & \bf Kriterien zur Bewertung \\ \hline
   Performance & L\"auft das program schnell? & 2 & & & Das Programm sollte ähnlich schnell reagieren, wie die von den verschiedenen Systemen mitgelieferten Dateimanager.
-  Keinenfalls darf sich die Benutzung so träge anfühlen, dass man lieber auf die Vorteile des Systems verzichtet. \\ \hline
+  Das \"Offnen von Ordnern darf maximal 0.1 sec in Anspruch nehmen. \\ \hline
   Qualit\"at & Kann das Programm einfach erweitert werden? & 2 & & & Das Programm ist objektorientiert aufgebaut.
   Die Benennung von Objekten und Variablen ist einheitlich.
   Das Programm ist klar und verständlich dokumentiert. \\ \hline
   Sicherheit & Das Programm reist keine Sicherheitslücken in die Mechanismen der jeweiligen Betriebssysteme. & 3 & & & Firewalls und Rechteverwaltungssysteme werden nicht umgangen. \\ \hline
-  Kompatibilit\"at & Läuft das Programm auf allen wichtigen Betriebssystemen. & 2 & & & Das Programm soll auf folgenden OS laufen: Windows, Linux, OS X \\ \hline
+  Kompatibilit\"at & Läuft das Programm auf allen wichtigen Betriebssystemen. & 2 & & & Windows XP und 7, MAC OS X 10.5 oder neuer, Linux Distributionen mit Kernel 2.6.32 oder neuer. \\ \hline
   Datenkonsistenz & Die Metadaten werden ohne überflüssige Redundanze & 1 & & & Die Metadaten Ablage verhindert vom Design her widersprüchliche oder doppelte Angaben. \\ \hline
 \end{tabular}
 \section{Fachlicher Soll-Zustand}
@@ -376,9 +376,16 @@ Zudem gilt SQLite als sehr schnell.
 %shylux
 \section{Mittelbedarf}
 \subsection{Sachmittel}
-Sachmittel werden, neben den zur Verfügung stehenden Computern, keine benötigt.
+\begin{itemize}
+\item Computer mit Linux/Windows/OS X, Python, IDE und Internetanbindung
+\item mind. 2 Entwickler
+\item Projektleiter
+\end{itemize}
 \subsection{Personal}
-Das Personal ist mit drei Programmierern vorgegeben.
+\begin{itemize}
+\item drei (3) Programmierer
+\item einer (1) davon hat zudem die Rolle des Projektleiters inne.
+\end{itemize}
 \subsection{Ausbildung}
 Mindestens zwei der Programmierer müssen sich Kenntnisse und Fähigkeiten im Umgang mit Python im Selbststudium aneignen.
 Zudem muss der Umgang mit SQLite erlernt werden.

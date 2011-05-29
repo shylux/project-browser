@@ -1,0 +1,217 @@
+\documentclass[10pt,paper=a4,final]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}		%used for the tables
+\usepackage{geometry}		%allows us to specify the 'seitenrand'
+\usepackage[table]{xcolor}	%allows us to make colored fields in the tables
+\usepackage{graphicx}		%package used to include graphics
+\usepackage{hyperref}   	%used to make klickable links
+\usepackage{supertabular}
+\usepackage{listings}
+\lstset{language=python,
+  basicstyle=\small, 
+  keywordstyle=\color{blue!80!black!100}, 
+  identifierstyle=, 
+  commentstyle=\color{green!50!black!100}, 
+  stringstyle=\ttfamily\color{red!80!black!100}, 
+  breaklines=true, 
+  numbers=left, 
+  numberstyle=\small, 
+  frame=single, 
+  backgroundcolor=\color{blue!3} 
+} 
+
+%\hypersetup{linktocpage}	%make the tableofcontent klickable
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\setcounter{tocdepth}{4}	%include paragraph in tableofcontents
+\setcounter{secnumdepth}{5}	%also number the paragraphs
+
+%These two lines will allow us to specify our own headers/footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+ \setlength{\parskip}{0pt}
+ \setlength{\baselineskip}{0pt}
+
+%The next three lines set the default font to Arial
+%use 'getnonfreefonts arial-urw' to install uarial on Linux systems
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault}
+
+\geometry{a4paper, top=20mm, right=20mm, bottom=20mm, left=20mm}
+\title{Einf\"uehrungsbericht}
+\author{Niklaus Hofer, Lukas Kn\"opfel, Kaleb Tschabold}
+\date{\today}
+
+%defining header and footer
+\fancyhf{}	%delete default values
+\setlength{\headwidth}{\textwidth}	%header and footer width equal the text width
+\fancyhead[LE,LO]{\includegraphics[scale=0.6]{header.png}}
+\fancyhead[RE,RO]{ProjectExplorer}
+\fancyfoot[CE,CO]{Speicherdatum: \today{}}
+\fancyfoot[RE,RO]{\thepage}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{tabularx}{\textwidth}{ r X }	%X fields are stretched over the whole space
+  \textcolor{white}{{\bf Status}}\cellcolor{blue!80!} & In Arbeit/In Prüfung/ {\bf Abgeschlossen}\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektname}}\cellcolor{blue!80!} & Projektexplorer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Projektleiter}}\cellcolor{blue!80!} & Lukas Kn\"opfel\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Auftraggeber}}\cellcolor{blue!80!} & M. Frieden, GIBB\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Autoren}}\cellcolor{blue!80!} & Kaleb Tschabold, Lukas Kn\"opfel, Niklaus Hofer\cellcolor{blue!20!} \\
+\textcolor{white}{{\bf Verteiler}}\cellcolor{blue!80!} & Lukas Knöpfel, Kaleb Tschabolt, Niklaus Hofer\cellcolor{blue!20!}
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Änderungskontrolle, Prüfung, Genehmigung}
+\newline
+
+\begin{tabularx}{\textwidth}{l l X X}
+\textcolor{white}{Version}\cellcolor{blue!80!} & \textcolor{white}{Datum}\cellcolor{blue!80!} & \textcolor{white}{Beschreibung, Bemerkung}\cellcolor{blue!80!} & \textcolor{white}{Name oder Rolle}\cellcolor{blue!80!} \\
+\cellcolor{blue!20!} 0.1& \cellcolor{blue!20!} 24.05.2011 & Content erstellen \cellcolor{blue!20!} & Kaleb Tschabold, Lukas Kn\"opfel, Niklaus Hofer \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 1.0& \cellcolor{blue!20!} 24.05.2011 & Dokument formatieren \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 1.1& \cellcolor{blue!20!} \today{} & Transfer nach \LaTeX \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+{\bf Definitionen und Abkürzungen}
+\newline
+
+\begin{tabularx}{\textwidth}{l X}
+\textcolor{white}{Begriff/ Abkürzung}\cellcolor{blue!80!} & \textcolor{white}{Bedeutung}\cellcolor{blue!80!} \\
+GUI \cellcolor{blue!20!} & Graphical user interface \cellcolor{blue!20!} \\
+\end{tabularx}
+\newline
+\newline
+\newline
+\bibliographystyle{plain}
+\bibliography{einfuehrungsbericht}{}
+\flushleft
+\newpage
+\tableofcontents
+\newpage
+\section{Zweck des Dokuments}
+Zusammenfassung der Ergebnisse der Phase „Einführung“.
+\section{Einf\"uhrungsplan}
+\subsection{Vorgehen}
+Unsere Software ist für den multiplen Einsatz gedacht, also für den Gebrauch auf unterschiedlichen, autonomen Systemen die nichts miteinander zu tun haben.
+\subsubsection{Allgemeine Bemerkungen}
+Unsere Software ist an Endnutzer gerichtet, und wurde nicht für einen fixen Kunden entwickelt. Es gab folglich auch keine Einführung im klassischen Sinne mit der Migration vieler Client-Rechner und Schulungen.
+Es gibt aber verschiedene Schritte und Vorgehensweisen, die auf den Endanwender zukommen, wenn er das Programm produktiv verwenden will.
+\subsubsection{Installation}
+Die Software selbst benötigt keine Installation. Da sie in Python geschrieben wurde kann sie ohne seperate Kompillation ausgeführt werden.
+
+Wir haben jedoch einige dependencies. Diese sind:
+\begin{itemize}
+  \item Python 2.7
+  \item GTK 2.24
+  \item Unter Windows: pywin32-216
+\end{itemize}
+\subsubsection{Migration}
+Project-Browser ist nicht wirklich ein Ersatz für bestehende Lösungen. Vielmehr ist das Programm als Ergänzung zu herkömmlichen Dateiverwaltungsmethoden zu sehen.
+\subsubsection{Anpassung der Abl\"aufe}
+Um die Vorteile von Project-Browser wirklich nutzen zu können muss man die Dateien gezielt mit Tags versehen und die Tags aktuell halten. Project-Browser bietet keinen Mechanismus, um Dateien automatisch zu Taggen. Der Nutzer hat volle Kontrolle darüber, welche Dateien welche Tags erhalten.
+
+Besonders zu Beginn erfordert das evtl. einigen Aufwand.
+Aber auch später müssen die Tags aktuell gehalten werden und neu erstellten Dateien müssen neue Tags zugewiesen werden.
+
+Der Nutzer muss sich also evtl. neue Verhaltensweisen und Abläufe beim Hantieren mit Dateien angewöhnen.
+Da aber ohnehin jeder Benutzer seinen eigenen Stil zur Verwaltung von Dateien hat, ist auch die Anpassung dem Nutzer selbst überlassen.
+\subsubsection{Einf\"uhrung der Nutzer}
+Wie oben erwähnt gibt es keine ‘richtige’ Methode um den Project-Browser einzusetzen.\\
+Da wir das Programm im Auftrag einer Firma entwickelt wurde und das Programm nicht auf grosse Firmen fokussiert ist, bieten wir auch keine Schulungen im Umgang damit an.
+Es steht dritten aber jederzeit Frei, Schulungen, Support-, Migrations- und weitere Angebote zu dem Produkt zu offerieren.
+\subsection{Risiken}
+Natürlich geht der Nutzer bei der Entscheidung unser Produkt zu verwenden ein gewisses Risiko ein. Die Dateien mit Tags zu versehen und die Tags aktuell zu halten kann viel Zeit fordern. Merkt der Nutzer später, dass das Programm nicht seinen Ansprüchen genügt oder nicht die erwarteten Produktionssteigerungen bringt, war die aufgewendete Zeit evtl. falsch investiert.
+
+Besonders bei kommerziellen Betrieben kann das ein Problem darstellen. Wir raten Firmen deshalb dazu, den Einsatz von Project-Browser gut zu überdenken und allenfalls zu planen. Wir raten zudem, die Tauglichkeit in einem Pilotprojekt zu evaluieren.
+\subsection{Grober Zeitplan f\"ur die Einf\"uhrung}
+Da keine eigentliche Einführung notwendig ist, gibt es auch kein Meilensteine die für die Einführung existieren.\\
+Bei der Einführung in einem grossen Betrieb, muss der Zeitplan individuell festgelegt werden.
+\section{Migrationsplan}
+\subsection{Migrationsverfahren}
+Aus der persönlichen Erfahrung können wir grob beschreiben, welche Schritte notwendig sind, um das Programm in der Praxis einzusetzen.
+Daten werden sofort nach der Installation angezeigt. Sie werden direkt vom Dateisystem gelesen. Die Tags müssen für die Dateien manuell erfasst werden.
+Project-Browser muss dann parallel zu einem herkömmlichen Dateiexplorer eingesetzt werden, da er dessen Funktionen nicht repliziert.
+\subsection{Zeitplan f\"ur die Migration}
+Da wir keine konkrete Einführung durchführen gibt es zu diesem Punkt keine weiteren Anmerkungen.
+\subsection{Organisation der Migration}
+Da wir keine konkrete Einführung durchführen gibt es zu diesem Punkt keine weiteren Anmerkungen.
+\section{Ausbildungsplan}
+\subsection{Ausbildungsbl\"ocke}
+Wir empfehlen allen Nutzern vor der ersten Benutzung das Benutzerhandbuch\cite[Abschnitt 'Benutzerhandbuch']{realisierungsbericht} durchzulesen. Der Aufwand dazu ist nicht gross, da unser Benutzerhandbuch kleiner als die Nutzerlizenzen mancher Programme ist.
+
+Wird das Programm in einem Betrieb eingeführt, so sollten zuerst Embassadors ausgebildet werden, die anschliessend die Endnutzer schulen und ihnen bei Fragen zur Hand gehen können.
+\subsection{Ausbildungszeitplan}
+Da wir keine konkrete Einführung durchführen gibt es zu diesem Punkt keine weiteren Anmerkungen.
+\section{Akzeptanztest}
+\subsection{Vorbereitung und Durchf\"uhrung}
+Wir setzen das Programm mehreren Personen vor. Dazu geben wir ihnen einen Auftragskatalog, den sie abarbeiten müssen. Den Testpersonen stehen nur das Benutzerhandbuch und ihr Verstand (falls vorhanden) zur verfügung.
+
+Die Aufgaben sind:
+\begin{itemize}
+  \item In ein vorgegebenes Verzeichnis wechseln.
+  \item Verzeichnisse öffnen.
+  \item In eine Ebene nach oben wechseln.
+  \item Einer Datei ein neues Tag zuordnen.
+  \item Einer Datei ein Tag zuordnen, dass bereits vorhanden ist.
+  \item Die Ansicht wechseln.
+  \item Alle Dateien eines bestimmten Tags anzeigen.
+  \item Backup einer Datei anlegen.
+  \item Backups einer Datei anzeigen lassen.
+  \item Backups wiederherstellen.
+\end{itemize}
+\subsection{Abnahmeprotokoll}
+\begin{tabularx}{\textwidth}{|X|l|X|}
+  \hline
+  \bf Aufgaben & \bf Erf\"ullt & \bf Bemerkung \\ \hline
+  Programm starten & 100\% & - \\ \hline
+  Zwischen den zwei Ansichten umschalten (Toggle Button/Menü)& 100\% & \\ \hline
+  Neues Tags setzen & 100\% & Das Bestätigen per Entertaste wurde auffällig oft verwendet. \\ \hline
+  Bestehende Tags zu einer Datei setzen & 80\% & Viele Nutzer haben den Namen des Tags erneut getippt anstatt das Tag in der Liste doppelt anzuklicken. Damit ist die Aufgabe zwar erf\"ullt, zeigt aber dass die Nutzer die Doppelklick-m\"oglichkeit nicht immer bemerken. \\ \hline
+  Durch das Dateisystem navigieren & 100\% & Einige Nutzer wünschen siche einen “..”-Eintrag um in den übergeordneten Ordner zu gelangen. \\ \hline
+  Alle Dateien eines bestimmten Tags anzeigen & 100\% & - \\ \hline
+  Mit dem Eingabefeld in der Tag und Hierarchischen Ansicht navigieren & 100\% & Das Konzept ist von den Webbrowsern her genügend bekannt. \\ \hline
+  Dateien öffnen & 100\% & - \\ \hline
+  Dateien/Ordner/Tags sichern & 80\% & Das Tab wurde in manchen f\"allen \"ubersehen. \\ \hline
+  Dateien/Ordner/Tags wiederherstellen & 80\% & Als Folge vom vorhergehenden Punkt \\ \hline
+  Sicherungen einer Datei/Ordner/Tag löschen & 80\% & Als Folge vom vorhergehenden Punkt \\ \hline
+\end{tabularx}
+Die Akzeptanztests haben erfolgreich gezeigt, dass die Software bereit für die Verwendung durch den Endnutzer ist.
+Das Interface hat sich als intuitiv und leicht verständlich erwiesen.
+
+Zwei Punkt wurden allerdings des öfteren bemängelt:
+\begin{itemize}
+  \item Erfahrene Nutzer vermissen einen “..” Eintrag in der Dateiliste, um ins obere Verzeichnis zu wechseln.
+  \item Die Nutzer möchten mehr Funktionen sehen, um herkömmliche Dateimanager zu Ersetzen, wie das Kopieren oder Verschieben von Dateien. Diese änderungen w\"urden aber viel Arbeit erfordern und den Release einer neuen Version (2.0) rechtfertigen.
+\end{itemize}
+\section{Mittelbedarf}
+Die selben Mittel die wir auch in der Realisierungsphase benutzt haben. Zusätzlich:\\
+\begin{itemize}
+  \item Testpersonen.
+  \item Rechner mit Testsetup.
+\end{itemize}
+\section{Planung und Organisation}
+Die Tests wurden am Arbeitsplatz durchef\"uhrt. Zum Testen wurde ein fertiges Setup mit Ubuntu 10.04 (LTS) eingesetzt. Testpersonen waren Mitarbeiter aus dem B\"uro.
+\section{Wirtschaftlichkeit}
+Da keine praktische Einführung durchgeführt wurde, können wir dazu auch keine weitere Stellungnahme abgeben.
+\section{Konsequenzen}
+\begin{description}
+  \item{\bf Bei zu unhandlicher Bedienung} Unsere Software wird nicht benutzt und gerät in Vergessenheit.
+  \item{\bf Bei zu wenig Funktionalität} Unsere Software wird entweder verschwinden oder weiterentwickelt. Es ist auch gut möglich das Teile daraus in neue Software übernommen wird.
+  \item{\bf Konsequenzen bei Projektabbruch} Schlechte Note
+  \item{\bf Konsequenzen bei verspäteter Inbetriebnahme} Schlechte Note
+  \item{\bf Ausweichmöglichkeiten} Auf bestehende Tools zurückgreifen wie Explorer und rsync.
+\end{description}
+\section{Antrag auf Freigabe der Phase Abschluss}
+Wir bitten Sie die  Phase “Abschluss” für uns freizugeben.
+\end{document}

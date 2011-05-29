@@ -1,6 +1,5 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.3.1)  1 MAR 2011 16:12
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.5)  28 MAY 2011 21:02
 entering extended mode
- restricted \write18 enabled.
  %&-line parsing enabled.
 **voranalyse.tex
 (./voranalyse.tex
@@ -434,7 +433,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )
-(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+(/etc/texmf/tex/latex/config/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 (/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
@@ -527,7 +526,7 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/home/bash/texmf/tex/latex/ua1/uarial.sty
+(/home/niklaus/texmf/tex/latex/ua1/uarial.sty
 Package: uarial 2006/03/21 1.0 (WaS)
 )
 
@@ -564,7 +563,7 @@ LaTeX Font Info:    ... okay on input line 46.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
 LaTeX Font Info:    ... okay on input line 46.
 LaTeX Font Info:    Try loading font information for T1+ua1 on input line 46.
- (/home/bash/texmf/tex/latex/ua1/t1ua1.fd
+ (/home/niklaus/texmf/tex/latex/ua1/t1ua1.fd
 File: t1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for T1/ua1.
 )
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
@@ -658,7 +657,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 
-{/home/bash/.texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/home/niklaus/.texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \hbox (9.99756pt too wide) in paragraph at lines 56--62
 [][] 
  []
@@ -815,6 +814,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
  []
 
 
+Underfull \hbox (badness 3826) in paragraph at lines 157--158
+\T1/ua1/m/n/10 von Ord-nern darf max-i-
+ []
+
+
 Underfull \hbox (badness 3690) in paragraph at lines 159--159
 []|\T1/ua1/m/n/10 Kann das Pro-
  []
@@ -910,6 +914,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--163
  []
 
 
+Underfull \hbox (badness 2856) in paragraph at lines 163--163
+\T1/ua1/m/n/10 OS X 10.5 oder neuer,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
+\T1/ua1/m/n/10 Linux Dis-tri-bu-tio-nen mit
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 164--164
 []|\T1/ua1/m/n/10 Die Meta-daten
  []
@@ -937,8 +951,10 @@ Overfull \hbox (25.26741pt too wide) in paragraph at lines 154--166
 <datenfluss.pdf, id=402, 705.63625pt x 524.96124pt>
 File: datenfluss.pdf Graphic file (type pdf)
  <use datenfluss.pdf>
-File: header.png Graphic file (type png)
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: header.png Graphic file (type png)
 <use header.png> [7]
 File: header.png Graphic file (type png)
  <use header.png> [8 <./datenfluss.pdf>]
@@ -979,17 +995,17 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  ) 
 Here is how much of TeX's memory you used:
  6834 strings out of 495061
- 97639 string characters out of 1182622
+ 97616 string characters out of 1182622
  213945 words of memory out of 3000000
  9799 multiletter control sequences out of 15000+50000
  42341 words of font info for 31 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 43i,17n,44p,732b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/bash/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk>{/usr/shar
-e/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></home/bash/texmf/fonts/type1/urw/arial/ua1b8a
-.pfb></home/bash/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
-Output written on voranalyse.pdf (16 pages, 204015 bytes).
+ 43i,17n,44p,732b,427s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/niklaus/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk>{/usr/s
+hare/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></home/niklaus/texmf/fonts/type1/urw/arial/
+ua1b8a.pfb></home/niklaus/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
+Output written on voranalyse.pdf (16 pages, 203293 bytes).
 PDF statistics:
  581 PDF objects out of 1000 (max. 8388607)
  99 named destinations out of 1000 (max. 500000)
