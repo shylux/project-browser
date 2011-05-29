@@ -1,0 +1,25 @@
+\contentsline {section}{\numberline {1}Zweck des Dokuments}{4}{section.1}
+\contentsline {section}{\numberline {2}Einf\"uhrungsplan}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Vorgehen}{4}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Allgemeine Bemerkungen}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Installation}{4}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}Migration}{4}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}Anpassung der Abl\"aufe}{4}{subsubsection.2.1.4}
+\contentsline {subsubsection}{\numberline {2.1.5}Einf\"uhrung der Nutzer}{4}{subsubsection.2.1.5}
+\contentsline {subsection}{\numberline {2.2}Risiken}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Grober Zeitplan f\"ur die Einf\"uhrung}{5}{subsection.2.3}
+\contentsline {section}{\numberline {3}Migrationsplan}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Migrationsverfahren}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Zeitplan f\"ur die Migration}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Organisation der Migration}{5}{subsection.3.3}
+\contentsline {section}{\numberline {4}Ausbildungsplan}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Ausbildungsbl\"ocke}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Ausbildungszeitplan}{5}{subsection.4.2}
+\contentsline {section}{\numberline {5}Akzeptanztest}{5}{section.5}
+\contentsline {subsection}{\numberline {5.1}Vorbereitung und Durchf\"uhrung}{5}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Abnahmeprotokoll}{6}{subsection.5.2}
+\contentsline {section}{\numberline {6}Mittelbedarf}{6}{section.6}
+\contentsline {section}{\numberline {7}Planung und Organisation}{6}{section.7}
+\contentsline {section}{\numberline {8}Wirtschaftlichkeit}{6}{section.8}
+\contentsline {section}{\numberline {9}Konsequenzen}{6}{section.9}
+\contentsline {section}{\numberline {10}Antrag auf Freigabe der Phase Abschluss}{7}{section.10}
