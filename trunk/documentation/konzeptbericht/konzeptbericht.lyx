@@ -1,0 +1,3055 @@
+#LyX file created by tex2lyx 1.6.7
+\lyxformat 264
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+
+\usepackage{tabularx}%used for the tables
+%allows us to specify the 'seitenrand'
+\usepackage[table]{xcolor}%allows us to make colored fields in the tables
+%package used to include graphics
+
+%These two lines will allow us to specify our own headers/footers
+\usepackage{fancyhdr}
+
+%The next three lines set the default font to Arial
+\usepackage[scaled]{uarial}\renewcommand*{\familydefault}{\sfdefault}
+
+
+
+\title{Konzeptbericht}
+\author{Bash Vi, Shylux, Kaleb Tschabolt}
+\date{\today}
+
+%defining header and footer
+\fancyhf{}	%delete default values
+\setlength{\headwidth}{\textwidth}	%header and footer width equal the text width
+\fancyhead[LE,LO]{\includegraphics{header.png}}
+\fancyhead[RE,RO]{ProjectExplorer}
+\fancyfoot[CE,CO]{Speicherdatum: \today{}}
+\fancyfoot[RE,RO]{\thepage}
+
+
+\end_preamble
+\options paper=a4,final
+\language english
+\inputencoding utf8
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family sfdefault
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 10
+\spacing single
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+
+\newpage
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{tabularx}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+ r X 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%X fields are stretched over the whole space
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\color white
+
+\series bold
+Status
+\family default
+\series default
+\shape default
+
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\series bold
+In Arbeit
+\family default
+\series default
+\shape default
+/In Pruefung/Abgeschlossen
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\color white
+
+\series bold
+Projektname
+\family default
+\series default
+\shape default
+
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & Projektexplorer
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\color white
+
+\series bold
+Projektleiter
+\family default
+\series default
+\shape default
+
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & Niklaus Hofer
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\color white
+
+\series bold
+Auftraggeber
+\family default
+\series default
+\shape default
+
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & M. Frieden, GIBB
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\color white
+
+\series bold
+Autoren
+\family default
+\series default
+\shape default
+
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & Niklaus Hofer
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\color white
+
+\series bold
+Verteiler
+\family default
+\series default
+\shape default
+
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & Lukas Knoepfel, Kaleb Tschabolt, Niklaus Hofer
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{tabularx}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\newline
+ 
+\newline
+ 
+\series bold
+Aenderungskontrolle, Pruefung, Genehmigung
+\family default
+\series default
+\shape default
+ 
+\newline
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{tabularx}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+l l X X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\color white
+Version
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\color white
+Datum
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\color white
+Beschreibung, Bemerkung
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\color white
+Name oder Rolle
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{tabularx}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\newline
+ 
+\newline
+ 
+\series bold
+Definitionen und Abkuerzungen
+\family default
+\series default
+\shape default
+ 
+\newline
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{tabularx}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+l X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\color white
+Begriff/ Abkuerzung
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\color white
+Bedeutung
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{tabularx}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+
+\end_layout
+
+\begin_layout Standard
+
+
+\series bold
+Reerenzen
+\family default
+\series default
+\shape default
+ 
+\newline
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{tabularx}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+l X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\color white
+Referenz
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ & 
+\color white
+Titel, Quelle
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!80!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+[1] & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+[2] & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+[3] & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+cellcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+blue!20!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{tabularx}
+\end_layout
+
+\end_inset
+
+ 
+\newpage
+
+\end_layout
+
+\begin_layout Section
+
+Zweck des Dokuments
+\end_layout
+
+\begin_layout Standard
+
+Zusammenfassung der Ergebnisse der Phase „Konzept“.
+\end_layout
+
+\begin_layout Section
+
+Geschäftsprozesse
+\end_layout
+
+\begin_layout Standard
+
+Da unser Programm einen sehr generellen Zweck hat und nicht für eine bestimmte Arbeitsumgebung optimiert ist, gibt es hier keinen Geschäftsprozess der konret beschrieben werde könnte.
+\newline
+
+\end_layout
+
+\begin_layout Standard
+
+Um die Einfachheit, und trotzdem die Bedeutung die dem Aufgabengebiet anzumessen ist aufzuzeigen haben wir aber ein Diagram, dass den (im Grunde sehr einfachen) Ablauf der zur Öffnung einer Datei nötig ist aufzeigt.
+\newline
+ Besonders da dieser Ablauf in einem Arbeitsalltag vielemale wiederholt wird kann durch die Optimierung dessen viel Zeit gewonnen und Frustration verhindert werden. 
+\begin_inset Float figure
+placement h!
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+ 
+\begin_inset Graphics 
+	filename arbeitsablauf.pdf
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+Arbeitsablauf beim Öffnen einer Datei
+\end_layout
+
+\end_inset
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%
+\backslash
+label{fin verhindert werden.
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+Systemanforderungen
+\end_layout
+
+\begin_layout Subsection
+
+Anforderungen an die Funktionalität
+\end_layout
+
+\begin_layout Subsubsection
+
+Funktionen
+\end_layout
+
+\begin_layout Enumerate
+
+Dateien verwalten 
+\end_layout
+
+\begin_layout Enumerate
+
+Allgemein 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Dateien verschieben, kopieren, löschen 
+\end_layout
+
+\begin_layout Enumerate
+
+Dateien per Doppelklick öffnen 
+\end_layout
+
+\begin_layout Enumerate
+
+Datei-Eigenschaften anzeigen 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Grösse 
+\end_layout
+
+\begin_layout Enumerate
+
+Erstelldatum 
+\end_layout
+
+\begin_layout Enumerate
+
+Zugriffsrechte 
+\end_layout
+
+\begin_layout Enumerate
+
+zuletzt geöffnet 
+\end_layout
+
+\begin_layout Enumerate
+
+der Datei zugeordnete Tags 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+Obige Punkte können über ein drop-down erreicht werden, welches wiederum durch Rechtsklick auf eine Datei geöffnet wird. 
+\end_layout
+
+\begin_layout Enumerate
+
+re-read erzwingen - zwingt das Programm die effektiven Datei-Daten von der Festplatte zu lesen und die Datenbank zu aktualisieren. 
+\end_layout
+
+\begin_layout Enumerate
+
+Ansicht zwischen hierarchisch und tag-view wechseln. 
+\end_layout
+
+\begin_layout Enumerate
+
+Link zur Datenbank anzeigen 
+\end_layout
+
+\begin_layout Enumerate
+
+anzeigen alter Dateiversionen (falls backup eingeschaltet ist) 
+\end_layout
+
+\begin_layout Enumerate
+
+Drag ‘n’ drop von Dateien/Ordnern in andere Ordner und aus den standard Dateimanagern der Systeme. 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+Hierarchische Ansicht 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Dateisystem-Struktur in einer Baumstruktur anzeigen (ähnlich wie in Microsoft Windows Explorer) 
+\end_layout
+
+\begin_layout Enumerate
+
+Einen bestimmten Ordner anhand seiner URL direkt öffnen 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+Tag-view 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Alle Dateien mit einem bestimmten Tag anzeigen 
+\end_layout
+
+\begin_layout Enumerate
+
+Alle Dateien mit einem bestimmten Tag innerhalb eines Ordners (reqursiv) anzeigen. 
+\end_layout
+
+\begin_layout Enumerate
+
+Alle Dateien eines bestimmten Tags öffnen 
+\end_layout
+
+\begin_layout Enumerate
+
+Alle Dateien eines bestimmten Tags kopieren (z.B. zur Sicherung) 
+\end_layout
+
+\begin_layout Enumerate
+
+Tag umbenennen 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+Archivierung 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Kann für das ganze Dateisystem eingeschalten werden 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+funktioniert aber natuerlich nur bei Dateien für die der User die nötigen Zugriffsrechte hat 
+\end_layout
+
+\begin_layout Enumerate
+
+Warnung bei auswahl grosser Gesamtgrösse (500MB?). 
+\end_layout
+
+\begin_layout Enumerate
+
+Warnung bei auswahl von Logfiles (viele modifikationen = viele backups). 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+Kann für einzelne Ordner/ Dateien ein/ausgeschalten werden. 
+\end_layout
+
+\begin_layout Enumerate
+
+Bei jeder Änderung wird eine Kopie der Datei in einem verschtekten Ordner abgelegt. Der Name der Datei wird dabei um die exakten Datum/Zeit Angaben ergänzt. 
+\end_layout
+
+\begin_layout Enumerate
+
+Will der User später eine historische Version der Datei ansehen, so kann er dies über die Maske ‘historische Versionen’ die über den Rechtsklick-Dialog der Datei erreicht wird. 
+\end_layout
+
+\begin_layout Enumerate
+
+Löschen aller historischer Versionen einer Datei 
+\end_layout
+
+\begin_layout Enumerate
+
+Löschen aller historischer Versionen aller Dateien eines Ordners (reqursiv) 
+\end_layout
+
+\begin_layout Enumerate
+
+Ob historische Versionen beim Löschen einer Datei auch gelöscht werden sollen kann in den Programmeinstellungen festgelegt werden. 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+Usecases
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement h!
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+ 
+\begin_inset Graphics 
+	filename usecases.png
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+Usecases
+\end_layout
+
+\end_inset
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="11" columns="2">
+<features>
+<column alignment="left" valignment="top" leftline="true" rightline="true">
+<column alignment="none" valignment="top" rightline="true" width="12cm">
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Name 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Dateien anzeigen => nach Tag 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Kurzbeschreibung 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Alle Dateien eines Tags anzeigen 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Akteur(e) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+User 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Ergebniss(e) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+
+Alle Dateien die mit dem Tag versehen sind werden angezeigt. 
+\end_layout
+
+\begin_layout Itemize
+
+Alle Dateien die mit einem Tag versehen sind und sich innerhalb eines bestimmten Ordners befinden werden angezeigt. 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Eingehende Daten 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Benutzeraktionen 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Vorbedingungen 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Das Tag muss vorhanden sein. Dem Tag müssen Dateien zugeordnet sein. 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Nachbedingungen 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Alle Dateien die mit dem Tag versehen wurden werden angezeigt. 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Essenzielle Schritte 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Enumerate
+
+Bei Agieren aus der Tag-View 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Auswahl des gewünschten Tags aus der Liste der vorhandenen Tags. 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Dateien werden jetzt angezeigt 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+Auswahl eines Filters 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Filter nach Ordner 
+\end_layout
+
+\begin_layout Enumerate
+
+Gewünschten Ordner auswählen 
+\end_layout
+
+\begin_layout Enumerate
+
+Dateien des gewünschten Tags die sich im gewählten Ordner (oder einem Unterordner dieses) befinden werden nun angezeigt 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+Bei Agieren aus Hierarchical-View 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+Navigieren zum entsprechenden Ordner. 
+\end_layout
+
+\begin_layout Enumerate
+
+Rechtsklick => Dateien eines Tags anzeigen => Tag wählen 
+\end_layout
+
+\begin_layout Enumerate
+
+Die Ansicht wechselt jetzt automatisch zur Tag-View und Dateien des gewünschten Tags die sich im gewählten Ordner (oder einem Unterordner dieses) befinden werden nun angezeigt. 
+\end_layout
+
+\end_deeper
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Offene Punkte 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Es ist noch zu klären ob auch weitere Filter als nach Ordner zur Verfügung stehen sollen (z.B. Datumsbereich). 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Bemerkungen 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+
+Für das Anzeigen der hierarchischen Struktur der Verzeichnisse und Dateien haben wir hier keinen Usecase beschrieben, da dieser Vorgang wohlbekannt und für viele User Alltag ist. 
+\end_layout
+
+\begin_layout Itemize
+
+Dasselbe gilt für die Dateioperationen (z.B. kopieren, verschieben, …) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+Änderungshistorie 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+22.03.2011; Lukas Knöpfel; Final 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{tabularx}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+ | l | p
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+8cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ | 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hline
+\end_layout
+
+\end_inset
+
+ Name & Archivierung (archivierte Datei ansehen) 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hline
+\end_layout
+
+\end_inset
+
+ Kurzbeschreibung & Die historische Version eines Dokumentes wird angezeigt 
+\newline
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hline
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{tabularx}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+Anforderungen an die Daten
+\end_layout
+
+\begin_layout Standard
+
+->verweis!
+\end_layout
+
+\begin_layout Subsection
+
+Anforderungen an die Informationssicherheit und den Datenschutz
+\end_layout
+
+\begin_layout Standard
+
+->verweis!
+\end_layout
+
+\end_body
+\end_document
