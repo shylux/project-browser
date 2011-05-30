@@ -370,7 +370,7 @@ Die Dokumente wurden jeweils nach dem Erstellen durchgelesen. Die Struktur der V
   8 & \"Ubertragbarkeit & - & - \\ \hline
   9 & Wiederverwendbarkeit & Die Komponenten der Applikation h\"ange nicht fest voneinander ab. Einzelne Komponenten (z.B. das Backend) k\"onnen auch in anderen Projekten wiederverwendet werden.& - \\ \hline
   \multicolumn{4}{|c|}{\bf Projektf\"uhrung} \\ \hline
-  10 & Kommunikation unter den Beteiligten & Die Entwickler sprechen sich untereinander ab, damit nicht aneinander vorbeiprogrammiert ist. Treten Fragen zum Code eine anderen Mitgliedes des Teams auf, so k\"onnen diese gestellt werden.& - \\ \hline
+  10 & Kommunikation der Beteiligten & Die Entwickler sprechen sich untereinander ab, damit nicht aneinander vorbeiprogrammiert ist. Treten Fragen zum Code eine anderen Mitgliedes des Teams auf, so k\"onnen diese gestellt werden.& - \\ \hline
   12 & Termineinhaltung & Die Termine aus dem Projektplan (siehe oben) werde eingehalten.& - \\ \hline
   13 & Projekdokumentation & Die Vorgegebenen Dokumente werden p\"unktlich eingereicht. Mails die zwischen den Entwicklern ausgetauscht werden werden aufgehoben.& - \\ \hline
 \end{tabularx}
@@ -460,26 +460,77 @@ siehe \cite[4. Systemtests]{realisierung}
 \end{tabularx}
 \subsubsection{Testfalltabellen}
 Testf\"alle wurden nur f\"ur den Code erstellt, nicht aber f\"ur die Dokumente. Die vertige Tabelle der Programmtests zusammen mit den Ergebnissen kann im Realisierungsbericht \cite{realisierung}eingesehen werden.
-\begin{supertabular}{|l|l|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+
+Die Testcases der Modultests (Unittests) k\"onnen im Code nachgesehen werden. Diese haben zum Teil komplexe Abh\"angigkeiten und pr\"ufen einige Funktionen mehrmals oder auf \"uberfl\"ussige Weise.
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\bf Nr. & \bf Afo-Nr.& \bf Anwendungsfall & \bf Ausgangs- situation & \bf Eingabedaten & \bf erwartetes Ergebnis \\ \hline
-0 & 1& Normale Benutzung& Programm läuft nicht& Programm starten& Programm läuft \\ \hline
-1 & 4 & Anwender f\"ugt einer Datei ein Tag hinzu. & Die Datei ~/.bashrc hat noch kein Tag. & Der Nutzer wechselt in das Verzeichnis ~, w\"ahlt die Datei .bashrc an und f\"ugt ihr im rechten Panel das Tag configfile hinzu. & Nach einem Neustart des Programmes und dem erneuten Selektieren der Datei wird das Tag in der Tags-Liste angezeigt. \\ \hline
-2 & 2 & Normale Benutzung& Programm wurde gestartet& keine& Fenster mit Menu, Buttons und Eingabefeldern erscheint. \\ \hline
-3 & - & Erstellen von Tags mit Sonderzeichen. & Das Tag /' existiert noch nicht. & Eine beliebige Datei wird selektiert, der Name des Tags wird in der Tags-Liste eingeegeben und durch 'speichern' festgehalten. Danach wird das Tag einer weiteren Datei hinzugef\"ugt. & Nach dem ersten Speichern, erscheint das Tag in der Liste aller Tags unten auf der rechten Seite des Programmes. Wird es einer zweiten Datei hnzugef\"ugt, so wird es NICHT dupliziert. \\ \hline
-4 & 3& Benutzung auf nicht grafischen System& Programm wurde gestartet& keine& Command Prompt erscheint \\ \hline
-5 & 5& Normale Benutzung& Programm wurde erfolgreich gestartet& User wählt eine Datei an& Tags werden angezeigt \\ \hline
-6 & - & Ein Verzeichnis das eine Datei mit Sonderzeichen im Namen enth\"alt wird ge\"offnet und der Datei ein Tag hinzugef\"ugt. & Die Datei ~/''.txt hat keine Tags zugeordnet. & Die Datei ~/''.txt wird angesteuert und ihr ein beliebiges Tag hinzugef\"ugt. & Der Browser ist in der Lage das Verzeichnis mit der Datei zu \"offnen. Das Tag wird der Datei erfolgrech zugewiesen und bleibt erhalten. \\ \hline
-7 & 6& ein Projekt soll Versioniert werden& Projektdaten liegen auf dem Filesystem& Der User aktiviert die Versionierung eines Tags& Die Dateien werden bei Veränderung und/oder nach einer Zeitlichen verzögerung kopiert. \\ \hline
-8 & - & Wechseln der Ansicht. & Nach dem Programmstart wir die hierarchische Ansicht dargestellt. & Der Nutzer wechselt durch einen Klick auf den Button Tag (links unten im Programm), in die Tagansicht. Danach wechselt er \"uber das Ansichts-Men\"u wieder zur\"uck zur hierarchischen Ansicht. & Nach dem Klick auf den 'Tag'-Button wechselt das Programm zur Tag-Ansicht. Bei der \"uber das Men\"u ausgel\"osten Aktion wieder zur\"uck zur hierarchischen Ansicht. \\ \hline
-9 & 8& Nach veränderung einer Datei soll von dieser ein Backup angelegt werden& Die Datei liegt auf dem Filesystem und der FileSystemListener wurde gestartet.& Der User verändert die Datei& Der FileSystemListener sendet ein \"Anderungsevent \\ \hline
-10 & 9& Der User löscht eine Datei& Die Datei wurde in der Datenbank erfasst& Der User löscht eine Datei& Der FileSystemListener erkennt die Löschaktion und sendet ein Event an die Datenbank \\ \hline
-11 & 10& Der User legt eine Datei an& Der FileSystemListener überwacht das Verzeichnis& Der User legt eine Datei an& Der FileSystemListener erkennt die neue Datei und sendet ein Event an das GUI damit dieses die Datei anzeigt \\ \hline
-12 & -& Der User m\"ochte ein Backup anlegen& Dateien liegen auf dem Filesystem& Der User w\"ahlt die option Sichern an& \\ \hline
-\end{supertabular}
+\bf Nr. \cellcolor{blue!20!}& \bf Anwendungsfall \cellcolor{blue!20!} & \bf Bemerkungen \cellcolor{blue!20!} \\ \hline
+1 & Tag zu einer Datei hinzuf\"ugen. & Wahlweise eines das noch nicht oder schon vorhanden ist. \\ \hline
+2 & Programm starten& \\ \hline
+3 & Tag mit Sonderzeichen erstellen & Hat zu gewissen Punkten in der Entwicklung zu Problemen gef\"uhrt. \\ \hline
+4 & CLI starten und testten. & Wird nicht erfolgen, da nicht umgesetzt. \\ \hline
+5 & Tags zu einer bestimmten Datei anzeigen. & Geschieht durch das Selektieren der Datei. \\ \hline
+6 & Verzeichnis das eine Datei mit Sonderzeichen im Namen enthält wird geöffnet und der Datei ein Tag hinzugefügt.& War vor den \"Anderungen am DB-Modul nicht m\"oglich. \\ \hline
+7 & Alle Dateien eines Tags archivieren/versionieren. & \\ \hline
+8 & Ansicht zwischen hierarchisch und tag-view wechseln.& Dazu gibt es zwei M\"oglichkeiten. \\ \hline
+9 & Backup einer Datei anlegen.& \\ \hline
+10 & Datei L\"oschen und die Reaktion vom Filesystem-Listener pr\"ufen.& der FS-Listener sollte eine entsprechende \"Anderung in der Datenbank machen.\\ \hline
+11 & Datei anlegen  und die Reaktion vom Filesystem-Listener pr\"ufen.& \\ \hline
+\end{tabularx}
 \section{Konfigurationsmanagementplan (KM-Plan)}
 \subsection{Aufzubewahrende Projektergebnisse und ggf. sonstige Dokumente}
+Alle Ergebnisse k\"onnen auf Google Code abgerufen werden. \url{https://code.google.com/p/project-browser/source/browse/#svn}
 \subsection{Ablagestruktur}
+\begin{figure}[h!]
+\includegraphics[scale=0.6]{tree.png}
+\caption{Ablagestruktur}
+\end{figure}
+\subsubsection{documentation}
+Alle Elemente der Dokumentation sind im Unterordner "documentation" abgelegt. Dort ist f\"ur jedes der Dokumente ein eigener Unterordner abgelegt, der jeweils den Namen des Dokumentes tr\"agt. In diesem Unterordner liegen alle Dateien, die zum Kompilieren des \LaTeX Dokuments nach PDF notwendig sind, sowie eine kompilierte Version als PDF.
+\subsubsection{Code}
+Der Code ist im Unterordner experimental abgelegt. Im weiteren Verlauf war die Verschiebung nach "testing" und sp\"ater nach "release" vorgesehen. In der Praxis hat das aber nie stattgefunden.
+
+Die Python-files liegen direkt im experimental Ordner.\\
+Dieser enth\"alt zudem einen Unterordner "frameworks", in dem weitere Installationsdateien liegen, die zur Benutzung des Programmes unter Windows oder MAC OS X ben\"otigt werden.
 \subsection{Namenskonventionen}
+Die Elemente der Dokumentation wurden jeweils gleich benannt wie in den verf\"ugbaren Vorlagen, also nach der aktuellen Projektphase.
+
+Die Code-Files wurden nach dem Klassennamen benannt. Diese wiederum wurden nach den Aufgaben der Klassen vergeben.
 \section{Konfigurationsidentifikation}
+\subsection{Dokumentation}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+ \bf Ergebniss \cellcolor{blue!20!}& \bf Status \cellcolor{blue!20!}& \bf Bemerkungen \cellcolor{blue!20!} \\ \hline
+Projektantrag & fertig \cellcolor{green} & PDF File\\ \hline
+Projektplan & fertig \cellcolor{green}& PDF File \\ \hline
+Konzeptbericht & fertig \cellcolor{green}& PDF File \\ \hline
+Voranalysebericht & fertig \cellcolor{green}& PDF File \\ \hline
+Realisierungsbericht & fertig \cellcolor{green}& PDF File \\ \hline
+Einf\"uhrungsbericht & fertig \cellcolor{green}& PDF File \\ \hline
+Projektf\"uhrungsbericht & fertig \cellcolor{green}& PDF File \\ \hline
+\end{tabularx}
+\subsection{Applikation (sourcecode)}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+ \bf Ergebniss \cellcolor{blue!20!}& \bf Status \cellcolor{blue!20!}& \bf Bemerkungen \cellcolor{blue!20!} \\ \hline
+CLI.py & in Arbeit/nicht fertig \cellcolor{red}& Command line interface f\"ur das Programm.\\ \hline
+Constant.py & fertig \cellcolor{green}& Enth\"alt Werte die zur Laufzeit vom Programm ben\"otigt werden, sich aber nicht ver\"andern. \\ \hline
+DB.py & fertig \cellcolor{green}& Dient als Schnittstelle zur Datenbank \\ \hline
+File.py & fertig \cellcolor{green}& Repr\"asentiert eine Datei auf dem Dateisystem und wird innerhalb der Applikation zum Informationsaustausch verwendet. \\ \hline
+FileManager.py & fertig \cellcolor{green}& Dateimanager Funktionen. \\ \hline
+FileProperties.py & fertig \cellcolor{green}& Dient zum Setzen von Tags. \\ \hline
+FileSystemListener.py & fertig \cellcolor{green}& Mutterklasse der Dateisystem-Listener. \\ \hline
+FileSystemListener\_Linux.py & fertig \cellcolor{green}& Filesystem-Listener-variante f\"ur Linux. \\ \hline
+FileSystemListener\_Mac.py & in Arbeit/nicht fertig \cellcolor{red}& Filesystem-Listener-variante f\"ur MAC OS X. \\ \hline
+FileSystemListener\_Windows.py & in Arbeit/nicht fertig \cellcolor{red}& Filesystem-Listener-variante f\"ur Windows. \\ \hline
+GUI.py & fertig \cellcolor{green}& Stellt das GUI dar. \\ \hline
+HirarchicalView.py &  fertig \cellcolor{green}& Hierarchische Darstellung der Dateien. Erbt von View.\\ \hline
+Main.py & fertig \cellcolor{green}& Startpunkt der Applikation. \\ \hline
+RepeatTimer.py & in Arbeit/nicht fertig \cellcolor{red}& Backups in regelm\"assigen Zeitabst\"anden wiederholen. \\ \hline
+TagManager.py & fertig \cellcolor{green}& Handeln der Tags. \\ \hline
+TagView.py & fertig \cellcolor{green}& Darstellung der Dateien nach Tags. Erbt von View. \\ \hline
+Utility.py & fertig \cellcolor{green}& Enth\"alt kleine Funktionen die an verschiedenen Stellen wiederverwendet werden. \\ \hline
+View.py & fertig \cellcolor{green}& Mutterklasse f\"ur die verschiedenen Views. \\ \hline
+gui.glade & fertig \cellcolor{green}& XML Datei. Beschreibt die GTK Oberfl\"ache \\ \hline
+\end{tabularx}
 \end{document}
