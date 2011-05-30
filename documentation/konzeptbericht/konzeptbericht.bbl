@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{inotify}
+Wikimedia Foundation.
+\newblock inotify.
+\newblock
+  \url{http://en.wikipedia.org/w/index.php?title=Inotify\&oldid=404718721},
+  2011.
+
+\bibitem{voranalyse}
+Lukas Knoepfel Kaleb Tschabold~Niklaus Hofer.
+\newblock Konzeptbericht.
+\newblock Teil der Abgabedokumente, 2011.
+
+\bibitem{pyinotify}
+seb m.
+\newblock seb-m/pyinotify.
+\newblock \url{https://github.com/seb-m/pyinotify}, 2011.
+
+\end{thebibliography}
