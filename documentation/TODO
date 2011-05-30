@@ -2,5 +2,5 @@
 [X] projektantrag		DONE
 [X] voranalyse			[X] better measurements, [X] datenflussdiagram, [X] sachmittel besser definieren
 [x] konzeptbericht		[X] Portierung nach LaTeX, [X] Erlaeuterungen zum Klassendiagramm, [X] Bemerkungen zur Sektion Usecases besser sichtbar, [?] weitere Punkte?
-[ ] realisierungsbericht	[ ] spelling some titles, [ ] sequence diagram, [ ] Benutzerhandbuch updaten
+[X] realisierungsbericht	[X] spelling some titles, [X] sequence diagram, [X] Benutzerhandbuch updaten, [X] Klassendiagramm aktualisieren
 [X] einfuehrungsbericht		port
