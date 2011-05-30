@@ -72,4 +72,6 @@
 \BOOKMARK [2][-]{subsection.10.13}{HirarchicalView.py}{section.10}
 \BOOKMARK [2][-]{subsection.10.14}{View.py}{section.10}
 \BOOKMARK [2][-]{subsection.10.15}{File.py}{section.10}
-\BOOKMARK [2][-]{subsection.10.16}{AddTag.py}{section.10}
+\BOOKMARK [2][-]{subsection.10.16}{FileProperties.py}{section.10}
+\BOOKMARK [2][-]{subsection.10.17}{gui.glade}{section.10}
+\BOOKMARK [2][-]{subsection.10.18}{fileproperties.glade}{section.10}

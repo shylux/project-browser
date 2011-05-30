@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.5)  30 MAY 2011 21:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.5)  30 MAY 2011 21:31
 entering extended mode
  %&-line parsing enabled.
 **realisierungsbericht.tex
@@ -782,7 +782,7 @@ LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ua1/b/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
 (Font)              scaled to size 13.67995pt on input line 1.
-) <header.png, id=310, 191.21437pt x 27.01pt>
+) <header.png, id=318, 191.21437pt x 27.01pt>
 File: header.png Graphic file (type png)
  <use header.png>
 
@@ -860,6 +860,16 @@ Overfull \hbox (1.9189pt too wide) detected at line 75
 \T1/ua1/m/n/10 10.16 
  []
 
+
+Overfull \hbox (1.9189pt too wide) detected at line 76
+\T1/ua1/m/n/10 10.17 
+ []
+
+
+Overfull \hbox (1.9189pt too wide) detected at line 77
+\T1/ua1/m/n/10 10.18 
+ []
+
 )
 \tf@toc=\write4
 \openout4 = `realisierungsbericht.toc'.
@@ -872,13 +882,13 @@ LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 110.
 File: header.png Graphic file (type png)
  <use header.png> [5]
-<class2.png, id=405, 944.52875pt x 1277.77374pt>
+<class2.png, id=415, 944.52875pt x 1277.77374pt>
 File: class2.png Graphic file (type png)
  <use class2.png>
 File: header.png Graphic file (type png)
 
 <use header.png> [6 <./class2.png (PNG copy)>]
-<sequence.png, id=411, 777.65532pt x 402.00188pt>
+<sequence.png, id=421, 777.65532pt x 402.00188pt>
 File: sequence.png Graphic file (type png)
  <use sequence.png>
 File: header.png Graphic file (type png)
@@ -890,7 +900,7 @@ File: header.png Graphic file (type png)
  <use header.png> [8
 
 ]
-<db.jpeg, id=433, 448.67625pt x 245.91875pt>
+<db.jpeg, id=443, 448.67625pt x 245.91875pt>
 File: db.jpeg Graphic file (type jpg)
  <use db.jpeg>
 Underfull \hbox (badness 5175) in paragraph at lines 208--208
@@ -906,13 +916,13 @@ File: header.png Graphic file (type png)
 <use header.png> [9 <./db.jpeg>]
 File: header.png Graphic file (type png)
  <use header.png> [10]
-<gui1.png, id=457, 873.2625pt x 528.97626pt>
+<gui1.png, id=467, 873.2625pt x 528.97626pt>
 File: gui1.png Graphic file (type png)
  <use gui1.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<gui2.png, id=458, 385.44pt x 430.60875pt>
+<gui2.png, id=468, 385.44pt x 430.60875pt>
 File: gui2.png Graphic file (type png)
  <use gui2.png>
 
@@ -1662,77 +1672,101 @@ File: header.png Graphic file (type png)
 (../../experimental/CLI.py
 File: header.png Graphic file (type png)
  <use header.png> [29])
-(../../experimental/TagManager.py
 File: header.png Graphic file (type png)
- <use header.png> [30])
-(../../experimental/FileManager.py
+ <use header.png> [30]
+(../../experimental/TagManager.py) (../../experimental/FileManager.py
 File: header.png Graphic file (type png)
- <use header.png> [31]
+
+<use header.png> [31]
 File: header.png Graphic file (type png)
- <use header.png>
-[32]) (../../experimental/FileSystemListener.py
+ <use header.png> [32]
 File: header.png Graphic file (type png)
  <use header.png> [33])
+(../../experimental/FileSystemListener.py
+File: header.png Graphic file (type png)
+ <use header.png> [34])
 (../../experimental/FileSystemListener_Linux.py)
 File: header.png Graphic file (type png)
- <use header.png> [34]
+ <use header.png> [35]
 (../../experimental/FileSystemListener_Windows.py
 File: header.png Graphic file (type png)
- <use header.png> [35])
+ <use header.png> [36])
 (../../experimental/FileSystemListener_Mac.py) (../../experimental/GUI.py
 File: header.png Graphic file (type png)
 
-<use header.png> [36]
-File: header.png Graphic file (type png)
- <use header.png> [37]
+<use header.png> [37]
 File: header.png Graphic file (type png)
  <use header.png> [38]
 File: header.png Graphic file (type png)
-
-<use header.png> [39]) (../../experimental/TagView.py
-File: header.png Graphic file (type png)
- <use header.png> [40]
+ <use header.png> [39]
 File: header.png Graphic file (type png)
 
-<use header.png> [41]) (../../experimental/HirarchicalView.py
+<use header.png> [40]) (../../experimental/TagView.py
+File: header.png Graphic file (type png)
+ <use header.png> [41]
+File: header.png Graphic file (type png)
+
+<use header.png> [42]) (../../experimental/HirarchicalView.py
 File: header.png Graphic file (type png)
  <use header.png>
-[42]) (../../experimental/View.py
+[43]) (../../experimental/View.py
 File: header.png Graphic file (type png)
- <use header.png> [43]
-File: header.png Graphic file (type png)
- <use header.png>
-[44]
-File: header.png Graphic file (type png)
- <use header.png> [45]) (../../experimental/File.py
+ <use header.png> [44]
 File: header.png Graphic file (type png)
  <use header.png>
-[46]
+[45])
 File: header.png Graphic file (type png)
- <use header.png> [47]
+ <use header.png> [46] (../../experimental/File.py
+File: header.png Graphic file (type png)
+ <use header.png>
+[47]
 File: header.png Graphic file (type png)
  <use header.png> [48]
 File: header.png Graphic file (type png)
  <use header.png> [49]
 File: header.png Graphic file (type png)
-
-<use header.png> [50]) (../../experimental/AddTag.py
-File: header.png Graphic file (type png)
- <use header.png> [51]
+ <use header.png> [50]
 File: header.png Graphic file (type png)
 
-<use header.png> [52])
+<use header.png> [51]) (../../experimental/FileProperties.py
 File: header.png Graphic file (type png)
- <use header.png> [53] (./realisierungsbericht.aux)
+ <use header.png>
+[52]
+File: header.png Graphic file (type png)
+ <use header.png> [53]
+File: header.png Graphic file (type png)
+ <use header.png> [54]) (../../experimental/gui.glade
+File: header.png Graphic file (type png)
+<use header.png> [55]
+File: header.png Graphic file (type png)
+ <use header.png> [56]
+File: header.png Graphic file (type png)
+ <use header.png> [57]
+File: header.png Graphic file (type png)
+
+<use header.png> [58]
+File: header.png Graphic file (type png)
+ <use header.png> [59])
+(../../experimental/fileproperties.glade
+File: header.png Graphic file (type png)
+ <use header.png> [60]
+File: header.png Graphic file (type png)
+
+<use header.png> [61]
+File: header.png Graphic file (type png)
+ <use header.png> [62])
+File: header.png Graphic file (type png)
+ <use header.png> [63]
+(./realisierungsbericht.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 11442 strings out of 495061
- 165954 string characters out of 1182622
+ 12164 strings out of 495061
+ 177699 string characters out of 1182622
  843892 words of memory out of 3000000
- 12157 multiletter control sequences out of 15000+50000
+ 12239 multiletter control sequences out of 15000+50000
  56508 words of font info for 41 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  43i,17n,43p,604b,1836s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1741,9 +1775,9 @@ hare/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/publi
 c/amsfonts/cm/cmsy9.pfb></home/niklaus/texmf/fonts/type1/urw/arial/ua1b8a.pfb><
 /home/niklaus/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
-Output written on realisierungsbericht.pdf (53 pages, 967900 bytes).
+Output written on realisierungsbericht.pdf (63 pages, 1104405 bytes).
 PDF statistics:
- 3314 PDF objects out of 3580 (max. 8388607)
- 2263 named destinations out of 2487 (max. 500000)
- 631 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4114 PDF objects out of 4296 (max. 8388607)
+ 2896 named destinations out of 2984 (max. 500000)
+ 647 words of extra memory for PDF output out of 10000 (max. 10000000)
 

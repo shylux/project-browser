@@ -61,15 +61,17 @@
 \contentsline {subsection}{\numberline {10.2}DB.py}{21}{subsection.10.2}
 \contentsline {subsection}{\numberline {10.3}Utility.py}{28}{subsection.10.3}
 \contentsline {subsection}{\numberline {10.4}CLI.py}{29}{subsection.10.4}
-\contentsline {subsection}{\numberline {10.5}TagManager.py}{30}{subsection.10.5}
+\contentsline {subsection}{\numberline {10.5}TagManager.py}{31}{subsection.10.5}
 \contentsline {subsection}{\numberline {10.6}FileManager.py}{31}{subsection.10.6}
-\contentsline {subsection}{\numberline {10.7}FileSystemListener.py}{33}{subsection.10.7}
-\contentsline {subsection}{\numberline {10.8}FileSystemListener Linux.py}{34}{subsection.10.8}
-\contentsline {subsection}{\numberline {10.9}FileSystemListener Windows.py}{35}{subsection.10.9}
-\contentsline {subsection}{\numberline {10.10}FileSystemListener Mac.py}{36}{subsection.10.10}
-\contentsline {subsection}{\numberline {10.11}GUI.py}{36}{subsection.10.11}
-\contentsline {subsection}{\numberline {10.12}TagView.py}{40}{subsection.10.12}
-\contentsline {subsection}{\numberline {10.13}HirarchicalView.py}{42}{subsection.10.13}
-\contentsline {subsection}{\numberline {10.14}View.py}{43}{subsection.10.14}
-\contentsline {subsection}{\numberline {10.15}File.py}{46}{subsection.10.15}
-\contentsline {subsection}{\numberline {10.16}AddTag.py}{51}{subsection.10.16}
+\contentsline {subsection}{\numberline {10.7}FileSystemListener.py}{34}{subsection.10.7}
+\contentsline {subsection}{\numberline {10.8}FileSystemListener Linux.py}{35}{subsection.10.8}
+\contentsline {subsection}{\numberline {10.9}FileSystemListener Windows.py}{36}{subsection.10.9}
+\contentsline {subsection}{\numberline {10.10}FileSystemListener Mac.py}{37}{subsection.10.10}
+\contentsline {subsection}{\numberline {10.11}GUI.py}{37}{subsection.10.11}
+\contentsline {subsection}{\numberline {10.12}TagView.py}{41}{subsection.10.12}
+\contentsline {subsection}{\numberline {10.13}HirarchicalView.py}{43}{subsection.10.13}
+\contentsline {subsection}{\numberline {10.14}View.py}{44}{subsection.10.14}
+\contentsline {subsection}{\numberline {10.15}File.py}{47}{subsection.10.15}
+\contentsline {subsection}{\numberline {10.16}FileProperties.py}{52}{subsection.10.16}
+\contentsline {subsection}{\numberline {10.17}gui.glade}{55}{subsection.10.17}
+\contentsline {subsection}{\numberline {10.18}fileproperties.glade}{60}{subsection.10.18}
