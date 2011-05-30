@@ -7,6 +7,8 @@
 \usepackage{hyperref}   	%used to make klickable links
 \usepackage{supertabular}
 \usepackage{listings}
+\usepackage{pdflscape}
+
 \lstset{language=python,
   basicstyle=\small, 
   keywordstyle=\color{blue!80!black!100}, 
@@ -79,6 +81,7 @@
 \cellcolor{blue!20!} 0.1& \cellcolor{blue!20!} 08.02.2011 & Gesammelten Text einfügen \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
 \cellcolor{blue!20!} 0.9& \cellcolor{blue!20!} 08.02.2011 & Abgabebereit \cellcolor{blue!20!} & Kaleb Tschabold \cellcolor{blue!20!} \\
 \cellcolor{blue!20!} 0.99& \cellcolor{blue!20!} \today{} & Transfer nach \LaTeX \cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
+\cellcolor{blue!20!} 1.0& \cellcolor{blue!20!} \today{} & Klassendiagram updaten, Sequenzdiagram einf\"ugen, Rechtschreibefehler korrigieren, Benutzerhandbuch updaten\cellcolor{blue!20!} & Niklaus Hofer \cellcolor{blue!20!} \\
 \end{tabularx}
 \newline
 \newline
@@ -127,9 +130,16 @@ Ist der ‘Dateinamen’ der Name eines neuen Verzeichnisses, so tr\"agt auch er
 \newpage
 \subsubsection{Struktur des Systemdesigns}
 \begin{figure}[h!]
-\includegraphics[scale=0.54]{class.png}
+\includegraphics[scale=0.50]{class2.png}
 \caption{Klassendiagramm}
 \end{figure}
+\newpage
+\begin{landscape}
+\begin{figure}[h!]
+\includegraphics[scale=0.9]{sequence.png}
+\caption{Sequenzdiagramm zum Verdeutlichen des Startprozesses.}
+\end{figure}
+\end{landscape}
 \newpage
 \subsubsection{Beschreibung der Elemente}
 newpage
@@ -245,8 +255,12 @@ Der Nutzer kann dazu den einzelnen Dateien Tags zuordnen, anhand derer er die Da
 Die Tags k\"onnen selbst festgelegt und vergeben werden.
 \paragraph{Programmoberfl\"ache}
 \begin{figure}[h!]
-\includegraphics[scale=0.5]{erlaeuterungen_gui.png}
+\includegraphics[scale=0.5]{gui1.png}
 \caption{Programmoberfl\"ache}
+\end{figure}
+\begin{figure}[h!]
+\includegraphics[scale=0.5]{gui2.png}
+\caption{Programmoberfl\"ache zum Verwalten der Backups.}
 \end{figure}
 Die Oberfl\"ache des Programms l\"asst sich grob in vier Bereiche aufteilen.\\
 Der Erste (4. auf dem Bild), ist die Multibar. Hier kann der Pfad zu einem Verzeichnis eingeben werden, oder, in der Tag-Ansicht, ein Tag nachdem man sucht.\\
@@ -271,6 +285,7 @@ Wir werden folgende Szenarien beschreiben:
   \item Dateien eines Tags anzeigen.
   \item Fehlermeldungen
   \item Sichern
+  \item wiederherstellen
 \end{itemize}
 \paragraph{Ansicht wechseln}
 Projekt-Explorer hat zwei verschiedene Ansichten, n\"amlich ‘Hierarchisch’ und ‘Tags’. Beim Wechseln zwischen den Ansichten \"andert sich die Ansicht \#5.).\\
@@ -302,7 +317,9 @@ Alternativ kann der Tagname auch in \#4.) eingegeben werden. W\"ahrend der Einga
 \paragraph{Fehlermeldungen}
 Im Normalbetrieb werden keine Fehlermeldungen ausgegeben. Um Trotzdem Informationen zu auftretenden Fehlern zu erhalten muss das Programm aus dem Terminal gestartet werden. Auftretende Fehler werden dann dort ausgegeben.
 \paragraph{Sichern}
-Um den selektierten Ordner oder das selektierte File zu sichern kann man das mit dem Button 'Sichern' machen. Wenn eine Tag-Gruppe selektiert ist werden alle Dateien und Ordner mit diesem Tag gesichert. Die Sicherung wird in den gleichen Ordner gemacht, in dem der zu sicherne Ordner oder zu sichernde Datei liegt. Es wird ein Unterordner mit dem Namen '.pb-backup' erstellt dort wird die Sicherungen nach Datum abgelegt.
+Zum Sichern von Dateien, Ordnern oder aller Dateien eines Tags, w\"ahlt man einen entsprechenden Eintrag an und wechselt dann in der rechten Spalte (\#6.) auf das Tab sichern. In \#7. klickt man nun den Button Sichern, um ein Backup zu erstellen. Wenn eine Tag-Gruppe selektiert ist werden alle Dateien und Ordner mit diesem Tag gesichert. Die Sicherung wird in den gleichen Ordner gemacht, in dem der zu sicherne Ordner oder zu sichernde Datei liegt. Es wird ein Unterordner mit dem Namen '.pb-backup' erstellt dort wird die Sicherungen nach Datum abgelegt.
+\paragraph{Wiederherstellen}
+Existiert ein Backup einer Datei, so kann dieses wiederhergestellt werden - selbst dann noch, wenn die Datei gel\"oscht worden ist. Dazu w\"ahlt man die Datei an (Wurde die Datei auf dem Filesystem gel\"oscht, so ist sie entsprechend markiert, kann aber dennnoch ausgew\"ahlt werden), und wechselt in \#6. auf das Tab Sichern. Im unteren Bereich von \#7. werden nun alle vorhandenen Backups angezeigt. Zum wiederherstellen wird einfach das gew\"unschte selektiert und der Button Wiederherstellen bet\"atigt.
 \subsection{Supporthandbuch}
 \subsubsection{Massnahmen bei Benutzerproblemen}
 \begin{itemize}
@@ -328,7 +345,7 @@ Unsere Struktur des Programmes erlaubt Fehler in einigen Modulen. Je nachdem wo 
 Die Tests sollen zuerst unter optimalen Bedingungen ausgeführt werden um die Funktionalität zu prüfen.\\Dann soll jede Funktion noch einem "Schlechtwettertest" unterzogen werden. So wird die Qualität getestet.
 \subsubsection{Testverfahren}
 Für die "Gutwettertests" wird vor dem Test das System in seinen Ursprungszustand zurückgesetzt und es werden nur valide Daten eingegeben. Bei den "Schlechtwettertests" werden dem Programm möglichst viele Steine in den Weg gelegt.
-\subsubsection{Tesenriterine}
+\subsubsection{Testkriterien}
 Abdeckungsgrad: Die Tests umfassen alle Funktionen die das GUI anbietet.\\
 Checklisten: siehe Tabelle unten\\
 Endkriterien: Der Test ist erfolgreich verlaufen wenn das Prgramm nicht abstürzt und die erwarteten modifikation an GUI, DB oder Filesystem durchgeführt hat.\\
